@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm8jj0j2bmggq"]
+
+[ext_resource type="Script" uid="uid://dbnfyjuecuoue" path="res://scenes/Misc/targetable_aspect.gd" id="1_dw442"]
+
+[node name="TargetableAspect" type="Node3D" groups=["targetable"]]
+script = ExtResource("1_dw442")
+
+[node name="LookAt" type="Node3D" parent="."]
+
+[node name="TargetMarker" type="Node3D" parent="."]

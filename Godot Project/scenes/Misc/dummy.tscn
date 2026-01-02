@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0mue2qakhes6"]
+
+[ext_resource type="PackedScene" uid="uid://cm8jj0j2bmggq" path="res://scenes/Misc/targetable_aspect.tscn" id="1_kre8v"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_k5f3b"]
+radius = 0.3
+height = 1.0
+
+[node name="Dummy" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72084796, 0)
+use_collision = true
+mesh = SubResource("CapsuleMesh_k5f3b")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.910331, 0)
+radius = 0.3
+
+[node name="TargetableAspect" parent="." instance=ExtResource("1_kre8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)

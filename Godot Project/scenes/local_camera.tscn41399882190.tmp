@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://ca16026hm7cpp"]
+
+[ext_resource type="Script" uid="uid://dtx02re16jgod" path="res://scripts/local_camera.gd" id="1_db0ud"]
+[ext_resource type="Script" uid="uid://ch6e0b3igyuug" path="res://scenes/locked_camera.gd" id="2_axsro"]
+[ext_resource type="Script" uid="uid://cpyv82o088fjg" path="res://scenes/free_camera.gd" id="3_db0ud"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47crt"]
+albedo_color = Color(0.6666667, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il154"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2urwo"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6h7m6"]
+
+[node name="LocalCamera" type="Node"]
+script = ExtResource("1_db0ud")
+
+[node name="LockedCamera" type="Node" parent="."]
+script = ExtResource("2_axsro")
+
+[node name="FreeCamera" type="Node" parent="."]
+script = ExtResource("3_db0ud")
+
+[node name="CameraMount" type="Node3D" parent="."]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CameraMount"]
+visible = false
+radius = 0.1
+material = SubResource("StandardMaterial3D_47crt")
+
+[node name="CameraNest" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4)
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CameraNest"]
+visible = false
+radius = 0.4
+material = SubResource("StandardMaterial3D_il154")
+
+[node name="FocusPoint" type="Node3D" parent="."]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="FocusPoint"]
+visible = false
+radius = 0.2
+material = SubResource("StandardMaterial3D_2urwo")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3.5)
+fov = 46.2
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="PlayerCamera"]
+visible = false
+radius = 0.25
+material = SubResource("StandardMaterial3D_6h7m6")

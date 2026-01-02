@@ -1,0 +1,86 @@
+extends CameraState
+class_name LockedCameraState
+
+''' NOTE TO SELF: At some point, please refactor somehow to have the camera check for a valid target before entering this state'''
+
+const LERP_WEIGHT := 0.1
+const OTHER_LERP_WEIGHT := 0.75
+
+@onready var local_camera: CameraManager = $".."
+@onready var free_camera: FreeCameraState = $"../FreeCamera"
+
+@onready var camera: Camera3D = $"../PlayerCamera"
+@onready var focus_point: Node3D = $"../FocusPoint"
+@onready var camera_nest: Node3D = $"../CameraNest"
+@onready var camera_mount: Node3D = $"../CameraMount"
+
+@onready var camera_focus: Node3D = $"../../CameraFocus"
+
+var target : Targetable
+
+var hor_sense := 4.0
+var ver_sense := 3.0
+var offset := Vector3(0.0,1.0,4.5)
+var midpoint : Vector3
+
+func Enter(current_lock_target: Node3D):
+	print("entered lock state")
+	print(current_lock_target)
+	target = current_lock_target
+	if local_camera.look_at == camera_focus:
+		local_camera.look_at = target
+	local_camera.is_target_locked = true
+		
+func Exit():
+	pass
+
+func Update(look_at:Node3D, delta: float) -> void:
+	if look_at:
+		calculate_midpoint(look_at)
+		move_focus_point(look_at)
+		move_camera_nest(look_at)
+		move_camera()
+	else:
+		drop_target()
+	
+func Physics_Update(look_at:Node3D, delta: float) -> void:
+	pass
+	
+func calculate_midpoint(look_at:Node3D):
+	var focus_pos = look_at.global_position
+	var player_pos = camera_focus.global_position
+	midpoint = (focus_pos + player_pos)*0.5
+	
+func move_focus_point(look_at: Node3D):
+	var new_focus = lerp(focus_point.global_position, midpoint, OTHER_LERP_WEIGHT)
+	rotate_offset_locked(new_focus)
+	focus_point.global_position = new_focus
+		
+func move_camera_nest(look_at: Node3D):
+	camera_mount.global_position = lerp(camera_mount.global_position, camera_focus.global_position, LERP_WEIGHT)
+	camera_nest.global_position = lerp(camera_nest.global_position, camera_mount.global_position+offset, LERP_WEIGHT)
+	
+func move_camera():
+	if not camera.position.is_equal_approx(camera_nest.position):
+		camera.position = camera_nest.position
+	camera.look_at(focus_point.global_position)	
+
+func rotate_offset_locked(new_focus : Vector3):
+	var new_focus_projected = new_focus
+	new_focus_projected.y = 0.0
+	var center_projected = camera_focus.global_position
+	center_projected.y = 0.0
+	var offset_xz_length = sqrt(offset.x * offset.x + offset.z * offset.z)
+	var new_offset = (center_projected - new_focus_projected).normalized() * offset_xz_length
+	#var new_offset = (center_projected - new_focus_projected)*1.5
+	new_offset.y = offset.y
+	offset = new_offset
+	
+func input_target_lock(event: InputEvent):
+	drop_target()
+
+func drop_target():
+	local_camera.look_at = camera_focus
+	free_camera.offset = (camera_nest.global_position - camera_mount.global_position)
+	local_camera.is_target_locked = false
+	Transitioned.emit(self,"FreeCamera")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://duyqliic8t8ue"]
+
+[ext_resource type="PackedScene" uid="uid://ch453386vmjam" path="res://model.tscn" id="1_fnuwu"]
+[ext_resource type="Texture2D" uid="uid://di5ugjwp0dqd2" path="res://assets/Textures/Dark/texture_04.png" id="1_vytx3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckdrc"]
+albedo_color = Color(0.18000486, 0.18000486, 0.18000486, 1)
+albedo_texture = ExtResource("1_vytx3")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(25, 1, 25)
+material = SubResource("StandardMaterial3D_ckdrc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.70710677, -0.61237246, 0.35355335, 0, 0.49999997, 0.86602545, -0.70710677, -0.61237246, 0.35355335, 0, 2.75, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 17.75, 0)
+current = true
+
+[node name="PlayerModel" parent="." instance=ExtResource("1_fnuwu")]
