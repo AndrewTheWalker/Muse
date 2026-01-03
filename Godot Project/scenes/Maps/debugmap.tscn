@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7vnek183mcn4" path="res://assets/Textures/Orange/texture_09.png" id="2_8qxmy"]
 [ext_resource type="Texture2D" uid="uid://bfp5qo5cve0jb" path="res://assets/Textures/Purple/texture_09.png" id="3_8dygm"]
 [ext_resource type="Texture2D" uid="uid://bmsx8puwddira" path="res://assets/Textures/Green/texture_09.png" id="4_g1aj0"]
-[ext_resource type="PackedScene" uid="uid://bhlq0nfinx6wb" path="res://scenes/player/player.tscn" id="5_8qxmy"]
+[ext_resource type="PackedScene" uid="uid://bhlq0nfinx6wb" path="res://scenes/Player/player.tscn" id="5_8qxmy"]
 [ext_resource type="PackedScene" uid="uid://d0mue2qakhes6" path="res://scenes/Misc/dummy.tscn" id="6_8dygm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ymwt5"]
@@ -29,7 +29,6 @@ fog_depth_curve = 2.7320805
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxufs"]
 albedo_texture = ExtResource("2_8qxmy")
 uv1_triplanar = true
-uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocpnk"]
 albedo_texture = ExtResource("3_8dygm")
@@ -59,25 +58,25 @@ collision_layer = 4
 size = Vector3(2, 2, 2)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeo"]
-transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 19.334522, -3.25, -130.60724)
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 16.834522, -3.25, -130.60724)
 material_override = SubResource("StandardMaterial3D_mxufs")
 use_collision = true
 collision_layer = 6
-size = Vector3(0.5, 2.5, 8.75)
+size = Vector3(0.5, 2.5, 13.75)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="LevelGeo"]
-transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 19.334522, -3.25, -127.85724)
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 16.834522, -3.25, -127.85724)
 material_override = SubResource("StandardMaterial3D_mxufs")
 use_collision = true
 collision_layer = 6
-size = Vector3(0.5, 2.5, 8.75)
+size = Vector3(0.5, 2.5, 13.75)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="LevelGeo"]
-transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 19.334522, -1.75, -129.23224)
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 16.834522, -1.75, -129.23224)
 material_override = SubResource("StandardMaterial3D_mxufs")
 use_collision = true
 collision_layer = 6
-size = Vector3(3.25, 0.5, 8.75)
+size = Vector3(3.25, 0.5, 13.75)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeo"]
 transform = Transform3D(0.258819, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.258819, 2.901822, -4, -123.05214)
@@ -127,10 +126,12 @@ transform = Transform3D(0, -0.86602545, 0.49999997, 0, 0.49999997, 0.86602545, -
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.25881904, 0, 0.9659259, 0, 1, 0, -0.9659259, 0, 0.25881904, 18.75, 0.7500038, 0.49999928)
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 13.75, 14.250004, -0.5000007)
 fov = 35.0
 
 [node name="player" parent="." instance=ExtResource("5_8qxmy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2.5)
+use_debug_cam = true
 
 [node name="Dummy" parent="." instance=ExtResource("6_8dygm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.143016, 0, -9.659262)
