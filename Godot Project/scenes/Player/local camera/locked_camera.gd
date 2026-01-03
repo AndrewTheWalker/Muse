@@ -13,7 +13,6 @@ const OTHER_LERP_WEIGHT := 0.75
 @onready var focus_point: Node3D = $"../FocusPoint"
 @onready var camera_nest: Node3D = $"../CameraNest"
 @onready var camera_mount: Node3D = $"../CameraMount"
-@onready var ray_cast: RayCast3D = $"../CameraMount/RayCast3D"
 
 @onready var camera_focus: Node3D = $"../../CameraFocus"
 

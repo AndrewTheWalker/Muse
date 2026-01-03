@@ -9,7 +9,6 @@ class_name CameraManager
 @onready var focus_point := $FocusPoint
 @onready var camera_nest := $CameraNest
 @onready var camera_mount := $CameraMount
-@onready var ray_cast: RayCast3D = $CameraMount/RayCast3D
 
 @onready var camera_focus: Node3D = $"../CameraFocus"
 
