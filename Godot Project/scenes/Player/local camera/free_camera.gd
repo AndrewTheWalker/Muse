@@ -7,6 +7,7 @@ class_name FreeCameraState
 @onready var focus_point: Node3D = $"../FocusPoint"
 @onready var camera_nest: Node3D = $"../CameraNest"
 @onready var camera_mount: Node3D = $"../CameraMount"
+@onready var shape_cast: RayCast3D = $"../CameraMount/ShapeCast3D"
 
 @onready var camera_focus: Node3D = $"../../CameraFocus"
 
@@ -27,6 +28,7 @@ func Exit():
 func Update(look_at:Node3D, delta: float) -> void:
 	move_focus_point(look_at)
 	move_camera_nest(look_at)
+	move_shapecast()
 	move_camera()
 	
 func Physics_Update(look_at:Node3D, delta: float) -> void:
@@ -40,12 +42,21 @@ func move_focus_point(look_at: Node3D):
 		
 func move_camera_nest(look_at: Node3D):
 	camera_mount.global_position = lerp(camera_mount.global_position, look_at.global_position, 0.1)
-	camera_nest.global_position = camera_mount.global_position+offset
-	
+	if not shape_cast.is_colliding():
+		#camera_nest.global_position = camera_mount.global_position+offset
+		camera_nest.global_position = lerp(camera_nest.global_position,camera_mount.global_position+offset,0.25)
+	else:
+		var collider = shape_cast.get_collider()
+		print(collider)
+		var collision_point : Vector3 = shape_cast.get_collision_point()
+		camera_nest.global_position = lerp(camera_nest.global_position,collision_point, 0.1)
 func move_camera():
 	if not camera.position.is_equal_approx(camera_nest.position):
 		camera.position = camera_nest.position
 	camera.look_at(focus_point.global_position)
+
+func move_shapecast():
+	shape_cast.set_target_position(offset)
 	
 func rotate_offset(new_focus : Vector3):
 	var new_focus_projected = new_focus
@@ -69,11 +80,16 @@ func input_axis_motion(d_hor:float,d_ver:float)->Vector3:
 	
 	var axis : Vector3 = offset.cross(Vector3.UP).normalized()
 	var angle = d_ver * ver_sense/100
-	#var new_offset = offset.rotated(axis,angle)
-	#var new_offset_angle = new_offset.angle_to(Vector3.UP)
-	#if new_offset_angle < max_vertical_camera_angle and new_offset_angle > min_vertical_camera_angle:
-	offset = offset.rotated(axis,angle)
+	var new_offset = offset.rotated(axis,angle)
+	var new_offset_angle = new_offset.angle_to(Vector3.UP)
+	print(new_offset_angle)
+	if new_offset_angle > 0.3 and new_offset_angle < 2.5:
+		offset = offset.rotated(axis,angle)
 	return offset
 	
+func shapecast_detection():
+	if shape_cast.is_colliding():
+		var collision_point : Vector3 = shape_cast.get_collision_point()
+
 func input_target_lock(event: InputEvent):
 	Transitioned.emit(self,"LockedCamera")

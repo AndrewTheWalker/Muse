@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca16026hm7cpp"]
+[gd_scene load_steps=9 format=3 uid="uid://ca16026hm7cpp"]
 
 [ext_resource type="Script" uid="uid://cyr1vbjog067n" path="res://scenes/Player/local camera/CameraManager.gd" id="1_g8533"]
 [ext_resource type="Script" uid="uid://ch6e0b3igyuug" path="res://scenes/Player/local camera/locked_camera.gd" id="2_01e5t"]
@@ -7,6 +7,8 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47crt"]
 transparency = 1
 albedo_color = Color(0.6666667, 0, 0, 0.5254902)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_frbxm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il154"]
 transparency = 1
@@ -31,38 +33,33 @@ script = ExtResource("2_01e5t")
 script = ExtResource("3_enfd4")
 
 [node name="CameraMount" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CameraMount"]
-layers = 2
 radius = 0.1
 material = SubResource("StandardMaterial3D_47crt")
 
-[node name="ShapeCast3D" type="RayCast3D" parent="CameraMount"]
-target_position = Vector3(0, 0.5, 4.5)
-collision_mask = 2
+[node name="ShapeCast3D" type="ShapeCast3D" parent="CameraMount"]
+shape = SubResource("SphereShape3D_frbxm")
+margin = 0.01
+max_results = 8
 
 [node name="CameraNest" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4)
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="CameraNest"]
-layers = 2
 radius = 0.4
 material = SubResource("StandardMaterial3D_il154")
 
 [node name="FocusPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="FocusPoint"]
-layers = 2
 radius = 0.2
 material = SubResource("StandardMaterial3D_2urwo")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3.5)
 fov = 46.2
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="PlayerCamera"]
-layers = 2
 radius = 0.25
 material = SubResource("StandardMaterial3D_6h7m6")

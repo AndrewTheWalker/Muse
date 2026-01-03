@@ -22,22 +22,27 @@ sdfgi_enabled = true
 glow_enabled = true
 fog_enabled = true
 fog_mode = 1
-fog_density = 1.0
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.5
 fog_depth_curve = 2.7320805
 fog_depth_begin = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxufs"]
+albedo_texture = ExtResource("2_8qxmy")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocpnk"]
+albedo_texture = ExtResource("3_8dygm")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qs1p"]
+albedo_texture = ExtResource("4_g1aj0")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_om0qk"]
 albedo_texture = ExtResource("1_vytx3")
 uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxufs"]
-albedo_texture = ExtResource("2_8qxmy")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocpnk"]
-albedo_texture = ExtResource("3_8dygm")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qs1p"]
-albedo_texture = ExtResource("4_g1aj0")
 
 [node name="Node3D" type="Node3D"]
 
@@ -47,70 +52,86 @@ environment = SubResource("Environment_higj6")
 [node name="LevelGeo" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 127)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, -127)
-material_override = SubResource("StandardMaterial3D_om0qk")
-use_collision = true
-size = Vector3(256, 1, 256)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeo/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 127)
-material_override = SubResource("StandardMaterial3D_om0qk")
-use_collision = true
-size = Vector3(256, 10, 1)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="LevelGeo/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -127)
-material_override = SubResource("StandardMaterial3D_om0qk")
-use_collision = true
-size = Vector3(256, 10, 1)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="LevelGeo/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127, 5, 0)
-material_override = SubResource("StandardMaterial3D_om0qk")
-use_collision = true
-size = Vector3(1, 10, 256)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="LevelGeo/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127, 5, 0)
-material_override = SubResource("StandardMaterial3D_om0qk")
-use_collision = true
-size = Vector3(1, 10, 256)
-
 [node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeo"]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -8.828427, -3.5, -128.2929)
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -13.954951, -3.5, -127.762566)
 material_override = SubResource("StandardMaterial3D_mxufs")
 use_collision = true
+collision_layer = 4
 size = Vector3(2, 2, 2)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeo"]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 19.334522, -3.25, -130.60724)
+material_override = SubResource("StandardMaterial3D_mxufs")
+use_collision = true
+collision_layer = 6
+size = Vector3(0.5, 2.5, 8.75)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelGeo"]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 19.334522, -3.25, -127.85724)
+material_override = SubResource("StandardMaterial3D_mxufs")
+use_collision = true
+collision_layer = 6
+size = Vector3(0.5, 2.5, 8.75)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelGeo"]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 19.334522, -1.75, -129.23224)
+material_override = SubResource("StandardMaterial3D_mxufs")
+use_collision = true
+collision_layer = 6
+size = Vector3(3.25, 0.5, 8.75)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeo"]
 transform = Transform3D(0.258819, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.258819, 2.901822, -4, -123.05214)
 material_override = SubResource("StandardMaterial3D_ocpnk")
 use_collision = true
+collision_layer = 4
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeo"]
 transform = Transform3D(-0.70710695, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710695, 5.517767, -4, -132.9571)
 material_override = SubResource("StandardMaterial3D_6qs1p")
 use_collision = true
+collision_layer = 4
+
+[node name="floor" type="CSGBox3D" parent="LevelGeo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, -127)
+material_override = SubResource("StandardMaterial3D_om0qk")
+use_collision = true
+collision_layer = 2
+size = Vector3(128, 1, 128)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeo/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 63)
+material_override = SubResource("StandardMaterial3D_om0qk")
+use_collision = true
+size = Vector3(128, 10, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelGeo/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -63)
+material_override = SubResource("StandardMaterial3D_om0qk")
+use_collision = true
+size = Vector3(128, 10, 1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelGeo/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 5, 0)
+material_override = SubResource("StandardMaterial3D_om0qk")
+use_collision = true
+size = Vector3(1, 10, 128)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="LevelGeo/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 5, 0)
+material_override = SubResource("StandardMaterial3D_om0qk")
+use_collision = true
+size = Vector3(1, 10, 128)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0, -0.86602545, 0.49999997, 0, 0.49999997, 0.86602545, -0.99999994, 0, 2.9802322e-08, 0, 2.75, 0)
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.50000006, 0.8660254, 0, -0.8660254, 0.50000006, 0, 9.25, 6.75)
-
-[node name="orbttgt" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 0, 5.5)
-
-[node name="ringA" type="CSGTorus3D" parent="."]
-visible = false
-outer_radius = 0.6
-sides = 32
-ring_sides = 3
+transform = Transform3D(0.25881904, 0, 0.9659259, 0, 1, 0, -0.9659259, 0, 0.25881904, 18.75, 0.7500038, 0.49999928)
+fov = 35.0
 
 [node name="player" parent="." instance=ExtResource("5_8qxmy")]
-use_debug_cam = true
 
 [node name="Dummy" parent="." instance=ExtResource("6_8dygm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.143016, 0, -9.659262)

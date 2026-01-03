@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnpgo81sw0jac"]
+
+[ext_resource type="Script" path="res://scenes/Player/local camera/SpringCameraManager.gd" id="1_fcyuw"]
+[ext_resource type="Script" path="res://scenes/Player/local camera/FreeSpringCam.gd" id="2_87wuj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aq0et"]
+transparency = 1
+albedo_color = Color(0.6666667, 0, 0.7058824, 0.5254902)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d8r0j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fcyuw"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.5019608)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87wuj"]
+transparency = 1
+albedo_color = Color(1, 0, 1, 0.5137255)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1t3fh"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.50980395)
+
+[node name="SpringCamera" type="Node" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_fcyuw")
+initial_state = NodePath("FreeSpringCam")
+
+[node name="FreeSpringCam" type="Node" parent="."]
+script = ExtResource("2_87wuj")
+
+[node name="LockSpringCam" type="Node" parent="."]
+
+[node name="CameraMount" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.99999845, -0.0017453283, 0, 0.0017453283, 0.99999845, 0, 0, 0)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CameraMount"]
+radius = 0.1
+material = SubResource("StandardMaterial3D_aq0et")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraMount"]
+shape = SubResource("SphereShape3D_d8r0j")
+spring_length = 5.0
+
+[node name="CameraNest" type="Node3D" parent="CameraMount/SpringArm3D"]
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CameraMount/SpringArm3D/CameraNest"]
+radius = 0.4
+material = SubResource("StandardMaterial3D_fcyuw")
+
+[node name="FocusPoint" type="Node3D" parent="."]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="FocusPoint"]
+radius = 0.2
+material = SubResource("StandardMaterial3D_87wuj")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+fov = 46.2
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="PlayerCamera"]
+radius = 0.25
+material = SubResource("StandardMaterial3D_1t3fh")
