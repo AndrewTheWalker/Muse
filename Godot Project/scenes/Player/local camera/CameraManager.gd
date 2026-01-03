@@ -34,7 +34,6 @@ func _ready() -> void:
 	
 # think of these funcs as kinda like piping Godot's process and physics_process funcs through to the child state
 func _process(delta: float) -> void:
-	gather_input()
 	if current_state:
 		current_state.Update(look_at, delta)
 	#draw_debug_line()
@@ -44,11 +43,6 @@ func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.Physics_Update(look_at, delta)
 		
-
-func gather_input():
-	var d_hor = Input.get_axis("Rstick_right","Rstick_left")
-	var d_ver = Input.get_axis("Rstick_up","Rstick_down")
-	current_state.input_axis_motion(d_hor,d_ver)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Lock"):

@@ -9,7 +9,7 @@ class_name FreeCameraState
 @onready var camera_mount: Node3D = $"../CameraMount"
 @onready var ray_cast: RayCast3D = $"../CameraMount/RayCast3D"
 
-@onready var shape_cast_3d: ShapeCast3D = $"../CameraMount/ShapeCast3D"
+@onready var shape_cast: ShapeCast3D = $"../CameraMount/ShapeCast3D"
 
 @onready var camera_focus: Node3D = $"../../CameraFocus"
 
@@ -17,9 +17,11 @@ class_name FreeCameraState
 var hor_sense := 4.0
 var ver_sense := 3.0
 var offset := Vector3(0.0,0.5,4.5)
-
+var buffer_radius = 0.2
 
 func Enter(current_lock_target: Node3D):
+	var shape = shape_cast.get_shape()
+	shape.radius=buffer_radius
 	print("entered free state")
 	'if local_camera.look_at != camera_focus:
 		print("works so far")
@@ -29,11 +31,13 @@ func Exit():
 	pass
 
 func Update(look_at:Node3D, delta: float) -> void:
+	gather_input()
 	move_focus_point(look_at)
 	move_camera_nest(look_at)
-	move_raycast()
+	# move_raycast()
+	move_shapecast()
 	move_camera()
-	
+		
 func Physics_Update(look_at:Node3D, delta: float) -> void:
 	pass
 
@@ -45,12 +49,13 @@ func move_focus_point(look_at: Node3D):
 		
 func move_camera_nest(look_at: Node3D):
 	camera_mount.global_position = lerp(camera_mount.global_position, look_at.global_position, 0.1)
-	if not ray_cast.is_colliding():
+	if not shape_cast.is_colliding():
 		#camera_nest.global_position = camera_mount.global_position+offset
 		camera_nest.global_position = lerp(camera_nest.global_position,camera_mount.global_position+offset,0.25)
 	else:
-		var new_point : Vector3 = calculate_collision_offset()
-		#var new_point : Vector3 = ray_cast.get_collision_point()
+		# var new_point : Vector3 = calculate_collision_offset()
+		var new_point : Vector3 = calculate_shapecast_offset()
+		# var new_point : Vector3 = shape_cast.get_collision_point()
 		camera_nest.global_position = lerp(camera_nest.global_position,new_point,0.1)
 
 func move_camera():
@@ -58,6 +63,9 @@ func move_camera():
 		camera.position = camera_nest.position
 	camera.look_at(focus_point.global_position)
 
+func move_shapecast():
+	shape_cast.set_target_position(offset)
+	
 func move_raycast():
 	ray_cast.set_target_position(offset)
 	
@@ -79,8 +87,8 @@ func rotate_offset(new_focus : Vector3):
 		offset = offset.rotated(Vector3.UP,-alpha)
 
 func input_axis_motion(d_hor:float,d_ver:float)->Vector3:
-	offset = offset.rotated(Vector3.UP, d_hor * hor_sense/100)
 	
+	offset = offset.rotated(Vector3.UP, d_hor * hor_sense/100)
 	var axis : Vector3 = offset.cross(Vector3.UP).normalized()
 	var angle = d_ver * ver_sense/100
 	var new_offset = offset.rotated(axis,angle)
@@ -90,10 +98,14 @@ func input_axis_motion(d_hor:float,d_ver:float)->Vector3:
 	return offset
 	
 func calculate_shapecast_offset()->Vector3:
-	return(Vector3.ZERO)
+	var collider = shape_cast.get_collider(0)
+	var collision_point = shape_cast.get_collision_point(0)
+	var collision_normal = (shape_cast.get_collision_normal(0))*buffer_radius
+	var new_point = collision_point+collision_normal
+	var center = focus_point.global_position
+	return(new_point)
 	
 func calculate_collision_offset()->Vector3:
-	var buffer_radius = 0.5
 	var collider = ray_cast.get_collider()
 	var collision_point : Vector3 = ray_cast.get_collision_point()
 	var collision_normal = (ray_cast.get_collision_normal())*buffer_radius
@@ -114,3 +126,8 @@ func calculate_collision_offset()->Vector3:
 
 func input_target_lock(event: InputEvent):
 	Transitioned.emit(self,"LockedCamera")
+
+func gather_input():
+	var d_hor = Input.get_axis("Rstick_right","Rstick_left")
+	var d_ver = Input.get_axis("Rstick_up","Rstick_down")
+	input_axis_motion(d_hor,d_ver)

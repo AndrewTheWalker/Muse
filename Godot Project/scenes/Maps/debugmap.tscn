@@ -126,12 +126,11 @@ transform = Transform3D(0, -0.86602545, 0.49999997, 0, 0.49999997, 0.86602545, -
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 13.75, 14.250004, -0.5000007)
+transform = Transform3D(0.3621677, 0.4330127, -0.8254299, 0.08682406, 0.8660253, 0.49240386, 0.92806035, -0.24999999, 0.2760505, 5.6964746, 6.642953, 4.327163)
 fov = 35.0
 
 [node name="player" parent="." instance=ExtResource("5_8qxmy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2.5)
-use_debug_cam = true
 
 [node name="Dummy" parent="." instance=ExtResource("6_8dygm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.143016, 0, -9.659262)
