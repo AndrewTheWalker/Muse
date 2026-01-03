@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7vnek183mcn4" path="res://assets/Textures/Orange/texture_09.png" id="2_8qxmy"]
 [ext_resource type="Texture2D" uid="uid://bfp5qo5cve0jb" path="res://assets/Textures/Purple/texture_09.png" id="3_8dygm"]
 [ext_resource type="Texture2D" uid="uid://bmsx8puwddira" path="res://assets/Textures/Green/texture_09.png" id="4_g1aj0"]
-[ext_resource type="PackedScene" uid="uid://bhlq0nfinx6wb" path="res://scenes/Player/player.tscn" id="5_8qxmy"]
+[ext_resource type="PackedScene" uid="uid://bhlq0nfinx6wb" path="res://scenes/player/player.tscn" id="5_8qxmy"]
 [ext_resource type="PackedScene" uid="uid://d0mue2qakhes6" path="res://scenes/Misc/dummy.tscn" id="6_8dygm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ymwt5"]
@@ -22,10 +22,9 @@ sdfgi_enabled = true
 glow_enabled = true
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.4775589, 0.74194497, 0.7759924, 1)
-fog_density = 0.5
+fog_light_color = Color(0.44940436, 0.41618773, 0.4018047, 1)
+fog_density = 0.98
 fog_depth_curve = 2.7320805
-fog_depth_begin = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxufs"]
 albedo_texture = ExtResource("2_8qxmy")

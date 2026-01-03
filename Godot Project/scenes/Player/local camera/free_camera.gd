@@ -82,7 +82,6 @@ func input_axis_motion(d_hor:float,d_ver:float)->Vector3:
 	var angle = d_ver * ver_sense/100
 	var new_offset = offset.rotated(axis,angle)
 	var new_offset_angle = new_offset.angle_to(Vector3.UP)
-	print(new_offset_angle)
 	if new_offset_angle > 0.3 and new_offset_angle < 2.5:
 		offset = offset.rotated(axis,angle)
 	return offset
