@@ -4,8 +4,8 @@ extends CharacterBody3D
 
 @onready var input_gatherer = $Input as InputGatherer
 @onready var model = $Model as PlayerModel
+@onready var visuals = $Visuals as PlayerVisuals
 
-@onready var visuals: Node3D = $visuals
 @onready var local_camera: CameraManager = %LocalCamera
 
 
@@ -15,6 +15,7 @@ func _ready() -> void:
 		local_camera.camera.make_current()
 	else:
 		print("debug camera active")
+	visuals.accept_skeleton(model.skeleton)
 
 func _physics_process(delta):
 	var input = input_gatherer.gather_input()

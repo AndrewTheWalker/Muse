@@ -6,12 +6,16 @@ class_name PlayerModel
 # this class is the state machine
 
 @onready var player = $".."
+@onready var skeleton = %GeneralSkeleton
+@onready var animator = $AnimationPlayer
+
 var current_move : Move
 
 @onready var moves = {
 	"idle" : $Idle,
 	"run" : $Run,
-	"jump" : $Jump
+	"jump" : $Jump,
+	"sprint" : $Sprint
 }
 
 # my previous version of the state machine had the ready function check the SM's children and append
@@ -27,9 +31,15 @@ func update(input : InputPackage, delta : float):
 	if relevance != "okay":
 		switch_to(relevance)
 	current_move.update(input, delta)
+	# temporary little measure to make the run speed look faster
+	if current_move is Sprint:
+		animator.speed_scale = 1.5
+	else:
+		animator.speed_scale = 1.0
 
 # calls the current move's exit function, switches to the new move, then calls the new move's enter function
 func switch_to(state : String):
 	current_move.on_exit_state()
 	current_move = moves[state]
 	current_move.on_enter_state()
+	animator.play(current_move.animation)

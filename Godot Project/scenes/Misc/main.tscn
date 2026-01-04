@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ukc1y33ted80"]
+[gd_scene load_steps=3 format=3 uid="uid://ukc1y33ted80"]
 
+[ext_resource type="Script" uid="uid://bh56hpfodtvjm" path="res://scripts/main.gd" id="1_jasrq"]
 [ext_resource type="PackedScene" uid="uid://dtue8jmraq818" path="res://scenes/Maps/sillymap.tscn" id="1_pwhyn"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_jasrq")
 
 [node name="sillymap" parent="." instance=ExtResource("1_pwhyn")]

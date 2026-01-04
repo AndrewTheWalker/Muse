@@ -1,8 +1,7 @@
 extends Move
-class_name Run
+class_name Sprint
 
-const WALK_SPEED = 2.5
-const SPEED = 4.5
+const SPEED = 8
 
 @onready var local_camera: CameraManager = %LocalCamera
 
@@ -14,9 +13,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	animation = "Run"
-	
+
 func on_enter_state():
-	print("entered run")
+	print("entered sprint")
 	orbit_target = local_camera.camera_nest
 
 func on_exit_state():
@@ -25,13 +24,12 @@ func on_exit_state():
 # the SM's check relevance function expects to receive the "okay" string before proceeding
 func check_relevance(input : InputPackage):
 	input.actions.sort_custom(moves_priority_sort)
-	if input.actions[0] == "run":
+	if input.actions[0] == "sprint":
 		return "okay"
 	return input.actions[0]
 	
 
 func update(input : InputPackage, delta : float):
-	var slight_offset = Vector3(0.0001, 0.0001, 0.0001) # A very small offset
 	player.velocity = velocity_by_input(input, delta)
 	player.move_and_slide()
 

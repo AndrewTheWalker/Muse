@@ -37,6 +37,7 @@ script = ExtResource("3_enfd4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CameraMount"]
+visible = false
 layers = 2
 radius = 0.1
 material = SubResource("StandardMaterial3D_47crt")
@@ -51,6 +52,7 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.5)
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="CameraNest"]
+visible = false
 layers = 2
 radius = 0.4
 material = SubResource("StandardMaterial3D_il154")
@@ -59,15 +61,17 @@ material = SubResource("StandardMaterial3D_il154")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="FocusPoint"]
+visible = false
 layers = 2
 radius = 0.2
 material = SubResource("StandardMaterial3D_2urwo")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.5)
-fov = 46.2
+fov = 45.0
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="PlayerCamera"]
+visible = false
 layers = 2
 radius = 0.25
 material = SubResource("StandardMaterial3D_6h7m6")

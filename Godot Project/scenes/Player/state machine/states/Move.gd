@@ -4,6 +4,9 @@ class_name Move
 # all-move flags and variables here
 var player : CharacterBody3D
 
+# Important: Each move's animation string must match EXACTLY to the appropriate anim in the model.
+var animation : String
+
 # this base class has a priority list for all moves. When new input is processed, the new action is only valid
 # if it's priority is higher than the present action. As you can see here, jump has a priority of 10, and run
 # has a priority of 2. This means jumping action will always be allowed to overtake the running action, but not vice versa.
@@ -14,8 +17,12 @@ var player : CharacterBody3D
 static var moves_priority : Dictionary = {
 	"idle" : 1,
 	"run" : 2,
+	"sprint" : 3,
 	"jump" : 10  # be generous to not edit this too much when sprint, dash, crouch etc are added
 }
+
+# note to self. If I ever choose to add a ready func here, know that it will be overridden by the
+# individual move's ready funcs.
 
 static func moves_priority_sort(a : String, b : String):
 	if moves_priority[a] > moves_priority[b]:
