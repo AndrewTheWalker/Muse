@@ -48,10 +48,8 @@ func move():
 	# to be changed later
 	# target variable serves as orbit center. It is a vector3 representing target global position
 	if orbit_target:
+		print("orbit target true")
 		target = orbit_target.global_position
-	else:
-		target = cam.camera.global_position
-		move_speed = -move_speed
 	
 	# get the controller inputs, and the Vector 2 representing those inputs. We will need dirstr to set up our deadzone later
 	var input_y := Input.get_axis("Lstick_down","Lstick_up")
@@ -89,7 +87,7 @@ func move():
 			
 		# now we simply add these two vectors and normalize them to get our final velocity
 		velocity = (-direction + orbit_direction).normalized() * move_speed
-		visuals.look_at(position+velocity)
+		visuals.look_at(position+(velocity*1.1))
 				
 	else:
 		if animation_player.current_animation != "Idle":

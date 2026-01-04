@@ -1,0 +1,22 @@
+extends CharacterBody3D
+
+@export var use_debug_cam := false
+
+@onready var input_gatherer = $Input as InputGatherer
+@onready var model = $Model as PlayerModel
+
+@onready var visuals: Node3D = $visuals
+@onready var local_camera: CameraManager = %LocalCamera
+
+
+
+func _ready() -> void:
+	if use_debug_cam == false:
+		local_camera.camera.make_current()
+	else:
+		print("debug camera active")
+
+func _physics_process(delta):
+	var input = input_gatherer.gather_input()
+	model.update(input, delta)
+	

@@ -1,19 +1,24 @@
-[gd_scene load_steps=17 format=4 uid="uid://bhlq0nfinx6wb"]
+[gd_scene load_steps=22 format=4 uid="uid://vy4dwvrkxq03"]
 
-[ext_resource type="Script" uid="uid://k1jjunq3r3qr" path="res://scenes/Player/playerOLD.gd" id="1_gmlin"]
-[ext_resource type="Texture2D" uid="uid://c0838x7c84p6m" path="res://assets/exported-model_0.png" id="3_fhl08"]
-[ext_resource type="PackedScene" uid="uid://ca16026hm7cpp" path="res://scenes/Player/local camera/local_camera.tscn" id="4_vtle1"]
+[ext_resource type="Script" uid="uid://dmoba5ho73j56" path="res://scenes/Player/state machine/PlayerNEW.gd" id="1_pt5pi"]
+[ext_resource type="Texture2D" uid="uid://c0838x7c84p6m" path="res://assets/exported-model_0.png" id="1_soic5"]
+[ext_resource type="PackedScene" uid="uid://ca16026hm7cpp" path="res://scenes/Player/local camera/local_camera.tscn" id="2_vmnwv"]
+[ext_resource type="Script" uid="uid://1e3ata53ev5h" path="res://scenes/Player/state machine/Input.gd" id="3_4hjk8"]
+[ext_resource type="Script" uid="uid://bsq8spjgj551s" path="res://scenes/Player/state machine/Model.gd" id="4_mra3b"]
+[ext_resource type="Script" uid="uid://dfuvibsav4bp4" path="res://scenes/Player/state machine/states/Idle.gd" id="5_femgl"]
+[ext_resource type="Script" uid="uid://r4omi1ish4v5" path="res://scenes/Player/state machine/states/Run.gd" id="6_y5as4"]
+[ext_resource type="Script" uid="uid://p7gu6jb1w43" path="res://scenes/Player/state machine/states/Jump.gd" id="7_jjwkl"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dqkch"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tqnom"]
 margin = 0.1
 radius = 0.6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1thri"]
 resource_name = "M_Main.001"
 cull_mode = 2
-albedo_texture = ExtResource("3_fhl08")
+albedo_texture = ExtResource("1_soic5")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_p1vtx"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_pt5pi"]
 resource_name = "exported-model_mesh"
 _surfaces = [{
 "aabb": AABB(-0.97222716, -0.00038569956, -0.16415405, 1.9444543, 1.8295641, 0.3695985),
@@ -33,7 +38,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="Skin" id="Skin_n6c7l"]
+[sub_resource type="Skin" id="Skin_4hjk8"]
 resource_name = "Skin"
 bind_count = 66
 bind/0/name = &"Root"
@@ -3195,13 +3200,13 @@ _data = {
 &"Walk": SubResource("Animation_vfxb1")
 }
 
-[node name="player" type="CharacterBody3D"]
+[node name="PlayerNEW" type="CharacterBody3D"]
 collision_mask = 7
-script = ExtResource("1_gmlin")
+script = ExtResource("1_pt5pi")
 
 [node name="CapsuleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_dqkch")
+shape = SubResource("CapsuleShape3D_tqnom")
 
 [node name="visuals" type="Node3D" parent="."]
 
@@ -3878,8 +3883,8 @@ metadata/extras = {
 }
 
 [node name="Skinned Mesh 0" type="MeshInstance3D" parent="visuals/exported-model/Skinned Mesh 0/GeneralSkeleton"]
-mesh = SubResource("ArrayMesh_p1vtx")
-skin = SubResource("Skin_n6c7l")
+mesh = SubResource("ArrayMesh_pt5pi")
+skin = SubResource("Skin_4hjk8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="visuals/exported-model"]
 libraries = {
@@ -3887,7 +3892,23 @@ libraries = {
 }
 playback_default_blend_time = 0.2
 
-[node name="LocalCamera" parent="." node_paths=PackedStringArray("look_at") instance=ExtResource("4_vtle1")]
+[node name="Input" type="Node" parent="."]
+script = ExtResource("3_4hjk8")
+
+[node name="Model" type="Node" parent="."]
+script = ExtResource("4_mra3b")
+
+[node name="Idle" type="Node" parent="Model"]
+script = ExtResource("5_femgl")
+
+[node name="Run" type="Node" parent="Model"]
+script = ExtResource("6_y5as4")
+
+[node name="Jump" type="Node" parent="Model"]
+script = ExtResource("7_jjwkl")
+
+[node name="LocalCamera" parent="." node_paths=PackedStringArray("look_at") instance=ExtResource("2_vmnwv")]
+unique_name_in_owner = true
 look_at = NodePath("../CameraFocus")
 
 [node name="CameraFocus" type="Node3D" parent="."]

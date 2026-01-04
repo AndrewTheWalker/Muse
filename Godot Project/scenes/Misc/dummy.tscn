@@ -16,6 +16,8 @@ mesh = SubResource("CapsuleMesh_k5f3b")
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CSGMesh3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.910331, 0)
 radius = 0.3
+radial_segments = 32
+rings = 16
 
 [node name="TargetableAspect" parent="." instance=ExtResource("1_kre8v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)

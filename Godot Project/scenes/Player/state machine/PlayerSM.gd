@@ -14,7 +14,7 @@ func _ready() -> void:
 	for child in get_children():
 		if child is MoveState:
 			states[child.name.to_lower()] = child
-# here, we connect the Transitioned signal from the child node. We don't have to do it manually this way.
+# here, we connect the Transitioned signal from the child node. This way, we don't have to do it manually.
 			child.Transitioned.connect(on_child_transition)
 # check if we set an initial state, and if we did, apply it.
 	if initial_state:
@@ -22,7 +22,6 @@ func _ready() -> void:
 		current_state = initial_state
 	print(states)
 
-# think of these funcs as kinda like piping Godot's process and physics_process funcs through to the child state
 func _process(delta: float) -> void:
 	if current_state:
 		current_state.Update(delta)
@@ -31,10 +30,8 @@ func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.Physics_Update(delta)
 		
-
 # this function receives transition signals from the state. This is how we handle transitioning between different
 # states. It takes the name of the state that called it. "state" and the new state name that it wants to transition to.
-
 func on_child_transition(state, new_state_name):
 # check if the state calling the func is not the current state.
 	if state != current_state:
@@ -44,10 +41,7 @@ func on_child_transition(state, new_state_name):
 # make sure this new state we are getting exists
 	if !new_state:
 		return
-	
 	if current_state:
 		current_state.Exit()
-		
 	new_state.Enter()
-	
 	current_state = new_state
