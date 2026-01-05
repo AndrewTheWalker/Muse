@@ -10,6 +10,7 @@ func check_relevance(input) -> String:
 	return input.actions[0]
 
 func on_enter_state():
+	print("entered idle")
 	if player.velocity:
 		player.velocity = Vector3.ZERO
 

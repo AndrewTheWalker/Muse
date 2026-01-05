@@ -14,7 +14,10 @@ func gather_input() -> InputPackage:
 		new_input.actions.append("idle")
 	
 	if Input.is_action_just_pressed("Jump"):
-		new_input.actions.append("jump")
+		if new_input.actions.has("sprint"):
+			new_input.actions.append("sprint_jump")
+		else:
+			new_input.actions.append("jump")
 		
 	'''UNCOMMENT WHEN READY'''
 	# if Input.is_action_just_pressed("DodgeSprint"):
