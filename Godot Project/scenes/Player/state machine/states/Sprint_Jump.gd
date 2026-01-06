@@ -1,5 +1,6 @@
 extends Move
-class_name Jump
+class_name SprintJump
+
 
 
 const VERTICAL_SPEED_ADDED = 2.5
@@ -13,6 +14,7 @@ var jumped : bool = false
 
 func _ready():
 	animation = "Jump_Start"
+	move_name = "sprintjump"
 
 # check if this state's existence exceeds the transition timing, then return midair
 func check_relevance(input : InputPackage):
@@ -31,4 +33,4 @@ func update(input, delta):
 	player.move_and_slide()
 
 func on_enter_state():
-	print("entered regular jump")
+	print("entered sprint jump")

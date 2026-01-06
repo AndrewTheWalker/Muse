@@ -15,7 +15,7 @@ func gather_input() -> InputPackage:
 	
 	if Input.is_action_just_pressed("Jump"):
 		if new_input.actions.has("sprint"):
-			new_input.actions.append("sprint_jump")
+			new_input.actions.append("sprintjump")
 		else:
 			new_input.actions.append("jump")
 		

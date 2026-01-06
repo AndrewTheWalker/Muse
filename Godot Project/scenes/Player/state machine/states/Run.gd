@@ -1,10 +1,13 @@
 extends Move
 class_name Run
 
-const WALK_SPEED = 2.5
-const SPEED = 4.5
+'''NOTE TO SELF: FIGURE OUT HOW TO DO THE WALK DEADZONE THING HERE
+Why not make separate states? Because the walk/run behaviour and transition logic is the same, its just cosmetic'''
 
-@onready var local_camera: CameraManager = %LocalCamera
+const WALK_SPEED = 2.5
+const RUN_SPEED = 4.5
+
+@onready var local_camera: CameraManager = $"../../../LocalCamera"
 
 var orbit_target: Node3D 
 var current_target: Vector3
@@ -24,6 +27,9 @@ func on_exit_state():
 
 # the SM's check relevance function expects to receive the "okay" string before proceeding
 func check_relevance(input : InputPackage):
+	if !player.is_on_floor():
+		return "midair"
+	
 	input.actions.sort_custom(moves_priority_sort)
 	if input.actions[0] == "run":
 		return "okay"
@@ -37,7 +43,7 @@ func update(input : InputPackage, delta : float):
 
 func velocity_by_input(input : InputPackage, delta : float) -> Vector3:
 	# move speed needs to be variable to accomodate changing speed later
-	var move_speed = SPEED
+	var move_speed = RUN_SPEED
 	var new_direction := Vector3.ZERO
 	
 	var new_velocity = player.velocity

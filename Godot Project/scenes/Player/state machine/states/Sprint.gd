@@ -3,7 +3,7 @@ class_name Sprint
 
 const SPEED = 8
 
-@onready var local_camera: CameraManager = %LocalCamera
+@onready var local_camera: CameraManager = $"../../../LocalCamera"
 
 var orbit_target: Node3D 
 var current_target: Vector3
@@ -23,6 +23,9 @@ func on_exit_state():
 
 # the SM's check relevance function expects to receive the "okay" string before proceeding
 func check_relevance(input : InputPackage):
+	if !player.is_on_floor():
+		return "midair"
+	
 	input.actions.sort_custom(moves_priority_sort)
 	if input.actions[0] == "sprint":
 		return "okay"
@@ -36,7 +39,7 @@ func update(input : InputPackage, delta : float):
 func velocity_by_input(input : InputPackage, delta : float) -> Vector3:
 	# move speed needs to be variable to accomodate changing speed later
 	var move_speed = SPEED
-	var new_direction := Vector3.ZERO
+	var new_direction : Vector3
 	
 	var new_velocity = player.velocity
 	var orbit_direction : Vector3

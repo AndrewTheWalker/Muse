@@ -1,14 +1,13 @@
 extends AnimationPlayer
 
 func _ready():
-	pass
-	#configure_blending_times()
+	configure_blending_times()
 
 func configure_blending_times():
-	set_blend_time("run", "jump_run", 0.5)
-	set_blend_time("landing_run", "run", 0.5)
-	set_blend_time("jump_sprint", "midair", 0.5)
-	set_blend_time("landing_run", "sprint", 0.3)
-	set_blend_time("landing_sprint", "run", 0.3)
-	set_blend_time("idle", "slash_1", 0.5)
-	set_blend_time("slash_2", "slash_1", 0.3)
+	set_blend_time("Idle", "Run", 0.75)
+	set_blend_time("Run", "Jump_Start", 0.25)
+	set_blend_time("Jump_Land", "Run", 0.25)
+	set_blend_time("Jump_Start", "Jump", 0.5)
+	#set_blend_time("Sprintjump", "Jump", 0.5)
+	#set_blend_time("Jump_Land", "Sprint", 0.3)
+	#set_blend_time("Sprint_Land", "Run", 0.3)
