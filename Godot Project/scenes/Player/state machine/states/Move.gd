@@ -28,6 +28,7 @@ static var moves_priority : Dictionary = {
 	"idle" : 1,
 	"run" : 2,
 	"sprint" : 3,
+	"roll" : 9,
 	"sprintjump" : 10,
 	"midair" : 10,
 	"land" : 10,

@@ -85,12 +85,19 @@ func input_axis_motion(d_hor:float,d_ver:float)->Vector3:
 	return offset
 
 func calculate_shapecast_offset()->Vector3:
-	var collider = shape_cast.get_collider(0)
+	# up in the update function I set the shapecast's target position equal to offset.
+	
 	var collision_point = shape_cast.get_collision_point(0)
+	# buffer radius is equal to the shapecast sphere shape radius
 	var collision_normal = (shape_cast.get_collision_normal(0))*buffer_radius
 	var new_point = collision_point+collision_normal
 	var center = focus_point.global_position
 	return(new_point)
+	
+	# new point is then fed into the move_camera_nest func like so
+	# var new_point : Vector3 = calculate_shapecast_offset()
+		# camera_nest.global_position = lerp(camera_nest.global_position,new_point,0.1)
+	# the lerp is necessary, otherwise there is an uncomfortable little snap to the new point
 
 func input_target_lock(event: InputEvent):
 	Transitioned.emit(self,"LockedCamera")

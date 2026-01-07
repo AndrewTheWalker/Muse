@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://crk7ucp388olc"]
+
+[ext_resource type="Script" uid="uid://dmue6do54hir4" path="res://scenes/Player/bullet.gd" id="1_av6sl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oa0cv"]
+shading_mode = 0
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_av6sl")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+material_override = SubResource("StandardMaterial3D_oa0cv")
+radius = 0.1
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

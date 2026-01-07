@@ -34,8 +34,8 @@ func gather_input() -> InputPackage:
 	new_input.l_input_direction = Input.get_vector("Lstick_left","Lstick_right","Lstick_down","Lstick_up")
 	if new_input.l_input_direction != Vector2.ZERO:
 		new_input.actions.append("run")
-		if Input.is_action_pressed("DodgeSprint"):
-			new_input.actions.append("sprint")
+		#if Input.is_action_pressed("DodgeSprint"):
+			#new_input.actions.append("sprint")
 	
 	'''CAMERA SPECIFIC ACTIONS, UNCOMMENT WHEN READY'''
 	# these inputs don't control the player, we'll need to give them to the camera controller

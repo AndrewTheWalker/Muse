@@ -2,7 +2,7 @@ extends Move
 class_name Jump
 
 
-const VERTICAL_SPEED_ADDED = 2.5
+const VERTICAL_SPEED_ADDED = 3.5
 
 # 1.33 is the total anim time for jump start
 # 0.11 is the time when the character's feet should lift from the ground

@@ -7,9 +7,8 @@
 [ext_resource type="Script" uid="uid://bsmror4c0x0rh" path="res://scenes/Player/player_visuals.gd" id="3_ipcd5"]
 [ext_resource type="PackedScene" uid="uid://dqxyogjtkoq03" path="res://scenes/Player/player_model.tscn" id="5_4hjk8"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tqnom"]
-margin = 0.1
-radius = 0.6
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4hjk8"]
+radius = 0.55
 
 [node name="PlayerNEW" type="CharacterBody3D"]
 collision_mask = 7
@@ -17,10 +16,13 @@ script = ExtResource("1_pt5pi")
 
 [node name="CapsuleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_tqnom")
+shape = SubResource("CapsuleShape3D_4hjk8")
 
 [node name="Visuals" parent="." instance=ExtResource("2_jjwkl")]
 script = ExtResource("3_ipcd5")
+
+[node name="BulletSpawner" type="Marker3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.25, -0.5)
 
 [node name="Input" type="Node" parent="."]
 script = ExtResource("3_4hjk8")

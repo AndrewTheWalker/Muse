@@ -43,6 +43,7 @@ radius = 0.1
 material = SubResource("StandardMaterial3D_47crt")
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="CameraMount"]
+visible = false
 shape = SubResource("SphereShape3D_frbxm")
 target_position = Vector3(0, 0.5, 4.5)
 max_results = 2

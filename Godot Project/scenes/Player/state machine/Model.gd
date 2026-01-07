@@ -1,13 +1,23 @@
 extends Node
 class_name PlayerModel
+# this class is the state machine
 
 '''ADAPTED FROM CODE BY GAB OF THE FAIR FIGHT YOUTUBE CHANNEL'''
 
-# this class is the state machine
+# Note to self: Bullet methodology probably needs to change at some point
+# To me, shooting does not feel like a state. It won't override other states while it happens.
+# Therefore, I'm implementing it outside of the state machine, but the real solution will probably have to be
+# a callable function in the shooting animation at some point, which won't entirely work until we start implementing 
+# the SkeletonModifier node later on.
+
 
 @onready var player = $".."
 @onready var skeleton = %GeneralSkeleton
 @onready var animator = $SkeletonAnimator
+
+@onready var bullet_spawner: Marker3D = $"../Visuals/BulletSpawner"
+
+@onready var bullet_scene = preload("res://scenes/Player/bullet.tscn") as PackedScene
 
 var current_move : Move
 
@@ -18,6 +28,7 @@ var current_move : Move
 	"sprint" : $States/Sprint,
 	"midair" : $States/Midair,
 	"land" : $States/Land,
+	"roll" : $States/Roll,
 	"sprintjump" : $States/Sprint_Jump,
 	"sprintland" : $States/Sprint_Land,
 	
@@ -50,3 +61,14 @@ func switch_to(state : String):
 	current_move.on_enter_state()
 	current_move.mark_enter_state()
 	animator.play(current_move.animation)
+
+func spawn_bullet():
+	var spawn_loc = bullet_spawner.position
+	var bullet = bullet_scene.instantiate()
+	bullet.global_position = spawn_loc
+	#bullet.transform.basis = bullet_spawner.global_transform.basis
+	get_parent().add_child(bullet)
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Shoot"):
+		spawn_bullet()
