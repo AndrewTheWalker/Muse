@@ -76,7 +76,8 @@ func velocity_by_input(input : InputPackage, delta : float) -> Vector3:
 			orbit_direction =  d_vector * 60
 		new_velocity = (-new_direction + orbit_direction).normalized() * move_speed
 		
-		player.visuals.look_at(player.global_position+(new_velocity*1.1))
+		# may be refactored later. the addition of that one Vec3 is just so i stop getting the annoying error
+		player.visuals.look_at(player.global_position+(new_velocity+Vector3(0.0,0.0,0.1)))
 		
 	else:
 		new_velocity.x = move_toward(new_velocity.x, 0, delta)

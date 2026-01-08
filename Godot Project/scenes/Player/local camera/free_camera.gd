@@ -13,7 +13,7 @@ class_name FreeCameraState
 
 var hor_sense := 4.0
 var ver_sense := 3.0
-var offset := Vector3(0.0,0.5,4.5)
+var offset := Vector3(0.0,0.75,4.5)
 var buffer_radius = 0.2
 
 func Enter(current_lock_target: Node3D):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vy4dwvrkxq03"]
+[gd_scene load_steps=9 format=3 uid="uid://vy4dwvrkxq03"]
 
 [ext_resource type="Script" uid="uid://dmoba5ho73j56" path="res://scenes/Player/state machine/PlayerNEW.gd" id="1_pt5pi"]
 [ext_resource type="PackedScene" uid="uid://cb4ep7gxg6dgi" path="res://scenes/Player/player_visuals.tscn" id="2_jjwkl"]
@@ -9,6 +9,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4hjk8"]
 radius = 0.55
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hjk8"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.27450982)
 
 [node name="PlayerNEW" type="CharacterBody3D"]
 collision_mask = 7
@@ -21,8 +25,12 @@ shape = SubResource("CapsuleShape3D_4hjk8")
 [node name="Visuals" parent="." instance=ExtResource("2_jjwkl")]
 script = ExtResource("3_ipcd5")
 
-[node name="BulletSpawner" type="Marker3D" parent="Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.25, -0.5)
+[node name="BulletSpawn" type="Node3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42562723, 1.2946991, -0.512849)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Visuals/BulletSpawn"]
+material_override = SubResource("StandardMaterial3D_4hjk8")
+radius = 0.25
 
 [node name="Input" type="Node" parent="."]
 script = ExtResource("3_4hjk8")
@@ -37,5 +45,4 @@ look_at = NodePath("../CameraFocus")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CameraFocus"]
-visible = false
 radius = 0.15
