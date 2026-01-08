@@ -3,7 +3,7 @@ class_name Bullet
 
 @onready var timer: Timer = $Timer
 
-const BULLET_SPEED = 550.0
+const BULLET_SPEED = 250.0
 
 func _ready():
 	await timer.timeout

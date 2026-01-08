@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca16026hm7cpp"]
+[gd_scene load_steps=10 format=3 uid="uid://ca16026hm7cpp"]
 
 [ext_resource type="Script" uid="uid://cyr1vbjog067n" path="res://scenes/Player/local camera/CameraManager.gd" id="1_g8533"]
 [ext_resource type="Script" uid="uid://ch6e0b3igyuug" path="res://scenes/Player/local camera/locked_camera.gd" id="2_01e5t"]
@@ -22,6 +22,11 @@ albedo_color = Color(1, 0, 1, 0.5137255)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6h7m6"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.50980395)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frbxm"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.06666667, 0.90588236, 0.05490196, 0.25490198)
 
 [node name="LocalCamera" type="Node" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_g8533")
@@ -52,6 +57,7 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.5)
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="CameraNest"]
+visible = false
 layers = 2
 radius = 0.4
 material = SubResource("StandardMaterial3D_il154")
@@ -60,6 +66,7 @@ material = SubResource("StandardMaterial3D_il154")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="FocusPoint"]
+visible = false
 layers = 2
 radius = 0.2
 material = SubResource("StandardMaterial3D_2urwo")
@@ -69,12 +76,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.5)
 fov = 45.0
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="PlayerCamera"]
+visible = false
 layers = 2
 radius = 0.25
 material = SubResource("StandardMaterial3D_6h7m6")
 
 [node name="ReticleRaycast" type="RayCast3D" parent="PlayerCamera"]
-target_position = Vector3(0, 5, -30)
+target_position = Vector3(0, 5.245, -30)
 collision_mask = 14
 collide_with_areas = true
 
@@ -82,13 +90,17 @@ collide_with_areas = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7802033, -29.236166)
 
 [node name="reticle_locator_sphere" type="CSGSphere3D" parent="PlayerCamera/reticle_locator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25, 14.75)
 layers = 2
-radius = 0.2
+radius = 0.1
 material = SubResource("StandardMaterial3D_6h7m6")
 
 [node name="ReticleDebug" type="Node3D" parent="."]
 
 [node name="CSGTorus" type="CSGTorus3D" parent="ReticleDebug"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-inner_radius = 0.4
+inner_radius = 0.35
 outer_radius = 0.5
+sides = 32
+ring_sides = 3
+material = SubResource("StandardMaterial3D_frbxm")

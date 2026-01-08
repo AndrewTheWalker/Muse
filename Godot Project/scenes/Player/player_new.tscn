@@ -15,7 +15,9 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0.27450982)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mra3b"]
-albedo_color = Color(0.30980393, 1, 0, 1)
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.31666672, 1, 0, 0.18039216)
 
 [node name="PlayerNEW" type="CharacterBody3D"]
 collision_mask = 7
@@ -29,7 +31,7 @@ shape = SubResource("CapsuleShape3D_4hjk8")
 script = ExtResource("3_ipcd5")
 
 [node name="BulletSpawn" type="Node3D" parent="Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24215475, 1.2946991, -0.75922215)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007845253, 1.2946991, -1.0092221)
 
 [node name="CSGSphere3D" type="CSGCylinder3D" parent="Visuals/BulletSpawn"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
@@ -50,11 +52,15 @@ look_at = NodePath("../CameraFocus")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CameraFocus"]
+visible = false
 radius = 0.15
 
 [node name="ReticleHalf" type="Node3D" parent="."]
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="ReticleHalf"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+inner_radius = 0.55
 outer_radius = 0.6
+sides = 32
+ring_sides = 3
 material = SubResource("StandardMaterial3D_mra3b")
