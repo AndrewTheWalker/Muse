@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dtue8jmraq818"]
+[gd_scene load_steps=25 format=3 uid="uid://dtue8jmraq818"]
 
 [ext_resource type="Texture2D" uid="uid://7vnek183mcn4" path="res://assets/Textures/Orange/texture_09.png" id="1_bpaah"]
 [ext_resource type="Texture2D" uid="uid://bfp5qo5cve0jb" path="res://assets/Textures/Purple/texture_09.png" id="2_sx0ag"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://di5ugjwp0dqd2" path="res://assets/Textures/Dark/texture_04.png" id="4_ku8gn"]
 [ext_resource type="PackedScene" uid="uid://vy4dwvrkxq03" path="res://scenes/Player/player_new.tscn" id="5_sx0ag"]
 [ext_resource type="PackedScene" uid="uid://d0mue2qakhes6" path="res://scenes/Misc/dummy.tscn" id="7_ku8gn"]
+[ext_resource type="PackedScene" uid="uid://bg7rl84y6o0p7" path="res://scenes/Player/bullet_new.tscn" id="8_jv6jr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv6jr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -170,6 +171,14 @@ use_collision = true
 collision_layer = 6
 size = Vector3(2, 2, 2)
 
+[node name="CSGBox3D16" type="CSGBox3D" parent="LevelGeo"]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6.75, 1, 8.25)
+material_override = SubResource("StandardMaterial3D_jmy02")
+use_collision = true
+collision_layer = 6
+collision_mask = 32
+size = Vector3(2, 2, 2)
+
 [node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeo"]
 transform = Transform3D(-0.70710695, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710695, 1.9445429, 0.5, -7.9549522)
 material_override = SubResource("StandardMaterial3D_re7vh")
@@ -223,10 +232,16 @@ light_indirect_energy = 0.25
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.8017755, 0.59762514, 0, -0.5976251, 0.80177563, 0.19647527, 15.374349, 15.8629875)
+transform = Transform3D(1, 0, 0, 0, 0.80177563, 0.5976252, 0, -0.5976252, 0.8017756, 0.19647527, 15.374349, 23.112988)
 fov = 35.0
 
 [node name="PlayerNEW" parent="." instance=ExtResource("5_sx0ag")]
 
 [node name="Dummy" parent="." instance=ExtResource("7_ku8gn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -6.25)
+
+[node name="bulletNEW" parent="." instance=ExtResource("8_jv6jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 8.5)
+
+[node name="bulletNEW2" parent="." instance=ExtResource("8_jv6jr")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.75, 0.75, 8.5)

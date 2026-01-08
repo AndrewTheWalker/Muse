@@ -35,6 +35,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Lstick - Move 
 Rstick - Camera
-Hold B - Sprint
 Y - Jump
-L1 - target lock"
+L1 - target lock
+R1 - shoot"

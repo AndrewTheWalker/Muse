@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg7rl84y6o0p7"]
+
+[ext_resource type="Script" uid="uid://chx2r8p3rfb8s" path="res://bullet_new.gd" id="1_xo8s8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xo8s8"]
+friction = 0.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kshah"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2g5h2"]
+shading_mode = 0
+
+[node name="bulletNEW" type="RigidBody3D"]
+collision_layer = 32
+collision_mask = 0
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_xo8s8")
+gravity_scale = 0.0
+max_contacts_reported = 1
+script = ExtResource("1_xo8s8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_kshah")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+material_override = SubResource("StandardMaterial3D_2g5h2")
+radius = 0.09
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="HitTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1)
+collision_mask = 14

@@ -1,9 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://crk7ucp388olc"]
+[gd_scene load_steps=7 format=3 uid="uid://crk7ucp388olc"]
 
 [ext_resource type="Script" uid="uid://dmue6do54hir4" path="res://scenes/Player/bullet.gd" id="1_av6sl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oa0cv"]
 shading_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wq0w5"]
+shading_mode = 0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k7qlq"]
+angle_min = -179.99998
+angle_max = 180.00002
+spread = 180.0
+initial_velocity_max = 12.5
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_av6sl"]
+shading_mode = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_3huem"]
+material = SubResource("StandardMaterial3D_av6sl")
+size = Vector2(0.1, 0.1)
 
 [node name="Bullet" type="Node3D"]
 script = ExtResource("1_av6sl")
@@ -14,3 +35,21 @@ radius = 0.2
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="HitTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="ExplodeParticle" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_wq0w5")
+emitting = false
+lifetime = 0.09999999999999999
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_k7qlq")
+draw_pass_1 = SubResource("QuadMesh_3huem")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -0.5)
+collision_mask = 14
