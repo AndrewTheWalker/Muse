@@ -83,11 +83,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7802033, -29.236166)
 
 [node name="reticle_locator_sphere" type="CSGSphere3D" parent="PlayerCamera/reticle_locator"]
 layers = 2
+radius = 0.2
 material = SubResource("StandardMaterial3D_6h7m6")
 
 [node name="ReticleDebug" type="Node3D" parent="."]
 
 [node name="CSGTorus" type="CSGTorus3D" parent="ReticleDebug"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-inner_radius = 1.284
-outer_radius = 1.95
+inner_radius = 0.4
+outer_radius = 0.5

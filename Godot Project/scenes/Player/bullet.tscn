@@ -10,7 +10,7 @@ script = ExtResource("1_av6sl")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 material_override = SubResource("StandardMaterial3D_oa0cv")
-radius = 0.1
+radius = 0.2
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

@@ -4,12 +4,16 @@ class_name PlayerModel
 
 '''ADAPTED FROM CODE BY GAB OF THE FAIR FIGHT YOUTUBE CHANNEL'''
 
+#debug for reticle stuff
+@onready var reticle_half: Node3D = $"../ReticleHalf"
 
 @onready var player = $".."
 @onready var skeleton = %GeneralSkeleton
 @onready var animator = $SkeletonAnimator
 
 @onready var bullet_spawner: Node3D = $"../Visuals/BulletSpawn"
+
+var target_direction : Vector3
 
 @onready var bullet_scene = preload("res://scenes/Player/bullet.tscn") as PackedScene
 
@@ -36,11 +40,13 @@ func _ready():
 		move.player = player
 
 # call the moves check_relevance function. If it returns okay, then proceed
-func update(input : InputPackage, delta : float):
+func update(input : InputPackage, reticle : Vector3, delta : float):
 	var relevance = current_move.check_relevance(input)
 	if relevance != "okay":
 		switch_to(relevance)
 	current_move.update(input, delta)
+	var new_reticle_point = reticle
+	update_bullet_target(new_reticle_point)
 	# temporary little measure to make the run speed look faster
 	if current_move is Sprint:
 		animator.speed_scale = 1.5
@@ -66,3 +72,13 @@ func spawn_bullet():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
 		spawn_bullet()
+
+func update_bullet_target(reticle_point:Vector3):
+	var spawn_loc = bullet_spawner.global_position
+	target_direction = spawn_loc.direction_to(reticle_point)
+	bullet_spawner.look_at(reticle_point)
+	var halfway_mark = (spawn_loc + reticle_point)*0.5
+	var quarter_mark = (spawn_loc + halfway_mark)*0.5
+	reticle_half.global_position =quarter_mark
+	reticle_half.look_at(spawn_loc)
+	

@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	if current_state:
 		current_state.Update(look_at, delta)
 	find_target()
-	adjust_reticle()
+	find_reticle_point()
 	
 func _physics_process(delta: float) -> void:
 	if current_state:
@@ -72,7 +72,7 @@ func find_target() -> Node3D:
 		return possible_targets[0]
 	return null
 
-func adjust_reticle()-> Vector3:
+func find_reticle_point()-> Vector3:
 	reticle_debug.look_at(camera_nest.global_position, Vector3(0.0,0.1,0.0))
 	var reticle_point : Vector3
 	var default_point = reticle_locator.global_position
