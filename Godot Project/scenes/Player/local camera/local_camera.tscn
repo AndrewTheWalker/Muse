@@ -37,7 +37,6 @@ script = ExtResource("3_enfd4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CameraMount"]
-visible = false
 layers = 2
 radius = 0.1
 material = SubResource("StandardMaterial3D_47crt")
@@ -53,7 +52,6 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.5)
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="CameraNest"]
-visible = false
 layers = 2
 radius = 0.4
 material = SubResource("StandardMaterial3D_il154")
@@ -62,7 +60,6 @@ material = SubResource("StandardMaterial3D_il154")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="FocusPoint"]
-visible = false
 layers = 2
 radius = 0.2
 material = SubResource("StandardMaterial3D_2urwo")
@@ -72,7 +69,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.5)
 fov = 45.0
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="PlayerCamera"]
-visible = false
 layers = 2
 radius = 0.25
 material = SubResource("StandardMaterial3D_6h7m6")
+
+[node name="ReticleRaycast" type="RayCast3D" parent="PlayerCamera"]
+target_position = Vector3(0, 5, -30)
+collision_mask = 14
+collide_with_areas = true
+
+[node name="reticle_locator" type="Node3D" parent="PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7802033, -29.236166)
+
+[node name="reticle_locator_sphere" type="CSGSphere3D" parent="PlayerCamera/reticle_locator"]
+layers = 2
+radius = 0.2
+material = SubResource("StandardMaterial3D_6h7m6")
+
+[node name="ReticleDebug" type="Node3D" parent="."]
+
+[node name="CSGTorus" type="CSGTorus3D" parent="ReticleDebug"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+inner_radius = 0.4
+outer_radius = 0.5

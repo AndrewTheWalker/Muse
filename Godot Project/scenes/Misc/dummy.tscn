@@ -11,6 +11,7 @@ height = 1.0
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72084796, 0)
 use_collision = true
+collision_layer = 8
 mesh = SubResource("CapsuleMesh_k5f3b")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CSGMesh3D"]

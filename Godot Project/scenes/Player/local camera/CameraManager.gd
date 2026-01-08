@@ -9,6 +9,10 @@ class_name CameraManager
 @onready var camera_nest := $CameraNest
 @onready var camera_mount := $CameraMount
 
+@onready var reticle_debug = $"ReticleDebug"
+@onready var reticle_raycast: RayCast3D = $PlayerCamera/ReticleRaycast
+@onready var reticle_locator: Node3D = $PlayerCamera/reticle_locator
+
 @onready var camera_focus: Node3D = $"../CameraFocus"
 
 @onready var is_target_locked : bool = false
@@ -31,6 +35,7 @@ func _process(delta: float) -> void:
 	if current_state:
 		current_state.Update(look_at, delta)
 	find_target()
+	find_reticle_point()
 	
 func _physics_process(delta: float) -> void:
 	if current_state:
@@ -61,8 +66,21 @@ func find_target() -> Node3D:
 		var disq = pos.distance_squared_to(otherpos)
 		if not camera.is_position_in_frustum(targetable.global_position):
 			possible_targets.erase(targetable)
-		if disq > 500.0:
+		if disq > 300.0:
 			possible_targets.erase(targetable)
 	if not possible_targets.is_empty():
 		return possible_targets[0]
 	return null
+
+func find_reticle_point()-> Vector3:
+	reticle_debug.look_at(camera_nest.global_position, Vector3(0.0,0.1,0.0))
+	var reticle_point : Vector3
+	var default_point = reticle_locator.global_position
+	if reticle_raycast.is_colliding():
+		var collision_point = reticle_raycast.get_collision_point()
+		reticle_point = collision_point
+	else:
+		reticle_point = default_point
+	reticle_debug.global_position = reticle_point
+	return reticle_point
+	
