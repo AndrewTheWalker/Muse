@@ -13,6 +13,7 @@ const OTHER_LERP_WEIGHT := 0.75
 @onready var focus_point: Node3D = $"../FocusPoint"
 @onready var camera_nest: Node3D = $"../CameraNest"
 @onready var camera_mount: Node3D = $"../CameraMount"
+@onready var shape_cast: ShapeCast3D = $"../CameraMount/ShapeCast3D"
 
 @onready var camera_focus: Node3D = $"../../CameraFocus"
 
@@ -22,6 +23,7 @@ var hor_sense := 4.0
 var ver_sense := 3.0
 var offset := Vector3(0.0,1.0,4.5)
 var midpoint : Vector3
+var buffer_radius = 0.2
 
 func Enter(current_lock_target: Node3D):
 	print("entered lock state")
@@ -39,6 +41,7 @@ func Update(look_at:Node3D, delta: float) -> void:
 		calculate_midpoint(look_at)
 		move_focus_point(look_at)
 		move_camera_nest(look_at)
+		move_shapecast()
 		move_camera()
 	else:
 		drop_target()
@@ -58,7 +61,11 @@ func move_focus_point(look_at: Node3D):
 		
 func move_camera_nest(look_at: Node3D):
 	camera_mount.global_position = lerp(camera_mount.global_position, camera_focus.global_position, LERP_WEIGHT)
-	camera_nest.global_position = lerp(camera_nest.global_position, camera_mount.global_position+offset, LERP_WEIGHT)
+	if not shape_cast.is_colliding():
+		camera_nest.global_position = lerp(camera_nest.global_position,camera_mount.global_position+offset,0.25)
+	else:
+		var new_point : Vector3 = calculate_shapecast_offset()
+		camera_nest.global_position = lerp(camera_nest.global_position,new_point,0.1)
 	
 func move_camera():
 	if not camera.position.is_equal_approx(camera_nest.position):
@@ -78,6 +85,15 @@ func rotate_offset_locked(new_focus : Vector3):
 	
 func input_target_lock(event: InputEvent):
 	drop_target()
+
+func move_shapecast():
+	shape_cast.set_target_position(offset)
+	
+func calculate_shapecast_offset()->Vector3:	
+	var collision_point = shape_cast.get_collision_point(0)
+	var collision_normal = (shape_cast.get_collision_normal(0))*buffer_radius
+	var new_point = collision_point+collision_normal
+	return(new_point)
 
 func drop_target():
 	local_camera.look_at = camera_focus

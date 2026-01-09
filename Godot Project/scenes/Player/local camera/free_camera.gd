@@ -91,7 +91,6 @@ func calculate_shapecast_offset()->Vector3:
 	# buffer radius is equal to the shapecast sphere shape radius
 	var collision_normal = (shape_cast.get_collision_normal(0))*buffer_radius
 	var new_point = collision_point+collision_normal
-	var center = focus_point.global_position
 	return(new_point)
 	
 	# new point is then fed into the move_camera_nest func like so

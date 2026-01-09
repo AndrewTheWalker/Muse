@@ -64,6 +64,10 @@ func switch_to(state : String):
 func spawn_bullet():
 	var spawn_loc = bullet_spawner.global_position
 	var bullet = bullet_scene.instantiate()
+	# so there's an error because we set these transforms before adding the bullet to the tree
+	# but it doesn't work right if it's the other way around
+	# this is probably because the bullet's ready function determines its basis, so it's
+	# probably being called too early. it's fine for now but remember to consider it later.
 	bullet.global_position = spawn_loc
 	bullet.transform.basis = bullet_spawner.global_transform.basis
 	get_tree().get_root().add_child(bullet)
