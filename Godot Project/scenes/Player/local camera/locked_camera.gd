@@ -26,10 +26,14 @@ var midpoint : Vector3
 var buffer_radius = 0.2
 
 func Enter(current_lock_target: Node3D):
+	
 	print("entered lock state")
 	print(current_lock_target)
+	# CameraManager passes the target that it has found, if any, to this state. Then we change the 
+	# camera's look_at to the target, if it wasn't already.
+	# we do it here because if we got this far, we know for sure that everything checks out
 	target = current_lock_target
-	if local_camera.look_at == camera_focus:
+	if local_camera.look_at != target:
 		local_camera.look_at = target
 	local_camera.is_target_locked = true
 		
@@ -37,6 +41,7 @@ func Exit():
 	pass
 
 func Update(look_at:Node3D, delta: float) -> void:
+	# locked camera differs in that it will automatically switch back to free cam if the target is lost.
 	if look_at:
 		calculate_midpoint(look_at)
 		move_focus_point(look_at)
@@ -50,11 +55,14 @@ func Physics_Update(look_at:Node3D, delta: float) -> void:
 	pass
 	
 func calculate_midpoint(look_at:Node3D):
+	# get the midpoint between the target and the player and focus the camera there. 
+	# It just compositionally feels better than having the target always smack in the middle of the screen.
 	var focus_pos = look_at.global_position
 	var player_pos = camera_focus.global_position
 	midpoint = (focus_pos + player_pos)*0.5
 	
 func move_focus_point(look_at: Node3D):
+	# lerp the focus point to that new midpoint. then call this states version of rotate offset.
 	var new_focus = lerp(focus_point.global_position, midpoint, OTHER_LERP_WEIGHT)
 	rotate_offset_locked(new_focus)
 	focus_point.global_position = new_focus
@@ -73,13 +81,15 @@ func move_camera():
 	camera.look_at(focus_point.global_position)	
 
 func rotate_offset_locked(new_focus : Vector3):
+	
+	# I actually need to kinda rethink this one a bit because I forget exactly how it works...
+	# the point of this is to always move the camera to keep the player and the target aligned.
 	var new_focus_projected = new_focus
 	new_focus_projected.y = 0.0
 	var center_projected = camera_focus.global_position
 	center_projected.y = 0.0
 	var offset_xz_length = sqrt(offset.x * offset.x + offset.z * offset.z)
 	var new_offset = (center_projected - new_focus_projected).normalized() * offset_xz_length
-	#var new_offset = (center_projected - new_focus_projected)*1.5
 	new_offset.y = offset.y
 	offset = new_offset
 	

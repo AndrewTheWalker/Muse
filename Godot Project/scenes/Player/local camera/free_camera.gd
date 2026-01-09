@@ -20,6 +20,7 @@ func Enter(current_lock_target: Node3D):
 	var shape = shape_cast.get_shape()
 	shape.radius=buffer_radius
 	print("entered free state")
+	local_camera.is_target_locked = false
 
 func Exit():
 	pass

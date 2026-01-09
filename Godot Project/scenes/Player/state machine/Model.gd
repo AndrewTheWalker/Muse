@@ -72,6 +72,7 @@ func spawn_bullet():
 	bullet.transform.basis = bullet_spawner.global_transform.basis
 	get_tree().get_root().add_child(bullet)
 	
+	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
 		spawn_bullet()

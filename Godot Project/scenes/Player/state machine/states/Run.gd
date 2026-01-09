@@ -10,7 +10,7 @@ const RUN_SPEED = 4.5
 @onready var local_camera: CameraManager = $"../../../LocalCamera"
 
 var orbit_target: Node3D 
-var current_target: Vector3
+var orbit_target_loc: Vector3
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -49,7 +49,7 @@ func velocity_by_input(input : InputPackage, delta : float) -> Vector3:
 	var new_velocity = player.velocity
 	var orbit_direction : Vector3
 	
-	var target_pos = current_target
+	var target_pos = orbit_target_loc
 	target_pos.y = 0.0
 	var player_pos = player.global_position
 	player_pos.y = 0.0
@@ -59,7 +59,7 @@ func velocity_by_input(input : InputPackage, delta : float) -> Vector3:
 	var orbit_radius = target_dir.length()
 	
 	if orbit_target:
-		current_target = orbit_target.global_position
+		orbit_target_loc = orbit_target.global_position
 	# get the controller inputs, and the Vector 2 representing those inputs. We will need dirstr to set up our deadzone later
 	var input_direction = (player.transform.basis * Vector3(input.l_input_direction.x, 0, input.l_input_direction.y)).normalized()
 	

@@ -32,6 +32,8 @@ script/templates_search_path="res://scripts/Templates"
 [global_group]
 
 targetable=""
+debugtool=""
+enemy=""
 
 [input]
 

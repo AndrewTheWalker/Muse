@@ -1,14 +1,14 @@
 extends RigidBody3D
 class_name PhysicsBullet
 
-const BULLET_SPEED = 3.0
-
 @onready var lifetime_timer: Timer = $LifetimeTimer
-@onready var hit_timer: Timer = $HitTimer
 @onready var csg_sphere_3d: CSGSphere3D = $CSGSphere3D
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
 @onready var fx_hit = preload("res://scenes/FX/FX_BulletHit.tscn") as PackedScene
+
+const BULLET_SPEED = 3.0
+var bullet_damage : int = 1
 
 func _ready():
 	constant_force = transform.basis * Vector3(0,0,-BULLET_SPEED)
@@ -22,10 +22,13 @@ func _physics_process(delta: float) -> void:
 	
 func hit():
 	print("bullet raycast hit")
+	var hit_obj = ray_cast_3d.get_collider()
 	var hit_loc = ray_cast_3d.get_collision_point()
 	var inst = fx_hit.instantiate()
 	csg_sphere_3d.hide()
 	get_tree().get_root().add_child(inst)
 	inst.transform.basis = self.global_transform.basis
 	inst.global_position = hit_loc
+	if hit_obj.is_in_group("enemy"):
+		print("enemy_hit")
 	queue_free()

@@ -25,14 +25,15 @@ shape = SubResource("SphereShape3D_kshah")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 material_override = SubResource("StandardMaterial3D_2g5h2")
-radius = 0.09
+radius = 0.05
 
 [node name="LifetimeTimer" type="Timer" parent="."]
-autostart = true
-
-[node name="HitTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -1)
 collision_mask = 14
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 0.1
+omni_attenuation = 2.0
