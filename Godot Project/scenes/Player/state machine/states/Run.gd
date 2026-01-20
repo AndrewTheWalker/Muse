@@ -4,13 +4,16 @@ class_name Run
 '''NOTE TO SELF: FIGURE OUT HOW TO DO THE WALK DEADZONE THING HERE
 Why not make separate states? Because the walk/run behaviour and transition logic is the same, its just cosmetic'''
 
+@onready var debug_sphere: CSGSphere3D = $"../../../CSGSphere3D"
+
+
 const WALK_SPEED = 2.5
 const RUN_SPEED = 4.5
 
 @onready var local_camera: CameraManager = $"../../../LocalCamera"
 
 var orbit_target: Node3D 
-var current_target: Vector3
+var orbit_target_loc: Vector3
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -44,12 +47,12 @@ func update(input : InputPackage, delta : float):
 func velocity_by_input(input : InputPackage, delta : float) -> Vector3:
 	# move speed needs to be variable to accomodate changing speed later
 	var move_speed = RUN_SPEED
-	var new_direction := Vector3.ZERO
+	var new_direction : Vector3
 	
 	var new_velocity = player.velocity
 	var orbit_direction : Vector3
 	
-	var target_pos = current_target
+	var target_pos = orbit_target_loc
 	target_pos.y = 0.0
 	var player_pos = player.global_position
 	player_pos.y = 0.0
@@ -59,7 +62,7 @@ func velocity_by_input(input : InputPackage, delta : float) -> Vector3:
 	var orbit_radius = target_dir.length()
 	
 	if orbit_target:
-		current_target = orbit_target.global_position
+		orbit_target_loc = orbit_target.global_position
 	# get the controller inputs, and the Vector 2 representing those inputs. We will need dirstr to set up our deadzone later
 	var input_direction = (player.transform.basis * Vector3(input.l_input_direction.x, 0, input.l_input_direction.y)).normalized()
 	
@@ -75,6 +78,14 @@ func velocity_by_input(input : InputPackage, delta : float) -> Vector3:
 			var d_vector = target_pos - radius_b - player_pos
 			orbit_direction =  d_vector * 60
 		new_velocity = (-new_direction + orbit_direction).normalized() * move_speed
+		
+		#trying a new method for deriving X direction
+		#if input_direction.x:
+			#var z_dir = player_pos.direction_to(target_pos)	# this is equivalent to using (b-a).normalized()
+			#var x_dir = z_dir.cross(Vector3.UP)
+			#var x_move_dir = x_dir * move_speed
+			#debug_sphere.global_position = x_dir
+		
 		
 		# may be refactored later. the addition of that one Vec3 is just so i stop getting the annoying error
 		player.visuals.look_at(player.global_position+(new_velocity+Vector3(0.0,0.0,0.1)))

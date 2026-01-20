@@ -15,7 +15,7 @@ class_name PlayerModel
 
 var target_direction : Vector3
 
-@onready var bullet_scene = preload("res://scenes/Player/bullet.tscn") as PackedScene
+@onready var bullet_scene = preload("res://scenes/Player/bullet_new.tscn") as PackedScene
 
 var current_move : Move
 
@@ -64,9 +64,13 @@ func switch_to(state : String):
 func spawn_bullet():
 	var spawn_loc = bullet_spawner.global_position
 	var bullet = bullet_scene.instantiate()
-	get_tree().get_root().add_child(bullet)
-	bullet.transform.basis = bullet_spawner.global_transform.basis
+	# so there's an error because we set these transforms before adding the bullet to the tree
+	# but it doesn't work right if it's the other way around
+	# this may be because the bullet's ready function determines its basis, so it's
+	# probably being called too early. it's fine for now but remember to consider it later.
 	bullet.global_position = spawn_loc
+	bullet.transform.basis = bullet_spawner.global_transform.basis
+	get_tree().get_root().add_child(bullet)
 	
 	
 func _input(event: InputEvent) -> void:
@@ -77,8 +81,8 @@ func update_bullet_target(reticle_point:Vector3):
 	var spawn_loc = bullet_spawner.global_position
 	target_direction = spawn_loc.direction_to(reticle_point)
 	bullet_spawner.look_at(reticle_point)
-	var halfway_mark = (spawn_loc + reticle_point)*0.5
-	var quarter_mark = (spawn_loc + halfway_mark)*0.5
+	var halfway_mark = (spawn_loc + reticle_point) * 0.5
+	var quarter_mark = (spawn_loc + halfway_mark) * 0.5
 	reticle_half.global_position =quarter_mark
 	reticle_half.look_at(spawn_loc)
 	
