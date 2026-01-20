@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg7rl84y6o0p7"]
+[gd_scene load_steps=6 format=3 uid="uid://bg7rl84y6o0p7"]
 
-[ext_resource type="Script" uid="uid://chx2r8p3rfb8s" path="res://bullet_new.gd" id="1_xo8s8"]
+[ext_resource type="Script" uid="uid://chx2r8p3rfb8s" path="res://scenes/Player/bullet_new.gd" id="1_xo8s8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xo8s8"]
 friction = 0.0
@@ -10,6 +10,9 @@ radius = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2g5h2"]
 shading_mode = 0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xo8s8"]
+radius = 0.3
 
 [node name="bulletNEW" type="RigidBody3D"]
 collision_layer = 32
@@ -33,7 +36,19 @@ autostart = true
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -1)
 collision_mask = 14
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_energy = 0.1
 omni_attenuation = 2.0
+
+[node name="hurtbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+collision_layer = 32
+collision_mask = 14
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hurtbox"]
+shape = SubResource("SphereShape3D_xo8s8")
+
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]

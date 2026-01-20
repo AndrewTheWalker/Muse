@@ -1,8 +1,9 @@
-extends Node3D
+extends Entity
+class_name Bullseye
 
+@onready var parent : Spawner = $".."
 
-var loc : Vector3
-
-func _ready():
-	loc = global_position
-	
+func receive_hit():
+	print("ouch")
+	parent.spawn_target()
+	queue_free()

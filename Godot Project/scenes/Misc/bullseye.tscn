@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://5xol6tsqkbx0"]
+[gd_scene load_steps=6 format=3 uid="uid://5xol6tsqkbx0"]
 
 [ext_resource type="PackedScene" uid="uid://cm8jj0j2bmggq" path="res://scenes/Misc/targetable_aspect.tscn" id="1_3pknu"]
 [ext_resource type="Script" uid="uid://c7j4jafxc3e6c" path="res://scenes/Misc/bullseye.gd" id="1_tgae3"]
+[ext_resource type="Script" uid="uid://cp5nadpirwd6p" path="res://scenes/Misc/hit_body.gd" id="3_7hj0j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pknu"]
 albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tgae3"]
+size = Vector3(2, 2, 0.5)
 
 [node name="Bullseye" type="Node3D" groups=["enemy"]]
 script = ExtResource("1_tgae3")
@@ -13,7 +17,6 @@ script = ExtResource("1_tgae3")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-use_collision = true
 collision_layer = 8
 collision_mask = 32
 radius = 1.0
@@ -23,7 +26,6 @@ sides = 32
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_3pknu")
-use_collision = true
 collision_layer = 8
 collision_mask = 32
 radius = 0.75
@@ -32,7 +34,6 @@ sides = 32
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-use_collision = true
 collision_layer = 8
 collision_mask = 32
 height = 0.3
@@ -41,9 +42,23 @@ sides = 32
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_3pknu")
-use_collision = true
 collision_layer = 8
 collision_mask = 32
 radius = 0.25
 height = 0.4
 sides = 32
+
+[node name="HitBody" type="StaticBody3D" parent="." groups=["enemy"]]
+collision_layer = 8
+collision_mask = 32
+script = ExtResource("3_7hj0j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBody"]
+shape = SubResource("BoxShape3D_tgae3")
+
+[node name="HitArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 32
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HitArea"]
+shape = SubResource("BoxShape3D_tgae3")
