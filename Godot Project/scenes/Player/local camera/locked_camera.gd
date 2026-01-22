@@ -25,16 +25,12 @@ var offset := Vector3(0.0,1.0,4.5)
 var midpoint : Vector3
 var buffer_radius = 0.2
 
-func Enter(current_lock_target: Node3D):
+func Enter():
 	
 	print("entered lock state")
-	print(current_lock_target)
 	# CameraManager passes the target that it has found, if any, to this state. Then we change the 
 	# camera's look_at to the target, if it wasn't already.
 	# we do it here because if we got this far, we know for sure that everything checks out
-	target = current_lock_target
-	if local_camera.look_at != target:
-		local_camera.look_at = target
 	local_camera.is_target_locked = true
 		
 func Exit():

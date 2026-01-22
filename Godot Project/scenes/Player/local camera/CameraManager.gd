@@ -28,7 +28,7 @@ func _ready() -> void:
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transition)
 	if initial_state:
-		initial_state.Enter(current_lock_target)
+		initial_state.Enter()
 		current_state = initial_state
 	print(states)
 	
@@ -36,7 +36,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if current_state:
 		current_state.Update(look_at, delta)
-	find_target()
 	find_reticle_point()
 
 
@@ -44,10 +43,13 @@ func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.Physics_Update(look_at, delta)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Lock"):
-		current_lock_target = find_target()
-		current_state.input_target_lock(event)
+# func _input(event: InputEvent) -> void:
+	# if event.is_action_pressed("Lock"):
+		# current_lock_target = find_target()
+		# if current_lock_target:
+			# current_state.input_target_lock(event)
+			
+			
 
 func on_child_transition(state, new_state_name):
 	if state != current_state:
@@ -58,7 +60,7 @@ func on_child_transition(state, new_state_name):
 	
 	if current_state:
 		current_state.Exit()
-	new_state.Enter(current_lock_target)
+	new_state.Enter()
 	current_state = new_state
 
 func find_target() -> Node3D:

@@ -16,7 +16,7 @@ var ver_sense := 3.0
 var offset := Vector3(0.0,0.75,4.5)
 var buffer_radius = 0.2
 
-func Enter(current_lock_target: Node3D):
+func Enter():
 	var shape = shape_cast.get_shape()
 	shape.radius=buffer_radius
 	print("entered free state")

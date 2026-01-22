@@ -3,7 +3,7 @@ class_name CameraState
 
 signal Transitioned
 
-func Enter(current_lock_target: Node3D):
+func Enter():
 	pass
 	
 func Exit():
