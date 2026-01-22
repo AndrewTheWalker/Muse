@@ -44,10 +44,12 @@ func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.Physics_Update(look_at, delta)
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Lock"):
 		current_lock_target = find_target()
 		current_state.input_target_lock(event)
+
 
 func on_child_transition(state, new_state_name):
 	if state != current_state:
@@ -60,6 +62,7 @@ func on_child_transition(state, new_state_name):
 		current_state.Exit()
 	new_state.Enter(current_lock_target)
 	current_state = new_state
+
 
 func find_target() -> Node3D:
 	# find every node in the scene that can be targeted and store it as an array
