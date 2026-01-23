@@ -17,14 +17,11 @@ class_name CameraModel
 
 @onready var is_target_locked : bool = false
 
-var current_lock_target : Targetable
+var current_lock_target : Node3D
 var current_state : CameraState
 
 
-var using_mouse_ctrl := false
-@onready var camera_input: CameraInputGatherer = $Input
-
-var available_targets : Array[Targetable]
+var available_targets = []
 
 
 @onready var states = {
@@ -36,16 +33,15 @@ var available_targets : Array[Targetable]
 func _ready():
 	SignalBus.connect("TARGET_SCREEN_ENTERED",append_target)
 	SignalBus.connect("TARGET_SCREEN_EXITED",erase_target)
+	look_at = camera_focus
 	current_state = states["free"]
 	current_state.Enter()
 
 
 func _process(delta: float) -> void:
-	var input = camera_input.gather_input()
 	look_at = update_look_at()
-	current_state.Update(input, look_at, delta)
-	# each input package is a new array and so we have to free them or they just build up
-	input.queue_free()
+	current_state.Update(look_at, delta)
+
 
 func _physics_process(delta: float) -> void:
 	current_state.Physics_Update(look_at, delta)
@@ -53,7 +49,6 @@ func _physics_process(delta: float) -> void:
 
 func update_look_at():
 	if look_at:
-		print(look_at)
 		return look_at
 	else:
 		look_at = camera_focus
@@ -87,27 +82,6 @@ func sort_targets(a,b):
 	return dista < distb
 
 
-func find_target() -> Node3D:
-	var possible_targets = get_tree().get_nodes_in_group("targetable")
-	# loop through the list of targetable aspects
-	for targetable in possible_targets:
-		# get their position relative to the camera_mount(which is at the player location)
-		var pos : Vector3 = camera_mount.global_position
-		var otherpos : Vector3 = targetable.global_position
-		var disq = pos.distance_squared_to(otherpos)
-		# if that aspect is not in the camera view, discard it from the array
-		if not camera.is_position_in_frustum(targetable.global_position):
-			possible_targets.erase(targetable)
-		# if the aspect is too far away, also discard it.
-		if disq > 300.0:
-			possible_targets.erase(targetable)
-	# if, after we've sorted through that list, if there's anything left, get the first entry in the array.
-	# we'll need a better system later, but this works for now.
-	if not possible_targets.is_empty():
-		return possible_targets[0]
-	# if there are no valid targets after sorting through the list, then the result is null and thats ok
-	return null
-
 
 func find_reticle_point():#-> Vector3:
 	reticle_debug.look_at(camera_nest.global_position, Vector3(0.0,0.1,0.0))
@@ -119,11 +93,11 @@ func find_reticle_point():#-> Vector3:
 			reticle_point = collision_point
 		else:
 			reticle_point = default_point
-	else:
-		if find_target() != null:
-			reticle_point = find_target().global_position
-		else:
-			pass
+	#else:
+		#if find_target() != null:
+			#reticle_point = find_target().global_position
+		#else:
+			#pass
 	#reticle_debug.global_position = reticle_point
 	update_reticle(reticle_point)
 	return reticle_point

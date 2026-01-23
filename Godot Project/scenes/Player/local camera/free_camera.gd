@@ -11,6 +11,8 @@ class_name FreeCameraState
 
 @onready var camera_focus: Node3D = $"../../CameraFocus"
 
+@onready var camera_input: CameraInputGatherer = $"../Input"
+
 var hor_sense := 4.0
 var ver_sense := 3.0
 var offset := Vector3(0.0,0.75,4.5)
@@ -27,28 +29,14 @@ func Exit():
 	pass
 
 
-func Update(input:InputPackage, look_at:Node3D, delta: float) -> void:
-	parse_input(input)
+func Update(look_at:Node3D, delta: float) -> void:
+	var input = camera_input.gather_input()
+	input_axis_motion(input)
 	move_focus_point(look_at)
 	move_camera_nest(look_at)
 	move_shapecast()
 	move_camera()
-
-
-func parse_input(input:InputPackage):
-	var input_direction = Vector2(input.r_input_direction.x, input.r_input_direction.y).normalized()
-	
-	var d_hor = input_direction.x
-	var d_ver = input_direction.y
-	
-	input_axis_motion(d_hor,d_ver)
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		var mouse_delta : Vector2 = event.relative.normalized()
-		var mousex = -mouse_delta.x
-		var mousey = mouse_delta.y
-		input_axis_motion(mousex,mousey)
+	input.queue_free()
 
 func move_focus_point(look_at: Node3D):
 	if not focus_point.global_position.is_equal_approx(look_at.global_position):
@@ -94,7 +82,11 @@ func rotate_offset(new_focus : Vector3):
 		offset = offset.rotated(Vector3.UP,-alpha)
 
 
-func input_axis_motion(d_hor:float,d_ver:float)->Vector3:
+func input_axis_motion(input:InputPackage)->Vector3:
+	var input_direction = Vector2(input.r_input_direction.x, input.r_input_direction.y).normalized()
+	
+	var d_hor = input_direction.x
+	var d_ver = input_direction.y
 
 	offset = offset.rotated(Vector3.UP, d_hor * hor_sense/100)
 	var axis : Vector3 = offset.cross(Vector3.UP).normalized()
@@ -114,8 +106,3 @@ func calculate_shapecast_offset()->Vector3:
 	var collision_normal = (shape_cast.get_collision_normal(0))*buffer_radius
 	var new_point = collision_point+collision_normal
 	return(new_point)
-	
-	# new point is then fed into the move_camera_nest func like so
-	# var new_point : Vector3 = calculate_shapecast_offset()
-		# camera_nest.global_position = lerp(camera_nest.global_position,new_point,0.1)
-	# the lerp is necessary, otherwise there is an uncomfortable little snap to the new point

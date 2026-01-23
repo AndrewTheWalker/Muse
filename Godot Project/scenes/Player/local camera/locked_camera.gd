@@ -33,7 +33,7 @@ func Exit():
 	pass
 
 
-func Update(input:InputPackage, look_at:Node3D, delta: float) -> void:
+func Update(look_at:Node3D, delta: float) -> void:
 	# locked camera differs in that it will automatically switch back to free cam if the target is lost.
 	if look_at:
 		calculate_midpoint(look_at)

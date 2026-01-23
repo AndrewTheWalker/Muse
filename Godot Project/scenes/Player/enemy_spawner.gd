@@ -21,8 +21,9 @@ func get_new_loc()->Vector3:
 func spawn_target():
 	var spawn_loc = get_new_loc()
 	var to_spawn = bullseye_scene.instantiate()
-	to_spawn.global_position = spawn_loc
+	
 	add_child(to_spawn)
+	to_spawn.global_position = spawn_loc
 	current_children.append(to_spawn)
 	
 	

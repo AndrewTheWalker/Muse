@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 @export var use_debug_cam := false
 @export var use_debug_meshes := false
-@export var use_mouse_ctrls := false
 
 @onready var input_gatherer = $Input as InputGatherer
 @onready var model = $Model as PlayerModel
@@ -20,8 +19,6 @@ func _ready() -> void:
 		print("debug camera active")
 	if use_debug_meshes == false:
 		get_all_children_recursive(self)
-	if use_mouse_ctrls == true:
-		local_camera.using_mouse_ctrl = true
 	visuals.accept_skeleton(model.skeleton)
 
 func _physics_process(delta):
