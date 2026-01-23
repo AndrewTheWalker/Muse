@@ -3,7 +3,7 @@ class_name Sprint
 
 const SPEED = 8
 
-@onready var local_camera: CameraManager = $"../../../LocalCamera"
+@onready var local_camera: CameraModel = $"../../../LocalCamera"
 
 var orbit_target: Node3D 
 var current_target: Vector3

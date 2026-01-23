@@ -257,6 +257,6 @@ fov = 35.0
 [node name="PlayerNEW" parent="." instance=ExtResource("5_sx0ag")]
 use_debug_cam = false
 use_debug_meshes = false
-use_mouse_ctrls = true
+use_mouse_ctrls = false
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_ku8gn")]

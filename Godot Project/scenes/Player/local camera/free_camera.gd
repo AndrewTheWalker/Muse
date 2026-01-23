@@ -1,7 +1,7 @@
 extends CameraState
 class_name FreeCameraState
 
-@onready var local_camera: CameraManager = $".."
+@onready var local_camera: CameraModel = $".."
 
 @onready var camera: Camera3D = $"../PlayerCamera"
 @onready var focus_point: Node3D = $"../FocusPoint"
@@ -16,30 +16,46 @@ var ver_sense := 3.0
 var offset := Vector3(0.0,0.75,4.5)
 var buffer_radius = 0.2
 
-func Enter(current_lock_target: Node3D):
+func Enter():
 	var shape = shape_cast.get_shape()
 	shape.radius=buffer_radius
 	print("entered free state")
 	local_camera.is_target_locked = false
 
+
 func Exit():
 	pass
 
-func Update(look_at:Node3D, delta: float) -> void:
-	gather_input()
+
+func Update(input:InputPackage, look_at:Node3D, delta: float) -> void:
+	parse_input(input)
 	move_focus_point(look_at)
 	move_camera_nest(look_at)
 	move_shapecast()
 	move_camera()
+
+
+func parse_input(input:InputPackage):
+	var input_direction = Vector2(input.r_input_direction.x, input.r_input_direction.y).normalized()
 	
-func Physics_Update(look_at:Node3D, delta: float) -> void:
-	pass
+	var d_hor = input_direction.x
+	var d_ver = input_direction.y
+	
+	input_axis_motion(d_hor,d_ver)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		var mouse_delta : Vector2 = event.relative.normalized()
+		var mousex = -mouse_delta.x
+		var mousey = mouse_delta.y
+		input_axis_motion(mousex,mousey)
 
 func move_focus_point(look_at: Node3D):
 	if not focus_point.global_position.is_equal_approx(look_at.global_position):
 		var new_focus = lerp(focus_point.global_position, look_at.global_position, 0.1)
 		rotate_offset(new_focus)
 		focus_point.global_position = new_focus
+
 
 func move_camera_nest(look_at: Node3D):
 	camera_mount.global_position = lerp(camera_mount.global_position, look_at.global_position, 0.1)
@@ -49,13 +65,16 @@ func move_camera_nest(look_at: Node3D):
 		var new_point : Vector3 = calculate_shapecast_offset()
 		camera_nest.global_position = lerp(camera_nest.global_position,new_point,0.1)
 
+
 func move_camera():
 	if not camera.position.is_equal_approx(camera_nest.position):
 		camera.position = camera_nest.position
 	camera.look_at(focus_point.global_position)
 
+
 func move_shapecast():
 	shape_cast.set_target_position(offset)
+
 
 func rotate_offset(new_focus : Vector3):
 	var new_focus_projected = new_focus
@@ -74,8 +93,9 @@ func rotate_offset(new_focus : Vector3):
 	else:
 		offset = offset.rotated(Vector3.UP,-alpha)
 
+
 func input_axis_motion(d_hor:float,d_ver:float)->Vector3:
-	
+
 	offset = offset.rotated(Vector3.UP, d_hor * hor_sense/100)
 	var axis : Vector3 = offset.cross(Vector3.UP).normalized()
 	var angle = d_ver * ver_sense/100
@@ -84,6 +104,7 @@ func input_axis_motion(d_hor:float,d_ver:float)->Vector3:
 	if new_offset_angle > 0.3 and new_offset_angle < 2.5:
 		offset = offset.rotated(axis,angle)
 	return offset
+
 
 func calculate_shapecast_offset()->Vector3:
 	# up in the update function I set the shapecast's target position equal to offset.
@@ -98,11 +119,3 @@ func calculate_shapecast_offset()->Vector3:
 	# var new_point : Vector3 = calculate_shapecast_offset()
 		# camera_nest.global_position = lerp(camera_nest.global_position,new_point,0.1)
 	# the lerp is necessary, otherwise there is an uncomfortable little snap to the new point
-
-func input_target_lock(event: InputEvent):
-	Transitioned.emit(self,"LockedCamera")
-
-func gather_input():
-	var d_hor = Input.get_axis("Rstick_right","Rstick_left")
-	var d_ver = Input.get_axis("Rstick_up","Rstick_down")
-	input_axis_motion(d_hor,d_ver)

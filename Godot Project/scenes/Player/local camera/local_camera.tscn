@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ca16026hm7cpp"]
+[gd_scene load_steps=11 format=3 uid="uid://ca16026hm7cpp"]
 
-[ext_resource type="Script" uid="uid://cyr1vbjog067n" path="res://scenes/Player/local camera/CameraManager.gd" id="1_g8533"]
+[ext_resource type="Script" uid="uid://csvnet554vpfv" path="res://CameraModel.gd" id="1_4nvxi"]
 [ext_resource type="Script" uid="uid://ch6e0b3igyuug" path="res://scenes/Player/local camera/locked_camera.gd" id="2_01e5t"]
+[ext_resource type="Script" uid="uid://cr6ufnqrqfr2q" path="res://CameraInput.gd" id="2_crhpq"]
 [ext_resource type="Script" uid="uid://cpyv82o088fjg" path="res://scenes/Player/local camera/free_camera.gd" id="3_enfd4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47crt"]
@@ -29,9 +30,11 @@ no_depth_test = true
 shading_mode = 0
 albedo_color = Color(0.06666667, 0.90588236, 0.05490196, 0.0627451)
 
-[node name="LocalCamera" type="Node" node_paths=PackedStringArray("initial_state")]
-script = ExtResource("1_g8533")
-initial_state = NodePath("FreeCamera")
+[node name="LocalCamera" type="Node"]
+script = ExtResource("1_4nvxi")
+
+[node name="Input" type="Node" parent="."]
+script = ExtResource("2_crhpq")
 
 [node name="LockedCamera" type="Node" parent="."]
 script = ExtResource("2_01e5t")

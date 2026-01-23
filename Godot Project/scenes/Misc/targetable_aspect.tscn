@@ -8,3 +8,8 @@ script = ExtResource("1_dw442")
 [node name="LookAt" type="Node3D" parent="."]
 
 [node name="TargetMarker" type="Node3D" parent="."]
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="screen_exited"]

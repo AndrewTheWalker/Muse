@@ -10,7 +10,7 @@ Why not make separate states? Because the walk/run behaviour and transition logi
 const WALK_SPEED = 2.5
 const RUN_SPEED = 4.5
 
-@onready var local_camera: CameraManager = $"../../../LocalCamera"
+@onready var local_camera: CameraModel = $"../../../LocalCamera"
 
 var orbit_target: Node3D 
 var orbit_target_loc: Vector3

@@ -1,5 +1,6 @@
 extends Node
-class_name CameraManager
+class_name CameraModel
+
 
 @export var initial_state : CameraState
 @export var look_at : Node3D
@@ -12,60 +13,81 @@ class_name CameraManager
 @onready var reticle_debug = $"ReticleDebug"
 @onready var reticle_raycast: RayCast3D = $PlayerCamera/ReticleRaycast
 @onready var reticle_locator: Node3D = $PlayerCamera/reticle_locator
-
 @onready var camera_focus: Node3D = $"../CameraFocus"
 
 @onready var is_target_locked : bool = false
 
 var current_lock_target : Targetable
 var current_state : CameraState
-var states : Dictionary = {}
 
 
-func _ready() -> void:
-	for child in get_children():
-		if child is CameraState:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
-	if initial_state:
-		initial_state.Enter(current_lock_target)
-		current_state = initial_state
-	print(states)
-	
-	
+var using_mouse_ctrl := false
+@onready var camera_input: CameraInputGatherer = $Input
+
+var available_targets : Array[Targetable]
+
+
+@onready var states = {
+	"locked" : $LockedCamera,
+	"free" : $FreeCamera
+}
+
+
+func _ready():
+	SignalBus.connect("TARGET_SCREEN_ENTERED",append_target)
+	SignalBus.connect("TARGET_SCREEN_EXITED",erase_target)
+	current_state = states["free"]
+	current_state.Enter()
+
+
 func _process(delta: float) -> void:
-	if current_state:
-		current_state.Update(look_at, delta)
-	find_target()
-	find_reticle_point()
-
+	var input = camera_input.gather_input()
+	look_at = update_look_at()
+	current_state.Update(input, look_at, delta)
+	# each input package is a new array and so we have to free them or they just build up
+	input.queue_free()
 
 func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.Physics_Update(look_at, delta)
+	current_state.Physics_Update(look_at, delta)
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Lock"):
-		current_lock_target = find_target()
-		current_state.input_target_lock(event)
+func update_look_at():
+	if look_at:
+		print(look_at)
+		return look_at
+	else:
+		look_at = camera_focus
 
 
-func on_child_transition(state, new_state_name):
-	if state != current_state:
-		return
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-	
-	if current_state:
-		current_state.Exit()
-	new_state.Enter(current_lock_target)
-	current_state = new_state
+func switch_to(new_state : String):
+	current_state.Exit()
+	current_state = states[new_state]
+	current_state.Enter()
+
+
+func append_target(targetable):
+	available_targets.append(targetable)
+	if available_targets.size() > 1:
+		available_targets.sort_custom(sort_targets)
+
+
+func erase_target(targetable):
+	available_targets.erase(targetable)
+	if available_targets.size() > 1:
+		available_targets.sort_custom(sort_targets)
+
+
+func sort_targets(a,b):
+	# a and b represent the two targetables being evaluated in available_targets
+	# we calcuclate the distance from the targetable to the focus point (i.e. the centre of the screen)
+	# whichever one is closer, goes first in the order.
+	var focus_pos = focus_point.global_position
+	var dista = a.global_position.distance_squared_to(focus_pos)
+	var distb = b.global_position.distance_squared_to(focus_pos)
+	return dista < distb
 
 
 func find_target() -> Node3D:
-	# find every node in the scene that can be targeted and store it as an array
 	var possible_targets = get_tree().get_nodes_in_group("targetable")
 	# loop through the list of targetable aspects
 	for targetable in possible_targets:
@@ -85,6 +107,7 @@ func find_target() -> Node3D:
 		return possible_targets[0]
 	# if there are no valid targets after sorting through the list, then the result is null and thats ok
 	return null
+
 
 func find_reticle_point():#-> Vector3:
 	reticle_debug.look_at(camera_nest.global_position, Vector3(0.0,0.1,0.0))

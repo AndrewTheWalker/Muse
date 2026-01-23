@@ -3,3 +3,5 @@ extends Node
 signal TEST
 signal SPRINT_START
 signal SPRINT_STOP
+signal TARGET_SCREEN_ENTERED
+signal TARGET_SCREEN_EXITED
