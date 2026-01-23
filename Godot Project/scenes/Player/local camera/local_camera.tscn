@@ -79,7 +79,6 @@ radius = 0.25
 material = SubResource("StandardMaterial3D_6h7m6")
 
 [node name="ReticleRaycast" type="RayCast3D" parent="PlayerCamera"]
-visible = false
 target_position = Vector3(0, 5, -30)
 collision_mask = 14
 collide_with_areas = true
@@ -101,3 +100,5 @@ outer_radius = 0.5
 sides = 32
 ring_sides = 3
 material = SubResource("StandardMaterial3D_frbxm")
+
+[node name="Timer" type="Timer" parent="."]

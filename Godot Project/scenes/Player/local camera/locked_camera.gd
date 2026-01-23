@@ -25,6 +25,9 @@ var offset := Vector3(0.0,1.0,4.5)
 var midpoint : Vector3
 var buffer_radius = 0.2
 
+
+# locked camera functions much the same as the free camera, just with a few different functions.
+
 func Enter():
 	pass
 
@@ -53,12 +56,11 @@ func calculate_midpoint(look_at:Node3D):
 	midpoint = (focus_pos + player_pos)*0.5
 
 
+# these functions are all identical to the free counterpart.
 func move_focus_point(look_at: Node3D):
-	# lerp the focus point to that new midpoint. then call this states version of rotate offset.
 	var new_focus = lerp(focus_point.global_position, midpoint, 0.05)
 	rotate_offset_locked(new_focus)
 	focus_point.global_position = new_focus
-
 
 func move_camera_nest(look_at: Node3D):
 	camera_mount.global_position = lerp(camera_mount.global_position, camera_focus.global_position, LERP_WEIGHT)
@@ -68,17 +70,16 @@ func move_camera_nest(look_at: Node3D):
 		var new_point : Vector3 = calculate_shapecast_offset()
 		camera_nest.global_position = lerp(camera_nest.global_position,new_point,0.1)
 
-
 func move_camera():
 	if not camera.position.is_equal_approx(camera_nest.position):
 		camera.position = camera_nest.position
 	camera.look_at(focus_point.global_position)	
 
 
+
+# this version of rotate offset is designed to always keep the player in the midpoint between the camera and the target
+# it's similar in spirit to the free camera's version.
 func rotate_offset_locked(new_focus : Vector3):
-	
-	# I actually need to kinda rethink this one a bit because I forget exactly how it works...
-	# the point of this is to always move the camera to keep the player and the target aligned.
 	var new_focus_projected = new_focus
 	new_focus_projected.y = 0.0
 	var center_projected = camera_focus.global_position
@@ -88,9 +89,6 @@ func rotate_offset_locked(new_focus : Vector3):
 	new_offset.y = offset.y
 	offset = new_offset
 
-
-func input_target_lock(event: InputEvent):
-	drop_target()
 
 
 func move_shapecast():
@@ -104,9 +102,14 @@ func calculate_shapecast_offset()->Vector3:
 	return(new_point)
 
 
+# this is another small but critically important function.
+# when we switch into this state, the free camera's offset stays where it was at the moment of switching. This is ok, until we switch back
+# without this function, the camera would snap back to where it was before, which could be halfway across the map for all we know.
+# so, before we switch, we pass the current offset to the free state before we transition. As a result, the transition is smooth
+# and virtually unnoticeable.
+
 func drop_target():
 	local_camera.look_at = camera_focus
-	print(local_camera.look_at)
 	free_camera.offset = (camera_nest.global_position - camera_mount.global_position)
 	local_camera.is_target_locked = false
 	local_camera.switch_to("free")
