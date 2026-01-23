@@ -12,7 +12,6 @@ extends CharacterBody3D
 
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if use_debug_cam == false:
 		local_camera.camera.make_current()
 	else:
@@ -41,7 +40,3 @@ func get_all_children_recursive(node):
 			if i.is_in_group("debugtool"):
 				i.hide()
 	return nodes
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

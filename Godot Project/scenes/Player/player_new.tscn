@@ -22,9 +22,6 @@ albedo_color = Color(0.31764707, 1, 0, 0.03137255)
 [node name="PlayerNEW" type="CharacterBody3D"]
 collision_mask = 7
 script = ExtResource("1_pt5pi")
-use_debug_cam = null
-use_debug_meshes = null
-use_mouse_ctrls = null
 
 [node name="CapsuleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

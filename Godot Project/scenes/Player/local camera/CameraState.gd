@@ -14,5 +14,5 @@ func Update(look_at:Node3D, delta: float) -> void:
 func Physics_Update(look_at:Node3D, delta: float) -> void:
 	pass
 	
-func input_axis_motion(input:InputPackage):
+func input_axis_motion():
 	pass

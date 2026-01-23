@@ -5,5 +5,6 @@ class_name Bullseye
 
 func receive_hit():
 	print("ouch")
+	SignalBus.TARGET_SCREEN_EXITED.emit(self)
 	parent.spawn_target()
 	queue_free()

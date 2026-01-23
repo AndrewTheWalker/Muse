@@ -11,7 +11,6 @@ class_name FreeCameraState
 
 @onready var camera_focus: Node3D = $"../../CameraFocus"
 
-@onready var camera_input: CameraInputGatherer = $"../Input"
 
 var hor_sense := 4.0
 var ver_sense := 3.0
@@ -30,13 +29,12 @@ func Exit():
 
 
 func Update(look_at:Node3D, delta: float) -> void:
-	var input = camera_input.gather_input()
-	input_axis_motion(input)
+	input_axis_motion()
 	move_focus_point(look_at)
 	move_camera_nest(look_at)
 	move_shapecast()
 	move_camera()
-	input.queue_free()
+
 
 func move_focus_point(look_at: Node3D):
 	if not focus_point.global_position.is_equal_approx(look_at.global_position):
@@ -82,8 +80,9 @@ func rotate_offset(new_focus : Vector3):
 		offset = offset.rotated(Vector3.UP,-alpha)
 
 
-func input_axis_motion(input:InputPackage)->Vector3:
-	var input_direction = Vector2(input.r_input_direction.x, input.r_input_direction.y).normalized()
+func input_axis_motion()->Vector3:
+	var input_direction = Input.get_vector("Rstick_left","Rstick_right","Rstick_down","Rstick_up").normalized()
+	
 	
 	var d_hor = input_direction.x
 	var d_ver = input_direction.y

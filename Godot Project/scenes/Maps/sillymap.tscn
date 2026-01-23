@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dtue8jmraq818"]
+[gd_scene load_steps=25 format=3 uid="uid://dtue8jmraq818"]
 
 [ext_resource type="Texture2D" uid="uid://7vnek183mcn4" path="res://assets/Textures/Orange/texture_09.png" id="1_bpaah"]
 [ext_resource type="Texture2D" uid="uid://bfp5qo5cve0jb" path="res://assets/Textures/Purple/texture_09.png" id="2_sx0ag"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://di5ugjwp0dqd2" path="res://assets/Textures/Dark/texture_04.png" id="4_ku8gn"]
 [ext_resource type="PackedScene" uid="uid://vy4dwvrkxq03" path="res://scenes/Player/player_new.tscn" id="5_sx0ag"]
 [ext_resource type="PackedScene" uid="uid://d2v5wrd14ls01" path="res://scenes/Misc/enemy_spawner.tscn" id="7_ku8gn"]
+[ext_resource type="PackedScene" uid="uid://d0mue2qakhes6" path="res://scenes/Misc/dummy.tscn" id="8_jv6jr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv6jr"]
 sky_top_color = Color(0.11463901, 0.1880464, 0.36286744, 1)
@@ -259,3 +260,6 @@ use_debug_cam = false
 use_debug_meshes = false
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_ku8gn")]
+
+[node name="Dummy" parent="." instance=ExtResource("8_jv6jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75, 0, 0)

@@ -55,7 +55,7 @@ func calculate_midpoint(look_at:Node3D):
 
 func move_focus_point(look_at: Node3D):
 	# lerp the focus point to that new midpoint. then call this states version of rotate offset.
-	var new_focus = lerp(focus_point.global_position, midpoint, OTHER_LERP_WEIGHT)
+	var new_focus = lerp(focus_point.global_position, midpoint, 0.05)
 	rotate_offset_locked(new_focus)
 	focus_point.global_position = new_focus
 
@@ -106,5 +106,7 @@ func calculate_shapecast_offset()->Vector3:
 
 func drop_target():
 	local_camera.look_at = camera_focus
+	print(local_camera.look_at)
 	free_camera.offset = (camera_nest.global_position - camera_mount.global_position)
 	local_camera.is_target_locked = false
+	local_camera.switch_to("free")

@@ -11,7 +11,5 @@ func gather_input() -> InputPackage:
 	new_input.r_input_direction = Input.get_vector("Rstick_left","Rstick_right","Rstick_down","Rstick_up")
 	if new_input.r_input_direction != Vector2.ZERO:
 		new_input.actions.append("aim")
-
-	
 	
 	return new_input
