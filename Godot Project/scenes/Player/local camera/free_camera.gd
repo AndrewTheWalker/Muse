@@ -14,6 +14,9 @@ class_name FreeCameraState
 
 var is_shooting := false
 
+var h_inv := -1
+var v_inv := -1
+
 var hor_sense := 2.0
 var ver_sense := 1.0
 var offset := Vector3(0.0,0.75,4.5)
@@ -31,8 +34,18 @@ func Enter():
 	shape.radius=buffer_radius
 	print("entered free state")
 	local_camera.is_target_locked = false
+	SignalBus.connect("INVERT_SIGNAL",set_inverse)
 
-
+func set_inverse(button: String):
+	print("set inverse clicked ",button)
+	if button == "h_down":
+		h_inv = 1
+	if button == "h_up":
+		h_inv = -1
+	if button == "v_down":
+		v_inv = 1
+	if button == "v_up":
+		v_inv = -1
 func Exit():
 	pass
 
@@ -65,9 +78,9 @@ func input_axis_motion()->Vector3:
 	var d_hor = input_direction.x
 	var d_ver = input_direction.y
 
-	offset = offset.rotated(Vector3.UP, d_hor * hor_sense/100 * -1)
+	offset = offset.rotated(Vector3.UP, d_hor * hor_sense/100 * h_inv)
 	var axis : Vector3 = offset.cross(Vector3.UP).normalized()
-	var angle = d_ver * ver_sense/100 * -1
+	var angle = d_ver * ver_sense/100 * v_inv
 	var new_offset = offset.rotated(axis,angle)
 	var new_offset_angle = new_offset.angle_to(Vector3.UP)
 	# limit the amount that the angle can go to prevent going over the player's head or under the floor.

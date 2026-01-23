@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ukc1y33ted80"]
+[gd_scene load_steps=6 format=3 uid="uid://ukc1y33ted80"]
 
 [ext_resource type="Script" uid="uid://bh56hpfodtvjm" path="res://scripts/main.gd" id="1_jasrq"]
 [ext_resource type="PackedScene" uid="uid://dtue8jmraq818" path="res://scenes/Maps/sillymap.tscn" id="1_pwhyn"]
+[ext_resource type="Texture2D" uid="uid://ti0fp5xj7kms" path="res://assets/checktrue.png" id="3_hus0o"]
+[ext_resource type="Texture2D" uid="uid://cdc6skilg0ok4" path="res://assets/checkfalse.png" id="4_q4ru8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vefg8"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jasrq")
@@ -37,4 +41,48 @@ text = "Lstick - Move
 Rstick - Camera
 Y - Jump
 L1 - target lock
-R1 - shoot"
+R1 - shoot
+Rstick Down - Release Lock"
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -177.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="UI/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Click to Toggle"
+horizontal_alignment = 2
+
+[node name="CheckboxH" type="CheckBox" parent="UI/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vefg8")
+theme_override_icons/checked = ExtResource("3_hus0o")
+theme_override_icons/unchecked = ExtResource("4_q4ru8")
+text = "Invert Camera H"
+
+[node name="CheckboxV" type="CheckBox" parent="UI/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vefg8")
+theme_override_icons/checked = ExtResource("3_hus0o")
+theme_override_icons/unchecked = ExtResource("4_q4ru8")
+text = "Invert Camera V "
+
+[connection signal="toggled" from="UI/MarginContainer2/VBoxContainer/CheckboxH" to="." method="_on_checkbox_h_toggled"]
+[connection signal="toggled" from="UI/MarginContainer2/VBoxContainer/CheckboxV" to="." method="_on_checkbox_v_toggled"]

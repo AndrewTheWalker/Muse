@@ -65,3 +65,4 @@ ring_sides = 3
 material = SubResource("StandardMaterial3D_mra3b")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
