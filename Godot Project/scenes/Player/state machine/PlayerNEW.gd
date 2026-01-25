@@ -8,6 +8,7 @@ extends CharacterBody3D
 @onready var visuals = $Visuals as PlayerVisuals
 
 @onready var local_camera: CameraModel = %LocalCamera
+@onready var camera_mount: Node3D = %LocalCamera/CameraMount
 
 
 

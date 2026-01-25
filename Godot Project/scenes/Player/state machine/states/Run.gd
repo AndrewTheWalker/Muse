@@ -44,6 +44,7 @@ func update(input : InputPackage, delta : float):
 	player.velocity = velocity_by_input(input, delta)
 	player.move_and_slide()
 
+
 func velocity_by_input(input : InputPackage, delta : float) -> Vector3:
 	# move speed needs to be variable to accomodate changing speed later
 	var move_speed = RUN_SPEED

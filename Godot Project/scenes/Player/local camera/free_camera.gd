@@ -46,6 +46,7 @@ func set_inverse(button: String):
 		v_inv = 1
 	if button == "v_up":
 		v_inv = -1
+
 func Exit():
 	pass
 
