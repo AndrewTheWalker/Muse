@@ -79,12 +79,6 @@ func velocity_by_input(input : InputPackage, delta : float) -> Vector3:
 			orbit_direction =  d_vector * 60
 		new_velocity = (-new_direction + orbit_direction).normalized() * move_speed
 		
-		#trying a new method for deriving X direction
-		#if input_direction.x:
-			#var z_dir = player_pos.direction_to(target_pos)	# this is equivalent to using (b-a).normalized()
-			#var x_dir = z_dir.cross(Vector3.UP)
-			#var x_move_dir = x_dir * move_speed
-			#debug_sphere.global_position = x_dir
 		
 		
 		# may be refactored later. the addition of that one Vec3 is just so i stop getting the annoying error
