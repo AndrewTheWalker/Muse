@@ -8,7 +8,7 @@ extends CharacterBody3D
 @onready var visuals = $Visuals as PlayerVisuals
 
 @onready var local_camera: CameraModel = %LocalCamera
-
+@onready var camera: Camera3D = %LocalCamera/PlayerCamera
 
 
 func _ready() -> void:

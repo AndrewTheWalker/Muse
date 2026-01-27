@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ca16026hm7cpp"]
 
-[ext_resource type="Script" uid="uid://csvnet554vpfv" path="res://CameraModel.gd" id="1_4nvxi"]
+[ext_resource type="Script" uid="uid://csvnet554vpfv" path="res://scenes/Player/local camera/CameraModel.gd" id="1_4nvxi"]
 [ext_resource type="Script" uid="uid://ch6e0b3igyuug" path="res://scenes/Player/local camera/locked_camera.gd" id="2_01e5t"]
 [ext_resource type="Script" uid="uid://cpyv82o088fjg" path="res://scenes/Player/local camera/free_camera.gd" id="3_enfd4"]
 

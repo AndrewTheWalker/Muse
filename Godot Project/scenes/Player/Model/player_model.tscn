@@ -1,17 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://dqxyogjtkoq03"]
+[gd_scene load_steps=26 format=3 uid="uid://dqxyogjtkoq03"]
 
-[ext_resource type="Script" uid="uid://bsq8spjgj551s" path="res://scenes/Player/state machine/Model.gd" id="1_0m6dt"]
-[ext_resource type="Script" uid="uid://83kq5smj4a3v" path="res://scenes/Player/SkeletonAnimator.gd" id="2_6q1sb"]
-[ext_resource type="Script" uid="uid://dfuvibsav4bp4" path="res://scenes/Player/state machine/states/Idle.gd" id="3_3hehr"]
-[ext_resource type="Script" uid="uid://r4omi1ish4v5" path="res://scenes/Player/state machine/states/Run.gd" id="4_f28ro"]
-[ext_resource type="Script" uid="uid://p7gu6jb1w43" path="res://scenes/Player/state machine/states/Jump.gd" id="5_0d140"]
-[ext_resource type="Script" uid="uid://bg1hct5wo78mk" path="res://scenes/Player/state machine/states/Sprint.gd" id="6_wcqc1"]
-[ext_resource type="Script" uid="uid://ceiy3rf8m8e2t" path="res://scenes/Player/state machine/states/Midair.gd" id="7_0d140"]
-[ext_resource type="Script" uid="uid://cuv5p2t6nu4r4" path="res://scenes/Player/state machine/states/Sprint_Jump.gd" id="7_6q1sb"]
-[ext_resource type="Script" uid="uid://b1dhg64dkusa0" path="res://scenes/Player/state machine/states/Land.gd" id="8_wcqc1"]
-[ext_resource type="Script" uid="uid://rddrs7hlxpaj" path="res://scenes/Player/state machine/states/Sprint_Land.gd" id="10_mex1x"]
-[ext_resource type="Script" uid="uid://b2g48acitrgkm" path="res://scenes/Player/state machine/states/Roll.gd" id="11_mex1x"]
-[ext_resource type="Script" uid="uid://c2tcpajc6drij" path="res://scenes/Player/state machine/downcast.gd" id="11_wcqc1"]
+[ext_resource type="Script" uid="uid://bsq8spjgj551s" path="res://scenes/Player/Model/Model.gd" id="1_cin2k"]
+[ext_resource type="Script" uid="uid://83kq5smj4a3v" path="res://scenes/Player/Model/SkeletonAnimator.gd" id="2_s5atl"]
+[ext_resource type="Script" uid="uid://cx1lo61cehanm" path="res://scenes/Player/Model/PlayerStates.gd" id="3_a8k26"]
+[ext_resource type="Script" uid="uid://dfuvibsav4bp4" path="res://scenes/Player/state machine/states/Idle.gd" id="3_mdlrq"]
+[ext_resource type="Script" uid="uid://r4omi1ish4v5" path="res://scenes/Player/state machine/states/Run.gd" id="4_a8k26"]
+[ext_resource type="Script" uid="uid://p7gu6jb1w43" path="res://scenes/Player/state machine/states/Jump.gd" id="5_uckvo"]
+[ext_resource type="Script" uid="uid://bg1hct5wo78mk" path="res://scenes/Player/state machine/states/Sprint.gd" id="6_0k4wq"]
+[ext_resource type="Script" uid="uid://ceiy3rf8m8e2t" path="res://scenes/Player/state machine/states/Midair.gd" id="7_f6nsj"]
+[ext_resource type="Script" uid="uid://b1dhg64dkusa0" path="res://scenes/Player/state machine/states/Land.gd" id="8_e76e3"]
+[ext_resource type="Script" uid="uid://cuv5p2t6nu4r4" path="res://scenes/Player/state machine/states/Sprint_Jump.gd" id="9_yyu1a"]
+[ext_resource type="Script" uid="uid://rddrs7hlxpaj" path="res://scenes/Player/state machine/states/Sprint_Land.gd" id="10_prxmy"]
+[ext_resource type="Script" uid="uid://b2g48acitrgkm" path="res://scenes/Player/state machine/states/Roll.gd" id="11_ieca3"]
+[ext_resource type="Script" uid="uid://c2tcpajc6drij" path="res://scenes/Player/Model/downcast.gd" id="12_ey8lv"]
+[ext_resource type="Script" uid="uid://bdebuoj21ivwh" path="res://scenes/Player/Model/AreaAwareness.gd" id="13_s5atl"]
 
 [sub_resource type="Animation" id="Animation_sj8tk"]
 resource_name = "Idle_Loop"
@@ -2981,14 +2983,14 @@ albedo_color = Color(0.43112004, 0.2652, 0.68, 0.5294118)
 albedo_color = Color(0.8479999, 0.43, 1, 1)
 
 [node name="Model" type="Node3D"]
-script = ExtResource("1_0m6dt")
+script = ExtResource("1_cin2k")
 
 [node name="SkeletonAnimator" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_76jg8")
 }
 playback_default_blend_time = 0.2
-script = ExtResource("2_6q1sb")
+script = ExtResource("2_s5atl")
 
 [node name="GeneralSkeleton" type="Skeleton3D" parent="."]
 unique_name_in_owner = true
@@ -3664,45 +3666,49 @@ bone_name = "Hips"
 bone = 1
 
 [node name="States" type="Node" parent="."]
-
-[node name="Idle" type="Node" parent="States"]
-script = ExtResource("3_3hehr")
+script = ExtResource("3_a8k26")
 
 [node name="Run" type="Node" parent="States"]
-script = ExtResource("4_f28ro")
+script = ExtResource("4_a8k26")
 
 [node name="Jump" type="Node" parent="States"]
-script = ExtResource("5_0d140")
+script = ExtResource("5_uckvo")
 
 [node name="Sprint" type="Node" parent="States"]
-script = ExtResource("6_wcqc1")
+script = ExtResource("6_0k4wq")
 
 [node name="Midair" type="Node" parent="States"]
-script = ExtResource("7_0d140")
+script = ExtResource("7_f6nsj")
 
 [node name="Land" type="Node" parent="States"]
-script = ExtResource("8_wcqc1")
+script = ExtResource("8_e76e3")
 
 [node name="Sprint_Jump" type="Node" parent="States"]
-script = ExtResource("7_6q1sb")
+script = ExtResource("9_yyu1a")
 
 [node name="Sprint_Land" type="Node" parent="States"]
-script = ExtResource("10_mex1x")
+script = ExtResource("10_prxmy")
 
 [node name="Roll" type="Node" parent="States"]
-script = ExtResource("11_mex1x")
+script = ExtResource("11_ieca3")
 
-[node name="Downcast" type="RayCast3D" parent="."]
+[node name="Idle" type="Node" parent="States"]
+script = ExtResource("3_mdlrq")
+
+[node name="AreaAwareness" type="Node" parent="."]
+script = ExtResource("13_s5atl")
+
+[node name="Downcast" type="RayCast3D" parent="AreaAwareness"]
 target_position = Vector3(0, -100, 0)
 collision_mask = 6
-script = ExtResource("11_wcqc1")
+script = ExtResource("12_ey8lv")
 
-[node name="hip_sphere" type="CSGSphere3D" parent="Downcast"]
+[node name="hip_sphere" type="CSGSphere3D" parent="AreaAwareness/Downcast"]
 visible = false
 radius = 0.12
 material = SubResource("StandardMaterial3D_mex1x")
 
-[node name="target_sphere" type="CSGSphere3D" parent="Downcast"]
+[node name="target_sphere" type="CSGSphere3D" parent="AreaAwareness/Downcast"]
 visible = false
 radius = 0.09
 material = SubResource("StandardMaterial3D_ep5i7")

@@ -6,6 +6,7 @@ const VERTICAL_SPEED_ADDED = 3.5
 
 # 1.33 is the total anim time for jump start
 # 0.11 is the time when the character's feet should lift from the ground
+# these numbers are taken from the jumping animation itself
 const TRANSITION_TIMING = 0.33
 const JUMP_TIMING = 0.11
 

@@ -15,7 +15,8 @@ class_name PlayerModel
 
 var target_direction : Vector3
 
-@onready var bullet_scene = preload("res://scenes/Player/bullet_new.tscn") as PackedScene
+@onready var bullet_scene = preload("res://scenes/Player/Weapon/bullet.tscn") as PackedScene
+
 
 var current_move : Move
 
@@ -60,6 +61,12 @@ func switch_to(state : String):
 	current_move.on_enter_state()
 	current_move.mark_enter_state()
 	animator.play(current_move.animation)
+
+
+
+
+
+# bullet related stuff, will eventually be migrated into it's own node which I will call "Gun"
 
 func spawn_bullet():
 	var spawn_loc = bullet_spawner.global_position

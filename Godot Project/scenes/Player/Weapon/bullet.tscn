@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bg7rl84y6o0p7"]
 
-[ext_resource type="Script" uid="uid://chx2r8p3rfb8s" path="res://scenes/Player/bullet_new.gd" id="1_xo8s8"]
+[ext_resource type="Script" uid="uid://chx2r8p3rfb8s" path="res://scenes/Player/Weapon/bullet.gd" id="1_xo8s8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xo8s8"]
 friction = 0.0

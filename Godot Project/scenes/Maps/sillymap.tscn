@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dtue8jmraq818"]
+[gd_scene load_steps=22 format=3 uid="uid://dtue8jmraq818"]
 
 [ext_resource type="Texture2D" uid="uid://7vnek183mcn4" path="res://assets/Textures/Orange/texture_09.png" id="1_bpaah"]
 [ext_resource type="Texture2D" uid="uid://bfp5qo5cve0jb" path="res://assets/Textures/Purple/texture_09.png" id="2_sx0ag"]
@@ -8,29 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://vy4dwvrkxq03" path="res://scenes/Player/player_new.tscn" id="5_sx0ag"]
 [ext_resource type="PackedScene" uid="uid://d2v5wrd14ls01" path="res://scenes/Misc/enemy_spawner.tscn" id="7_ku8gn"]
 [ext_resource type="PackedScene" uid="uid://d0mue2qakhes6" path="res://scenes/Misc/dummy.tscn" id="8_jv6jr"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv6jr"]
-sky_top_color = Color(0.11463901, 0.1880464, 0.36286744, 1)
-sky_horizon_color = Color(0.8427719, 0.6077575, 0.5093234, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-sun_angle_max = 4.16
-sun_curve = 0.28978074
-
-[sub_resource type="Sky" id="Sky_wiw01"]
-sky_material = SubResource("ProceduralSkyMaterial_jv6jr")
-
-[sub_resource type="Environment" id="Environment_1q37i"]
-background_mode = 2
-sky = SubResource("Sky_wiw01")
-tonemap_mode = 2
-sdfgi_enabled = true
-glow_enabled = true
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.51705635, 0.5153714, 0.5692761, 1)
-fog_density = 1.0
-fog_aerial_perspective = 1.0
-fog_depth_curve = 0.7845842
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsxp4"]
 albedo_texture = ExtResource("1_bpaah")
@@ -78,9 +55,6 @@ uv1_triplanar = true
 uv1_world_triplanar = true
 
 [node name="sillymap" type="Node3D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1q37i")
 
 [node name="LevelGeo" type="Node" parent="."]
 
@@ -246,18 +220,15 @@ polygon = PackedVector2Array(-14, 0, 0, 2, 2, 2, 2, 0)
 depth = 2.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.86602545, -0.24999999, 0.43301266, 0, 0.8660254, 0.5, -0.49999997, -0.43301272, 0.75, 0, 10, 0)
-light_energy = 0.14
-light_indirect_energy = 0.25
+transform = Transform3D(0.6908005, 0.708771, 0.14296329, -0.19411424, -0.008668897, 0.9809407, 0.6965015, -0.7053853, 0.13159405, 0, 10, 0)
 shadow_enabled = true
+sky_mode = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.19647527, 42.624348, -5.1370125)
 fov = 35.0
 
 [node name="PlayerNEW" parent="." instance=ExtResource("5_sx0ag")]
-use_debug_cam = false
-use_debug_meshes = false
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_ku8gn")]
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://vy4dwvrkxq03"]
 
-[ext_resource type="Script" uid="uid://dmoba5ho73j56" path="res://scenes/Player/state machine/PlayerNEW.gd" id="1_pt5pi"]
-[ext_resource type="PackedScene" uid="uid://cb4ep7gxg6dgi" path="res://scenes/Player/player_visuals.tscn" id="2_jjwkl"]
+[ext_resource type="Script" uid="uid://dmoba5ho73j56" path="res://scenes/Player/PlayerNEW.gd" id="1_pt5pi"]
+[ext_resource type="PackedScene" uid="uid://cb4ep7gxg6dgi" path="res://scenes/Player/Model/player_visuals.tscn" id="2_jjwkl"]
 [ext_resource type="PackedScene" uid="uid://ca16026hm7cpp" path="res://scenes/Player/local camera/local_camera.tscn" id="2_vmnwv"]
 [ext_resource type="Script" uid="uid://1e3ata53ev5h" path="res://scenes/Player/state machine/Input.gd" id="3_4hjk8"]
-[ext_resource type="Script" uid="uid://bsmror4c0x0rh" path="res://scenes/Player/player_visuals.gd" id="3_ipcd5"]
-[ext_resource type="PackedScene" uid="uid://dqxyogjtkoq03" path="res://scenes/Player/player_model.tscn" id="5_4hjk8"]
+[ext_resource type="Script" uid="uid://bsmror4c0x0rh" path="res://scenes/Player/Model/PlayerVisuals.gd" id="3_ipcd5"]
+[ext_resource type="PackedScene" uid="uid://dqxyogjtkoq03" path="res://scenes/Player/Model/player_model.tscn" id="5_4hjk8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4hjk8"]
 radius = 0.55

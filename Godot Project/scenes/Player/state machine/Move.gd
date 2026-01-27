@@ -1,5 +1,5 @@
 extends Node
-class_name Move
+class_name MoveOld
 
 # all-move flags and variables here
 var player : CharacterBody3D
