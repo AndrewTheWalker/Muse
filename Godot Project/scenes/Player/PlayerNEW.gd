@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var model = $Model as PlayerModel
 @onready var visuals = $Visuals as PlayerVisuals
 
+
 @onready var local_camera: CameraModel = %LocalCamera
 @onready var camera: Camera3D = %LocalCamera/PlayerCamera
 
@@ -18,6 +19,8 @@ func _ready() -> void:
 		print("debug camera active")
 	if use_debug_meshes == false:
 		get_all_children_recursive(self)
+	visuals.accept_model(model)
+	print(model)
 	visuals.accept_skeleton(model.skeleton)
 
 func _physics_process(delta):

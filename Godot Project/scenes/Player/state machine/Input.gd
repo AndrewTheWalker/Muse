@@ -19,9 +19,8 @@ func gather_input() -> InputPackage:
 		else:
 			new_input.actions.append("jump")
 		
-	'''UNCOMMENT WHEN READY'''
-	# if Input.is_action_just_pressed("DodgeSprint"):
-		# new_input.actions.append("DodgeSprint")
+	if Input.is_action_just_pressed("Roll"):
+		new_input.actions.append("roll")
 	
 	'''UNCOMMENT WHEN READY'''
 	# if Input.is_action_just_pressed("Shoot"):

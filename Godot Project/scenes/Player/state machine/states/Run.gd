@@ -8,7 +8,6 @@ Why not make separate states? Because the walk/run behaviour and transition logi
 const WALK_SPEED = 2.5
 const RUN_SPEED = 4.5
 const TURN_SPEED = 4.0
-const ANGULAR_SPEED = 25.0
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -23,16 +22,13 @@ func on_enter_state():
 func on_exit_state():
 	pass
 
-# the SM's check relevance function expects to receive the "okay" string before proceeding
-func check_relevance(input : InputPackage):
-	if !player.is_on_floor():
-		return "midair"
+
+func default_lifecycle(input : InputPackage):
+	if not player.is_on_floor():
+		return "midair" 
 	
-	input.actions.sort_custom(moves_priority_sort)
-	if input.actions[0] == "run":
-		return "okay"
-	return input.actions[0]
-	
+	return best_input_that_can_be_paid(input)
+
 
 func update(input : InputPackage, delta : float):
 
@@ -49,8 +45,8 @@ func rotate_velocity(input : InputPackage, delta : float) -> Vector3:
 	var face_direction = -(player.visuals.basis.z)
 	face_direction.y = 0
 	var angle = face_direction.signed_angle_to(input_direction, Vector3.UP)
-	if abs(angle) >= ANGULAR_SPEED * delta:
-		rotated_velocity = face_direction.rotated(Vector3.UP, sign(angle) * ANGULAR_SPEED * delta) * TURN_SPEED
+	if abs(angle) >= tracking_angular_speed * delta:
+		rotated_velocity = face_direction.rotated(Vector3.UP, sign(angle) * tracking_angular_speed * delta) * TURN_SPEED
 	else:
 		rotated_velocity = face_direction.rotated(Vector3.UP, angle) * RUN_SPEED
 		

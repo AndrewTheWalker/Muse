@@ -1,12 +1,15 @@
 extends Node
 class_name Move
 
-var humanoid : CharacterBody3D
+var player : CharacterBody3D
+var skeleton : Skeleton3D
 var animator : AnimationPlayer
 var resources : PlayerResources
 var combat : Combat
 var moves_data_repo : MovesDataRepository
 var container : PlayerStates
+var area_awareness : AreaAwareness
+
 
 
 @export var animation : String
@@ -15,11 +18,9 @@ var container : PlayerStates
 @export var backend_animation : String
 @export var tracking_angular_speed : float = 10
 
-# I can tolerate up to two _costs, 
-# the moment I need a third one, I'll create a small ResourceCost class to pay them.
 @export var stamina_cost : float = 0
 
-#@onready var combos : Array[Combo] 
+@onready var combos : Array[Combo] 
 
 var enter_state_time : float
 
@@ -32,8 +33,8 @@ var forced_move : String = "nonexistent forced move, drop error please"
 var DURATION : float
 
 func check_relevance(input : InputPackage) -> String:
-	#if accepts_queueing():
-		#check_combos(input)
+	if accepts_queueing():
+		check_combos(input)
 	
 	if has_queued_move and transitions_to_queued():
 		try_force_move(queued_move)
@@ -46,15 +47,11 @@ func check_relevance(input : InputPackage) -> String:
 	return default_lifecycle(input)
 
 
-# so I don't plan to implement combos, but it sorta looks like this is where input queueing happens, so
-# I'm not 100% sure I don't need it? Honestly a lot of this can probably be pared down
-# but I just need to understand it all first. 
-
-#func check_combos(input : InputPackage):
-	#for combo : Combo in combos:
-		#if combo.is_triggered(input) and resources.can_be_paid(container.moves[combo.triggered_move]):
-			#has_queued_move = true
-			#queued_move = combo.triggered_move
+func check_combos(input : InputPackage):
+	for combo : Combo in combos:
+		if combo.is_triggered(input) and resources.can_be_paid(container.moves[combo.triggered_move]):
+			has_queued_move = true
+			queued_move = combo.triggered_move
 
 
 func best_input_that_can_be_paid(input : InputPackage) -> String:
@@ -78,10 +75,10 @@ func update(_input : InputPackage, _delta : float):
 	pass
 
 func process_input_vector(input : InputPackage, delta : float):
-	var input_direction = (humanoid.camera_mount.basis * Vector3(-input.input_direction.x, 0, -input.input_direction.y)).normalized()
-	var face_direction = humanoid.basis.z
+	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
+	var face_direction = -(player.visuals.basis.z)
 	var angle = face_direction.signed_angle_to(input_direction, Vector3.UP)
-	humanoid.rotate_y(clamp(angle, -tracking_angular_speed * delta, tracking_angular_speed * delta))
+	player.rotate_y(clamp(angle, -tracking_angular_speed * delta, tracking_angular_speed * delta))
 
 func update_resources(delta : float):
 	resources.update(delta)
@@ -128,26 +125,27 @@ func is_vulnerable() -> bool:
 func is_interruptable() -> bool:
 	return moves_data_repo.get_interruptable(backend_animation, get_progress())
 
-func is_parryable() -> bool:
-	return moves_data_repo.get_parryable(backend_animation, get_progress())
+#func is_parryable() -> bool:
+	#return moves_data_repo.get_parryable(backend_animation, get_progress())
 
 func get_root_position_delta(delta_time : float) -> Vector3:
 	return moves_data_repo.get_root_delta_pos(backend_animation, get_progress(), delta_time)
 
-func right_weapon_hurts() -> bool:
-	return moves_data_repo.get_right_weapon_hurts(backend_animation, get_progress())
+#func right_weapon_hurts() -> bool:
+	#return moves_data_repo.get_right_weapon_hurts(backend_animation, get_progress())
 
 # "default-default", works for animations that just linger
+
 func default_lifecycle(input : InputPackage):
 	if works_longer_than(DURATION):
 		return best_input_that_can_be_paid(input)
 	return "okay"
 
 
-func on_enter_state():
+func _on_enter_state():
 	pass
 
-func on_exit_state():
+func _on_exit_state():
 	pass
 
 func assign_combos():
@@ -157,7 +155,8 @@ func assign_combos():
 			child.move = self
 
 
-func form_hit_data(_weapon : Weapon) -> HitData:
+# Gabs script calls for weapons, but I call for Bullets. Any instance of "Weapon" is replaced with "Bullet" for me. 
+func form_hit_data(_bullet : Bullet) -> HitData:
 	print("someone tries to get hit by default Move")
 	return HitData.blank()
 
@@ -170,8 +169,8 @@ func react_on_hit(hit : HitData):
 	hit.queue_free()
 
 
-#func react_on_parry(_hit : HitData):
-	#try_force_move("parried")
+func react_on_parry(_hit : HitData):
+	try_force_move("parried")
 
 
 func try_force_move(new_forced_move : String):

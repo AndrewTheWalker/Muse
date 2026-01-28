@@ -1,35 +1,34 @@
 extends Move
-class_name Jump
 
+@export var SPEED = 3.0
+@export var VERTICAL_SPEED_ADDED : float = 2.5
 
-const VERTICAL_SPEED_ADDED = 3.5
-
-# 1.33 is the total anim time for jump start
-# 0.11 is the time when the character's feet should lift from the ground
-# these numbers are taken from the jumping animation itself
-const TRANSITION_TIMING = 0.33
-const JUMP_TIMING = 0.11
+const TRANSITION_TIMING = 0.44  
+const JUMP_TIMING = 0.1
 
 var jumped : bool = false
 
-func _ready():
-	animation = "Jump_Start"
 
-# check if this state's existence exceeds the transition timing, then return midair
-func check_relevance(input : InputPackage):
+func default_lifecycle(_input : InputPackage):
 	if works_longer_than(TRANSITION_TIMING):
 		jumped = false
 		return "midair"
-	else:
+	else: 
 		return "okay"
 
-# after a very slight delay to sync with our animation, do the jump function
-func update(input, delta):
-	if works_longer_than(JUMP_TIMING):
-		if not jumped:
-			player.velocity.y += VERTICAL_SPEED_ADDED
-			jumped = true
+
+func update(_input : InputPackage, _delta ):
+	process_jump()
 	player.move_and_slide()
 
+
+func process_jump():
+	if works_longer_than(JUMP_TIMING):
+		if not jumped:
+			player.velocity = player.basis.z * SPEED 
+			player.velocity.y += VERTICAL_SPEED_ADDED
+			jumped = true
+
+
 func on_enter_state():
-	print("entered regular jump")
+	player.velocity = player.velocity.normalized() * SPEED 

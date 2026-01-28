@@ -1,18 +1,21 @@
 extends Move
-class_name Roll
+
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+var endpoint : Vector3
 
 func _ready():
 	animation = "Roll"
 
-func check_relevance(input : InputPackage):
-	pass
 
 func update(input : InputPackage, delta : float):
-	pass
+	move_player(delta)
 
 func on_enter_state():
-	pass
-
+	var input = area_awareness.last_input_package
+	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
+	if input_direction:
+		player.look_at(player.global_position + input_direction, Vector3.UP, true)
 func on_exit_state():
 	pass
 
@@ -26,3 +29,14 @@ func move_player(delta : float):
 	if not player.is_on_floor():
 		player.velocity.y -= gravity * delta
 	player.move_and_slide()
+
+func best_input_that_can_be_paid(input : InputPackage) -> String:
+	input.actions.sort_custom(container.moves_priority_sort)
+	for action in input.actions:
+		if resources.can_be_paid(container.moves[action]):
+			return action
+			#if container.moves[action] == self:
+				#return "okay"
+			#else:
+				#return action
+	return "throwing because for some reason input.actions doesn't contain even idle"  

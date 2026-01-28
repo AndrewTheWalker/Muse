@@ -21,13 +21,13 @@ func _physics_process(delta: float) -> void:
 
 func  on_area_contact(area : Node3D):
 	print(area.name)
-	if is_eligible_attacking_weapon(area):
+	if is_eligible_attacking_bullet(area):
 		#area.hitbox_ignore_list.append(self)
 		print("registered hit. Uncomment Functionality in PlayerHitbox.gd when ready")
 		#processor.current_move.react_on_hit(area.get_hit_data())
 
 
-func is_eligible_attacking_weapon(area : Node3D) -> bool:
+func is_eligible_attacking_bullet(area : Node3D) -> bool:
 	if area is EnemyBullet: #and is_not_ignored(area) and not area.hitbox_ignore_list.has(self) and area.is_attacking:
 		return true
 	return false

@@ -1,19 +1,12 @@
 extends Move
-class_name Idle
 
 
-func _ready():
-	animation = "Idle"
-	print("entered idle")
+func default_lifecycle(input) -> String:
+	if not player.is_on_floor():
+		return "midair"
 	
-func check_relevance(input) -> String:
-	input.actions.sort_custom(moves_priority_sort)
-	return input.actions[0]
+	return best_input_that_can_be_paid(input)
+
 
 func on_enter_state():
-	
-	if player.velocity:
-		player.velocity = Vector3.ZERO
-
-func update(input : InputPackage, delta : float):
-	pass
+	player.velocity = Vector3.ZERO

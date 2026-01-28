@@ -2,6 +2,7 @@ extends Node
 class_name Combat
 
 #I am including this script for the moment because it may be useful.
+# I am really starting to think I don't need this class at all, though.
 
 @onready var model = $".." as PlayerModel
 

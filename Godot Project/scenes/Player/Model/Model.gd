@@ -1,5 +1,5 @@
 extends Node
-class_name PlayerModel
+class_name PlayerModelOld
 # this class is the state machine
 
 '''ADAPTED FROM CODE BY GAB OF THE FAIR FIGHT YOUTUBE CHANNEL'''

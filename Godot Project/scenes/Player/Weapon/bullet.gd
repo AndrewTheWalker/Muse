@@ -1,5 +1,5 @@
 extends RigidBody3D
-class_name PhysicsBullet
+class_name Bullet
 
 @onready var lifetime_timer: Timer = $LifetimeTimer
 @onready var csg_sphere_3d: CSGSphere3D = $CSGSphere3D
@@ -8,7 +8,7 @@ class_name PhysicsBullet
 @onready var fx_hit = preload("res://scenes/FX/FX_BulletHit.tscn") as PackedScene
 
 const BULLET_SPEED = 3.0
-var bullet_damage : int = 1
+@export var bullet_damage : int = 10
 
 
 func _ready():
@@ -46,3 +46,7 @@ func _on_hurtbox_body_entered(body: Node3D) -> void:
 		body.hit_request()
 		hit(loc)
 		print("requested via hurtbox")
+
+
+func get_hit_data() -> HitData:
+	return HitData.blank()
