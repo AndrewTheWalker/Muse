@@ -184,7 +184,7 @@ backend_animation = "sprintland_param"
 script = ExtResource("13_s5atl")
 
 [node name="Downcast" type="RayCast3D" parent="AreaAwareness"]
-target_position = Vector3(0, -1.163, 0)
+target_position = Vector3(0, -100, 0)
 collision_mask = 6
 debug_shape_custom_color = Color(0.27337447, 0.490281, 1, 1)
 debug_shape_thickness = 5
