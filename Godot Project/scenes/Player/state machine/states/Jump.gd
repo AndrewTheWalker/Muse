@@ -8,6 +8,9 @@ const JUMP_TIMING = 0.1
 
 var jumped : bool = false
 
+func on_enter_state():
+	player.velocity = player.velocity.normalized() * SPEED 
+
 
 func default_lifecycle(_input : InputPackage):
 	if works_longer_than(TRANSITION_TIMING):
@@ -28,7 +31,3 @@ func process_jump():
 			player.velocity = player.basis.z * SPEED 
 			player.velocity.y += VERTICAL_SPEED_ADDED
 			jumped = true
-
-
-func on_enter_state():
-	player.velocity = player.velocity.normalized() * SPEED 

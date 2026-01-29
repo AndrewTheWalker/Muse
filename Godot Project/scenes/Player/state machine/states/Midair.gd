@@ -8,6 +8,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 @export var DELTA_VECTOR_LENGTH = 6
+
 var jump_direction : Vector3
 
 var landing_height : float = 1.163
@@ -18,7 +19,7 @@ func default_lifecycle(_input : InputPackage):
 	if root_attachment.global_position.distance_to(floor_point) < landing_height:
 		var xz_velocity = player.velocity
 		xz_velocity.y = 0
-		if xz_velocity.length_squared() >= 10:
+		if xz_velocity.length_squared() >= 50:
 			return "sprintland"
 		return "land"
 	else:
@@ -42,5 +43,6 @@ func process_input_vector(input : InputPackage, delta : float):
 
 
 func on_enter_state():
+	
 	jump_direction = Vector3(player.basis.z) * clamp(player.velocity.length(), 1, 999999)
 	jump_direction.y = 0

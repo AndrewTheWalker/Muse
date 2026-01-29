@@ -20,7 +20,6 @@ func _ready() -> void:
 	if use_debug_meshes == false:
 		get_all_children_recursive(self)
 	visuals.accept_model(model)
-	print(model)
 	visuals.accept_skeleton(model.skeleton)
 
 func _physics_process(delta):

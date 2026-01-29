@@ -80,7 +80,6 @@ func _input(event: InputEvent) -> void:
 				print("not enough targets")
 		elif current_state == states["free"]:
 			if not available_targets.is_empty():
-				print(available_targets[0])
 				switch_to("locked")
 				is_target_locked = true
 				look_at = available_targets[0]
@@ -111,7 +110,6 @@ func append_target(targetable):
 # called when targetable exits the view
 func erase_target(targetable):
 	available_targets.erase(targetable)
-	print("erasing target")
 	if available_targets.size() > 1:
 		available_targets.sort_custom(sort_targets)
 
@@ -136,7 +134,6 @@ func cycle_target():
 	var new_index = (target_index+1) % available_targets.size()
 	
 	target_index = new_index
-	print(new_index)
 	look_at = available_targets[new_index]
 
 

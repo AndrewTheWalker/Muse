@@ -40,6 +40,7 @@ func get_interruptable(animation : String, timecode : float) -> bool:
 
 func get_duration(animation : String) -> float:
 	return move_database.get_animation(animation).length
+	
 
 #func get_right_weapon_hurts(animation : String, timecode : float) -> bool:
 	#return move_database.get_boolean_value(animation, "MoveDataPlayer:right_hand_weapon_hurts", timecode)

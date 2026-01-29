@@ -18,6 +18,6 @@ func accept_model(_model : PlayerModel):
 	
 func accept_skeleton(skeleton:Skeleton3D):
 	mesh.skeleton = skeleton.get_path()
-
+   
 func _process(_delta):
 	pass

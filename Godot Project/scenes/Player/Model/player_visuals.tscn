@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://cb4ep7gxg6dgi"]
+[gd_scene load_steps=6 format=4 uid="uid://cb4ep7gxg6dgi"]
 
+[ext_resource type="Script" uid="uid://bsmror4c0x0rh" path="res://scenes/Player/Model/PlayerVisuals.gd" id="1_52eil"]
 [ext_resource type="Texture2D" uid="uid://c0838x7c84p6m" path="res://assets/exported-model_0.png" id="2_ir08s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1thri"]
@@ -230,6 +231,7 @@ bind/65/bone = -1
 bind/65/pose = Transform3D(-0.99999994, 3.8956898e-07, -5.08324e-09, 2.9896968e-10, 0.013436993, 0.99990875, 3.8980278e-07, 0.99990976, -0.0134371435, -0.08899997, -0.19955039, -0.008933337)
 
 [node name="Visuals" type="Node3D"]
+script = ExtResource("1_52eil")
 
 [node name="Skinned Mesh 0" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
