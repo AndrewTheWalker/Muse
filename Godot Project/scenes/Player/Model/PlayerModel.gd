@@ -8,6 +8,7 @@ class_name PlayerModel
 @onready var animator = $Animator
 @onready var combat = $Combat as Combat
 @onready var resources = $Resources as PlayerResources
+# keep this.
 #@onready var hurtbox = $Root/Hitbox as Hurtbox
 @onready var area_awareness = $AreaAwareness as AreaAwareness
 
