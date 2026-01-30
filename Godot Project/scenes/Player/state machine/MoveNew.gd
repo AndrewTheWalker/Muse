@@ -1,6 +1,7 @@
 extends Node
 class_name Move
 
+
 var player : CharacterBody3D
 var skeleton : Skeleton3D
 var animator : Node
@@ -11,12 +12,11 @@ var container : PlayerStates
 var area_awareness : AreaAwareness
 
 
-
 @export var animation : String
 @export var move_name : String
 @export var priority : int
 @export var backend_animation : String
-@export var tracking_angular_speed : float = 10
+@export var tracking_angular_speed : float = 25
 
 @export var stamina_cost : float = 0
 

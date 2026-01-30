@@ -1,10 +1,10 @@
 extends Move
 
 @export var SPEED = 3.0
-@export var VERTICAL_SPEED_ADDED : float = 2.5
+@export var VERTICAL_SPEED_ADDED : float = 3.5
 
-const TRANSITION_TIMING = 0.44  
-const JUMP_TIMING = 0.1
+const TRANSITION_TIMING = 0.33  
+const JUMP_TIMING = 0.11
 
 var jumped : bool = false
 

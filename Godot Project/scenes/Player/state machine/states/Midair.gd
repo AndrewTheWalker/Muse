@@ -4,23 +4,23 @@ extends Move
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var downcast: RayCast3D = $"../../AreaAwareness/Downcast"
-@onready var root_attachment: BoneAttachment3D = $"../../GeneralSkeleton/Root"
+@onready var hip_attachment: BoneAttachment3D = $"../../GeneralSkeleton/Root"
 
 
 @export var DELTA_VECTOR_LENGTH = 6
 
 var jump_direction : Vector3
 
-var landing_height : float = 1.163
+var landing_height : float = 1.15
 
 
 func default_lifecycle(_input : InputPackage):
 	var floor_point = downcast.get_collision_point()
-	if root_attachment.global_position.distance_to(floor_point) < landing_height:
+	if hip_attachment.global_position.distance_to(floor_point) < landing_height:
 		var xz_velocity = player.velocity
 		xz_velocity.y = 0
-		if xz_velocity.length_squared() >= 50:
-			return "sprintland"
+		#if xz_velocity.length_squared() >= 10:
+			#return "sprintland"
 		return "land"
 	else:
 		return "okay"

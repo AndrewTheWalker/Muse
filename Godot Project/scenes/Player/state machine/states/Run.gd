@@ -6,8 +6,8 @@ Why not make separate states? Because the walk/run behaviour and transition logi
 
 
 const WALK_SPEED = 2.5
-const RUN_SPEED = 4.5
-const TURN_SPEED = 4.0
+const RUN_SPEED = 5.0
+const TURN_SPEED = 4.5
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -45,6 +45,7 @@ func rotate_velocity(input : InputPackage, delta : float) -> Vector3:
 	var face_direction = -(player.visuals.basis.z)
 	face_direction.y = 0
 	var angle = face_direction.signed_angle_to(input_direction, Vector3.UP)
+	# where is tracking angular speed defined?
 	if abs(angle) >= tracking_angular_speed * delta:
 		rotated_velocity = face_direction.rotated(Vector3.UP, sign(angle) * tracking_angular_speed * delta) * TURN_SPEED
 	else:

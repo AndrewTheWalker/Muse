@@ -874,8 +874,9 @@ bone_name = "Hips"
 bone = 1
 
 [node name="Root" type="BoneAttachment3D" parent="GeneralSkeleton"]
-bone_name = "Root"
-bone_idx = 0
+transform = Transform3D(0.99533975, -0.09643004, 9.313226e-08, 0.08896979, 0.91833556, -0.3856737, 0.037190445, 0.38387638, 0.92263526, 0.018844508, 0.86739457, -0.07427119)
+bone_name = "Hips"
+bone_idx = 1
 
 [node name="SkeletonAnimator" type="AnimationPlayer" parent="."]
 libraries = {

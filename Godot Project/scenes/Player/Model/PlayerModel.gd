@@ -43,7 +43,6 @@ func update(input : InputPackage, reticle: Vector3, delta : float):
 	# relevance is what really decides what move we should be using. It basically asks "given the current input and context, does our state need to change, or is there a more *relevant* state that it *should* be?"
 	# clicking through these functions will take you through the steps.
 	var relevance = current_move.check_relevance(input)
-	#print("PlayerModel Relevance: ", relevance)
 	
 	# after going on our long tiresome journey, and we find that everything checks out and that we are already in the state we should be in, then we do nothing.
 	# however, if relevance DOES NOT equal "okay" then we call the switch_to function, and off we go.

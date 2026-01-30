@@ -1,16 +1,15 @@
 extends AnimationPlayer
 
 
-# so this is where the "windows" are going to be applied.
+# Each one of these variables is an animatable quality. 
+# this enables particular "windows" to be applied. Invulnerability, precise moments where queued moves may activate, etc.
+# when called to do so, the movedata script will query this one to check transition validity.
 
 @export var root_position : Vector3
 @export var transitions_to_queued : bool
 @export var accepts_queueing : bool
-#@export var is_parryable : bool
 @export var is_vulnerable : bool
 @export var is_interruptable : bool
-#@export var is_grabable : bool
-#@export var right_hand_weapon_hurts : bool
 @export var tracks_input_vector : bool
 
 
