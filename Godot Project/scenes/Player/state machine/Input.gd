@@ -22,13 +22,12 @@ func gather_input() -> InputPackage:
 	if Input.is_action_just_pressed("Roll"):
 		new_input.actions.append("roll")
 	
-	'''UNCOMMENT WHEN READY'''
-	# if Input.is_action_just_pressed("Shoot"):
-		# new_input.actions.append("shoot")
-		
-	'''UNCOMMENT WHEN READY'''
-	# if Input.is_action_just_pressed("Interact"):
-		# new_input.actions.append("interact")
+	
+	
+	
+	
+	
+	
 		
 	new_input.l_input_direction = Input.get_vector("Lstick_left","Lstick_right","Lstick_down","Lstick_up")
 	if new_input.l_input_direction != Vector2.ZERO:

@@ -32,6 +32,8 @@ var queued_move : String = "nonexistent queued move, drop error please"
 var has_forced_move : bool = false
 var forced_move : String = "nonexistent forced move, drop error please"
 
+
+#where is DURATION set?
 var DURATION : float
 
 func check_relevance(input : InputPackage) -> String:

@@ -14,4 +14,6 @@ func default_lifecycle(input : InputPackage):
 
 func update(_input : InputPackage, delta ):
 	player.velocity.y -= gravity * delta
+	player.velocity.x *= 0.8
+	player.velocity.z *= 0.8
 	player.move_and_slide()

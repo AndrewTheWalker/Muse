@@ -32,7 +32,6 @@ func _ready():
 	#switch_to("idle")
 
 
-
 func update(input : InputPackage, reticle: Vector3, delta : float):
 	# calling the combat class to contextualize the input has relevance for combos and the like. I think we don't need it.
 	# input = combat.contextualize(input)
@@ -48,27 +47,29 @@ func update(input : InputPackage, reticle: Vector3, delta : float):
 	# however, if relevance DOES NOT equal "okay" then we call the switch_to function, and off we go.
 	if relevance != "okay":
 		switch_to(relevance)
+	
+	# tell the skeleton animator to do the appropriate animation
 	animator.update_body_animations()
-
+	
+	# if the action has a resource cost (health,stamina,etc) then process that cost
 	current_move.update_resources(delta)
 	
+	# now that everything is established: call the current move's update functions
 	current_move._update(input, delta)
+	
+
 
 	var new_reticle_point = reticle
-	
-	# temporary little measure to make the run speed look faster
-	# will be replaced by a proper anim eventually
-	#if current_move is Sprint:
-		#animator.speed_scale = 1.5
-	#else:
-		#animator.speed_scale = 1.0
 
 
 func switch_to(state : String):
-	print("switch_to called by: ", current_move.name, ". Requested transition to: ", state)
+	print(current_move.name, "-->", state)
 	current_move.base_on_exit_state()
 	current_move = moves_container.moves[state]
 	current_move.base_on_enter_state()
+
+
+
 
 
 # bullet/reticle_stuff

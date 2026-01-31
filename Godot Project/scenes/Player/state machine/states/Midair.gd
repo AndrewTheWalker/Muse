@@ -7,8 +7,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var hip_attachment: BoneAttachment3D = $"../../GeneralSkeleton/Root"
 
 
-@export var DELTA_VECTOR_LENGTH = 6
-
+@export var DELTA_VECTOR_LENGTH = 0.01
 var jump_direction : Vector3
 
 var landing_height : float = 1.15
@@ -26,23 +25,24 @@ func default_lifecycle(_input : InputPackage):
 		return "okay"
 
 
-func update(_input : InputPackage, delta ):
-	player.velocity.y -= gravity * delta
+func update(input : InputPackage, delta):
+	process_input_vector(input,delta)
+	player.velocity.y -= (gravity * 1.2) * delta
 	player.move_and_slide()
 
 
 func process_input_vector(input : InputPackage, delta : float):
 	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
+	input_direction.y = 0
 	var input_delta_vector = input_direction * DELTA_VECTOR_LENGTH
 	
 	jump_direction = (jump_direction + input_delta_vector).limit_length(player.velocity.length())
 	
+	
 	var new_velocity = (player.velocity + input_delta_vector).limit_length(player.velocity.length())
 	player.velocity = new_velocity
-
-
+	player.visuals.look_at(player.global_position + Vector3(new_velocity.x,0,new_velocity.z))
 
 func on_enter_state():
-	
-	jump_direction = Vector3(player.basis.z) * clamp(player.velocity.length(), 1, 999999)
+	jump_direction = -(player.basis.z) * clamp(player.velocity.length(), 1, 999999)
 	jump_direction.y = 0
