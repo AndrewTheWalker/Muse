@@ -22,7 +22,6 @@ func on_enter_state():
 	var input = area_awareness.last_input_package
 	var input_direction = -(player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
 	input_direction.y = 0
-	print(input_direction)
 	if input_direction:
 		player.visuals.look_at(player.global_position - input_direction, Vector3.UP, false)
 
@@ -39,11 +38,6 @@ func move_player(delta : float):
 	delta_pos.y = 0
 	
 
-	
-	var face_direction = -(player.visuals.basis.z)
-	face_direction.y = 0.0
-
-	
 	var rotated_delta = -player.visuals.get_quaternion() * delta_pos / delta
 	player.velocity.x = rotated_delta.x
 	player.velocity.z = rotated_delta.z

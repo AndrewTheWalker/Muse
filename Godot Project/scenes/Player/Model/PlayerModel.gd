@@ -58,7 +58,6 @@ func update(input : InputPackage, reticle: Vector3, delta : float):
 	current_move._update(input, delta)
 	
 
-
 	var new_reticle_point = reticle
 
 

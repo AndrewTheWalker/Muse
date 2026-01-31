@@ -21,7 +21,6 @@ func default_lifecycle(input : InputPackage):
 
 func update(input : InputPackage, delta : float):
 	player.velocity = rotate_velocity(input, delta)
-	player.visuals.look_at(player.global_position + player.velocity)
 	player.move_and_slide()
 
 
@@ -50,5 +49,7 @@ func rotate_velocity(input : InputPackage, delta : float) -> Vector3:
 		rotated_velocity = face_direction.rotated(Vector3.UP, sign(angle) * tracking_angular_speed * delta) * TURN_SPEED
 	else:
 		rotated_velocity = face_direction.rotated(Vector3.UP, angle) * RUN_SPEED
+	
+	player.visuals.look_at(player.global_position + player.velocity)
 		
 	return rotated_velocity

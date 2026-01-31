@@ -41,7 +41,10 @@ func process_input_vector(input : InputPackage, delta : float):
 	
 	var new_velocity = (player.velocity + input_delta_vector).limit_length(player.velocity.length())
 	player.velocity = new_velocity
-	player.visuals.look_at(player.global_position + Vector3(new_velocity.x,0,new_velocity.z))
+	if new_velocity != Vector3.ZERO:
+		player.visuals.look_at(player.global_position + Vector3(new_velocity.x,0,new_velocity.z))
+	else:
+		player.visuals.look_at(Vector3(player.global_position.x,0,player.global_position.z+1))
 
 func on_enter_state():
 	jump_direction = -(player.basis.z) * clamp(player.velocity.length(), 1, 999999)
