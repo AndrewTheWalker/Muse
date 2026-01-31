@@ -58,8 +58,9 @@ func update(input : InputPackage, reticle: Vector3, delta : float):
 	current_move._update(input, delta)
 	
 
-	var new_reticle_point = reticle
 
+	var new_reticle_point = reticle
+	update_bullet_target(new_reticle_point)
 
 func switch_to(state : String):
 	print(current_move.name, "-->", state)

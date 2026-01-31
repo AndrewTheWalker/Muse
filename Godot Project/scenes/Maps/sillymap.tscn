@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://dtue8jmraq818"]
+[gd_scene load_steps=27 format=3 uid="uid://dtue8jmraq818"]
 
 [ext_resource type="Texture2D" uid="uid://7vnek183mcn4" path="res://assets/Textures/Orange/texture_09.png" id="1_bpaah"]
+[ext_resource type="Texture2D" uid="uid://00iclvk4mpl6" path="res://assets/Textures/Dark/texture_09.png" id="2_1q37i"]
 [ext_resource type="Texture2D" uid="uid://bfp5qo5cve0jb" path="res://assets/Textures/Purple/texture_09.png" id="2_sx0ag"]
 [ext_resource type="Texture2D" uid="uid://bmsx8puwddira" path="res://assets/Textures/Green/texture_09.png" id="3_bl1d1"]
 [ext_resource type="Texture2D" uid="uid://dds3omuhde534" path="res://assets/Textures/Red/texture_08.png" id="3_ku8gn"]
@@ -9,8 +10,26 @@
 [ext_resource type="PackedScene" uid="uid://d2v5wrd14ls01" path="res://scenes/Misc/enemy_spawner.tscn" id="7_ku8gn"]
 [ext_resource type="PackedScene" uid="uid://d0mue2qakhes6" path="res://scenes/Misc/dummy.tscn" id="8_jv6jr"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1q37i"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_wsxp4"]
+sky_material = SubResource("ProceduralSkyMaterial_1q37i")
+
+[sub_resource type="Environment" id="Environment_42b2w"]
+background_mode = 2
+sky = SubResource("Sky_wsxp4")
+ambient_light_source = 3
+tonemap_mode = 2
+glow_enabled = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsxp4"]
 albedo_texture = ExtResource("1_bpaah")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eni3c"]
+albedo_texture = ExtResource("2_1q37i")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42b2w"]
@@ -56,6 +75,14 @@ uv1_world_triplanar = true
 
 [node name="sillymap" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.31466022, 0.38857302, 0, 0.7771459, 0.6293204, -0.50000006, 0.5450074, -0.6730281, 0, 0, 0)
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_42b2w")
+
 [node name="LevelGeo" type="Node" parent="."]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeo"]
@@ -64,6 +91,13 @@ material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 4
 size = Vector3(2, 2, 2)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="LevelGeo"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -40)
+material_override = SubResource("StandardMaterial3D_eni3c")
+use_collision = true
+collision_layer = 4
+size = Vector3(30, 0.1, 30)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeo"]
 transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 19.249998, 1.25, 16.375)
@@ -218,11 +252,6 @@ use_collision = true
 collision_layer = 6
 polygon = PackedVector2Array(-14, 0, 0, 2, 2, 2, 2, 0)
 depth = 2.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.6908005, 0.708771, 0.14296329, -0.19411424, -0.008668897, 0.9809407, 0.6965015, -0.7053853, 0.13159405, 0, 10, 0)
-shadow_enabled = true
-sky_mode = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.19647527, 42.624348, -5.1370125)
