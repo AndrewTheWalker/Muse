@@ -1,0 +1,23 @@
+[gd_resource type="VisualShader" format=3 uid="uid://dt8rije3flot1"]
+
+[ext_resource type="Texture2D" uid="uid://defroaante2h4" path="res://assets/Kor/Kor_Textures/T_Kor_Alpha.png" id="1_3hcs0"]
+[ext_resource type="Texture2D" uid="uid://cx7pdcvb25km3" path="res://assets/Kor/Kor_Textures/T_Kor_BaseColour.png" id="2_4d4kk"]
+[ext_resource type="Texture2D" uid="uid://b7lfyrol47g8c" path="res://assets/Kor/Kor_Textures/T_Kor_Emissive.png" id="3_llm0q"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_vfl4t"]
+texture = ExtResource("1_3hcs0")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_hg4au"]
+texture = ExtResource("2_4d4kk")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8nfia"]
+texture = ExtResource("3_llm0q")
+
+[resource]
+nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_vfl4t")
+nodes/vertex/2/position = Vector2(-300, 360)
+nodes/vertex/3/node = SubResource("VisualShaderNodeTexture_hg4au")
+nodes/vertex/3/position = Vector2(-440, -20)
+nodes/vertex/4/node = SubResource("VisualShaderNodeTexture_8nfia")
+nodes/vertex/4/position = Vector2(-680, 620)
+nodes/vertex/connections = PackedInt32Array(2, 0, 0, 7, 3, 0, 0, 6)

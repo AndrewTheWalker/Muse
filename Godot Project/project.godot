@@ -38,6 +38,10 @@ window/size/viewport_height=720
 
 script/templates_search_path="res://scripts/Templates"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 targetable=""
