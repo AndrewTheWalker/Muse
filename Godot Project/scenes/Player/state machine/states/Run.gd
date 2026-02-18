@@ -4,7 +4,9 @@ class_name Run
 
 
 const WALK_SPEED = 2.5
-const RUN_SPEED = 5.0
+const RUN_SPEED = 4.0
+
+
 const TURN_SPEED = 4.5
 
 
