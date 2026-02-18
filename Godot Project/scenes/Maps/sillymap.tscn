@@ -1,12 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://dtue8jmraq818"]
+[gd_scene format=3 uid="uid://dtue8jmraq818"]
 
-[ext_resource type="Texture2D" uid="uid://7vnek183mcn4" path="res://assets/Textures/Orange/texture_09.png" id="1_bpaah"]
-[ext_resource type="Texture2D" uid="uid://00iclvk4mpl6" path="res://assets/Textures/Dark/texture_09.png" id="2_1q37i"]
-[ext_resource type="Texture2D" uid="uid://bfp5qo5cve0jb" path="res://assets/Textures/Purple/texture_09.png" id="2_sx0ag"]
-[ext_resource type="Texture2D" uid="uid://bmsx8puwddira" path="res://assets/Textures/Green/texture_09.png" id="3_bl1d1"]
-[ext_resource type="Texture2D" uid="uid://dds3omuhde534" path="res://assets/Textures/Red/texture_08.png" id="3_ku8gn"]
-[ext_resource type="Texture2D" uid="uid://di5ugjwp0dqd2" path="res://assets/Textures/Dark/texture_04.png" id="4_ku8gn"]
-[ext_resource type="PackedScene" uid="uid://vy4dwvrkxq03" path="res://scenes/Player/player_new.tscn" id="5_sx0ag"]
+[ext_resource type="Texture2D" uid="uid://7vnek183mcn4" path="res://assets/Grid Textures/Orange/texture_09.png" id="1_bpaah"]
+[ext_resource type="Texture2D" uid="uid://00iclvk4mpl6" path="res://assets/Grid Textures/Dark/texture_09.png" id="2_1q37i"]
+[ext_resource type="Texture2D" uid="uid://bfp5qo5cve0jb" path="res://assets/Grid Textures/Purple/texture_09.png" id="2_sx0ag"]
+[ext_resource type="Texture2D" uid="uid://bmsx8puwddira" path="res://assets/Grid Textures/Green/texture_09.png" id="3_bl1d1"]
+[ext_resource type="Texture2D" uid="uid://dds3omuhde534" path="res://assets/Grid Textures/Red/texture_08.png" id="3_ku8gn"]
+[ext_resource type="Texture2D" uid="uid://di5ugjwp0dqd2" path="res://assets/Grid Textures/Dark/texture_04.png" id="4_ku8gn"]
+[ext_resource type="PackedScene" uid="uid://vy4dwvrkxq03" path="res://scenes/Player/Deprecated/player_new.tscn" id="5_sx0ag"]
 [ext_resource type="PackedScene" uid="uid://d2v5wrd14ls01" path="res://scenes/Misc/enemy_spawner.tscn" id="7_ku8gn"]
 [ext_resource type="PackedScene" uid="uid://d0mue2qakhes6" path="res://scenes/Misc/dummy.tscn" id="8_jv6jr"]
 
@@ -73,171 +73,171 @@ albedo_texture = ExtResource("4_ku8gn")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[node name="sillymap" type="Node3D"]
+[node name="sillymap" type="Node3D" unique_id=1988026609]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=563510077]
 transform = Transform3D(-0.8660254, -0.31466022, 0.38857302, 0, 0.7771459, 0.6293204, -0.50000006, 0.5450074, -0.6730281, 0, 0, 0)
 light_energy = 0.1
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=346413033]
 environment = SubResource("Environment_42b2w")
 
-[node name="LevelGeo" type="Node" parent="."]
+[node name="LevelGeo" type="Node" parent="." unique_id=1153605809]
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeo" unique_id=1611959534]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -25.669466, 1, 6.360913)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 4
 size = Vector3(2, 2, 2)
 
-[node name="CSGBox3D19" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D19" type="CSGBox3D" parent="LevelGeo" unique_id=966712587]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -40)
 material_override = SubResource("StandardMaterial3D_eni3c")
 use_collision = true
 collision_layer = 4
 size = Vector3(30, 0.1, 30)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeo" unique_id=101269297]
 transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 19.249998, 1.25, 16.375)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(0.25, 2.5, 32)
 
-[node name="CSGBox3D16" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D16" type="CSGBox3D" parent="LevelGeo" unique_id=1633261200]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 35.375, 1.25, 24.125)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(0.25, 2.5, 15.75)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelGeo" unique_id=27236682]
 transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 20.749998, 1.25, 13.625002)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(0.25, 2.5, 35)
 
-[node name="CSGBox3D17" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D17" type="CSGBox3D" parent="LevelGeo" unique_id=1956983854]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 38.25, 1.25, 22.75)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(0.25, 2.5, 18.25)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelGeo" unique_id=2005367893]
 transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 20.875, 2.625, 15)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(3, 0.25, 35.25)
 
-[node name="CSGBox3D18" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D18" type="CSGBox3D" parent="LevelGeo" unique_id=2136347751]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 36.875, 2.625, 24.25)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(3, 0.25, 15.75)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeo" unique_id=749724780]
 transform = Transform3D(0.258819, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.258819, -20.761353, 0.5, 13.18198)
 material_override = SubResource("StandardMaterial3D_42b2w")
 use_collision = true
 collision_layer = 4
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="LevelGeo" unique_id=1574346617]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 19.75, -0.75, 17.5)
 material_override = SubResource("StandardMaterial3D_jv6jr")
 use_collision = true
 collision_layer = 6
 size = Vector3(2, 2, 2)
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="LevelGeo" unique_id=671423591]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 17.75, -0.5, 17.5)
 material_override = SubResource("StandardMaterial3D_1q37i")
 use_collision = true
 collision_layer = 6
 size = Vector3(2, 2, 2)
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="LevelGeo" unique_id=808701146]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 15.75, -0.25, 17.5)
 material_override = SubResource("StandardMaterial3D_5aifd")
 use_collision = true
 collision_layer = 6
 size = Vector3(2, 2, 2)
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D11" type="CSGBox3D" parent="LevelGeo" unique_id=568319117]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 13.75, 0, 17.5)
 material_override = SubResource("StandardMaterial3D_yl2sf")
 use_collision = true
 collision_layer = 6
 size = Vector3(2, 2, 2)
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D12" type="CSGBox3D" parent="LevelGeo" unique_id=1689845834]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 11.75, 0.25, 17.5)
 material_override = SubResource("StandardMaterial3D_3k58n")
 use_collision = true
 collision_layer = 6
 size = Vector3(2, 2, 2)
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D13" type="CSGBox3D" parent="LevelGeo" unique_id=306771459]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 9.75, 0.5, 17.5)
 material_override = SubResource("StandardMaterial3D_4hfxw")
 use_collision = true
 collision_layer = 6
 size = Vector3(2, 2, 2)
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D14" type="CSGBox3D" parent="LevelGeo" unique_id=866896128]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 7.75, 0.75, 17.5)
 material_override = SubResource("StandardMaterial3D_tgnfj")
 use_collision = true
 collision_layer = 6
 size = Vector3(2, 2, 2)
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D15" type="CSGBox3D" parent="LevelGeo" unique_id=1895926277]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 5.75, 1, 17.5)
 material_override = SubResource("StandardMaterial3D_jmy02")
 use_collision = true
 collision_layer = 6
 size = Vector3(2, 2, 2)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeo"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeo" unique_id=280593395]
 transform = Transform3D(-0.70710695, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710695, -13.305457, 0.5, 2.2950478)
 material_override = SubResource("StandardMaterial3D_re7vh")
 use_collision = true
 collision_layer = 4
 
-[node name="wall_east" type="CSGBox3D" parent="LevelGeo"]
+[node name="wall_east" type="CSGBox3D" parent="LevelGeo" unique_id=549331028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 128)
 material_override = SubResource("StandardMaterial3D_cquan")
 use_collision = true
 collision_layer = 2
 size = Vector3(256, 10, 1)
 
-[node name="wall_west" type="CSGBox3D" parent="LevelGeo"]
+[node name="wall_west" type="CSGBox3D" parent="LevelGeo" unique_id=456992950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -128)
 material_override = SubResource("StandardMaterial3D_cquan")
 use_collision = true
 collision_layer = 2
 size = Vector3(256, 10, 1)
 
-[node name="wall_north" type="CSGBox3D" parent="LevelGeo"]
+[node name="wall_north" type="CSGBox3D" parent="LevelGeo" unique_id=962656402]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 4.5, 0)
 material_override = SubResource("StandardMaterial3D_cquan")
 use_collision = true
 collision_layer = 2
 size = Vector3(1, 10, 256)
 
-[node name="wall_south" type="CSGBox3D" parent="LevelGeo"]
+[node name="wall_south" type="CSGBox3D" parent="LevelGeo" unique_id=1177017682]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 4.5, 0)
 material_override = SubResource("StandardMaterial3D_cquan")
 use_collision = true
 collision_layer = 2
 size = Vector3(1, 10, 256)
 
-[node name="floor" type="CSGBox3D" parent="LevelGeo"]
+[node name="floor" type="CSGBox3D" parent="LevelGeo" unique_id=1727805970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_cquan")
 use_collision = true
@@ -245,7 +245,7 @@ collision_layer = 2
 size = Vector3(256, 1, 256)
 metadata/_edit_lock_ = true
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelGeo"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelGeo" unique_id=378831766]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.75, 0, 13.5)
 material_override = SubResource("StandardMaterial3D_bl1d1")
 use_collision = true
@@ -253,13 +253,13 @@ collision_layer = 6
 polygon = PackedVector2Array(-14, 0, 0, 2, 2, 2, 2, 0)
 depth = 2.0
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=754422566]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.19647527, 42.624348, -5.1370125)
 fov = 35.0
 
-[node name="PlayerNEW" parent="." instance=ExtResource("5_sx0ag")]
+[node name="PlayerNEW" parent="." unique_id=1800681685 instance=ExtResource("5_sx0ag")]
 
-[node name="EnemySpawner" parent="." instance=ExtResource("7_ku8gn")]
+[node name="EnemySpawner" parent="." unique_id=1461550301 instance=ExtResource("7_ku8gn")]
 
-[node name="Dummy" parent="." instance=ExtResource("8_jv6jr")]
+[node name="Dummy" parent="." unique_id=433041910 instance=ExtResource("8_jv6jr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75, 0, 0)

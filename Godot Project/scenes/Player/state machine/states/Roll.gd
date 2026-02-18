@@ -2,15 +2,11 @@ extends Move
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+
 # this var exists as a way to reference where the player will end up, which may someday be useful
 # if we want to allow enemies to track it.
-
 var endpoint : Vector3
 
-
-
-func _ready():
-	animation = "Roll"
 
 
 func update(input : InputPackage, delta : float):

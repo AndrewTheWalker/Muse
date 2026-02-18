@@ -189,4 +189,4 @@ func find_reticle_point()-> Vector3:
 # this will be deprecated once the GUI is functional.
 func update_reticle(reticle_point: Vector3):
 	if not reticle_debug.global_position.is_equal_approx(reticle_point):
-		reticle_debug.global_position = lerp(reticle_debug.global_position,reticle_point,1.25)
+		reticle_debug.global_position = lerp(reticle_debug.global_position,reticle_point,1.0)

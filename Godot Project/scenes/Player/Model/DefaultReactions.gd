@@ -7,5 +7,5 @@ extends Node
 func get_default_reactions_dictionary() -> Dictionary:
 	return {
 		"death" : $Death,
-		"stagget" : $Staggered
+		"overheat" : $Overheat
 	}
