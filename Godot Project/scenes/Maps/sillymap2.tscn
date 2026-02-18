@@ -21,6 +21,8 @@ sky_material = SubResource("ProceduralSkyMaterial_1q37i")
 background_mode = 2
 sky = SubResource("Sky_wsxp4")
 ambient_light_source = 3
+ambient_light_sky_contribution = 0.1
+ambient_light_energy = 0.1
 tonemap_mode = 2
 glow_enabled = true
 
@@ -77,7 +79,7 @@ uv1_world_triplanar = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=614773683]
 transform = Transform3D(-0.8660254, -0.31466022, 0.38857302, 0, 0.7771459, 0.6293204, -0.50000006, 0.5450074, -0.6730281, 0, 0, 0)
-light_energy = 0.1
+light_energy = 0.5
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=305274025]
@@ -263,4 +265,4 @@ fov = 35.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75, 0, 0)
 
 [node name="PlayerKor" parent="." unique_id=1159028594 instance=ExtResource("9_obldh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77, 0)

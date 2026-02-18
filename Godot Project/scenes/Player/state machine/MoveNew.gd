@@ -16,7 +16,7 @@ var area_awareness : AreaAwareness
 @export var move_name : String
 @export var priority : int
 @export var backend_animation : String
-@export var tracking_angular_speed : float = 25
+@export var tracking_angular_speed : float = 45
 
 @export var stamina_cost : float = 0
 
