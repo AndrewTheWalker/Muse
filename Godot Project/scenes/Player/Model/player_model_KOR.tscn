@@ -317,11 +317,10 @@ backend_animation = "death_param"
 [node name="AreaAwareness" type="Node" parent="." unique_id=113609799]
 script = ExtResource("27_sjtmp")
 
-[node name="Downcast" type="RayCast3D" parent="AreaAwareness" unique_id=1553476142]
+[node name="Downcast" type="RayCast3D" parent="AreaAwareness" unique_id=1824927467]
 target_position = Vector3(0, -100, 0)
 collision_mask = 6
 debug_shape_custom_color = Color(0.27337447, 0.490281, 1, 1)
-debug_shape_thickness = 5
 script = ExtResource("28_40mc8")
 
 [node name="hip_sphere" type="CSGSphere3D" parent="AreaAwareness/Downcast" unique_id=1503519118]

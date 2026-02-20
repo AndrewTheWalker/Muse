@@ -42,7 +42,7 @@ func process_input_vector(input : InputPackage, delta : float):
 	var new_velocity = (player.velocity + input_delta_vector).limit_length(player.velocity.length())
 	player.velocity = new_velocity
 	new_velocity.y = 0
-	player.visuals.look_at(player.global_position + new_velocity)
+	#player.visuals.look_at(player.global_position + new_velocity)
 
 
 func on_enter_state():

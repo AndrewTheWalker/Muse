@@ -20,6 +20,7 @@ albedo_color = Color(0.31764707, 1, 0, 0.03137255)
 [node name="PlayerKor" type="CharacterBody3D" unique_id=1159028594]
 collision_mask = 7
 script = ExtResource("1_yrlkl")
+use_debug_meshes = true
 
 [node name="Visuals" parent="." unique_id=2638631 instance=ExtResource("2_yrlkl")]
 

@@ -13,3 +13,7 @@ func get_floor_distance() -> float:
 	if downcast.is_colliding():
 		return downcast.global_position.distance_to(downcast.get_collision_point())
 	return 9999
+
+func get_look_at_point() -> Vector3:
+	var point : Vector3
+	return point

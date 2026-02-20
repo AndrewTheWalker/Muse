@@ -83,6 +83,7 @@ func _input(event: InputEvent) -> void:
 				switch_to("locked")
 				is_target_locked = true
 				look_at = available_targets[0]
+				SignalBus.TARGET_LOCKED.emit(look_at)
 			else:
 				print("no targets")
 
@@ -182,7 +183,6 @@ func find_reticle_point()-> Vector3:
 	
 	# return the reticle_point. this has no use now, but it will once I implement the GUI
 	return reticle_point
-
 
 # simple func which lerps (or more accurately extrapolates) the reticle visuals to the new point
 # if these positions are unequal
