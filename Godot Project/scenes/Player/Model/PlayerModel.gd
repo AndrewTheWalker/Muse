@@ -19,6 +19,7 @@ class_name PlayerModel
 @onready var bullet_spawner: Node3D = $"../Visuals/BulletSpawn"
 @onready var bullet_scene = preload("res://scenes/Player/Weapon/bullet.tscn") as PackedScene
 @onready var reticle_half: Node3D = $"../ReticleHalf"
+@onready var gun_point: BoneAttachment3D = $GeneralSkeleton/GunPoint
 
 var target_direction : Vector3
 
@@ -57,7 +58,7 @@ func update(input : InputPackage, reticle: Vector3, delta : float):
 	# now that everything is established: call the current move's update functions
 	current_move._update(input, delta)
 	
-
+	bullet_spawner.global_position = gun_point.global_position
 
 	var new_reticle_point = reticle
 	update_bullet_target(new_reticle_point)
@@ -80,7 +81,7 @@ func _input(event: InputEvent) -> void:
 
 
 func spawn_bullet():
-	var spawn_loc = bullet_spawner.global_position
+	var spawn_loc = gun_point.global_position
 	var bullet = bullet_scene.instantiate()
 	# so there's an error because we set these transforms before adding the bullet to the tree
 	# but it doesn't work right if it's the other way around
@@ -92,7 +93,7 @@ func spawn_bullet():
 
 
 func update_bullet_target(reticle_point:Vector3):
-	var spawn_loc = bullet_spawner.global_position
+	var spawn_loc = gun_point.global_position
 	target_direction = spawn_loc.direction_to(reticle_point)
 	bullet_spawner.look_at(reticle_point)
 	var halfway_mark = (spawn_loc + reticle_point) * 0.5

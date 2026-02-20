@@ -1,15 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm8jj0j2bmggq"]
+[gd_scene format=3 uid="uid://cm8jj0j2bmggq"]
 
 [ext_resource type="Script" uid="uid://dbnfyjuecuoue" path="res://scenes/Misc/targetable_aspect.gd" id="1_dw442"]
 
-[node name="TargetableAspect" type="Node3D" groups=["targetable"]]
+[node name="TargetableAspect" type="Node3D" unique_id=1152320700 groups=["targetable"]]
 script = ExtResource("1_dw442")
 
-[node name="LookAt" type="Node3D" parent="."]
+[node name="LookAt" type="Node3D" parent="." unique_id=1910631633]
 
-[node name="TargetMarker" type="Node3D" parent="."]
+[node name="TargetMarker" type="Node3D" parent="." unique_id=1175314717]
 
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1424355620]
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="screen_exited"]

@@ -111,5 +111,6 @@ func drop_target():
 	local_camera.look_at = camera_focus
 	free_camera.offset = (camera_nest.global_position - camera_mount.global_position)
 	local_camera.is_target_locked = false
+	print("about to drop target")
 	SignalBus.TARGET_DROPPED.emit()
 	local_camera.switch_to("free")

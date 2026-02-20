@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0mue2qakhes6"]
+[gd_scene format=3 uid="uid://d0mue2qakhes6"]
 
 [ext_resource type="PackedScene" uid="uid://cm8jj0j2bmggq" path="res://scenes/Misc/targetable_aspect.tscn" id="1_kre8v"]
 
@@ -6,19 +6,21 @@
 radius = 0.3
 height = 1.0
 
-[node name="Dummy" type="Node3D"]
+[node name="Dummy" type="Node3D" unique_id=581033872]
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1526546724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72084796, 0)
 use_collision = true
 collision_layer = 8
 mesh = SubResource("CapsuleMesh_k5f3b")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGMesh3D"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGMesh3D" unique_id=837956345]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.910331, 0)
 radius = 0.3
 radial_segments = 32
 rings = 16
 
-[node name="TargetableAspect" parent="." instance=ExtResource("1_kre8v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6307228, 0)
+[node name="AspectLocation" type="Node3D" parent="." unique_id=1368954557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4520254, 0)
+
+[node name="TargetableAspect" parent="AspectLocation" unique_id=1767639555 instance=ExtResource("1_kre8v")]

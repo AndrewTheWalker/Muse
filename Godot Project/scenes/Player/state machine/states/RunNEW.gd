@@ -12,32 +12,28 @@ var is_strafing : bool = false
 
 var look_at_position : Vector3
 
-enum STATES {
-	WALK_FW,
-	WALK_FL,
-	WALK_FR,
-	WALK_BW,
-	WALK_BL,
-	WALK_BR,
-	JOG_FW,
-	JOG_FL,
-	JOG_FR,
-	JOG_BW,
-	JOG_BL,
-	JOG_BR
-	}
-
 
 func on_enter_state():
-	SignalBus.connect("TARGET_LOCKED",determine_look_at)
-	SignalBus.connect("TARGET_DROPPED",determine_look_at)
+	SignalBus.connect("TARGET_LOCKED",set_look_at)
+	SignalBus.connect("TARGET_DROPPED",drop_look_at)
+	#look_at_position = player.global_position + player.velocity
 
-
-func determine_look_at(thing_to_look_at:Node3D):
+func set_look_at(thing_to_look_at:Node3D):
+	print("determine look at called. thing_to_look_at is ",thing_to_look_at)
 	if thing_to_look_at:
+		print(thing_to_look_at)
+		is_strafing = true
+		print("strafing mode")
 		look_at_position = thing_to_look_at.global_position
-	else:
-		look_at_position = Vector3(0,0,1)
+		look_at_position.y = 0
+		player.visuals.look_at(look_at_position)
+
+func drop_look_at():
+	is_strafing = false
+	if animation != "Jog":
+		animation = "Jog"
+	print("NOT strafing mode")
+
 
 func default_lifecycle(input : InputPackage):
 	if not player.is_on_floor():
@@ -49,20 +45,84 @@ func default_lifecycle(input : InputPackage):
 func update(input : InputPackage, delta : float):
 	player.velocity = rotate_velocity(input, delta)
 	player.move_and_slide()
-	player.visuals.look_at(player.global_position + player.velocity)
+	if is_strafing:
+		player.visuals.look_at(look_at_position)
+		choose_anim(input,look_at_position)
+		#print(look_at_position)
+	else:
+		player.visuals.look_at(player.global_position + player.velocity)
+
+func choose_anim(input:InputPackage,target:Vector3):
+	var direction = find_direction(input,target)
+	match direction:
+		"forward":
+			animation = "Jog"
+		"forward left":
+			animation = "Jog_FL"
+		"forward right":
+			animation = "Jog_FR"
+		"backward left":
+			animation = "Jog_BL"
+		"backward right":
+			animation = "Jog_BR"
+		"backward":
+			animation = "Jog_BWD"
+
+func find_direction(input:InputPackage,target:Vector3) -> String:
+	var target_direction = player.global_position.direction_to(target)
+	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
+	var x_direction = input.l_input_direction.x
+	var angle = input_direction.angle_to(target_direction)
+	var ab_diff = rad_to_deg(angle)
+	var direction_name : String = "forward"
+
+	if x_direction <0:
+		if ab_diff >0 and ab_diff <= 30.0:
+			direction_name = "forward"
+		if ab_diff >30 and ab_diff <= 90.0:
+			direction_name = "forward left"
+		if ab_diff >90 and ab_diff <= 120.0:
+			direction_name = "backward left"
+		if ab_diff >120 and ab_diff <= 180.0:
+			direction_name = "backward"
+	if x_direction >0:
+		if ab_diff >0 and ab_diff <= 30.0:
+			direction_name = "forward"
+		if ab_diff >30 and ab_diff <= 90.0:
+			direction_name = "forward right"
+		if ab_diff >90 and ab_diff <= 120.0:
+			direction_name = "backward right"
+		if ab_diff >120 and ab_diff <= 180.0:
+			direction_name = "backward"
+	
+	return direction_name
 
 func rotate_velocity(input : InputPackage, delta : float) -> Vector3:
 	var rotated_velocity : Vector3
+	var face_direction : Vector3
 	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
 	input_direction.y = 0
-	var face_direction = -(player.visuals.basis.z)
-	face_direction.y = 0
-	
-	var angle = face_direction.signed_angle_to(input_direction, Vector3.UP)
-	
-	if abs(angle) >= tracking_angular_speed * delta:
-		rotated_velocity = face_direction.rotated(Vector3.UP, sign(angle) * tracking_angular_speed * delta) * TURN_SPEED
+	if !is_strafing:
+		face_direction = -(player.visuals.basis.z)
+		face_direction.y = 0
+		var angle = face_direction.signed_angle_to(input_direction, Vector3.UP)
+
+		if abs(angle) >= tracking_angular_speed * delta:
+			rotated_velocity = face_direction.rotated(Vector3.UP, sign(angle) * tracking_angular_speed * delta) * TURN_SPEED
+		else:
+			rotated_velocity = face_direction.rotated(Vector3.UP, angle) * RUN_SPEED	
+		
 	else:
-		rotated_velocity = face_direction.rotated(Vector3.UP, angle) * RUN_SPEED
+		rotated_velocity.x = input_direction.x * RUN_SPEED
+		rotated_velocity.z = input_direction.z * RUN_SPEED
 	
 	return rotated_velocity
+
+
+func velocity_by_input(input:InputPackage,delta:float)-> Vector3:
+	var new_velocity = player.velocity
+	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
+	new_velocity.x = input_direction.x * RUN_SPEED
+	new_velocity.z = input_direction.z * RUN_SPEED
+	
+	return new_velocity
