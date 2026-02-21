@@ -8,6 +8,10 @@ class_name PlayerModel
 @onready var animator = $Animator
 @onready var combat = $Combat as Combat
 @onready var resources = $Resources as PlayerResources
+@onready var ik_controller = $IKController as IKController
+@onready var ctrl_rig: Node3D = $CtrlRig
+
+
 # keep this.
 #@onready var hurtbox = $Root/Hitbox as Hurtbox
 @onready var area_awareness = $AreaAwareness as AreaAwareness
@@ -21,8 +25,12 @@ class_name PlayerModel
 @onready var reticle_half: Node3D = $"../ReticleHalf"
 @onready var gun_point: BoneAttachment3D = $GeneralSkeleton/GunPoint
 
+@onready var timer: Timer = $Timer
+
+
 var target_direction : Vector3
 
+var is_shooting : bool = false
 
 # moves_container is the blank node that contains all states.
 
@@ -34,32 +42,17 @@ func _ready():
 
 
 func update(input : InputPackage, reticle: Vector3, delta : float):
-	# calling the combat class to contextualize the input has relevance for combos and the like. I think we don't need it.
-	# input = combat.contextualize(input)
-	
-	# area awareness is a class that stores some information. In this case, area awareness will store the value of the current input, which we may wish to recall later
 	area_awareness.last_input_package = input
-	
-	# relevance is what really decides what move we should be using. It basically asks "given the current input and context, does our state need to change, or is there a more *relevant* state that it *should* be?"
-	# clicking through these functions will take you through the steps.
+
 	var relevance = current_move.check_relevance(input)
 	
-	# after going on our long tiresome journey, and we find that everything checks out and that we are already in the state we should be in, then we do nothing.
-	# however, if relevance DOES NOT equal "okay" then we call the switch_to function, and off we go.
 	if relevance != "okay":
 		switch_to(relevance)
 	
-	# tell the skeleton animator to do the appropriate animation
 	animator.update_body_animations()
-	
-	# if the action has a resource cost (health,stamina,etc) then process that cost
 	current_move.update_resources(delta)
-	
-	# now that everything is established: call the current move's update functions
 	current_move._update(input, delta)
 	
-	bullet_spawner.global_position = gun_point.global_position
-
 	var new_reticle_point = reticle
 	update_bullet_target(new_reticle_point)
 
@@ -71,17 +64,26 @@ func switch_to(state : String):
 
 
 
-
+func rotate_rig():
+	pass
 
 # bullet/reticle_stuff
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
-		spawn_bullet()
+		if current_move.can_shoot():
+			SignalBus.TARGET_LOCKED.emit(target_direction)
+			ik_controller.process_ik("shoot")
+			call_deferred("spawn_bullet")
+		else:
+			print("shooting not allowed by this move")
+	if event.is_action_released("Shoot"):
+		
+		ik_controller.process_ik("release")
 
 
 func spawn_bullet():
-	var spawn_loc = gun_point.global_position
+	var spawn_loc = bullet_spawner.global_position
 	var bullet = bullet_scene.instantiate()
 	# so there's an error because we set these transforms before adding the bullet to the tree
 	# but it doesn't work right if it's the other way around
@@ -93,10 +95,12 @@ func spawn_bullet():
 
 
 func update_bullet_target(reticle_point:Vector3):
-	var spawn_loc = gun_point.global_position
-	target_direction = spawn_loc.direction_to(reticle_point)
+	var spawn_loc = bullet_spawner.global_position
+	target_direction = reticle_point
 	bullet_spawner.look_at(reticle_point)
-	var halfway_mark = (spawn_loc + reticle_point) * 0.5
-	var quarter_mark = (spawn_loc + halfway_mark) * 0.5
-	reticle_half.global_position =quarter_mark
-	reticle_half.look_at(spawn_loc)
+	
+	
+	# this part just handles the midway reticle thingy
+	#var quarter_mark = (spawn_loc + reticle_point) * 0.25
+	#reticle_half.global_position = quarter_mark
+	#reticle_half.look_at(spawn_loc)

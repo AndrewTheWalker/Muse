@@ -26,24 +26,26 @@ func get_root_delta_pos(animation : String, progress : float, delta : float) -> 
 func get_transitions_to_queued(animation : String, timecode : float) -> bool:
 	return move_database.get_boolean_value(animation, "MoveDataPlayer:transitions_to_queued", timecode) 
 
+
 func get_accepts_queueing(animation : String, timecode : float) -> bool:
 	return move_database.get_boolean_value(animation, "MoveDataPlayer:accepts_queueing", timecode) 
+
 
 func get_vulnerable(animation : String, timecode : float) -> bool:
 	return move_database.get_boolean_value(animation, "MoveDataPlayer:is_vulnerable", timecode) 
 
+
 func get_interruptable(animation : String, timecode : float) -> bool:
 	return move_database.get_boolean_value(animation, "MoveDataPlayer:is_interruptable", timecode) 
 
-#func get_parryable(animation : String, timecode : float) -> bool:
-	#return move_database.get_boolean_value(animation, "MoveDataPlayer:is_parryable", timecode)
+
+func get_can_shoot(animation: String, timecode: float) -> bool:
+	return move_database.get_boolean_value(animation, "MoveDataPlayer:can_shoot", timecode) 
+
 
 func get_duration(animation : String) -> float:
 	return move_database.get_animation(animation).length
-	
 
-#func get_right_weapon_hurts(animation : String, timecode : float) -> bool:
-	#return move_database.get_boolean_value(animation, "MoveDataPlayer:right_hand_weapon_hurts", timecode)
 
 func tracks_input_vector(animation : String, timecode : float) -> bool:
 	return move_database.get_boolean_value(animation, "MoveDataPlayer:tracks_input_vector", timecode)

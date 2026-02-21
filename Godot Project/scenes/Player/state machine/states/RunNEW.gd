@@ -18,21 +18,19 @@ func on_enter_state():
 	SignalBus.connect("TARGET_DROPPED",drop_look_at)
 	#look_at_position = player.global_position + player.velocity
 
-func set_look_at(thing_to_look_at:Node3D):
-	print("determine look at called. thing_to_look_at is ",thing_to_look_at)
-	if thing_to_look_at:
-		print(thing_to_look_at)
+
+func set_look_at(look_at_vector:Vector3):
+	if look_at_vector:
 		is_strafing = true
-		print("strafing mode")
-		look_at_position = thing_to_look_at.global_position
+		look_at_position = look_at_vector
 		look_at_position.y = 0
 		player.visuals.look_at(look_at_position)
+
 
 func drop_look_at():
 	is_strafing = false
 	if animation != "Jog":
 		animation = "Jog"
-	print("NOT strafing mode")
 
 
 func default_lifecycle(input : InputPackage):
@@ -52,6 +50,7 @@ func update(input : InputPackage, delta : float):
 	else:
 		player.visuals.look_at(player.global_position + player.velocity)
 
+
 func choose_anim(input:InputPackage,target:Vector3):
 	var direction = find_direction(input,target)
 	match direction:
@@ -67,6 +66,7 @@ func choose_anim(input:InputPackage,target:Vector3):
 			animation = "Jog_BR"
 		"backward":
 			animation = "Jog_BWD"
+
 
 func find_direction(input:InputPackage,target:Vector3) -> String:
 	var target_direction = player.global_position.direction_to(target)
@@ -96,6 +96,7 @@ func find_direction(input:InputPackage,target:Vector3) -> String:
 			direction_name = "backward"
 	
 	return direction_name
+
 
 func rotate_velocity(input : InputPackage, delta : float) -> Vector3:
 	var rotated_velocity : Vector3

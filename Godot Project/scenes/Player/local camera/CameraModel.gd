@@ -83,7 +83,7 @@ func _input(event: InputEvent) -> void:
 				switch_to("locked")
 				is_target_locked = true
 				look_at = available_targets[0]
-				SignalBus.TARGET_LOCKED.emit(look_at)
+				SignalBus.TARGET_LOCKED.emit(look_at.global_position)
 			else:
 				print("no targets")
 

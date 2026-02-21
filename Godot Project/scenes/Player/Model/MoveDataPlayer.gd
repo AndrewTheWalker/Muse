@@ -11,6 +11,7 @@ extends AnimationPlayer
 @export var is_vulnerable : bool
 @export var is_interruptable : bool
 @export var tracks_input_vector : bool
+@export var can_shoot : bool
 
 
 func get_boolean_value(animation : String, track_name : String, timecode : float) -> bool:

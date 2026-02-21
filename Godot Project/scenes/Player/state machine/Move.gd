@@ -152,14 +152,12 @@ func is_vulnerable() -> bool:
 func is_interruptable() -> bool:
 	return moves_data_repo.get_interruptable(backend_animation, get_progress())
 
-#func is_parryable() -> bool:
-	#return moves_data_repo.get_parryable(backend_animation, get_progress())
 
 func get_root_position_delta(delta_time : float) -> Vector3:
 	return moves_data_repo.get_root_delta_pos(backend_animation, get_progress(), delta_time)
 
-#func right_weapon_hurts() -> bool:
-	#return moves_data_repo.get_right_weapon_hurts(backend_animation, get_progress())
+func can_shoot() -> bool:
+	return moves_data_repo.get_can_shoot(backend_animation, get_progress())
 
 # "default-default", works for animations that just linger
 
