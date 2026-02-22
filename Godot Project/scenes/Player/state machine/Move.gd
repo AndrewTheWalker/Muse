@@ -33,42 +33,61 @@ var has_forced_move : bool = false
 var forced_move : String = "nonexistent forced move, error"
 
 
-#where is DURATION set?
+# where is DURATION set?
+# answer: it is set inside the playerstates script. DURATION is equal the value of the backend animation length. 
 var DURATION : float
 
 func check_relevance(input : InputPackage) -> String:
-	# here we are in check relevance. It will do a few things.
 	
-	# first, does this move accept queueing? If so, check the queue!
+	
+	#if accepts_queueing():
+		#check_combos(input)
 	if accepts_queueing():
-		check_combos(input)
+		check_queue(input)
 	
-	# if it does have a queued move, and transitiones_to_queued is true, then we try to switch it to that queued move.
-	# "transitions_to_queued" references the parameter animation track, which essentially checks how far the animation has progressed.
-	# if it has progressed to the point where queued moves are now permitted, THEN we force the move.
-	# we don't want the queued move to happen immediately, and this prevents that.
 	if has_queued_move and transitions_to_queued():
 		try_force_move(queued_move)
 		has_queued_move = false
 	
-	# similarly, does it have a forced move? has the player been hit? are they dead? if so, then we force that change.
+	
 	if has_forced_move:
 		has_forced_move = false
 		return forced_move
 	
-	# if none of those things apply, then we go with the move's default behaviour and let it ride out whatever it is that it wants to do,.
 	return default_lifecycle(input)
 
+# this is my own take on the input queueing system. We're going to check the move directly. 
+# So, if move.queue_condition == true, then we'll run my version of check_combos.
+# this is just the base function that will return false by default. But within each move (that I want to be queueable)
+# I will have to specify conditions within this function
 
-func check_combos(input : InputPackage):
-	for combo : Combo in combos:
-		if combo.is_triggered(input) and resources.can_be_paid(container.moves[combo.triggered_move]):
+func queue_condition(input : InputPackage):
+	return false
+# this func should have a bunch of if statements I guess? Something along the lines of:
+	#if input.actions.has("blahblah"):
+		#if something something else:
+			#return true/false
+
+
+func check_queue(input : InputPackage):
+	# in this func, we need to check if the move's queue conditions are true.
+	# so we go through all the states in the container, and check if their queue condition is met.
+	# if
+	for move : Move in container.get_children():
+		if move.queue_condition(input) == true:
 			has_queued_move = true
-			queued_move = combo.triggered_move
+			queued_move = move.move_name
+			break
+
+#func check_combos(input : InputPackage):
+	#for combo : Combo in combos:
+		#if combo.is_triggered(input) and resources.can_be_paid(container.moves[combo.triggered_move]):
+			#has_queued_move = true
+			#queued_move = combo.triggered_move
 
 
 func best_input_that_can_be_paid(input : InputPackage) -> String:
-	# now, in this function we sort through the current array of inputs (if there are any) and run some checks.
+	# in this function we sort through the current array of inputs (if there are any) and run some checks.
 	# can the move be performed given the current state of resources? i.e. do you have the stamina to do this?
 	# and are we already doing this move?
 	# if so, return okay which means, keep doing what you're doing
