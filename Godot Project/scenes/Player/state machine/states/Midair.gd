@@ -18,8 +18,8 @@ func default_lifecycle(_input : InputPackage):
 	if hip_attachment.global_position.distance_to(floor_point) < landing_height:
 		var xz_velocity = player.velocity
 		xz_velocity.y = 0
-		#if xz_velocity.length_squared() >= 10:
-			#return "sprintland"
+		if xz_velocity.length_squared() >= 7:
+			return "sprintland"
 		return "land"
 	else:
 		return "okay"

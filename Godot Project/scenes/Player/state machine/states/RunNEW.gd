@@ -13,6 +13,7 @@ var is_strafing : bool = false
 var look_at_position : Vector3
 
 
+
 func on_enter_state():
 	SignalBus.connect("TARGET_LOCKED",set_look_at)
 	SignalBus.connect("TARGET_DROPPED",drop_look_at)
@@ -39,6 +40,11 @@ func default_lifecycle(input : InputPackage):
 	
 	return best_input_that_can_be_paid(input)
 
+func queue_condition(input : InputPackage):
+	if input.l_input_direction != Vector2.ZERO and !input.actions.has("sprint"):
+		return true
+	else:
+		return false
 
 func update(input : InputPackage, delta : float):
 	player.velocity = rotate_velocity(input, delta)

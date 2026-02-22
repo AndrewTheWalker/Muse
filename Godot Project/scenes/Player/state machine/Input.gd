@@ -9,42 +9,30 @@ class_name InputGatherer
 
 func gather_input() -> InputPackage:
 	var new_input = InputPackage.new()
-		
+
+
 	if new_input.actions.is_empty():
 		new_input.actions.append("idle")
-	
+
+
 	if Input.is_action_just_pressed("Jump"):
 		if new_input.actions.has("sprint"):
 			new_input.actions.append("sprintjump")
 		else:
 			new_input.actions.append("jump")
-		
+
+
 	if Input.is_action_just_pressed("Roll"):
 		new_input.actions.append("roll")
-	
-	
-	
-	
-	
-	
-	
-		
+		if new_input.actions.has("roll"):
+			new_input.actions.append("sprint")
+
+
 	new_input.l_input_direction = Input.get_vector("Lstick_left","Lstick_right","Lstick_down","Lstick_up")
 	if new_input.l_input_direction != Vector2.ZERO:
 		new_input.actions.append("run")
 		#if Input.is_action_pressed("DodgeSprint"):
 			#new_input.actions.append("sprint")
-	
-	'''CAMERA SPECIFIC ACTIONS, UNCOMMENT WHEN READY'''
-	# these inputs don't control the player, we'll need to give them to the camera controller
-	# when we implement features like target switching
-	# however, the camera controller doesn't exist yet.
-	
-	# new_input.r_input_direction = Input.get_vector("Rstick_left","Rstick_right","Rstick_down","Rstick_up")
-	# if new_input.r_input_direction != Vector2.ZERO:
-		# new_input.actions.append("aim")
-		
-	# if Input.is_action_just_pressed("Lock"):
-		# new_input.actions.append("lock")
-		
+
+
 	return new_input

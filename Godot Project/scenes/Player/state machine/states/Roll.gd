@@ -8,6 +8,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var endpoint : Vector3
 
 
+#func default_lifecycle(input : InputPackage):
+	#if transitions_to_queued(): 
+		#if input.actions.has("sprint"):
+			#print("action has sprint")
+	#return "okay"
 
 func update(input : InputPackage, delta : float):
 	move_player(delta)

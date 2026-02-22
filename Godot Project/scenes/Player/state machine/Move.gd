@@ -73,11 +73,14 @@ func check_queue(input : InputPackage):
 	# in this func, we need to check if the move's queue conditions are true.
 	# so we go through all the states in the container, and check if their queue condition is met.
 	# if
-	for move : Move in container.get_children():
-		if move.queue_condition(input) == true:
-			has_queued_move = true
-			queued_move = move.move_name
-			break
+	for move in container.get_children():
+		if move is Move:
+			if move.queue_condition(input) == true:
+				has_queued_move = true
+				queued_move = move.move_name
+				print("queueing move: ",move.move_name)
+				break
+
 
 #func check_combos(input : InputPackage):
 	#for combo : Combo in combos:
