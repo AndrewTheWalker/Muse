@@ -1,7 +1,7 @@
 extends Node
 class_name IKController
 
-@onready var timer: Timer = $"../Timer"
+@onready var model_timer: Timer = $"../ModelTimer"
 @onready var model : PlayerModel = $".."
 
 @onready var head_look_at: LookAtModifier3D = $"../GeneralSkeleton/HeadLookAt"
@@ -35,16 +35,18 @@ func _input(event: InputEvent) -> void:
 
 func process_ik(command:String):
 	if command == "shoot":
-		if tween and tween.is_valid():
+		if tween:
 			tween.kill()
 		model.is_shooting = true
-		tween_influence(1.0,0.02)
+		influence = 1.0
 		
 	if command == "release":
-		timer.start()
-		await timer.timeout
+		model_timer.start()
+		await model_timer.timeout
 		model.is_shooting = false
 		tween_influence(0.0,0.75)
+		model_timer.start()
+		await model_timer.timeout
 		SignalBus.TARGET_DROPPED.emit()
 
 func tween_influence(value:float,time:float):

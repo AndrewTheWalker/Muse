@@ -25,7 +25,6 @@ class_name PlayerModel
 @onready var reticle_half: Node3D = $"../ReticleHalf"
 @onready var gun_point: BoneAttachment3D = $GeneralSkeleton/GunPoint
 
-@onready var timer: Timer = $Timer
 
 
 var target_direction : Vector3

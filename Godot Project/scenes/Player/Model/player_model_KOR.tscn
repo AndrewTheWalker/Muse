@@ -795,4 +795,5 @@ transform = Transform3D(0.9999995, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999995, -0.46
 [node name="R_Arm_Hand_Target" type="Marker3D" parent="CtrlRig" unique_id=1444971572]
 transform = Transform3D(-0.8616941, 0.018487526, 0.5070901, 0.19900559, -0.9069627, 0.3712346, 0.4667749, 0.42080498, 0.77784556, -0.0029156655, 0.37143457, 0.2689441)
 
-[node name="Timer" type="Timer" parent="." unique_id=1396997330]
+[node name="ModelTimer" type="Timer" parent="." unique_id=1396997330]
+wait_time = 0.5

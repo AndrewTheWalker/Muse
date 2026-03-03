@@ -8,7 +8,7 @@ class_name FreeCameraState
 @onready var camera_nest: Node3D = $"../CameraNest"
 @onready var camera_mount: Node3D = $"../CameraMount"
 @onready var shape_cast: ShapeCast3D = $"../CameraMount/ShapeCast3D"
-@onready var timer: Timer = $"../Timer"
+@onready var camera_timer: Timer = $"../CameraTimer"
 
 @onready var camera_focus: Node3D = $"../../CameraFocus"
 
@@ -150,15 +150,15 @@ func rotate_offset(new_focus : Vector3):
 # if the player is shooting, the camera needs to stop rotating. This is critical to allowing the player to properly aim.
 # without it, the camera's adjustment makes it "appear" that the bullets are drifting off to the side, when in reality they are
 # travelling straight as intended, but the perspective has changed while the bullet is in flight.
-# implementing the timer is a behaviour I copied from Splatoon. It waits for a second in case the player would like to shoot again,
+# implementing the camera_timer is a behaviour I copied from Splatoon. It waits for a second in case the player would like to shoot again,
 # if they haven't tried to shoot again in that time, we go back to default behaviour.
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
 		is_shooting = true
 	if event.is_action_released("Shoot"):
-		timer.start()
-		await timer.timeout
+		camera_timer.start()
+		await camera_timer.timeout
 		is_shooting = false
 
 

@@ -101,4 +101,4 @@ sides = 32
 ring_sides = 3
 material = SubResource("StandardMaterial3D_frbxm")
 
-[node name="Timer" type="Timer" parent="." unique_id=1003259596]
+[node name="CameraTimer" type="Timer" parent="." unique_id=1003259596]
