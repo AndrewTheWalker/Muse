@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ygcw1xvl3hpc"]
+
+[ext_resource type="Texture2D" uid="uid://c81qo0td12nkp" path="res://assets/misc/placeholdersmoke.png" id="1_ectsb"]
+[ext_resource type="Script" uid="uid://bouwyu4uj7ak8" path="res://assets/misc/fx_overheat.gd" id="1_pbk33"]
+
+[sub_resource type="Gradient" id="Gradient_pbk33"]
+offsets = PackedFloat32Array(0, 0.17467248, 0.77292573)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v8bj4"]
+gradient = SubResource("Gradient_pbk33")
+
+[sub_resource type="Curve" id="Curve_g6j1o"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.14901963, 0.7632451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qigvn"]
+curve = SubResource("Curve_g6j1o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pgfda"]
+angle_min = -44.99999
+angle_max = 45.00001
+spread = 22.826
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.29999998
+gravity = Vector3(0, 0.2, 0)
+linear_accel_min = -2.0000021
+linear_accel_max = 1.9999977
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_qigvn")
+color_ramp = SubResource("GradientTexture1D_v8bj4")
+turbulence_noise_scale = 0.76
+turbulence_noise_speed_random = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmnth"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ectsb")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_bdbsr"]
+material = SubResource("StandardMaterial3D_bmnth")
+
+[node name="FX_Overheat" type="Node3D" unique_id=1258423213]
+script = ExtResource("1_pbk33")
+
+[node name="SmokeParticles" type="GPUParticles3D" parent="." unique_id=398066987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_pgfda")
+draw_pass_1 = SubResource("QuadMesh_bdbsr")

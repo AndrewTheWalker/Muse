@@ -53,3 +53,9 @@ func tween_influence(value:float,time:float):
 	tween = get_tree().create_tween()
 	tween.set_trans(Tween.TRANS_BACK)
 	tween.tween_property(self,"influence",value,time)
+
+
+func override():
+	if tween:
+		tween.kill()
+	influence = 0.0

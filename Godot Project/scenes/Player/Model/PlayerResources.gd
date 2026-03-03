@@ -10,19 +10,18 @@ class_name PlayerResources
 
 @export var stamina : float = 100
 @export var max_stamina : float = 100
-@export var stamina_regeneration_rate : float = 10  # per sec, because then we'll multiply on delta
+@export var stamina_regeneration_rate : float = 15  # per sec, because then we'll multiply on delta
 
 @onready var model = $".." as PlayerModel
 
 var statuses : Array[String]
-const FATIGUE_TRESHOLD = 20
+const FATIGUE_THRESHOLD = 90
 
 
 # these are all pretty self-explanatory.
 
 func update(delta : float):
 	gain_stamina(stamina_regeneration_rate * delta)
-
 
 func pay_resource_cost(move : Move):
 	lose_stamina(move.stamina_cost)
@@ -51,8 +50,10 @@ func gain_health(amount : float):
 func lose_stamina(amount : float):
 	if not god_mode:
 		stamina -= amount
+		SignalBus.STAMINA_CHANGE.emit(stamina)
 		if stamina < 1:
 			statuses.append("fatigue")
+			SignalBus.OVERHEATING.emit()
 
 
 func gain_stamina(amount : float):
@@ -60,5 +61,6 @@ func gain_stamina(amount : float):
 		stamina += amount
 	else:
 		stamina = max_stamina
-	if stamina > FATIGUE_TRESHOLD:
+	if stamina > FATIGUE_THRESHOLD:
 		statuses.erase("fatigue")
+	SignalBus.STAMINA_CHANGE.emit(stamina)

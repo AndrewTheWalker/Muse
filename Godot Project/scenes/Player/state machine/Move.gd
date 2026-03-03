@@ -228,8 +228,9 @@ func form_hit_data(_bullet : Bullet) -> HitData:
 func react_on_hit(hit : HitData):
 	if is_vulnerable():
 		resources.lose_health(hit.damage)
-	if is_interruptable():
-		try_force_move("staggered")
+	# commenting this for now because I don't have a staggered state.
+	#if is_interruptable():
+		#try_force_move("staggered")
 	hit.queue_free()
 
 

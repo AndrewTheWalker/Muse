@@ -13,7 +13,6 @@ var is_strafing : bool = false
 var look_at_position : Vector3
 
 
-
 func on_enter_state():
 	SignalBus.connect("TARGET_LOCKED",set_look_at)
 	SignalBus.connect("TARGET_DROPPED",drop_look_at)
@@ -75,6 +74,7 @@ func choose_anim(input:InputPackage,target:Vector3):
 
 
 func find_direction(input:InputPackage,target:Vector3) -> String:
+	
 	var target_direction = player.global_position.direction_to(target)
 	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
 	var x_direction = input.l_input_direction.x
@@ -82,6 +82,9 @@ func find_direction(input:InputPackage,target:Vector3) -> String:
 	var ab_diff = rad_to_deg(angle)
 	var direction_name : String = "forward"
 
+	if ab_diff >120 and ab_diff <= 180.0:
+		direction_name = "backward"
+		
 	if x_direction <0:
 		if ab_diff >0 and ab_diff <= 30.0:
 			direction_name = "forward"
@@ -89,8 +92,7 @@ func find_direction(input:InputPackage,target:Vector3) -> String:
 			direction_name = "forward left"
 		if ab_diff >90 and ab_diff <= 120.0:
 			direction_name = "backward left"
-		if ab_diff >120 and ab_diff <= 180.0:
-			direction_name = "backward"
+
 	if x_direction >0:
 		if ab_diff >0 and ab_diff <= 30.0:
 			direction_name = "forward"
@@ -98,9 +100,7 @@ func find_direction(input:InputPackage,target:Vector3) -> String:
 			direction_name = "forward right"
 		if ab_diff >90 and ab_diff <= 120.0:
 			direction_name = "backward right"
-		if ab_diff >120 and ab_diff <= 180.0:
-			direction_name = "backward"
-	
+
 	return direction_name
 
 

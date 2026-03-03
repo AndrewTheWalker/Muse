@@ -25,6 +25,7 @@ class_name PlayerModel
 @onready var reticle_half: Node3D = $"../ReticleHalf"
 @onready var gun_point: BoneAttachment3D = $GeneralSkeleton/GunPoint
 
+@onready var fx_overheat: OverheatFX = $GeneralSkeleton/GunPoint/FX_Overheat
 
 
 var target_direction : Vector3
@@ -34,6 +35,7 @@ var is_shooting : bool = false
 # moves_container is the blank node that contains all states.
 
 func _ready():
+	SignalBus.connect("OVERHEATING",force_overheat)
 	moves_container.player = player
 	moves_container.accept_moves()
 	current_move = moves_container.moves["idle"]
@@ -91,6 +93,7 @@ func spawn_bullet():
 	bullet.global_position = spawn_loc
 	bullet.transform.basis = bullet_spawner.global_transform.basis
 	get_tree().get_root().add_child(bullet)
+	resources.lose_stamina(15.0)
 
 
 func update_bullet_target(reticle_point:Vector3):
@@ -103,3 +106,8 @@ func update_bullet_target(reticle_point:Vector3):
 	#var quarter_mark = (spawn_loc + reticle_point) * 0.25
 	#reticle_half.global_position = quarter_mark
 	#reticle_half.look_at(spawn_loc)
+
+
+func force_overheat():
+	current_move.try_force_move("overheat")
+	ik_controller.override()

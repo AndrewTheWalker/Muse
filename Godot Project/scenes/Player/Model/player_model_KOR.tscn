@@ -30,9 +30,10 @@
 [ext_resource type="Script" uid="uid://cqq6bv6847ohk" path="res://scenes/Player/state machine/states/Overheat.gd" id="27_nhfwv"]
 [ext_resource type="Script" uid="uid://bdebuoj21ivwh" path="res://scenes/Player/Model/AreaAwareness.gd" id="27_sjtmp"]
 [ext_resource type="Script" uid="uid://c2tcpajc6drij" path="res://scenes/Player/Model/downcast.gd" id="28_40mc8"]
-[ext_resource type="Script" path="res://scenes/Player/state machine/states/Death.gd" id="28_vcesj"]
+[ext_resource type="Script" uid="uid://p2b2htkmmwui" path="res://scenes/Player/state machine/states/Death.gd" id="28_vcesj"]
 [ext_resource type="AnimationLibrary" uid="uid://cdcr04y82btgt" path="res://assets/Animations/kor_anim/Kor_Animation_Library.res" id="29_0stpf"]
 [ext_resource type="Script" uid="uid://cfehsol6an6ke" path="res://scenes/Player/Model/SkeletonAnimator.gd" id="29_upehi"]
+[ext_resource type="PackedScene" uid="uid://ygcw1xvl3hpc" path="res://assets/misc/fx_overheat.tscn" id="32_hqa57"]
 
 [sub_resource type="Animation" id="Animation_hqa57"]
 resource_name = "death_param"
@@ -614,6 +615,8 @@ bone_idx = 0
 transform = Transform3D(-0.8740165, -0.25616753, 0.41351923, 0.41746828, 0.041104376, 0.90799755, -0.24862568, 0.96550995, 0.070911966, 0.11466254, 1.5876796, 0.35175478)
 bone_name = "DEF-hand.L"
 bone_idx = 26
+
+[node name="FX_Overheat" parent="GeneralSkeleton/GunPoint" unique_id=1258423213 instance=ExtResource("32_hqa57")]
 
 [node name="Spine_BoneAttachment" type="BoneAttachment3D" parent="GeneralSkeleton" unique_id=594756433]
 transform = Transform3D(0.9930625, 0.00952984, 0.11720021, -0.0073921653, 0.9997984, -0.01866072, -0.11735459, 0.017664917, 0.99293286, -0.010081719, 1.4179329, -0.05220352)

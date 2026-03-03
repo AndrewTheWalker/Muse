@@ -20,7 +20,6 @@ sky_material = SubResource("ProceduralSkyMaterial_1q37i")
 background_mode = 2
 sky = SubResource("Sky_wsxp4")
 ambient_light_source = 3
-ambient_light_sky_contribution = 0.02
 glow_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 
@@ -52,7 +51,7 @@ uv1_world_triplanar = true
 [node name="sillymap" type="Node3D" unique_id=1645674923]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=614773683]
-transform = Transform3D(0.9659258, -0.066987306, 0.25, -0.25881904, -0.25000003, 0.93301266, 0, -0.9659258, -0.25881907, 0, 5.75, 0)
+transform = Transform3D(-0.40178984, 0.9062593, 0.13137439, -0.25881907, -0.25000006, 0.9330128, 0.878395, 0.34087282, 0.33500463, 0, 5.75, 0)
 light_energy = 0.5
 shadow_enabled = true
 
