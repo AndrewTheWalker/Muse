@@ -36,16 +36,16 @@ func can_be_paid(move : Move) -> bool:
 func lose_health(amount : float):
 	if not god_mode:
 		health -= amount
+		SignalBus.LIFE_CHANGE.emit(health)
 		if health < 1:
 			model.current_move.try_force_move("death")
-
 
 func gain_health(amount : float):
 	if health + amount <= max_health:
 		health += amount
 	else:
 		health = max_health
-
+	SignalBus.LIFE_CHANGE.emit(health)
 
 func lose_stamina(amount : float):
 	if not god_mode:

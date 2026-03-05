@@ -31,6 +31,7 @@ class_name PlayerModel
 var target_direction : Vector3
 
 var is_shooting : bool = false
+var is_alive : bool = true
 
 # moves_container is the blank node that contains all states.
 
@@ -43,19 +44,22 @@ func _ready():
 
 
 func update(input : InputPackage, reticle: Vector3, delta : float):
-	area_awareness.last_input_package = input
+	if is_alive:
+	
+		area_awareness.last_input_package = input
 
-	var relevance = current_move.check_relevance(input)
-	
-	if relevance != "okay":
-		switch_to(relevance)
-	
-	animator.update_body_animations()
-	current_move.update_resources(delta)
-	current_move._update(input, delta)
-	
-	var new_reticle_point = reticle
-	update_bullet_target(new_reticle_point)
+		var relevance = current_move.check_relevance(input)
+		
+		if relevance != "okay":
+			print("relevance not equal to okay, relevance = ",relevance)
+			switch_to(relevance)
+		
+		animator.update_body_animations()
+		current_move.update_resources(delta)
+		current_move._update(input, delta)
+		
+		var new_reticle_point = reticle
+		update_bullet_target(new_reticle_point)
 
 func switch_to(state : String):
 	print(current_move.name, "-->", state)
@@ -81,7 +85,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("Shoot"):
 		
 		ik_controller.process_ik("release")
-
+	if event.is_action_pressed("DebugHurt"):
+		resources.lose_health(20.0)
 
 func spawn_bullet():
 	var spawn_loc = bullet_spawner.global_position
@@ -100,12 +105,6 @@ func update_bullet_target(reticle_point:Vector3):
 	var spawn_loc = bullet_spawner.global_position
 	target_direction = reticle_point
 	bullet_spawner.look_at(reticle_point)
-	
-	
-	# this part just handles the midway reticle thingy
-	#var quarter_mark = (spawn_loc + reticle_point) * 0.25
-	#reticle_half.global_position = quarter_mark
-	#reticle_half.look_at(spawn_loc)
 
 
 func force_overheat():

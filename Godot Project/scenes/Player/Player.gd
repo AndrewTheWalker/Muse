@@ -11,6 +11,7 @@ extends CharacterBody3D
 @onready var local_camera: CameraModel = %LocalCamera
 @onready var camera: Camera3D = %LocalCamera/PlayerCamera
 
+var is_alive: bool = true
 
 func _ready() -> void:
 	if use_debug_cam == false:
