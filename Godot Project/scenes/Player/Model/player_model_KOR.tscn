@@ -616,9 +616,6 @@ transform = Transform3D(-0.9430222, -0.35618043, 0.018764287, -0.09557819, 0.424
 bone_name = "DEF-hand.L"
 bone_idx = 26
 
-[node name="CSGBox3D" type="CSGBox3D" parent="GeneralSkeleton/GunPoint" unique_id=1679498078]
-size = Vector3(0.15, 0.15, 0.15)
-
 [node name="Spine_BoneAttachment" type="BoneAttachment3D" parent="GeneralSkeleton" unique_id=594756433]
 transform = Transform3D(0.9855229, -0.07690915, -0.15109468, 0.08667134, 0.99448156, 0.059113935, 0.14571446, -0.07135384, 0.98675007, 0.07615561, 1.3449795, 0.0036240965)
 bone_name = "DEF-spine.003"
@@ -804,6 +801,3 @@ wait_time = 0.5
 
 [node name="FX_Overheat" parent="." unique_id=1258423213 instance=ExtResource("32_hqa57")]
 transform = Transform3D(0.9430222, 0.3561805, -0.018764315, -0.09557819, 0.42420644, 0.95442, 0.3208375, -0.8434427, 0.32000992, -0.16460207, 1.5549284, -0.39425606)
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="FX_Overheat" unique_id=448095032]
-radius = 0.1
