@@ -48,7 +48,6 @@ material = SubResource("StandardMaterial3D_bmnth")
 script = ExtResource("1_pbk33")
 
 [node name="SmokeParticles" type="GPUParticles3D" parent="." unique_id=398066987]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_pgfda")

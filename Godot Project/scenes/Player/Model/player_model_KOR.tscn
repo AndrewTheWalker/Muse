@@ -607,19 +607,20 @@ bone_name = "DEF-spine"
 bone = 0
 
 [node name="Root" type="BoneAttachment3D" parent="GeneralSkeleton" unique_id=373883100]
-transform = Transform3D(0.96214473, 0.23355843, -0.14045645, -0.2672211, 0.7071309, -0.6546441, -0.053576525, 0.66739523, 0.74277407, 0.039229933, 0.937495, -0.14483963)
+transform = Transform3D(0.9621409, 0.23355845, -0.14048235, -0.2672387, 0.7071309, -0.6546369, -0.05355657, 0.66739523, 0.7427755, 0.039229933, 0.937495, -0.14483963)
 bone_name = "DEF-spine"
 bone_idx = 0
 
 [node name="GunPoint" type="BoneAttachment3D" parent="GeneralSkeleton" unique_id=1035939310]
-transform = Transform3D(-0.9429894, -0.35624576, 0.018921673, -0.09547114, 0.42426226, 0.95441264, -0.32096526, 0.84338707, -0.32002243, 0.16467729, 1.5548986, 0.39426634)
+transform = Transform3D(-0.9430222, -0.35618043, 0.018764287, -0.09557819, 0.42420644, 0.95442, -0.3208374, 0.84344274, -0.32000992, 0.1646021, 1.5549284, 0.39425606)
 bone_name = "DEF-hand.L"
 bone_idx = 26
 
-[node name="FX_Overheat" parent="GeneralSkeleton/GunPoint" unique_id=1258423213 instance=ExtResource("32_hqa57")]
+[node name="CSGBox3D" type="CSGBox3D" parent="GeneralSkeleton/GunPoint" unique_id=1679498078]
+size = Vector3(0.15, 0.15, 0.15)
 
 [node name="Spine_BoneAttachment" type="BoneAttachment3D" parent="GeneralSkeleton" unique_id=594756433]
-transform = Transform3D(0.98556435, -0.07660572, -0.1509782, 0.0862929, 0.9945398, 0.05868214, 0.1456585, -0.07086342, 0.9867937, 0.076230004, 1.3449848, 0.0035868266)
+transform = Transform3D(0.9855229, -0.07690915, -0.15109468, 0.08667134, 0.99448156, 0.059113935, 0.14571446, -0.07135384, 0.98675007, 0.07615561, 1.3449795, 0.0036240965)
 bone_name = "DEF-spine.003"
 bone_idx = 3
 
@@ -800,3 +801,9 @@ transform = Transform3D(-0.8616941, 0.018487526, 0.5070901, 0.19900559, -0.90696
 
 [node name="ModelTimer" type="Timer" parent="." unique_id=1396997330]
 wait_time = 0.5
+
+[node name="FX_Overheat" parent="." unique_id=1258423213 instance=ExtResource("32_hqa57")]
+transform = Transform3D(0.9430222, 0.3561805, -0.018764315, -0.09557819, 0.42420644, 0.95442, 0.3208375, -0.8434427, 0.32000992, -0.16460207, 1.5549284, -0.39425606)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="FX_Overheat" unique_id=448095032]
+radius = 0.1

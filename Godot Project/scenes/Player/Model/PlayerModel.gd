@@ -25,7 +25,7 @@ class_name PlayerModel
 @onready var reticle_half: Node3D = $"../ReticleHalf"
 @onready var gun_point: BoneAttachment3D = $GeneralSkeleton/GunPoint
 
-@onready var fx_overheat: OverheatFX = $GeneralSkeleton/GunPoint/FX_Overheat
+@onready var fx_overheat: OverheatFX = $FX_Overheat
 
 
 var target_direction : Vector3
@@ -51,7 +51,6 @@ func update(input : InputPackage, reticle: Vector3, delta : float):
 		var relevance = current_move.check_relevance(input)
 		
 		if relevance != "okay":
-			print("relevance not equal to okay, relevance = ",relevance)
 			switch_to(relevance)
 		
 		animator.update_body_animations()
@@ -60,6 +59,8 @@ func update(input : InputPackage, reticle: Vector3, delta : float):
 		
 		var new_reticle_point = reticle
 		update_bullet_target(new_reticle_point)
+
+	fx_overheat.global_position = gun_point.global_position
 
 func switch_to(state : String):
 	print(current_move.name, "-->", state)
