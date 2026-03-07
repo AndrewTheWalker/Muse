@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bk38kvg5dlsle"]
 
 [ext_resource type="Texture2D" uid="uid://dlaaymjwpmk76" path="res://assets/Enemy/DroneEnemyglb_DroneBC.png" id="1_hlu64"]
+[ext_resource type="Script" uid="uid://cpsdgpmijag3u" path="res://scenes/Misc/drone.gd" id="1_j5eno"]
 [ext_resource type="Texture2D" uid="uid://c30vq71nq5vu0" path="res://assets/Enemy/DroneEnemyglb_Drone_E.png" id="2_rhh8a"]
 [ext_resource type="PackedScene" uid="uid://cm8jj0j2bmggq" path="res://scenes/Misc/targetable_aspect.tscn" id="3_rhh8a"]
 
@@ -178,38 +179,44 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j5eno"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_d64l5"]
+radius = 7.5
+
 [node name="Drone" type="CharacterBody3D" unique_id=292636954]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_j5eno")
 
 [node name="Armature" type="Node3D" parent="." unique_id=1298692901]
+transform = Transform3D(1, -8.359358e-09, -4.0056847e-10, 8.359358e-09, 0.995418, 0.0956199, -4.0057557e-10, -0.0956199, 0.995418, 0, 0, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Armature" unique_id=532873603]
 bones/0/name = "JNT_Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, -7.105427e-15, 2.3841854e-07, -7.1054274e-15, 0.99999994, 5.9604645e-08, -2.3841855e-07, -5.9604645e-08, 0.99999994, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(-0.044480678, -0.014058992, -0.014038389)
-bones/0/rotation = Quaternion(-0.0051798034, -0.014938057, -0.012022066, 0.99980277)
+bones/0/position = Vector3(-0.04448069, -0.014058997, -0.058001176)
+bones/0/rotation = Quaternion(0.031698655, -0.06851582, 0.08820682, 0.9932373)
 bones/0/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/1/name = "JNT_Rotor_L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 2.7767909e-28, 3.5527137e-14, -5.301145e-28, 1, 7.105424e-15, -3.5527137e-14, -7.105424e-15, 1, 0.45, 8.4703295e-22, 1.0728835e-07)
 bones/1/enabled = true
 bones/1/position = Vector3(0.45, 8.4703295e-22, 1.0728835e-07)
-bones/1/rotation = Quaternion(4.6565773e-10, 2.1102053e-10, 4.3655746e-11, 1)
+bones/1/rotation = Quaternion(4.6565762e-10, -9.546039e-09, 3.4924597e-09, 1)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "JNT_Rotor_R"
 bones/2/parent = 0
 bones/2/rest = Transform3D(1, 2.7767909e-28, 3.5527137e-14, -5.301145e-28, 1, 7.105424e-15, -3.5527137e-14, -7.105424e-15, 1, -0.45, -8.4703295e-22, -1.0728835e-07)
 bones/2/enabled = true
 bones/2/position = Vector3(-0.45, -8.4703295e-22, -1.0728835e-07)
-bones/2/rotation = Quaternion(-0.017266052, -4.2932788e-10, -1.8192584e-10, 0.9998509)
+bones/2/rotation = Quaternion(-0.01726605, -9.198164e-09, 2.3286562e-10, 0.9998509)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "JNT_Gun"
 bones/3/parent = 0
 bones/3/rest = Transform3D(1, -2.3841852e-07, 1.509957e-07, 1.5099579e-07, 3.5762787e-07, -0.99999994, 2.3841847e-07, 0.99999994, 3.5762787e-07, 4.676332e-08, -0.3483441, -0.19613963)
 bones/3/enabled = true
 bones/3/position = Vector3(4.676332e-08, -0.3483441, -0.19613963)
-bones/3/rotation = Quaternion(0.7071066, 0.0070344885, -0.0071068862, 0.70703626)
+bones/3/rotation = Quaternion(0.7071066, 0.0070344764, -0.007106885, 0.70703626)
 bones/3/scale = Vector3(1, 0.99999994, 0.99999994)
 
 [node name="Sphere" type="MeshInstance3D" parent="Armature/Skeleton3D" unique_id=681836719]
@@ -223,6 +230,11 @@ bone = 3
 forward_axis = 2
 primary_rotation_axis = 2
 
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" unique_id=609376663]
+transform = Transform3D(0.9750503, -0.17956431, -0.13051285, 0.17087689, 0.98242944, -0.075055696, 0.14169702, 0.050881445, 0.9886015, -0.04448069, -0.014058997, -0.058001176)
+bone_name = "JNT_Body"
+bone_idx = 0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=947271897]
 libraries/ = SubResource("AnimationLibrary_ljp0n")
 autoplay = &"Enemy_Idle"
@@ -232,6 +244,24 @@ visible = false
 shape = SubResource("SphereShape3D_j5eno")
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1210787759]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00077199936, 1.5)
 
 [node name="TargetableAspect" parent="." unique_id=1152320700 instance=ExtResource("3_rhh8a")]
+
+[node name="PlayerSearchArea" type="Area3D" parent="." unique_id=1165443300]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSearchArea" unique_id=439857165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.808253e-07, 0, 5.5)
+shape = SubResource("SphereShape3D_d64l5")
+
+[node name="MoveWaitTimer" type="Timer" parent="." unique_id=169674330]
+one_shot = true
+
+[node name="SecondaryWaitTimer" type="Timer" parent="." unique_id=928158016]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="body_entered" from="PlayerSearchArea" to="." method="_on_player_search_area_body_entered"]
+[connection signal="body_exited" from="PlayerSearchArea" to="." method="_on_player_search_area_body_exited"]
+[connection signal="timeout" from="MoveWaitTimer" to="." method="_on_move_wait_timer_timeout"]
+[connection signal="timeout" from="SecondaryWaitTimer" to="." method="_on_secondary_wait_timer_timeout"]

@@ -195,4 +195,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77, 0)
 use_debug_meshes = false
 
 [node name="Drone" parent="." unique_id=292636954 instance=ExtResource("9_chqrx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 2.5, -9.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 2.5, -17)

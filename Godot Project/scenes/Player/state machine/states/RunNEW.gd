@@ -14,8 +14,12 @@ var look_at_position : Vector3
 
 
 func on_enter_state():
-	SignalBus.connect("TARGET_LOCKED",set_look_at)
-	SignalBus.connect("TARGET_DROPPED",drop_look_at)
+	# for some reason this function was giving an error that the signal is already connected. I had to add some if statements
+	# to make it stop, but I really don't know why it happened all of a sudden. Oh well?
+	if ! SignalBus.is_connected("TARGET_DROPPED",drop_look_at):
+		SignalBus.connect("TARGET_LOCKED",set_look_at)
+	if ! SignalBus.is_connected("TARGET_DROPPED",drop_look_at):
+		SignalBus.connect("TARGET_DROPPED",drop_look_at)
 	#look_at_position = player.global_position + player.velocity
 
 

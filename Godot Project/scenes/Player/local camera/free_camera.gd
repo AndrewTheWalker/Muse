@@ -33,7 +33,8 @@ func Enter():
 	var shape = shape_cast.get_shape()
 	shape.radius=buffer_radius
 	local_camera.is_target_locked = false
-	SignalBus.connect("INVERT_SIGNAL",set_inverse)
+	if ! SignalBus.is_connected("INVERT_SIGNAL",set_inverse):
+		SignalBus.connect("INVERT_SIGNAL",set_inverse)
 
 func set_inverse(button: String):
 	if button == "h_down":

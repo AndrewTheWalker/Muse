@@ -1223,7 +1223,7 @@ cache/0/12/0/glyphs/268435464/uv_rect = Rect2(21, 44, 13, 11)
 cache/0/12/0/glyphs/268435464/texture_idx = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oxxg"]
-bg_color = Color(1, 0.5058824, 0, 0.85490197)
+bg_color = Color(1, 1, 1, 0.85490197)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbf50"]
 bg_color = Color(0.031759612, 0.14371309, 0.18964794, 0.85490197)
