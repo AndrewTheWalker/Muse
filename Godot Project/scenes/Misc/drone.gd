@@ -1,9 +1,11 @@
 extends CharacterBody3D
 
-
+@onready var explosion_scene = preload("res://scenes/FX/fx_drone_explosion.tscn")
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player_search_area: Area3D = $PlayerSearchArea
 @onready var move_wait_timer: Timer = $MoveWaitTimer
 @onready var secondary_wait_timer: Timer = $SecondaryWaitTimer
+@onready var bone_attachment_3d: BoneAttachment3D = $Armature/Skeleton3D/BoneAttachment3D
 
 const SPEED = 7.0
 
@@ -14,7 +16,8 @@ var move_target : Vector3
 
 func _ready() -> void:
 	start_wait_timer()
-	
+
+
 func _process(delta: float) -> void:
 	if player_detected:
 		look_at(look_at_node.global_position,Vector3.UP,true)
@@ -65,8 +68,6 @@ func validate_target(loc:Vector3)->bool:
 	return true
 
 
-
-
 func move_to(new_loc:Vector3):
 	var direction = global_position.direction_to(new_loc)
 	velocity = direction.normalized() * SPEED
@@ -88,3 +89,20 @@ func _on_move_wait_timer_timeout() -> void:
 
 func _on_secondary_wait_timer_timeout() -> void:
 	_on_move_wait_timer_timeout()
+	
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("DebugHurt"):
+		die()
+		
+
+func die():
+	move_wait_timer.stop()
+	secondary_wait_timer.stop()
+	velocity = Vector3.ZERO
+	animation_player.play("Enemy_Dying")
+	await animation_player.animation_finished
+	var explosion = explosion_scene.instantiate()
+	get_tree().get_root().add_child(explosion)
+	explosion.global_position = bone_attachment_3d.global_position
+	queue_free()

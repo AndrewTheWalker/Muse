@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://crgr1jn1joc2h"]
+
+[ext_resource type="Script" uid="uid://dr4lu54h66av5" path="res://scenes/FX/fx_drone_explosion.gd" id="1_efcwt"]
+[ext_resource type="Texture2D" uid="uid://kf4sfb0e7qly" path="res://assets/misc/VFX_Circle.png" id="2_b7mws"]
+
+[sub_resource type="Gradient" id="Gradient_iubhc"]
+offsets = PackedFloat32Array(0, 0.491453, 0.74358976)
+colors = PackedColorArray(1, 0.59607846, 0, 1, 0.74315804, 0.17547321, 0, 1, 0.1066514, 0.08162754, 0.08163286, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lkewa"]
+gradient = SubResource("Gradient_iubhc")
+
+[sub_resource type="Curve" id="Curve_v1krb"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.8869145), 0.0, 2.2751753, 0, 0, Vector2(0.27692306, 1.1599355), 0.0, 0.0, 0, 0, Vector2(0.7461539, 0.29886937), -2.890812, -2.890812, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_qml6q"]
+curve = SubResource("Curve_v1krb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tupns"]
+particle_flag_damping_as_friction = true
+spread = 180.0
+initial_velocity_min = -5.79
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+damping_min = 36.364002
+damping_max = 48.760002
+scale_curve = SubResource("CurveTexture_qml6q")
+color_ramp = SubResource("GradientTexture1D_lkewa")
+hue_variation_min = -0.050000023
+hue_variation_max = 0.049999975
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkdnh"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_b7mws")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_hnlyr"]
+material = SubResource("StandardMaterial3D_gkdnh")
+
+[sub_resource type="Gradient" id="Gradient_dinb1"]
+colors = PackedColorArray(0.83137256, 0.80784315, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oteua"]
+gradient = SubResource("Gradient_dinb1")
+
+[sub_resource type="Curve" id="Curve_1l7p3"]
+_data = [Vector2(0, 0.14943469), 0.0, 0.0, 0, 0, Vector2(0.6769231, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cutgo"]
+curve = SubResource("Curve_1l7p3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uee3n"]
+spread = 180.0
+initial_velocity_max = 10.0
+scale_curve = SubResource("CurveTexture_cutgo")
+color_ramp = SubResource("GradientTexture1D_oteua")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7srfo"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_b7mws")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_xguqx"]
+material = SubResource("StandardMaterial3D_7srfo")
+
+[node name="FX_DroneExplosion" type="Node3D" unique_id=910402608]
+script = ExtResource("1_efcwt")
+
+[node name="MainExplosion" type="GPUParticles3D" parent="." unique_id=384619561]
+emitting = false
+amount = 16
+lifetime = 0.32
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_tupns")
+draw_pass_1 = SubResource("QuadMesh_hnlyr")
+
+[node name="LittleBits" type="GPUParticles3D" parent="." unique_id=291313229]
+emitting = false
+amount = 24
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_uee3n")
+draw_pass_1 = SubResource("QuadMesh_xguqx")
