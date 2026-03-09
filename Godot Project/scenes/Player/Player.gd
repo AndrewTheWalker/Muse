@@ -43,3 +43,8 @@ func get_all_children_recursive(node):
 			if i.is_in_group("debugtool"):
 				i.hide()
 	return nodes
+
+
+func receive_hit():
+	# tell model to call resources.
+	model.take_damage()

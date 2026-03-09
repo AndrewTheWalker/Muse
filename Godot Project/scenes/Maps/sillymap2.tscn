@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bfp5qo5cve0jb" path="res://assets/Grid Textures/Purple/texture_09.png" id="3_op7r4"]
 [ext_resource type="Texture2D" uid="uid://bmsx8puwddira" path="res://assets/Grid Textures/Green/texture_09.png" id="5_be4x1"]
 [ext_resource type="Texture2D" uid="uid://di5ugjwp0dqd2" path="res://assets/Grid Textures/Dark/texture_04.png" id="6_v2t6t"]
-[ext_resource type="PackedScene" uid="uid://d2v5wrd14ls01" path="res://scenes/Misc/enemy_spawner.tscn" id="8_g1q1n"]
 [ext_resource type="PackedScene" uid="uid://bk38kvg5dlsle" path="res://scenes/Misc/drone.tscn" id="9_chqrx"]
 [ext_resource type="PackedScene" uid="uid://du4xms5jmpcru" path="res://scenes/Player/player_KOR.tscn" id="9_obldh"]
 [ext_resource type="PackedScene" uid="uid://d0mue2qakhes6" path="res://scenes/Misc/dummy.tscn" id="9_s4dcr"]
@@ -185,8 +184,6 @@ depth = 2.0
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.19647527, 42.624348, -5.1370125)
 fov = 35.0
 
-[node name="EnemySpawner" parent="." unique_id=1440409159 instance=ExtResource("8_g1q1n")]
-
 [node name="Dummy" parent="." unique_id=707077110 instance=ExtResource("9_s4dcr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75, 0, 0)
 
@@ -195,4 +192,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77, 0)
 use_debug_meshes = false
 
 [node name="Drone" parent="." unique_id=292636954 instance=ExtResource("9_chqrx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 2.5, -17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 3.75, -43.75)
+
+[node name="Drone2" parent="." unique_id=1528102045 instance=ExtResource("9_chqrx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75, -43.75)
+
+[node name="Drone3" parent="." unique_id=2083097979 instance=ExtResource("9_chqrx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 3.75, -43.75)
+
+[node name="Drone4" parent="." unique_id=1078449966 instance=ExtResource("9_chqrx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2.5, -38.25)
+
+[node name="Drone5" parent="." unique_id=734887250 instance=ExtResource("9_chqrx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -38.25)
+
+[node name="Drone6" parent="." unique_id=2003174963 instance=ExtResource("9_chqrx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 2.5, -38.25)

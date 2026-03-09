@@ -20,8 +20,8 @@ class_name PlayerModel
 @onready var moves_container = $States as PlayerStates
 
 # bullet related stuff
+const bullet_scene = preload("uid://bg7rl84y6o0p7")
 @onready var bullet_spawner: Node3D = $"../Visuals/BulletSpawn"
-@onready var bullet_scene = preload("res://scenes/Player/Weapon/bullet.tscn") as PackedScene
 @onready var reticle_half: Node3D = $"../ReticleHalf"
 @onready var gun_point: BoneAttachment3D = $GeneralSkeleton/GunPoint
 
@@ -92,12 +92,13 @@ func _input(event: InputEvent) -> void:
 func spawn_bullet():
 	var spawn_loc = bullet_spawner.global_position
 	var bullet = bullet_scene.instantiate()
-	# so there's an error because we set these transforms before adding the bullet to the tree
-	# but it doesn't work right if it's the other way around
-	# this may be because the bullet's ready function determines its basis, so it's
-	# probably being called too early. it's fine for now but remember to consider it later.
-	bullet.global_position = spawn_loc
-	bullet.transform.basis = bullet_spawner.global_transform.basis
+	
+	# Note to self. We do not declare that "bullet" is the bullet class at any point here. Therefore we don't get autofill.
+	# This works, but might be prone to breaking if I screw something up.
+	
+	bullet.type = "enemy"
+	bullet.spawn_pos = spawn_loc
+	bullet.spawn_basis = bullet_spawner.global_transform.basis
 	get_tree().get_root().add_child(bullet)
 	resources.lose_stamina(15.0)
 
@@ -111,3 +112,7 @@ func update_bullet_target(reticle_point:Vector3):
 func force_overheat():
 	current_move.try_force_move("overheat")
 	ik_controller.override()
+
+
+func take_damage():
+	resources.lose_health(5.0)

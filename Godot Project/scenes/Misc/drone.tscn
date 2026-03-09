@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cpsdgpmijag3u" path="res://scenes/Misc/drone.gd" id="1_j5eno"]
 [ext_resource type="Texture2D" uid="uid://c30vq71nq5vu0" path="res://assets/Enemy/DroneEnemyglb_Drone_E.png" id="2_rhh8a"]
 [ext_resource type="PackedScene" uid="uid://cm8jj0j2bmggq" path="res://scenes/Misc/targetable_aspect.tscn" id="3_rhh8a"]
+[ext_resource type="Script" uid="uid://cp5nadpirwd6p" path="res://scenes/Misc/hit_body.gd" id="5_d64l5"]
+[ext_resource type="Texture2D" uid="uid://kf4sfb0e7qly" path="res://assets/misc/VFX_Circle.png" id="6_15lle"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqvjl"]
 resource_name = "DroneMat"
@@ -180,11 +182,82 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_j5eno"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d64l5"]
-radius = 7.5
+radius = 10.689466
 
-[node name="Drone" type="CharacterBody3D" unique_id=292636954]
+[sub_resource type="SphereShape3D" id="SphereShape3D_15lle"]
+radius = 0.652
+
+[sub_resource type="Gradient" id="Gradient_mf4ar"]
+offsets = PackedFloat32Array(0, 0.17521368, 1)
+colors = PackedColorArray(0.99607843, 0, 0, 0, 0.99607843, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u80wk"]
+gradient = SubResource("Gradient_mf4ar")
+
+[sub_resource type="Curve" id="Curve_78er2"]
+_data = [Vector2(0, 0.1739788), 0.0, -0.561234, 0, 0, Vector2(0.50384617, 0), -0.2726586, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xjbcw"]
+curve = SubResource("Curve_78er2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_twpjr"]
+emission_shape_scale = Vector3(2, 2, 2)
+emission_shape = 2
+emission_sphere_radius = 0.3
+gravity = Vector3(0, 0, 0)
+damping_max = 13.223001
+scale_curve = SubResource("CurveTexture_xjbcw")
+color_ramp = SubResource("GradientTexture1D_u80wk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y320u"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("6_15lle")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_dmwfu"]
+material = SubResource("StandardMaterial3D_y320u")
+
+[sub_resource type="Gradient" id="Gradient_0krcf"]
+offsets = PackedFloat32Array(0, 0.47863248, 0.8247863, 1)
+colors = PackedColorArray(0.8, 0, 0, 0, 0.80126345, 4.235506e-06, 2.8878452e-07, 1, 0.8243905, 0.11637412, 0.11637064, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iu14f"]
+gradient = SubResource("Gradient_0krcf")
+
+[sub_resource type="Curve" id="Curve_7331j"]
+_data = [Vector2(0, 0), 0.0, 0.45910582, 0, 0, Vector2(0.8038462, 0.3804524), 1.7143178, 1.7143178, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xprap"]
+curve = SubResource("Curve_7331j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rp28p"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_xprap")
+color_ramp = SubResource("GradientTexture1D_iu14f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byh0i"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("6_15lle")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_g2yq6"]
+material = SubResource("StandardMaterial3D_byh0i")
+
+[node name="Drone" type="CharacterBody3D" unique_id=292636954 groups=["enemy"]]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+collision_layer = 8
+collision_mask = 7
 script = ExtResource("1_j5eno")
+upper_bound = 5.0
+lower_bound = 2.0
 
 [node name="Armature" type="Node3D" parent="." unique_id=1298692901]
 transform = Transform3D(1, -8.359358e-09, -4.0056847e-10, 8.359358e-09, 0.995418, 0.0956199, -4.0057557e-10, -0.0956199, 0.995418, 0, 0, 0)
@@ -224,7 +297,7 @@ mesh = SubResource("ArrayMesh_4t7rj")
 skin = SubResource("Skin_o0pdt")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" unique_id=987786231]
-target_node = NodePath("../../../Marker3D")
+target_node = NodePath("../../../GunLookAt")
 bone_name = "JNT_Gun"
 bone = 3
 forward_axis = 2
@@ -243,7 +316,7 @@ autoplay = &"Enemy_Idle"
 visible = false
 shape = SubResource("SphereShape3D_j5eno")
 
-[node name="Marker3D" type="Marker3D" parent="." unique_id=1210787759]
+[node name="GunLookAt" type="Marker3D" parent="." unique_id=1210787759]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00077199936, 1.5)
 
 [node name="TargetableAspect" parent="." unique_id=1152320700 instance=ExtResource("3_rhh8a")]
@@ -251,8 +324,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00077199936, 1.5)
 [node name="PlayerSearchArea" type="Area3D" parent="." unique_id=1165443300]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSearchArea" unique_id=439857165]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.808253e-07, 0, 5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1840365e-07, 0, 9.64562)
 shape = SubResource("SphereShape3D_d64l5")
+
+[node name="HitBody" type="StaticBody3D" parent="." unique_id=253007974 groups=["enemy"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("5_d64l5")
+type = "enemy"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBody" unique_id=129184756]
+shape = SubResource("SphereShape3D_15lle")
+
+[node name="BulletSpawner" type="Node3D" parent="." unique_id=1160476875]
+transform = Transform3D(-1, -6.098304e-09, -8.720981e-08, 0, 0.997564, -0.06975646, 8.742278e-08, -0.06975646, -0.997564, 7.162752e-08, -0.14050433, 0.8193233)
+
+[node name="ConvergingParticles" type="GPUParticles3D" parent="BulletSpawner" unique_id=124770734]
+emitting = false
+amount = 36
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_twpjr")
+draw_pass_1 = SubResource("QuadMesh_dmwfu")
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="BulletSpawner/ConvergingParticles" unique_id=1562455331]
+strength = 20.0
+attenuation = 0.2588161
+
+[node name="GrowingGlow" type="GPUParticles3D" parent="BulletSpawner" unique_id=1234780930]
+emitting = false
+amount = 1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_rp28p")
+draw_pass_1 = SubResource("QuadMesh_g2yq6")
 
 [node name="MoveWaitTimer" type="Timer" parent="." unique_id=169674330]
 one_shot = true
@@ -261,7 +365,16 @@ one_shot = true
 wait_time = 0.25
 one_shot = true
 
+[node name="ShotTimer" type="Timer" parent="." unique_id=2051814101]
+wait_time = 2.5
+one_shot = true
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=964204928]
+
 [connection signal="body_entered" from="PlayerSearchArea" to="." method="_on_player_search_area_body_entered"]
 [connection signal="body_exited" from="PlayerSearchArea" to="." method="_on_player_search_area_body_exited"]
 [connection signal="timeout" from="MoveWaitTimer" to="." method="_on_move_wait_timer_timeout"]
 [connection signal="timeout" from="SecondaryWaitTimer" to="." method="_on_secondary_wait_timer_timeout"]
+[connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

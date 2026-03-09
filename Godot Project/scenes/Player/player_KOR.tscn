@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cj5otmew6fmhu" path="res://scenes/Player/Model/player_model_KOR.tscn" id="3_lwmt1"]
 [ext_resource type="Script" uid="uid://1e3ata53ev5h" path="res://scenes/Player/state machine/Input.gd" id="4_bq4xb"]
 [ext_resource type="PackedScene" uid="uid://ca16026hm7cpp" path="res://scenes/Player/local camera/local_camera.tscn" id="5_soc7e"]
+[ext_resource type="Script" uid="uid://cp5nadpirwd6p" path="res://scenes/Misc/hit_body.gd" id="6_1iqjq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pt5pi"]
 
@@ -13,8 +14,10 @@ transparency = 1
 shading_mode = 0
 albedo_color = Color(0.31764707, 1, 0, 0.03137255)
 
-[node name="PlayerKor" type="CharacterBody3D" unique_id=1159028594]
-collision_mask = 7
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1iqjq"]
+
+[node name="PlayerKor" type="CharacterBody3D" unique_id=1159028594 groups=["player"]]
+collision_mask = 6
 script = ExtResource("1_yrlkl")
 use_debug_meshes = true
 
@@ -62,3 +65,14 @@ material = SubResource("StandardMaterial3D_mra3b")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=2086916771]
 visible = false
+
+[node name="HitBody" type="StaticBody3D" parent="." unique_id=1396854037 groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("6_1iqjq")
+type = "player"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBody" unique_id=10563051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("CapsuleShape3D_1iqjq")

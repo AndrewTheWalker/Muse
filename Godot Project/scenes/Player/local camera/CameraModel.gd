@@ -91,8 +91,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Rstick_down"):
 		if current_state == states["locked"]:
 			current_state.drop_target()
-		else:
-			print("no target right now")
+		#else:
+			#print("no target right now")
 
 
 

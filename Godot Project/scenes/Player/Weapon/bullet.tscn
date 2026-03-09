@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg7rl84y6o0p7"]
+[gd_scene format=3 uid="uid://bg7rl84y6o0p7"]
 
 [ext_resource type="Script" uid="uid://chx2r8p3rfb8s" path="res://scenes/Player/Weapon/bullet.gd" id="1_xo8s8"]
 
@@ -14,7 +14,7 @@ shading_mode = 0
 [sub_resource type="SphereShape3D" id="SphereShape3D_xo8s8"]
 radius = 0.3
 
-[node name="bulletNEW" type="RigidBody3D"]
+[node name="bulletNEW" type="RigidBody3D" unique_id=946381381]
 collision_layer = 32
 collision_mask = 0
 mass = 0.01
@@ -23,32 +23,35 @@ gravity_scale = 0.0
 max_contacts_reported = 1
 script = ExtResource("1_xo8s8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1924949143]
 shape = SubResource("SphereShape3D_kshah")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=330583222]
 material_override = SubResource("StandardMaterial3D_2g5h2")
-radius = 0.05
+radius = 0.1
 
-[node name="LifetimeTimer" type="Timer" parent="."]
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=974947825]
 autostart = true
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, -1)
-collision_mask = 14
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1692160624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+target_position = Vector3(0, 0, -2)
+collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 5
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=511514810]
 light_energy = 0.1
 omni_attenuation = 2.0
 
-[node name="hurtbox" type="Area3D" parent="."]
+[node name="hurtbox" type="Area3D" parent="." unique_id=1089225352]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 collision_layer = 32
 collision_mask = 14
+monitoring = false
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hurtbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hurtbox" unique_id=1857321934]
 shape = SubResource("SphereShape3D_xo8s8")
 
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
