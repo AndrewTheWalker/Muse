@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8aqa8440l8mm"
+path="res://.godot/imported/enemy_explode.wav-b3b086b5e609f671ca585632f5dd89b5.sample"
+
+[deps]
+
+source_file="res://assets/Sound Effects/enemy_explode.wav"
+dest_files=["res://.godot/imported/enemy_explode.wav-b3b086b5e609f671ca585632f5dd89b5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

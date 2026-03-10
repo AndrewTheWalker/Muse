@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dv7b1tjsov8r2"
+path="res://.godot/imported/PL02_U_00026.wav-1e1d6b545e5178ff51389cebe1a7f202.sample"
+
+[deps]
+
+source_file="res://assets/Sound Effects/PL02_U_00026.wav"
+dest_files=["res://.godot/imported/PL02_U_00026.wav-1e1d6b545e5178ff51389cebe1a7f202.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

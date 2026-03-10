@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://xaf6jf31qkwa"
+path="res://.godot/imported/kor_shoot.wav-46f7647e6296cf6bde5128f47b659b0d.sample"
+
+[deps]
+
+source_file="res://assets/Sound Effects/kor_shoot.wav"
+dest_files=["res://.godot/imported/kor_shoot.wav-46f7647e6296cf6bde5128f47b659b0d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -7,14 +7,14 @@
 offsets = PackedFloat32Array(0, 0.17521368, 1)
 colors = PackedColorArray(0.99607843, 0, 0, 0, 0.99607843, 0, 0, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_u80wk"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_txsm4"]
 gradient = SubResource("Gradient_ouenk")
 
 [sub_resource type="Curve" id="Curve_dhsud"]
 _data = [Vector2(0, 0.1739788), 0.0, -0.561234, 0, 0, Vector2(0.50384617, 0), -0.2726586, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_xjbcw"]
+[sub_resource type="CurveTexture" id="CurveTexture_o7y0p"]
 curve = SubResource("Curve_dhsud")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vx0k3"]
@@ -23,10 +23,10 @@ emission_shape = 2
 emission_sphere_radius = 0.3
 gravity = Vector3(0, 0, 0)
 damping_max = 13.223001
-scale_curve = SubResource("CurveTexture_xjbcw")
-color_ramp = SubResource("GradientTexture1D_u80wk")
+scale_curve = SubResource("CurveTexture_o7y0p")
+color_ramp = SubResource("GradientTexture1D_txsm4")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y320u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ouenk"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -35,28 +35,28 @@ billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_d4tnh"]
-material = SubResource("StandardMaterial3D_y320u")
+material = SubResource("StandardMaterial3D_ouenk")
 
 [sub_resource type="Gradient" id="Gradient_1ydw3"]
 offsets = PackedFloat32Array(0, 0.47863248, 0.8247863, 1)
 colors = PackedColorArray(0.8, 0, 0, 0, 0.80126345, 4.235506e-06, 2.8878452e-07, 1, 0.8243905, 0.11637412, 0.11637064, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_iu14f"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u80wk"]
 gradient = SubResource("Gradient_1ydw3")
 
 [sub_resource type="Curve" id="Curve_0oeyv"]
 _data = [Vector2(0, 0), 0.0, 0.45910582, 0, 0, Vector2(0.8038462, 0.3804524), 1.7143178, 1.7143178, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_xprap"]
+[sub_resource type="CurveTexture" id="CurveTexture_dhsud"]
 curve = SubResource("Curve_0oeyv")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1sx8h"]
 gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_xprap")
-color_ramp = SubResource("GradientTexture1D_iu14f")
+scale_curve = SubResource("CurveTexture_dhsud")
+color_ramp = SubResource("GradientTexture1D_u80wk")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byh0i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjbcw"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -65,7 +65,7 @@ billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_412p0"]
-material = SubResource("StandardMaterial3D_byh0i")
+material = SubResource("StandardMaterial3D_xjbcw")
 
 [node name="FX_DroneBulletCharge" type="Node3D" unique_id=620070389]
 script = ExtResource("1_txsm4")
@@ -79,7 +79,7 @@ process_material = SubResource("ParticleProcessMaterial_vx0k3")
 draw_pass_1 = SubResource("QuadMesh_d4tnh")
 
 [node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="ConvergingParticles" unique_id=114488623]
-strength = 20.0
+strength = 128.0
 attenuation = 0.2588161
 
 [node name="GrowingGlow" type="GPUParticles3D" parent="." unique_id=1110787529]
