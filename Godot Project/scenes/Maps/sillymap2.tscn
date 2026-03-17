@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bmsx8puwddira" path="res://assets/Grid Textures/Green/texture_09.png" id="5_be4x1"]
 [ext_resource type="Texture2D" uid="uid://di5ugjwp0dqd2" path="res://assets/Grid Textures/Dark/texture_04.png" id="6_v2t6t"]
 [ext_resource type="PackedScene" uid="uid://bk38kvg5dlsle" path="res://scenes/Misc/drone.tscn" id="9_chqrx"]
-[ext_resource type="PackedScene" uid="uid://du4xms5jmpcru" path="res://scenes/Player/player_KOR.tscn" id="9_obldh"]
+[ext_resource type="PackedScene" uid="uid://c3lvhqoxrlryl" path="res://scenes/Player/player_KOR.tscn" id="9_obldh"]
 [ext_resource type="PackedScene" uid="uid://d0mue2qakhes6" path="res://scenes/Misc/dummy.tscn" id="9_s4dcr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1q37i"]
@@ -223,10 +223,6 @@ fov = 35.0
 [node name="Dummy" parent="." unique_id=707077110 instance=ExtResource("9_s4dcr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75, 0, 99.25)
 
-[node name="PlayerKor" parent="." unique_id=1159028594 instance=ExtResource("9_obldh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77, 0)
-use_debug_meshes = false
-
 [node name="Drone" parent="." unique_id=292636954 instance=ExtResource("9_chqrx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 3.75, -43.75)
 
@@ -244,3 +240,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -38.25)
 
 [node name="Drone6" parent="." unique_id=2003174963 instance=ExtResource("9_chqrx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 2.5, -38.25)
+
+[node name="PlayerKor" parent="." unique_id=1159028594 instance=ExtResource("9_obldh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.677266, 0)
+use_debug_meshes = false

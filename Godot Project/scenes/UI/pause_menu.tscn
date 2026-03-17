@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://bhgpw5v504rbl"]
 
 [ext_resource type="Texture2D" uid="uid://ddhor74nlj4ug" path="res://assets/FadeTexture.png" id="1_1catq"]
-[ext_resource type="Script" uid="uid://dorbe4vqyb8ea" path="res://scenes/Misc/pause_menu.gd" id="1_oicmp"]
+[ext_resource type="Script" uid="uid://dorbe4vqyb8ea" path="res://scenes/UI/pause_menu.gd" id="1_oicmp"]
 [ext_resource type="Texture2D" uid="uid://ti0fp5xj7kms" path="res://assets/misc/checktrue.png" id="2_1eciq"]
 [ext_resource type="Texture2D" uid="uid://cdc6skilg0ok4" path="res://assets/misc/checkfalse.png" id="3_oicmp"]
 
 [node name="Pause Menu" type="Control" unique_id=2060593522]
-process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,10 +80,10 @@ horizontal_alignment = 1
 [node name="HSliderHSens" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1223984705]
 layout_mode = 2
 min_value = 1.0
-max_value = 10.0
-value = 1.0
+max_value = 9.0
+value = 5.0
 rounded = true
-tick_count = 10
+tick_count = 9
 
 [node name="LabelVsens" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1802470055]
 layout_mode = 2
@@ -94,13 +93,16 @@ horizontal_alignment = 1
 [node name="HSliderVSens" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=491325965]
 layout_mode = 2
 min_value = 1.0
-max_value = 10.0
-value = 1.0
+max_value = 9.0
+value = 5.0
 rounded = true
-tick_count = 10
+tick_count = 9
 
 [node name="HSeparator4" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1507113493]
 layout_mode = 2
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/CheckBoxH" to="." method="_on_check_box_h_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/CheckBoxV" to="." method="_on_check_box_v_toggled"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSliderHSens" to="." method="_on_h_slider_h_sens_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSliderVSens" to="." method="_on_h_slider_v_sens_value_changed"]

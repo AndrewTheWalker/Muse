@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://du138mke7x4kc"]
+
+[ext_resource type="PackedScene" uid="uid://du4xms5jmpcru" path="res://scenes/UI/player_KOR_dummy.tscn" id="1_aqk7x"]
+[ext_resource type="Material" uid="uid://by11edxu7cxj0" path="res://scenes/UI/dark_material.tres" id="1_h303l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yp5oa"]
+albedo_color = Color(0.275, 0.27, 0.3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tjcp"]
+albedo_color = Color(0.36, 0.36, 0.36, 1)
+
+[sub_resource type="Animation" id="Animation_dguv4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedGeo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2, -3.068)]
+}
+
+[sub_resource type="Animation" id="Animation_aqk7x"]
+resource_name = "elevatormotion"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedGeo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -10, -3.068), Vector3(0, 13.98, -3.068)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h303l"]
+_data = {
+&"RESET": SubResource("Animation_dguv4"),
+&"elevatormotion": SubResource("Animation_aqk7x")
+}
+
+[node name="MainMenu3D" type="Node3D" unique_id=1419738701]
+
+[node name="AnimatedGeo" type="Node3D" parent="." unique_id=1047257314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -3.068)
+
+[node name="BoxA" type="CSGBox3D" parent="AnimatedGeo" unique_id=187624578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15545654)
+material_override = ExtResource("1_h303l")
+size = Vector3(1.3564453, 1, 0.80285645)
+
+[node name="BoxB" type="CSGBox3D" parent="AnimatedGeo" unique_id=555438188]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.2198486, 0, 3.0681155)
+material_override = ExtResource("1_h303l")
+size = Vector3(1.4665527, 1, 0.81030273)
+
+[node name="BoxC" type="CSGBox3D" parent="AnimatedGeo" unique_id=160144291]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.267334, 0, 3.068115)
+material_override = ExtResource("1_h303l")
+size = Vector3(1.361084, 1, 0.71533203)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="AnimatedGeo" unique_id=207758063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.0681152)
+material_override = ExtResource("1_h303l")
+inner_radius = 4.340839
+outer_radius = 5.1098895
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="AnimatedGeo" unique_id=497329608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.086792, 3.0681152)
+material_override = ExtResource("1_h303l")
+inner_radius = 4.340839
+outer_radius = 5.1098895
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="AnimatedGeo" unique_id=374995907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.948292, 3.0681152)
+material_override = ExtResource("1_h303l")
+inner_radius = 4.340839
+outer_radius = 5.1098895
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="AnimatedGeo" unique_id=1753427027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.104338, 3.0681152)
+material_override = ExtResource("1_h303l")
+inner_radius = 4.340839
+outer_radius = 5.1098895
+
+[node name="OmniLight3D" type="OmniLight3D" parent="AnimatedGeo" unique_id=1214338667]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 2.8290286, 0, 5.9232135)
+light_color = Color(1, 0.5625, 0.25, 1)
+shadow_enabled = true
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="AnimatedGeo" unique_id=183713966]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 2.8290296, 0, 0.23481631)
+light_color = Color(1, 0.5625, 0.25, 1)
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="AnimatedGeo" unique_id=1087184214]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -2.849832, 0, 5.923213)
+light_color = Color(1, 0.5625, 0.25, 1)
+shadow_enabled = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="AnimatedGeo" unique_id=1349283814]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -2.8498325, 0, 0.26311874)
+light_color = Color(1, 0.5625, 0.25, 1)
+shadow_enabled = true
+
+[node name="StaticGeo" type="Node3D" parent="." unique_id=896600573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6986084, 0)
+
+[node name="OuterWall" type="CSGCylinder3D" parent="StaticGeo" unique_id=1908731340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04118347, 0)
+flip_faces = true
+radius = 4.474121
+height = 26.888885
+material = ExtResource("1_h303l")
+
+[node name="Platform" type="CSGCylinder3D" parent="StaticGeo" unique_id=1034778312]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.9486084, 0)
+radius = 3.0
+height = 0.5
+material = SubResource("StandardMaterial3D_yp5oa")
+
+[node name="PillarA" type="CSGBox3D" parent="StaticGeo" unique_id=991461055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+material_override = ExtResource("1_h303l")
+size = Vector3(0.75, 8, 1)
+material = SubResource("StandardMaterial3D_5tjcp")
+
+[node name="PillarB" type="CSGBox3D" parent="StaticGeo" unique_id=517128385]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 0, 1.3113416e-07)
+material_override = ExtResource("1_h303l")
+size = Vector3(0.75, 8, 1)
+
+[node name="PillarC" type="CSGBox3D" parent="StaticGeo" unique_id=927947813]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 0, -1.3113416e-07)
+material_override = ExtResource("1_h303l")
+size = Vector3(0.75, 8, 1)
+
+[node name="DummyKor" parent="StaticGeo" unique_id=1159028594 instance=ExtResource("1_aqk7x")]
+transform = Transform3D(-0.9702957, 0, 0.2419218, 0, 1, 0, -0.2419218, 0, -0.9702957, 0.639, -2.698, 0.243)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="StaticGeo" unique_id=1205165604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.198, 0)
+light_color = Color(0.45999998, 0.829, 1, 1)
+light_energy = 0.404
+light_indirect_energy = 0.529
+omni_range = 8.811551
+
+[node name="OmniLight3D2" type="SpotLight3D" parent="StaticGeo" unique_id=1819588868]
+transform = Transform3D(-0.49751914, 0.02078511, 0.8672039, 0, 0.9997129, -0.023961078, -0.867453, -0.011921096, -0.4973763, 2.3390615, -0.691, -0.51223737)
+light_color = Color(1, 0.793, 0.45999998, 1)
+light_energy = 6.308
+spot_range = 3.169673
+spot_angle = 42.928688
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=894330116]
+transform = Transform3D(0.8763572, 0, -0.48166198, 0, 1, 0, 0.48166198, 0, 0.8763572, -1.04156, 0.9827695, 2.3038898)
+current = true
+fov = 50.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1051005180]
+root_node = NodePath("../StaticGeo")
+libraries/ = SubResource("AnimationLibrary_h303l")
+autoplay = &"elevatormotion"

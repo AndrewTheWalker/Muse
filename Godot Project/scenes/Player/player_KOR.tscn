@@ -1,21 +1,21 @@
-[gd_scene format=3 uid="uid://du4xms5jmpcru"]
+[gd_scene format=3 uid="uid://c3lvhqoxrlryl"]
 
-[ext_resource type="Script" uid="uid://dmoba5ho73j56" path="res://scenes/Player/Player.gd" id="1_yrlkl"]
-[ext_resource type="PackedScene" uid="uid://baoepsupldxk8" path="res://scenes/Player/Model/player_visuals_KOR.tscn" id="2_yrlkl"]
-[ext_resource type="PackedScene" uid="uid://cj5otmew6fmhu" path="res://scenes/Player/Model/player_model_KOR.tscn" id="3_lwmt1"]
-[ext_resource type="Script" uid="uid://1e3ata53ev5h" path="res://scenes/Player/state machine/Input.gd" id="4_bq4xb"]
-[ext_resource type="PackedScene" uid="uid://ca16026hm7cpp" path="res://scenes/Player/local camera/local_camera.tscn" id="5_soc7e"]
-[ext_resource type="Script" uid="uid://cp5nadpirwd6p" path="res://scenes/Misc/hit_body.gd" id="6_1iqjq"]
-[ext_resource type="Script" uid="uid://bjcvlbegbnkgf" path="res://scenes/Player/PlayerAudio.gd" id="7_2xx6v"]
-[ext_resource type="AudioStream" uid="uid://c1tm60jxvy21o" path="res://assets/Sound Effects/kor_death_hit.wav" id="8_7qown"]
-[ext_resource type="AudioStream" uid="uid://xk2lvkbl24tu" path="res://assets/Sound Effects/kor_hit.wav" id="9_l6gex"]
-[ext_resource type="AudioStream" uid="uid://bsyf106vgrgxi" path="res://assets/Sound Effects/kor_jump.wav" id="10_i0g4v"]
-[ext_resource type="AudioStream" uid="uid://c2g5i3rcawnjs" path="res://assets/Sound Effects/kor_land.wav" id="11_gox4v"]
-[ext_resource type="AudioStream" uid="uid://du5gdwyxwh4tf" path="res://assets/Sound Effects/kor_overheat.wav" id="12_e6qfr"]
-[ext_resource type="AudioStream" uid="uid://d8mhkr4kr212" path="res://assets/Sound Effects/kor_respawn.wav" id="13_m8gw0"]
-[ext_resource type="AudioStream" uid="uid://b03guq4b1so66" path="res://assets/Sound Effects/kor_roll.wav" id="14_rl61j"]
-[ext_resource type="AudioStream" uid="uid://xaf6jf31qkwa" path="res://assets/Sound Effects/kor_shoot.wav" id="15_k600a"]
-[ext_resource type="AudioStream" uid="uid://djum88r6ge5m7" path="res://assets/Sound Effects/kor_step.wav" id="16_7qown"]
+[ext_resource type="Script" uid="uid://dmoba5ho73j56" path="res://scenes/Player/Player.gd" id="1_3tgjv"]
+[ext_resource type="PackedScene" uid="uid://baoepsupldxk8" path="res://scenes/Player/Model/player_visuals_KOR.tscn" id="2_n17f7"]
+[ext_resource type="PackedScene" uid="uid://cj5otmew6fmhu" path="res://scenes/Player/Model/player_model_KOR.tscn" id="3_minpg"]
+[ext_resource type="Script" uid="uid://1e3ata53ev5h" path="res://scenes/Player/state machine/Input.gd" id="4_dla7g"]
+[ext_resource type="PackedScene" uid="uid://ca16026hm7cpp" path="res://scenes/Player/local camera/local_camera.tscn" id="5_q1ssm"]
+[ext_resource type="Script" uid="uid://cp5nadpirwd6p" path="res://scenes/Misc/hit_body.gd" id="6_ln8ob"]
+[ext_resource type="Script" uid="uid://bjcvlbegbnkgf" path="res://scenes/Player/PlayerAudio.gd" id="7_i8i5d"]
+[ext_resource type="AudioStream" uid="uid://c1tm60jxvy21o" path="res://assets/Sound Effects/kor_death_hit.wav" id="8_2jogs"]
+[ext_resource type="AudioStream" uid="uid://xk2lvkbl24tu" path="res://assets/Sound Effects/kor_hit.wav" id="9_qwcyf"]
+[ext_resource type="AudioStream" uid="uid://bsyf106vgrgxi" path="res://assets/Sound Effects/kor_jump.wav" id="10_a0t2w"]
+[ext_resource type="AudioStream" uid="uid://c2g5i3rcawnjs" path="res://assets/Sound Effects/kor_land.wav" id="11_lcy1i"]
+[ext_resource type="AudioStream" uid="uid://du5gdwyxwh4tf" path="res://assets/Sound Effects/kor_overheat.wav" id="12_b0h6l"]
+[ext_resource type="AudioStream" uid="uid://d8mhkr4kr212" path="res://assets/Sound Effects/kor_respawn.wav" id="13_bm1h4"]
+[ext_resource type="AudioStream" uid="uid://b03guq4b1so66" path="res://assets/Sound Effects/kor_roll.wav" id="14_b4bq8"]
+[ext_resource type="AudioStream" uid="uid://xaf6jf31qkwa" path="res://assets/Sound Effects/kor_shoot.wav" id="15_hqojd"]
+[ext_resource type="AudioStream" uid="uid://djum88r6ge5m7" path="res://assets/Sound Effects/kor_step.wav" id="16_vkka1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pt5pi"]
 
@@ -28,10 +28,10 @@ albedo_color = Color(0.31764707, 1, 0, 0.03137255)
 
 [node name="PlayerKor" type="CharacterBody3D" unique_id=1159028594 groups=["player"]]
 collision_mask = 6
-script = ExtResource("1_yrlkl")
+script = ExtResource("1_3tgjv")
 use_debug_meshes = true
 
-[node name="Visuals" parent="." unique_id=2638631 instance=ExtResource("2_yrlkl")]
+[node name="Visuals" parent="." unique_id=2638631 instance=ExtResource("2_n17f7")]
 
 [node name="BulletSpawn" type="Node3D" parent="Visuals" unique_id=831667655]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007845253, 1.5446991, -0.75922215)
@@ -42,12 +42,12 @@ visible = false
 radius = 0.128
 height = 0.477
 
-[node name="Model" parent="." unique_id=1739466808 instance=ExtResource("3_lwmt1")]
+[node name="Model" parent="." unique_id=1739466808 instance=ExtResource("3_minpg")]
 
 [node name="Input" type="Node" parent="." unique_id=1928426828]
-script = ExtResource("4_bq4xb")
+script = ExtResource("4_dla7g")
 
-[node name="LocalCamera" parent="." unique_id=218278565 node_paths=PackedStringArray("look_at") instance=ExtResource("5_soc7e")]
+[node name="LocalCamera" parent="." unique_id=218278565 node_paths=PackedStringArray("look_at") instance=ExtResource("5_q1ssm")]
 unique_name_in_owner = true
 look_at = NodePath("../CameraFocus")
 
@@ -80,7 +80,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 collision_layer = 16
 collision_mask = 0
-script = ExtResource("6_1iqjq")
+script = ExtResource("6_ln8ob")
 type = "player"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBody" unique_id=10563051]
@@ -88,41 +88,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("CapsuleShape3D_1iqjq")
 
 [node name="AudioManager" type="Node" parent="." unique_id=1194311746]
-script = ExtResource("7_2xx6v")
+script = ExtResource("7_i8i5d")
 
 [node name="KorDeathHit" type="AudioStreamPlayer" parent="AudioManager" unique_id=78875629]
-stream = ExtResource("8_7qown")
+stream = ExtResource("8_2jogs")
 
 [node name="KorHit" type="AudioStreamPlayer" parent="AudioManager" unique_id=1776890335]
-stream = ExtResource("9_l6gex")
+stream = ExtResource("9_qwcyf")
 volume_db = -17.499
 
 [node name="KorJump" type="AudioStreamPlayer" parent="AudioManager" unique_id=1993151867]
-stream = ExtResource("10_i0g4v")
+stream = ExtResource("10_a0t2w")
 volume_db = -15.59
 pitch_scale = 1.52
 
 [node name="KorLand" type="AudioStreamPlayer" parent="AudioManager" unique_id=1509252212]
-stream = ExtResource("11_gox4v")
+stream = ExtResource("11_lcy1i")
 volume_db = -25.625
 pitch_scale = 1.52
 
 [node name="KorOverheat" type="AudioStreamPlayer" parent="AudioManager" unique_id=1127394554]
-stream = ExtResource("12_e6qfr")
+stream = ExtResource("12_b0h6l")
 
 [node name="KorRespawn" type="AudioStreamPlayer" parent="AudioManager" unique_id=1367223100]
-stream = ExtResource("13_m8gw0")
+stream = ExtResource("13_bm1h4")
 
 [node name="KorRoll" type="AudioStreamPlayer" parent="AudioManager" unique_id=1841570612]
-stream = ExtResource("14_rl61j")
+stream = ExtResource("14_b4bq8")
 volume_db = -12.235
 
 [node name="KorShoot" type="AudioStreamPlayer" parent="AudioManager" unique_id=1830936682]
-stream = ExtResource("15_k600a")
+stream = ExtResource("15_hqojd")
 volume_db = -18.353
 pitch_scale = 2.1
 
 [node name="KorStep" type="AudioStreamPlayer" parent="AudioManager" unique_id=307887667]
-stream = ExtResource("16_7qown")
+stream = ExtResource("16_vkka1")
 volume_db = -19.936
 pitch_scale = 0.95

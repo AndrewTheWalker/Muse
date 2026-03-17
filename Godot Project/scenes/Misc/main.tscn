@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://biw6gp6sx8f7h" path="res://scripts/ui.gd" id="3_q4ru8"]
 [ext_resource type="Theme" uid="uid://o62k7suu6frj" path="res://assets/misc/lifebar_theme.tres" id="4_rfswh"]
 [ext_resource type="Theme" uid="uid://bip6ynvdgfjl1" path="res://assets/misc/heatbar_theme.tres" id="5_lm7cc"]
-[ext_resource type="PackedScene" uid="uid://s2w25niduuq6" path="res://scenes/Misc/transition_anim.tscn" id="8_lm7cc"]
+[ext_resource type="PackedScene" uid="uid://s2w25niduuq6" path="res://scenes/UI/transition_anim.tscn" id="8_lm7cc"]
 
 [node name="Main" type="Node" unique_id=1074346301]
 script = ExtResource("1_jasrq")
