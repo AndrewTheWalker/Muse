@@ -25,6 +25,7 @@ func on_enter_state():
 	is_overheating = true
 	model.fx_overheat.emit_particles()
 	player.velocity = Vector3.ZERO
+	player.send_sound("overheat")
 
 func on_exit_state():
 	is_overheating = false

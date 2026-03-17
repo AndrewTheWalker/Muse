@@ -13,6 +13,7 @@ const bullet_scene = preload("uid://bg7rl84y6o0p7")
 @onready var bone_attachment_3d: BoneAttachment3D = $Armature/Skeleton3D/BoneAttachment3D
 @onready var bullet_spawner: Node3D = $BulletSpawner
 @onready var shot_timer: Timer = $ShotTimer
+@onready var audio_manager: Node = $AudioManager
 
 @onready var converging_particles: GPUParticles3D = $BulletSpawner/ConvergingParticles
 @onready var growing_glow: GPUParticles3D = $BulletSpawner/GrowingGlow
@@ -54,6 +55,7 @@ func _process(delta: float) -> void:
 func _on_player_search_area_body_entered(body: Node3D) -> void:
 	if body.name == "PlayerKor":
 		player_detected = true
+		send_sound("detect")
 		look_at_node = body
 		shot_timer.start()
 
@@ -118,6 +120,7 @@ func _input(event: InputEvent) -> void:
 func die():
 	move_wait_timer.stop()
 	secondary_wait_timer.stop()
+	send_sound("death_hit")
 	SignalBus.TARGET_SCREEN_EXITED.emit(self)
 	velocity = Vector3.ZERO
 	animation_player.play("Enemy_Dying")
@@ -129,8 +132,10 @@ func die():
 
 
 func receive_hit():
+	#if !player_detected:
+		#player_detected = true
 	health -= 1
-	print("ouch! health is ",health)
+	send_sound("hit")
 	if health < 1:
 		die()
 	
@@ -152,12 +157,17 @@ func spawn_bullet():
 func _on_shot_timer_timeout() -> void:
 	if player_detected and is_on_screen:
 		converging_particles.emitting = true
+		send_sound("charge")
 		growing_glow.emitting = true
 		await converging_particles.finished
 		spawn_bullet()
+		send_sound("shoot")
 		shot_timer.start()
 	else:
 		pass
+
+func send_sound(sound_name : String):
+	audio_manager.play_sound(sound_name)
 
 
 func _on_visible_on_screen_notifier_3d_screen_entered() -> void:

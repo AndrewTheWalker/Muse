@@ -5,6 +5,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 const TRANSITION_TIMING = 0.25
 
+func on_enter_state():
+	player.send_sound("land")
 
 func default_lifecycle(input : InputPackage):
 	if works_longer_than(TRANSITION_TIMING):

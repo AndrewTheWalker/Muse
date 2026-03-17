@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var input_gatherer = $Input as InputGatherer
 @onready var model = $Model as PlayerModel
 @onready var visuals = $Visuals as PlayerVisuals
+@onready var audio_manager: Node = $AudioManager
 
 
 @onready var local_camera: CameraModel = %LocalCamera
@@ -48,3 +49,10 @@ func get_all_children_recursive(node):
 func receive_hit():
 	# tell model to call resources.
 	model.take_damage()
+
+
+func send_sound(sound_name : String):
+	audio_manager.play_sound(sound_name)
+	
+func stop_sound(sound_name : String):
+	audio_manager.stop_playing(sound_name)

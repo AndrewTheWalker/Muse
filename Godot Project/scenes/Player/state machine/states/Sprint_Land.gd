@@ -16,3 +16,6 @@ func default_lifecycle(input : InputPackage):
 func update(_input : InputPackage, delta ):
 	player.velocity.y -= gravity * delta
 	player.move_and_slide()
+	
+func on_enter_state():
+	player.send_sound("land")

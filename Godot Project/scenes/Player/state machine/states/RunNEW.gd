@@ -20,8 +20,11 @@ func on_enter_state():
 		SignalBus.connect("TARGET_LOCKED",set_look_at)
 	if ! SignalBus.is_connected("TARGET_DROPPED",drop_look_at):
 		SignalBus.connect("TARGET_DROPPED",drop_look_at)
+	player.send_sound("step")
 	#look_at_position = player.global_position + player.velocity
 
+func on_exit_state():
+	player.stop_sound("step")
 
 func set_look_at(look_at_vector:Vector3):
 	if look_at_vector:

@@ -31,4 +31,5 @@ func process_jump():
 
 
 func on_enter_state():
-	player.velocity = player.velocity.normalized() * SPEED 
+	player.velocity = player.velocity.normalized() * SPEED
+	player.send_sound("jump")

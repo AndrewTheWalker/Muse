@@ -6,6 +6,16 @@
 [ext_resource type="Script" uid="uid://1e3ata53ev5h" path="res://scenes/Player/state machine/Input.gd" id="4_bq4xb"]
 [ext_resource type="PackedScene" uid="uid://ca16026hm7cpp" path="res://scenes/Player/local camera/local_camera.tscn" id="5_soc7e"]
 [ext_resource type="Script" uid="uid://cp5nadpirwd6p" path="res://scenes/Misc/hit_body.gd" id="6_1iqjq"]
+[ext_resource type="Script" uid="uid://bjcvlbegbnkgf" path="res://scenes/Player/PlayerAudio.gd" id="7_2xx6v"]
+[ext_resource type="AudioStream" uid="uid://c1tm60jxvy21o" path="res://assets/Sound Effects/kor_death_hit.wav" id="8_7qown"]
+[ext_resource type="AudioStream" uid="uid://xk2lvkbl24tu" path="res://assets/Sound Effects/kor_hit.wav" id="9_l6gex"]
+[ext_resource type="AudioStream" uid="uid://bsyf106vgrgxi" path="res://assets/Sound Effects/kor_jump.wav" id="10_i0g4v"]
+[ext_resource type="AudioStream" uid="uid://c2g5i3rcawnjs" path="res://assets/Sound Effects/kor_land.wav" id="11_gox4v"]
+[ext_resource type="AudioStream" uid="uid://du5gdwyxwh4tf" path="res://assets/Sound Effects/kor_overheat.wav" id="12_e6qfr"]
+[ext_resource type="AudioStream" uid="uid://d8mhkr4kr212" path="res://assets/Sound Effects/kor_respawn.wav" id="13_m8gw0"]
+[ext_resource type="AudioStream" uid="uid://b03guq4b1so66" path="res://assets/Sound Effects/kor_roll.wav" id="14_rl61j"]
+[ext_resource type="AudioStream" uid="uid://xaf6jf31qkwa" path="res://assets/Sound Effects/kor_shoot.wav" id="15_k600a"]
+[ext_resource type="AudioStream" uid="uid://djum88r6ge5m7" path="res://assets/Sound Effects/kor_step.wav" id="16_7qown"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pt5pi"]
 
@@ -76,3 +86,43 @@ type = "player"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBody" unique_id=10563051]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("CapsuleShape3D_1iqjq")
+
+[node name="AudioManager" type="Node" parent="." unique_id=1194311746]
+script = ExtResource("7_2xx6v")
+
+[node name="KorDeathHit" type="AudioStreamPlayer" parent="AudioManager" unique_id=78875629]
+stream = ExtResource("8_7qown")
+
+[node name="KorHit" type="AudioStreamPlayer" parent="AudioManager" unique_id=1776890335]
+stream = ExtResource("9_l6gex")
+volume_db = -17.499
+
+[node name="KorJump" type="AudioStreamPlayer" parent="AudioManager" unique_id=1993151867]
+stream = ExtResource("10_i0g4v")
+volume_db = -15.59
+pitch_scale = 1.52
+
+[node name="KorLand" type="AudioStreamPlayer" parent="AudioManager" unique_id=1509252212]
+stream = ExtResource("11_gox4v")
+volume_db = -25.625
+pitch_scale = 1.52
+
+[node name="KorOverheat" type="AudioStreamPlayer" parent="AudioManager" unique_id=1127394554]
+stream = ExtResource("12_e6qfr")
+
+[node name="KorRespawn" type="AudioStreamPlayer" parent="AudioManager" unique_id=1367223100]
+stream = ExtResource("13_m8gw0")
+
+[node name="KorRoll" type="AudioStreamPlayer" parent="AudioManager" unique_id=1841570612]
+stream = ExtResource("14_rl61j")
+volume_db = -12.235
+
+[node name="KorShoot" type="AudioStreamPlayer" parent="AudioManager" unique_id=1830936682]
+stream = ExtResource("15_k600a")
+volume_db = -18.353
+pitch_scale = 2.1
+
+[node name="KorStep" type="AudioStreamPlayer" parent="AudioManager" unique_id=307887667]
+stream = ExtResource("16_7qown")
+volume_db = -19.936
+pitch_scale = 0.95

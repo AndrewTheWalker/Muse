@@ -25,6 +25,7 @@ func on_enter_state():
 	input_direction.y = 0
 	if input_direction:
 		player.visuals.look_at(player.global_position - input_direction, Vector3.UP, false)
+	player.send_sound("roll")
 
 
 func on_exit_state():

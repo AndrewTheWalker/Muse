@@ -80,6 +80,7 @@ func _input(event: InputEvent) -> void:
 		if current_move.can_shoot():
 			SignalBus.TARGET_LOCKED.emit(target_direction)
 			ik_controller.process_ik("shoot")
+			player.send_sound("shoot")
 			call_deferred("spawn_bullet")
 		else:
 			print("shooting not allowed by this move")
@@ -116,3 +117,4 @@ func force_overheat():
 
 func take_damage():
 	resources.lose_health(5.0)
+	player.send_sound("hit")

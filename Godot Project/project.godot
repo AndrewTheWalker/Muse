@@ -22,6 +22,7 @@ config/icon="uid://dsskksqfmv1rs"
 [autoload]
 
 SignalBus="*res://scripts/SignalBus.gd"
+Gamestate="*uid://vt82w85y8l2h"
 
 [debug]
 

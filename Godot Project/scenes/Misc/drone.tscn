@@ -6,6 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cm8jj0j2bmggq" path="res://scenes/Misc/targetable_aspect.tscn" id="3_rhh8a"]
 [ext_resource type="Script" uid="uid://cp5nadpirwd6p" path="res://scenes/Misc/hit_body.gd" id="5_d64l5"]
 [ext_resource type="Texture2D" uid="uid://kf4sfb0e7qly" path="res://assets/misc/VFX_Circle.png" id="6_15lle"]
+[ext_resource type="Script" uid="uid://cf0w5v2n1fxf6" path="res://scenes/Misc/DroneAudio.gd" id="7_rp28p"]
+[ext_resource type="AudioStream" uid="uid://vfdtrathpjof" path="res://assets/Sound Effects/enemy_charge_up.wav" id="8_g2yq6"]
+[ext_resource type="AudioStream" uid="uid://dudcvmg62llbl" path="res://assets/Sound Effects/enemy_death_hit.wav" id="9_mqfn1"]
+[ext_resource type="AudioStream" uid="uid://c2sjmpe3rc1ik" path="res://assets/Sound Effects/enemy_detected.wav" id="10_ulfrx"]
+[ext_resource type="AudioStream" uid="uid://b8aqa8440l8mm" path="res://assets/Sound Effects/enemy_explode.wav" id="11_q2rmx"]
+[ext_resource type="AudioStream" uid="uid://xaf6jf31qkwa" path="res://assets/Sound Effects/kor_shoot.wav" id="12_76t7u"]
+[ext_resource type="AudioStream" uid="uid://00rmcir417i1" path="res://assets/Sound Effects/bullet_hit_1.wav" id="13_esqtn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqvjl"]
 resource_name = "DroneMat"
@@ -370,6 +377,34 @@ wait_time = 2.5
 one_shot = true
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=964204928]
+
+[node name="AudioManager" type="Node" parent="." unique_id=1012543482]
+script = ExtResource("7_rp28p")
+
+[node name="EnemyChargeUp" type="AudioStreamPlayer3D" parent="AudioManager" unique_id=826244824]
+stream = ExtResource("8_g2yq6")
+volume_db = -5.89
+
+[node name="EnemyDeathHit" type="AudioStreamPlayer3D" parent="AudioManager" unique_id=753461937]
+stream = ExtResource("9_mqfn1")
+volume_db = -24.372
+
+[node name="EnemyDetected" type="AudioStreamPlayer3D" parent="AudioManager" unique_id=824903584]
+stream = ExtResource("10_ulfrx")
+volume_db = -19.633
+pitch_scale = 1.8
+
+[node name="EnemyExplode" type="AudioStreamPlayer3D" parent="AudioManager" unique_id=1454982373]
+stream = ExtResource("11_q2rmx")
+
+[node name="KorShoot" type="AudioStreamPlayer3D" parent="AudioManager" unique_id=1739354765]
+stream = ExtResource("12_76t7u")
+volume_db = -6.872
+
+[node name="BulletHit1" type="AudioStreamPlayer3D" parent="AudioManager" unique_id=1132147647]
+stream = ExtResource("13_esqtn")
+volume_db = -10.798
+pitch_scale = 1.12
 
 [connection signal="body_entered" from="PlayerSearchArea" to="." method="_on_player_search_area_body_entered"]
 [connection signal="body_exited" from="PlayerSearchArea" to="." method="_on_player_search_area_body_exited"]

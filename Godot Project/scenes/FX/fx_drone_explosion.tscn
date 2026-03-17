@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dr4lu54h66av5" path="res://scenes/FX/fx_drone_explosion.gd" id="1_efcwt"]
 [ext_resource type="Texture2D" uid="uid://kf4sfb0e7qly" path="res://assets/misc/VFX_Circle.png" id="2_b7mws"]
+[ext_resource type="AudioStream" uid="uid://b8aqa8440l8mm" path="res://assets/Sound Effects/enemy_explode.wav" id="3_b7mws"]
 
 [sub_resource type="Gradient" id="Gradient_iubhc"]
 offsets = PackedFloat32Array(0, 0.491453, 0.74358976)
@@ -94,3 +95,8 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_uee3n")
 draw_pass_1 = SubResource("QuadMesh_xguqx")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1420834467]
+stream = ExtResource("3_b7mws")
+pitch_scale = 0.7
+autoplay = true
