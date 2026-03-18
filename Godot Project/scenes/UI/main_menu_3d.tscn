@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://du4xms5jmpcru" path="res://scenes/UI/player_KOR_dummy.tscn" id="1_aqk7x"]
 [ext_resource type="Material" uid="uid://by11edxu7cxj0" path="res://scenes/UI/dark_material.tres" id="1_h303l"]
+[ext_resource type="PackedScene" uid="uid://b17tan7acmaxh" path="res://scenes/UI/main_menu_gui.tscn" id="3_yp5oa"]
+[ext_resource type="AudioStream" uid="uid://bhdna8f2ujglr" path="res://assets/Sound Effects/elevator_ambience.wav" id="4_5tjcp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yp5oa"]
 albedo_color = Color(0.275, 0.27, 0.3, 1)
@@ -169,3 +171,10 @@ fov = 50.0
 root_node = NodePath("../StaticGeo")
 libraries/ = SubResource("AnimationLibrary_h303l")
 autoplay = &"elevatormotion"
+
+[node name="MainMenuGUI" parent="." unique_id=120974345 instance=ExtResource("3_yp5oa")]
+
+[node name="ElevatorAmbience" type="AudioStreamPlayer" parent="." unique_id=717572449]
+stream = ExtResource("4_5tjcp")
+volume_db = -16.919
+autoplay = true

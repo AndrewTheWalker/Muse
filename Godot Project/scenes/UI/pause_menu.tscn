@@ -4,8 +4,14 @@
 [ext_resource type="Script" uid="uid://dorbe4vqyb8ea" path="res://scenes/UI/pause_menu.gd" id="1_oicmp"]
 [ext_resource type="Texture2D" uid="uid://ti0fp5xj7kms" path="res://assets/misc/checktrue.png" id="2_1eciq"]
 [ext_resource type="Texture2D" uid="uid://cdc6skilg0ok4" path="res://assets/misc/checkfalse.png" id="3_oicmp"]
+[ext_resource type="FontFile" uid="uid://xyxx1sbesw40" path="res://assets/misc/Astron-Bold.otf" id="3_xovtl"]
+[ext_resource type="FontFile" uid="uid://cyfgu23srngu8" path="res://assets/misc/STARTER.otf" id="4_feba6"]
+[ext_resource type="AudioStream" uid="uid://bdr0jgj3ogor7" path="res://assets/Sound Effects/menu1.wav" id="5_eir0s"]
+[ext_resource type="AudioStream" uid="uid://hms2n0on4t0g" path="res://assets/Sound Effects/menu3.wav" id="6_3pfkw"]
+[ext_resource type="AudioStream" uid="uid://bwlx371c2re2a" path="res://assets/Sound Effects/menu_2.wav" id="7_xovtl"]
 
 [node name="Pause Menu" type="Control" unique_id=2060593522]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,6 +50,8 @@ alignment = 1
 
 [node name="LabelGamePaused" type="Label" parent="MarginContainer/VBoxContainer" unique_id=314090372]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xovtl")
+theme_override_font_sizes/font_size = 28
 text = "GAME PAUSED"
 horizontal_alignment = 1
 
@@ -52,19 +60,31 @@ layout_mode = 2
 
 [node name="ButtonResume" type="Button" parent="MarginContainer/VBoxContainer" unique_id=723057199]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_feba6")
+theme_override_font_sizes/font_size = 28
 text = "Resume"
+
+[node name="ButtonControls" type="Button" parent="MarginContainer/VBoxContainer" unique_id=485944978]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_feba6")
+theme_override_font_sizes/font_size = 28
+text = "View Controls"
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1914107248]
 layout_mode = 2
 
 [node name="CheckBoxH" type="CheckBox" parent="MarginContainer/VBoxContainer" unique_id=1025608519]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_feba6")
+theme_override_font_sizes/font_size = 20
 theme_override_icons/checked = ExtResource("2_1eciq")
 theme_override_icons/unchecked = ExtResource("3_oicmp")
 text = "  Invert Camera Horizontal"
 
 [node name="CheckBoxV" type="CheckBox" parent="MarginContainer/VBoxContainer" unique_id=989138468]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_feba6")
+theme_override_font_sizes/font_size = 20
 theme_override_icons/checked = ExtResource("2_1eciq")
 theme_override_icons/unchecked = ExtResource("3_oicmp")
 text = "  Invert Camera Vertical"
@@ -74,6 +94,8 @@ layout_mode = 2
 
 [node name="LabelHsens" type="Label" parent="MarginContainer/VBoxContainer" unique_id=685786091]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_feba6")
+theme_override_font_sizes/font_size = 20
 text = "Camera Sensitivity Horizontal"
 horizontal_alignment = 1
 
@@ -87,6 +109,8 @@ tick_count = 9
 
 [node name="LabelVsens" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1802470055]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_feba6")
+theme_override_font_sizes/font_size = 20
 text = "Camera Sensitivity Vertical"
 horizontal_alignment = 1
 
@@ -101,8 +125,25 @@ tick_count = 9
 [node name="HSeparator4" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1507113493]
 layout_mode = 2
 
+[node name="ButtonQuit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=560552699]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_feba6")
+theme_override_font_sizes/font_size = 28
+text = "Quit to Main Menu"
+
+[node name="Menu1" type="AudioStreamPlayer" parent="." unique_id=1937971636]
+stream = ExtResource("5_eir0s")
+
+[node name="Menu3" type="AudioStreamPlayer" parent="." unique_id=1408059008]
+stream = ExtResource("6_3pfkw")
+
+[node name="Menu2" type="AudioStreamPlayer" parent="." unique_id=622910511]
+stream = ExtResource("7_xovtl")
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonControls" to="." method="_on_button_controls_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/CheckBoxH" to="." method="_on_check_box_h_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/CheckBoxV" to="." method="_on_check_box_v_toggled"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HSliderHSens" to="." method="_on_h_slider_h_sens_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HSliderVSens" to="." method="_on_h_slider_v_sens_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_resume_pressed"]

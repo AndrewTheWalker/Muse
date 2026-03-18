@@ -13,10 +13,10 @@ var current_gui_scene
 
 
 func _ready():
-	
+	fade_anim.play("fade_out")
 	Gamestate.game_controller = self
-	current_3d_scene = $World3D/sillymap
-	current_gui_scene = $GUI/GameplayMenu
+	current_3d_scene = $World3D/MainMenu3D
+	current_gui_scene = $GUI/MainMenuGUI
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause"):

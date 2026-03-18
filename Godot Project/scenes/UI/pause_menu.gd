@@ -65,3 +65,7 @@ func _on_h_slider_v_sens_value_changed(value: float) -> void:
 
 func _on_button_resume_pressed() -> void:
 	print("resume button pressed")
+
+
+func _on_button_controls_pressed() -> void:
+	print("controls button pressed")

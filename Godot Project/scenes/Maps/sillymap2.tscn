@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://di5ugjwp0dqd2" path="res://assets/Grid Textures/Dark/texture_04.png" id="6_v2t6t"]
 [ext_resource type="PackedScene" uid="uid://bk38kvg5dlsle" path="res://scenes/Misc/drone.tscn" id="9_chqrx"]
 [ext_resource type="PackedScene" uid="uid://c3lvhqoxrlryl" path="res://scenes/Player/player_KOR.tscn" id="9_obldh"]
+[ext_resource type="AudioStream" uid="uid://ctu5svwnmw66k" path="res://assets/Sound Effects/map_ambience.wav" id="9_op7r4"]
 [ext_resource type="PackedScene" uid="uid://d0mue2qakhes6" path="res://scenes/Misc/dummy.tscn" id="9_s4dcr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1q37i"]
@@ -244,3 +245,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 2.5, -38.25)
 [node name="PlayerKor" parent="." unique_id=1159028594 instance=ExtResource("9_obldh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.677266, 0)
 use_debug_meshes = false
+
+[node name="MapAmbience" type="AudioStreamPlayer" parent="." unique_id=1228085467]
+stream = ExtResource("9_op7r4")
+volume_db = -7.961
+autoplay = true
