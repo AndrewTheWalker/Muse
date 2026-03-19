@@ -180,11 +180,11 @@ collision_layer = 2
 size = Vector3(1, 37.5, 256)
 
 [node name="ceiling" type="CSGBox3D" parent="LevelGeo" unique_id=741771984]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.75, -25.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 13.75, -23.25)
 material_override = SubResource("StandardMaterial3D_cquan")
 use_collision = true
 collision_layer = 2
-size = Vector3(128, 1, 128)
+size = Vector3(75.25, 1, 78)
 
 [node name="wall_south" type="CSGBox3D" parent="LevelGeo" unique_id=775441619]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 18.25, 0)

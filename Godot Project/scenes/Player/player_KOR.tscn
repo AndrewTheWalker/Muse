@@ -109,6 +109,7 @@ pitch_scale = 1.52
 
 [node name="KorOverheat" type="AudioStreamPlayer" parent="AudioManager" unique_id=1127394554]
 stream = ExtResource("12_b0h6l")
+volume_db = -10.947
 
 [node name="KorRespawn" type="AudioStreamPlayer" parent="AudioManager" unique_id=1367223100]
 stream = ExtResource("13_bm1h4")
@@ -124,5 +125,5 @@ pitch_scale = 2.1
 
 [node name="KorStep" type="AudioStreamPlayer" parent="AudioManager" unique_id=307887667]
 stream = ExtResource("16_vkka1")
-volume_db = -19.936
+volume_db = -15.458
 pitch_scale = 0.95
