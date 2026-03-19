@@ -9,6 +9,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("2_eoj80")
 emission_enabled = true
 emission_texture = ExtResource("3_p6m4e")
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ui4hd"]
 resource_name = "KOR_mesh"

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://boe58nskdsykw"]
+
+[ext_resource type="Texture2D" uid="uid://sfn3n3l5mafs" path="res://assets/Environment/Materials/envtexture_BC.png" id="1_sgpu4"]
+[ext_resource type="Texture2D" uid="uid://bh5c07d3yhvw5" path="res://assets/Environment/Materials/envtexture_Emissive.png" id="2_5ostq"]
+
+[resource]
+albedo_texture = ExtResource("1_sgpu4")
+emission_enabled = true
+emission_texture = ExtResource("2_5ostq")
+texture_filter = 2

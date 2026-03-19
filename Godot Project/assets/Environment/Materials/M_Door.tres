@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cc0708m7u0lcl"]
+
+[ext_resource type="Texture2D" uid="uid://c34tcxsb0f668" path="res://assets/Environment/Materials/Door_BC.png" id="1_hpylm"]
+[ext_resource type="Texture2D" uid="uid://b8w7hrbmtex5y" path="res://assets/Environment/Materials/Door_E.png" id="2_4gmfg"]
+
+[resource]
+albedo_texture = ExtResource("1_hpylm")
+emission_enabled = true
+emission_texture = ExtResource("2_4gmfg")
+texture_filter = 2

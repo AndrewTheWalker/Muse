@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://cs2bi4r717kyt"]
+
+[ext_resource type="PackedScene" uid="uid://4pnviy200tcm" path="res://assets/Environment/SM_Ceiling_01_A.gltf" id="2_4sou6"]
+[ext_resource type="PackedScene" uid="uid://qvtpdn4klra4" path="res://assets/Environment/SM_Wall_Chunky.gltf" id="2_ispvy"]
+[ext_resource type="PackedScene" uid="uid://ddofhf0aflnx8" path="res://assets/Environment/SM_Ceiling_01_B.gltf" id="3_sd6uo"]
+[ext_resource type="PackedScene" uid="uid://ql88uig1ni3u" path="res://assets/Environment/SM_Ceiling_02_A.gltf" id="4_vuagq"]
+[ext_resource type="PackedScene" uid="uid://cs7o88fwr84le" path="res://assets/Environment/SM_Ceiling_02_B.gltf" id="5_o8gcq"]
+[ext_resource type="PackedScene" uid="uid://basj0ntq8jyq8" path="res://assets/Environment/SM_Door_Frame.gltf" id="6_611as"]
+[ext_resource type="PackedScene" uid="uid://c2rdyxj1pvrns" path="res://assets/Environment/SM_Door_Half.gltf" id="7_dco5u"]
+[ext_resource type="PackedScene" uid="uid://c3lvhqoxrlryl" path="res://scenes/Player/player_KOR.tscn" id="8_1pwm2"]
+[ext_resource type="PackedScene" uid="uid://bmty3v2ci7cs8" path="res://assets/Environment/SM_Floor_01_B.gltf" id="8_8amoa"]
+[ext_resource type="PackedScene" uid="uid://if450aokuldn" path="res://assets/Environment/SM_Pillar_Base.gltf" id="9_wqwmq"]
+[ext_resource type="PackedScene" uid="uid://d26egugq5cpil" path="res://assets/Environment/SM_Pillar_Column.gltf" id="10_p0l8a"]
+[ext_resource type="PackedScene" uid="uid://dff0r7veo1336" path="res://assets/Environment/SM_Wall_01_A.gltf" id="11_gipws"]
+[ext_resource type="PackedScene" uid="uid://cffdywdrtster" path="res://assets/Environment/SM_Wall_01_B.gltf" id="12_7x1jq"]
+[ext_resource type="PackedScene" uid="uid://cdo818x6juywv" path="res://assets/Environment/SM_Wall_01_C.gltf" id="13_medvv"]
+[ext_resource type="PackedScene" uid="uid://b3mxixdlwmrw2" path="res://assets/Environment/SM_Wall_01_D.gltf" id="14_lefet"]
+[ext_resource type="PackedScene" uid="uid://dq1pcwt8e003s" path="res://assets/Environment/SM_Wall_Slope.gltf" id="16_ceca1"]
+[ext_resource type="PackedScene" uid="uid://bubpld4ag6x27" path="res://assets/Environment/SM_Pipes_01_Gooey.gltf" id="17_7eb8g"]
+[ext_resource type="PackedScene" uid="uid://ee5r6nbo3f" path="res://assets/Environment/SM_Pipes_01_Normal.gltf" id="18_uudap"]
+[ext_resource type="PackedScene" uid="uid://b1gii0j6umfai" path="res://assets/Environment/SM_Pipes_02.gltf" id="19_fvwie"]
+[ext_resource type="PackedScene" uid="uid://deb4dbdb5rgg2" path="res://assets/Environment/SM_Pipes_03.gltf" id="20_npyot"]
+[ext_resource type="PackedScene" uid="uid://dkqi4a4qoew2l" path="res://assets/Environment/SM_Floor_01_A.gltf" id="21_xl4ty"]
+
+[node name="Level" type="Node3D" unique_id=1244309863]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=455642818]
+transform = Transform3D(-0.6293203, 0.39209163, -0.6709844, 0, 0.8633956, 0.5045276, 0.777146, 0.3175095, -0.54335237, 0, 0, 0)
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="PlayerKor" parent="." unique_id=1159028594 instance=ExtResource("8_1pwm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.5, -7.25)
+use_debug_meshes = false
+
+[node name="LevelGeo" type="Node3D" parent="." unique_id=331673135]
+
+[node name="SM_Ceiling_01_A2" parent="LevelGeo" unique_id=690314659 instance=ExtResource("2_4sou6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 12, 15.25)
+
+[node name="SM_Ceiling_01_B2" parent="LevelGeo" unique_id=1535288467 instance=ExtResource("3_sd6uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 12, 15.25)
+
+[node name="SM_Ceiling_02_A2" parent="LevelGeo" unique_id=537999107 instance=ExtResource("4_vuagq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 12, 15.25)
+
+[node name="SM_Ceiling_02_B2" parent="LevelGeo" unique_id=1637990940 instance=ExtResource("5_o8gcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 12, 15.25)
+
+[node name="SM_Door_Frame2" parent="LevelGeo" unique_id=1386378769 instance=ExtResource("6_611as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 19.5)
+
+[node name="SM_Door_Half2" parent="LevelGeo" unique_id=576835256 instance=ExtResource("7_dco5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 20.5)
+
+[node name="SM_Door_Half3" parent="LevelGeo" unique_id=1706114492 instance=ExtResource("7_dco5u")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3, 0, 20.5)
+
+[node name="SM_Floor_01_B2" parent="LevelGeo" unique_id=1141572537 instance=ExtResource("8_8amoa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.75, 0.25, 2)
+
+[node name="SM_Pillar_Base2" parent="LevelGeo" unique_id=2130804302 instance=ExtResource("9_wqwmq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, 21.5)
+
+[node name="SM_Pillar_Column" parent="LevelGeo" unique_id=1984363467 instance=ExtResource("10_p0l8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 18.5)
+
+[node name="SM_Wall_01_A2" parent="LevelGeo" unique_id=299065167 instance=ExtResource("11_gipws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.25, 0, 3.25)
+
+[node name="SM_Wall_01_B2" parent="LevelGeo" unique_id=1538295998 instance=ExtResource("12_7x1jq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 3.25)
+
+[node name="SM_Wall_01_C2" parent="LevelGeo" unique_id=1166968116 instance=ExtResource("13_medvv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3.25)
+
+[node name="SM_Wall_01_D2" parent="LevelGeo" unique_id=1073617454 instance=ExtResource("14_lefet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3.25)
+
+[node name="SM_Wall_Chunky2" parent="LevelGeo" unique_id=1768917001 instance=ExtResource("2_ispvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.25, -0.75)
+
+[node name="SM_Wall_Slope" parent="LevelGeo" unique_id=560526510 instance=ExtResource("16_ceca1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0.75)
+
+[node name="SM_Pipes_01_Gooey2" parent="LevelGeo" unique_id=399771697 instance=ExtResource("17_7eb8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5, -4.5)
+
+[node name="SM_Pipes_01_Gooey3" parent="LevelGeo" unique_id=103975637 instance=ExtResource("17_7eb8g")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -26, 5, -4.5)
+
+[node name="SM_Pipes_01_Normal2" parent="LevelGeo" unique_id=739067281 instance=ExtResource("18_uudap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 5, -4.5)
+
+[node name="SM_Pipes_01_Normal3" parent="LevelGeo" unique_id=1582834965 instance=ExtResource("18_uudap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1, -4.5)
+
+[node name="SM_Pipes_022" parent="LevelGeo" unique_id=1524458300 instance=ExtResource("19_fvwie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 5, -4.5)
+
+[node name="SM_Pipes_032" parent="LevelGeo" unique_id=522140365 instance=ExtResource("20_npyot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 5, -4.5)
+
+[node name="SM_Pipes_033" parent="LevelGeo" unique_id=370881742 instance=ExtResource("20_npyot")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -22, 5, -4.5)
+
+[node name="Floor" type="Node3D" parent="." unique_id=746483861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1.75)
+
+[node name="SM_Floor_01_A2" parent="Floor" unique_id=259050422 instance=ExtResource("21_xl4ty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=501185535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+collision_layer = 2
+size = Vector3(100, 1, 100)
