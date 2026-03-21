@@ -71,7 +71,7 @@ func check_look_at():
 # if the player presses right stick input, we check if there are other targets available and if so, switch targets.
 # I plan to alter the array sorting algorithm in the future, so the player can cycle left or right using the right stick.
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Lock"):
 		if current_state == states["locked"]:
 			if available_targets.size() > 1:

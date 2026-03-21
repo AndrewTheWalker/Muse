@@ -48,6 +48,8 @@ _subresources={
 "nodes": {
 "PATH:SM_Floor_01_A": {
 "generate/physics": true,
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 4,
 "physics/layer": 2
 }
 }

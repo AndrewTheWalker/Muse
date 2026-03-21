@@ -17,10 +17,14 @@ func _ready():
 	Gamestate.game_controller = self
 	current_3d_scene = $World3D/MainMenu3D
 	current_gui_scene = $GUI/MainMenuGUI
+	print(current_3d_scene.name)
 	
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause"):
-		Gamestate.toggle_pause()
+		if current_gui_scene.name != "MainMenuGUI":
+			Gamestate.toggle_pause()
+		else: 
+			print("pausing not allowed on main menu")
 
 func change_gui_scene(new_scene: String, delete : bool = true, keep_running : bool = false) -> void:
 		set_process_input(false)

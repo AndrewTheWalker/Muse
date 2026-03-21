@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://di5ugjwp0dqd2" path="res://assets/Grid Textures/Dark/texture_04.png" id="6_v2t6t"]
 [ext_resource type="PackedScene" uid="uid://bk38kvg5dlsle" path="res://scenes/Misc/drone.tscn" id="9_chqrx"]
 [ext_resource type="PackedScene" uid="uid://c3lvhqoxrlryl" path="res://scenes/Player/player_KOR.tscn" id="9_obldh"]
-[ext_resource type="AudioStream" uid="uid://ctu5svwnmw66k" path="res://assets/Sound Effects/map_ambience.wav" id="9_op7r4"]
 [ext_resource type="PackedScene" uid="uid://d0mue2qakhes6" path="res://scenes/Misc/dummy.tscn" id="9_s4dcr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1q37i"]
@@ -53,7 +52,6 @@ uv1_world_triplanar = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=614773683]
 transform = Transform3D(-0.40178984, 0.9062593, 0.13137439, -0.25881907, -0.25000006, 0.9330128, 0.878395, 0.34087282, 0.33500463, 0, 5.75, 0)
-visible = false
 light_energy = 0.5
 shadow_enabled = true
 
@@ -64,137 +62,109 @@ shadow_enabled = true
 spot_range = 15.25
 spot_angle = 25.804226
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1330732470]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6.5, 12.5, -41.25)
-light_energy = 20.0
-shadow_enabled = true
-spot_range = 20.0
-spot_angle = 35.68
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="." unique_id=1828612978]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -7.25, 12.5, -41.25)
-light_energy = 20.0
-shadow_enabled = true
-spot_range = 20.0
-spot_angle = 35.68
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="." unique_id=1257142905]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.5, -41.25)
-light_energy = 20.0
-shadow_enabled = true
-spot_range = 20.0
-spot_angle = 35.68
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=305274025]
 environment = SubResource("Environment_42b2w")
 
 [node name="LevelGeo" type="Node" parent="." unique_id=1128927810]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeo" unique_id=2098315955]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -25.669464, 1, 102.110916)
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -25.669464, 1, 60.610916)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 4
 size = Vector3(2, 2, 2)
 
 [node name="CSGBox3D19" type="CSGBox3D" parent="LevelGeo" unique_id=1889359296]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -40)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -81.5)
 material_override = SubResource("StandardMaterial3D_eni3c")
 use_collision = true
 collision_layer = 4
 size = Vector3(30, 0.1, 30)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeo" unique_id=1076892847]
-transform = Transform3D(-4.371138e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.371138e-08, 19.249998, 1.25, 112.125)
+transform = Transform3D(-4.371138e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.371138e-08, 19.249998, 1.25, 70.625)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(0.25, 2.5, 32)
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="LevelGeo" unique_id=1967226886]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 35.375, 1.25, 119.875)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 35.375, 1.25, 78.375)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(0.25, 2.5, 15.75)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="LevelGeo" unique_id=1106074706]
-transform = Transform3D(-4.371138e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.371138e-08, 20.749998, 1.25, 109.375)
+transform = Transform3D(-4.371138e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.371138e-08, 20.749998, 1.25, 67.875)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(0.25, 2.5, 35)
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="LevelGeo" unique_id=1466977032]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 38.25, 1.25, 118.5)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 38.25, 1.25, 77)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(0.25, 2.5, 18.25)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="LevelGeo" unique_id=1960617978]
-transform = Transform3D(-4.371138e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.371138e-08, 20.875, 2.625, 110.75)
+transform = Transform3D(-4.371138e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.371138e-08, 20.875, 2.625, 69.25)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(3, 0.25, 35.25)
 
 [node name="CSGBox3D18" type="CSGBox3D" parent="LevelGeo" unique_id=1285808397]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 36.875, 2.625, 120)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 36.875, 2.625, 78.5)
 material_override = SubResource("StandardMaterial3D_wsxp4")
 use_collision = true
 collision_layer = 6
 size = Vector3(3, 0.25, 15.75)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeo" unique_id=983528589]
-transform = Transform3D(0.25881904, 0, 0.96592593, 0, 1, 0, -0.96592593, 0, 0.25881904, -20.761353, 0.5, 108.93198)
+transform = Transform3D(0.25881904, 0, 0.96592593, 0, 1, 0, -0.96592593, 0, 0.25881904, -20.761353, 0.5, 67.43198)
 material_override = SubResource("StandardMaterial3D_42b2w")
 use_collision = true
 collision_layer = 4
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeo" unique_id=957880850]
-transform = Transform3D(-0.70710695, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710695, -13.305457, 0.5, 98.045044)
+transform = Transform3D(-0.70710695, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710695, -13.305457, 0.5, 56.545044)
 material_override = SubResource("StandardMaterial3D_re7vh")
 use_collision = true
 collision_layer = 4
 
 [node name="wall_east" type="CSGBox3D" parent="LevelGeo" unique_id=1093703189]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.75, 25.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.75, -16)
 material_override = SubResource("StandardMaterial3D_cquan")
 use_collision = true
 collision_layer = 2
 size = Vector3(256, 37.5, 1)
 
 [node name="wall_west" type="CSGBox3D" parent="LevelGeo" unique_id=126768981]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.75, -74.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.75, -116)
 material_override = SubResource("StandardMaterial3D_cquan")
 use_collision = true
 collision_layer = 2
 size = Vector3(256, 37.5, 1)
 
 [node name="wall_north" type="CSGBox3D" parent="LevelGeo" unique_id=981712803]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 18.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 18.75, -41.5)
 material_override = SubResource("StandardMaterial3D_cquan")
 use_collision = true
 collision_layer = 2
 size = Vector3(1, 37.5, 256)
 
-[node name="ceiling" type="CSGBox3D" parent="LevelGeo" unique_id=741771984]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 13.75, -23.25)
-material_override = SubResource("StandardMaterial3D_cquan")
-use_collision = true
-collision_layer = 2
-size = Vector3(75.25, 1, 78)
-
 [node name="wall_south" type="CSGBox3D" parent="LevelGeo" unique_id=775441619]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 18.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 18.25, -41.5)
 material_override = SubResource("StandardMaterial3D_cquan")
 use_collision = true
 collision_layer = 2
 size = Vector3(1, 38.5, 256)
 
 [node name="floor" type="CSGBox3D" parent="LevelGeo" unique_id=813109896]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -41.5)
 material_override = SubResource("StandardMaterial3D_cquan")
 use_collision = true
 collision_layer = 2
@@ -202,7 +172,7 @@ size = Vector3(256, 1, 256)
 metadata/_edit_lock_ = true
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelGeo" unique_id=941896655]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.25, 0, 109.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.25, 0, 67.75)
 material_override = SubResource("StandardMaterial3D_bl1d1")
 use_collision = true
 collision_layer = 6
@@ -210,7 +180,7 @@ polygon = PackedVector2Array(-14, 0, 0, 2, 2, 2, 2, 0)
 depth = 2.0
 
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="LevelGeo" unique_id=998550564]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.25, 0.75, 112.25)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.25, 0.75, 70.75)
 material_override = SubResource("StandardMaterial3D_bl1d1")
 use_collision = true
 collision_layer = 6
@@ -218,11 +188,10 @@ polygon = PackedVector2Array(-20, -0.75, 0, 2, 2, 2, 2, -0.75)
 depth = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1566386061]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.19647527, 42.624348, -5.1370125)
-fov = 35.0
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.05352497, 9.874348, -0.38701248)
 
 [node name="Dummy" parent="." unique_id=707077110 instance=ExtResource("9_s4dcr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75, 0, 99.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.75)
 
 [node name="Drone" parent="." unique_id=292636954 instance=ExtResource("9_chqrx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 3.75, -43.75)
@@ -245,8 +214,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 2.5, -38.25)
 [node name="PlayerKor" parent="." unique_id=1159028594 instance=ExtResource("9_obldh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.677266, 0)
 use_debug_meshes = false
-
-[node name="MapAmbience" type="AudioStreamPlayer" parent="." unique_id=1228085467]
-stream = ExtResource("9_op7r4")
-volume_db = -7.961
-autoplay = true

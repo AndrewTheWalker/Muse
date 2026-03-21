@@ -8,6 +8,8 @@ signal TARGET_SCREEN_EXITED
 
 # user pref for camera movement
 signal INVERT_SIGNAL
+signal ADJUST_HSENS
+signal ADJUST_VSENS
 
 # used for deciding if run state should use strafing animations
 signal TARGET_LOCKED

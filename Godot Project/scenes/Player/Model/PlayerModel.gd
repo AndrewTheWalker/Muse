@@ -75,7 +75,7 @@ func rotate_rig():
 
 # bullet/reticle_stuff
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
 		if current_move.can_shoot():
 			SignalBus.TARGET_LOCKED.emit(target_direction)
@@ -116,5 +116,6 @@ func force_overheat():
 
 
 func take_damage():
-	resources.lose_health(5.0)
-	player.send_sound("hit")
+	if ! current_move.is_vulnerable():
+		resources.lose_health(5.0)
+		player.send_sound("hit")

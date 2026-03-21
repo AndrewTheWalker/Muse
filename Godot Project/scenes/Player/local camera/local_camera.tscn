@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://csvnet554vpfv" path="res://scenes/Player/local camera/CameraModel.gd" id="1_4nvxi"]
 [ext_resource type="Script" uid="uid://ch6e0b3igyuug" path="res://scenes/Player/local camera/locked_camera.gd" id="2_01e5t"]
 [ext_resource type="Script" uid="uid://cpyv82o088fjg" path="res://scenes/Player/local camera/free_camera.gd" id="3_enfd4"]
+[ext_resource type="Material" uid="uid://b7odl4bclgby4" path="res://assets/misc/blumat.tres" id="4_4nvxi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47crt"]
 transparency = 1
@@ -10,10 +11,6 @@ albedo_color = Color(0.6666667, 0, 0, 0.5254902)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_frbxm"]
 radius = 0.2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il154"]
-transparency = 1
-albedo_color = Color(0, 1, 1, 0.5019608)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2urwo"]
 transparency = 1
@@ -57,9 +54,10 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.5)
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="CameraNest" unique_id=674464225 groups=["debugtool"]]
+transform = Transform3D(0.70710677, -0.70710677, -3.090862e-08, 0, -4.371139e-08, 1, -0.70710677, -0.70710677, -3.090862e-08, 0, 0, 0)
 layers = 2
 radius = 0.4
-material = SubResource("StandardMaterial3D_il154")
+material = ExtResource("4_4nvxi")
 
 [node name="FocusPoint" type="Node3D" parent="." unique_id=235444116]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -92,10 +90,17 @@ layers = 2
 radius = 0.05
 material = SubResource("StandardMaterial3D_6h7m6")
 
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="PlayerCamera" unique_id=1465379004]
+transform = Transform3D(0.70710677, -0.70710677, -3.090862e-08, 0, -4.371138e-08, 1, -0.70710677, -0.70710677, -3.090862e-08, -5.409007e-09, 0.17499995, 0)
+polygon = PackedVector2Array(0, 0, 0, 1, 0.5, 0.5, 1, 0)
+depth = 0.35
+material = ExtResource("4_4nvxi")
+
 [node name="ReticleDebug" type="Node3D" parent="." unique_id=247759565]
 
 [node name="CSGTorus" type="CSGTorus3D" parent="ReticleDebug" unique_id=1624163361]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+visible = false
 inner_radius = 0.35
 outer_radius = 0.5
 sides = 32

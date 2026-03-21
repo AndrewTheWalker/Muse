@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://s2w25niduuq6" path="res://scenes/UI/transition_anim.tscn" id="8_lm7cc"]
 
 [node name="Main" type="Node" unique_id=1074346301 node_paths=PackedStringArray("world_3d", "gui")]
+process_mode = 1
 script = ExtResource("1_jasrq")
 world_3d = NodePath("World3D")
 gui = NodePath("GUI")

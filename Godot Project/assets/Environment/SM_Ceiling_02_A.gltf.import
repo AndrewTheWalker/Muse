@@ -48,6 +48,7 @@ _subresources={
 "nodes": {
 "PATH:SM_Ceiling_02_A": {
 "generate/physics": true,
+"mesh_instance/cast_shadow": 0,
 "physics/layer": 2,
 "physics/shape_type": 1
 }

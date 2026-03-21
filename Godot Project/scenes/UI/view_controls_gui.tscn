@@ -1,0 +1,252 @@
+[gd_scene format=3 uid="uid://b2viu7cwivw54"]
+
+[ext_resource type="Script" uid="uid://dm6xtdpix26hu" path="res://scenes/UI/view_controls_gui.gd" id="1_ofbgy"]
+[ext_resource type="Texture2D" uid="uid://ddhor74nlj4ug" path="res://assets/FadeTexture.png" id="1_tjlmm"]
+[ext_resource type="Texture2D" uid="uid://8y8odtxcobwh" path="res://assets/misc/GamepadImage.png" id="2_ofbgy"]
+[ext_resource type="FontFile" uid="uid://xyxx1sbesw40" path="res://assets/misc/Astron-Bold.otf" id="3_ewtqk"]
+[ext_resource type="FontFile" uid="uid://bwlp31f1vyno5" path="res://assets/misc/Resolve-Light.otf" id="4_m44jl"]
+
+[node name="ViewControlsGUI" type="Control" unique_id=368532917]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ofbgy")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=760942188]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_tjlmm")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1152020919]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 63.5
+offset_right = 940.0
+offset_bottom = 663.5
+texture = ExtResource("2_ofbgy")
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2003767142]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 121
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 75
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1919991769]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 490
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=465928560]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LabelGamePaused" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1623043918]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ewtqk")
+theme_override_font_sizes/font_size = 28
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=40864257]
+layout_mode = 2
+
+[node name="ButtonBack" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1831465078]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m44jl")
+theme_override_font_sizes/font_size = 28
+text = "Back
+"
+
+[node name="LabelLockCamera" type="Label" parent="." unique_id=1516480681]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -201.0
+offset_right = -174.0
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_m44jl")
+theme_override_font_sizes/font_size = 20
+text = "Lock Camera"
+
+[node name="LabelPause" type="Label" parent="." unique_id=219258820]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -199.0
+offset_right = 86.0
+offset_bottom = -176.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_m44jl")
+theme_override_font_sizes/font_size = 20
+text = "Pause"
+
+[node name="LabelFire" type="Label" parent="." unique_id=43586352]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 172.0
+offset_top = -201.0
+offset_right = 286.0
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_m44jl")
+theme_override_font_sizes/font_size = 20
+text = "Fire Weapon"
+horizontal_alignment = 2
+
+[node name="LabelJump" type="Label" parent="." unique_id=1119069750]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 173.0
+offset_top = -126.0
+offset_right = 287.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_m44jl")
+theme_override_font_sizes/font_size = 20
+text = "Jump"
+horizontal_alignment = 2
+
+[node name="LabelSprint" type="Label" parent="." unique_id=1031585299]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 173.0
+offset_top = -96.0
+offset_right = 287.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_m44jl")
+theme_override_font_sizes/font_size = 20
+text = "Sprint"
+horizontal_alignment = 2
+
+[node name="LabelDodge" type="Label" parent="." unique_id=829481067]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 173.0
+offset_top = -63.0
+offset_right = 287.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_m44jl")
+theme_override_font_sizes/font_size = 20
+text = "Dodge"
+horizontal_alignment = 2
+
+[node name="LabelCursor" type="Label" parent="." unique_id=1772892543]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = 145.0
+offset_right = -174.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_m44jl")
+theme_override_font_sizes/font_size = 20
+text = "Move Cursor
+(Menu Only)"
+
+[node name="LabelRun" type="Label" parent="." unique_id=771160292]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = 214.0
+offset_right = -174.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_m44jl")
+theme_override_font_sizes/font_size = 20
+text = "Walk/Run"
+
+[node name="LabelConfirm" type="Label" parent="." unique_id=1709973238]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 148.0
+offset_top = 147.0
+offset_right = 288.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_m44jl")
+theme_override_font_sizes/font_size = 20
+text = "Confirm Choice
+(Menu Only)"
+horizontal_alignment = 2
+
+[node name="LabelFreeCam" type="Label" parent="." unique_id=1012891749]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 159.0
+offset_top = 214.0
+offset_right = 287.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_m44jl")
+theme_override_font_sizes/font_size = 20
+text = "Adjust Camera"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]

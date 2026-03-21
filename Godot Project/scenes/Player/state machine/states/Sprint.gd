@@ -15,9 +15,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	animation = "Run"
 
+
 func on_enter_state():
 	print("entered sprint")
 	orbit_target = local_camera.camera_nest
+
 
 func on_exit_state():
 	pass
@@ -28,6 +30,7 @@ func default_lifecycle(input : InputPackage):
 		return "midair" 
 	
 	return best_input_that_can_be_paid(input)
+
 
 func update(input : InputPackage, delta : float):
 

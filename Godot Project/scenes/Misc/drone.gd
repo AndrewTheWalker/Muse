@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
 
-const charge_scene = preload("uid://dl5cet2rno5hk")
+
 const explosion_scene = preload("uid://crgr1jn1joc2h")
 const bullet_scene = preload("uid://bg7rl84y6o0p7")
 
+signal DIED_SIGNAL
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player_search_area: Area3D = $PlayerSearchArea
@@ -125,6 +126,7 @@ func die():
 	velocity = Vector3.ZERO
 	animation_player.play("Enemy_Dying")
 	await animation_player.animation_finished
+	DIED_SIGNAL.emit()
 	var explosion = explosion_scene.instantiate()
 	get_tree().get_root().add_child(explosion)
 	explosion.global_position = bone_attachment_3d.global_position

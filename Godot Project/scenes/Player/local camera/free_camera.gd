@@ -28,13 +28,18 @@ var buffer_radius = 0.2
 # why not use an actual spring arm? I have a good reason. Wait and see...
 # we also tell the CameraModel that target_locked is false
 # the only time this should actually be true is if we are in this state, so that's why it's done here.
-	
+
 func Enter():
 	var shape = shape_cast.get_shape()
 	shape.radius=buffer_radius
 	local_camera.is_target_locked = false
 	if ! SignalBus.is_connected("INVERT_SIGNAL",set_inverse):
 		SignalBus.connect("INVERT_SIGNAL",set_inverse)
+	if ! SignalBus.is_connected("ADJUST_HSENS",set_sensitivity_h):
+		SignalBus.connect("ADJUST_HSENS",set_sensitivity_h)
+	if ! SignalBus.is_connected("ADJUST_VSENS",set_sensitivity_v):
+		SignalBus.connect("ADJUST_VSENS",set_sensitivity_v)
+
 
 func set_inverse(button: String):
 	if button == "h_down":
@@ -45,8 +50,19 @@ func set_inverse(button: String):
 		v_inv = 1
 	if button == "v_up":
 		v_inv = -1
-func Exit():
-	pass
+
+
+func set_sensitivity_h(new_value: float):
+	var current_h_sense = hor_sense
+	var new_h_sense = new_value * 0.4
+	hor_sense = new_h_sense
+
+
+func set_sensitivity_v(new_value: float):
+	var current_v_sense = ver_sense
+	var new_v_sense = new_value * 0.2
+	ver_sense = new_v_sense
+
 
 # so, to demystify this a little...
 # the entirety of the camera system is held up by two big beautiful values.
@@ -154,7 +170,7 @@ func rotate_offset(new_focus : Vector3):
 # implementing the camera_timer is a behaviour I copied from Splatoon. It waits for a second in case the player would like to shoot again,
 # if they haven't tried to shoot again in that time, we go back to default behaviour.
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
 		is_shooting = true
 	if event.is_action_released("Shoot"):
@@ -174,3 +190,7 @@ func calculate_shapecast_offset()->Vector3:
 	var collision_normal = (shape_cast.get_collision_normal(0))*buffer_radius
 	var new_point = collision_point+collision_normal
 	return(new_point)
+
+
+func Exit():
+	pass

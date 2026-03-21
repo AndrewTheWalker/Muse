@@ -89,15 +89,41 @@ tracks/1/keys = {
 "values": [Vector3(-8, 0, 1.25), Vector3(-8.2, 0, 1.25), Vector3(-8.25, 0, 1.25), Vector3(-10.2, 0, 1.25), Vector3(-10.25, 0, 1.25)]
 }
 
+[sub_resource type="Animation" id="Animation_karai"]
+resource_name = "is_open"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SM_Door_Half2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.25, 0, 1.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SM_Door_Half3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-10.25, 0, 1.25)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_karai"]
 _data = {
 &"RESET": SubResource("Animation_ldj73"),
 &"anim_door_close": SubResource("Animation_fm76q"),
-&"anim_door_open": SubResource("Animation_qcp63")
+&"anim_door_open": SubResource("Animation_qcp63"),
+&"is_open": SubResource("Animation_karai")
 }
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ldj73"]
-size = Vector3(8.5, 9.75, 5.75)
 
 [node name="Door" type="Node3D" unique_id=1500605170]
 script = ExtResource("1_ldj73")
@@ -122,12 +148,3 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8, 
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1587847632]
 libraries/ = SubResource("AnimationLibrary_karai")
-
-[node name="Area3D" type="Area3D" parent="." unique_id=870247997]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1731729873]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.375, 0.125)
-shape = SubResource("BoxShape3D_ldj73")
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

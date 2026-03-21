@@ -1,0 +1,296 @@
+[gd_scene format=3 uid="uid://8flwwfs7tamy"]
+
+[ext_resource type="Script" uid="uid://bxablit1u7uvh" path="res://scenes/cutscene.gd" id="1_0sipp"]
+[ext_resource type="PackedScene" uid="uid://du4xms5jmpcru" path="res://scenes/UI/player_KOR_dummy.tscn" id="1_a320b"]
+[ext_resource type="PackedScene" uid="uid://b3rb48b5fbrs5" path="res://scenes/Misc/door.tscn" id="2_0sipp"]
+[ext_resource type="FontFile" uid="uid://xyxx1sbesw40" path="res://assets/misc/Astron-Bold.otf" id="4_2bm7f"]
+
+[sub_resource type="Animation" id="Animation_0sipp"]
+resource_name = "EndingCutscene"
+length = 22.000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutsceneCam1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-3.7430754, 1.4, -1.7943298), Vector3(-4.4597464, 1.4, -2.0428038)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneCam1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.0609818, -0.35376078, 6.029236e-09), Vector3(0.060981795, -0.33737215, 4.363289e-09)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5.3, 6.7, 8.6, 16.666666, 21.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"kor_play_idle"
+}, {
+"args": [],
+"method": &"set_camera_2"
+}, {
+"args": [],
+"method": &"kor_play_walk"
+}, {
+"args": [],
+"method": &"set_camera_3"
+}, {
+"args": [],
+"method": &"door_close"
+}, {
+"args": [],
+"method": &"reset"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CutsceneCam2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5.2892885, 7.505471, 7.9191585),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-4.7988486, 0.37660837, -3.9733214), Vector3(-4.6314526, 0.37660837, -4.0008326), Vector3(-4.609375, 0.37660837, -4.004461)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CutsceneCam2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5.2892885),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.786308e-10, -2.9787009, 7.088772e-09)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CutsceneCam3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(8.733334, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4.003, 1.4, -2.886), Vector3(-4.003, 1.4, -3.136)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CutsceneCam3:fov")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(8.733334, 19.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [45.0, 30.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("EndCard:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 18.166666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DummyKor:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(8.566668, 8.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4.0000005, 0, -2.7499998), Vector3(-4, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2bm7f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutsceneCam1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.3, 1.4, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneCam1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0609818, -0.2617994, 1.3995854e-09)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CutsceneCam2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.4597464, 1.4, -2.0428038)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CutsceneCam2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.060981803, -0.33737215, 4.363289e-09)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CutsceneCam3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.0029726, 1.4, -2.5852232)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CutsceneCam3:fov")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [45.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EndCard:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DummyKor:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.0000005, 0, -2.7499998)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fs8wb"]
+_data = {
+&"EndingCutscene": SubResource("Animation_0sipp"),
+&"RESET": SubResource("Animation_2bm7f")
+}
+
+[node name="Cutscene" type="Node3D" unique_id=1185325707]
+script = ExtResource("1_0sipp")
+
+[node name="DummyKor" parent="." unique_id=1159028594 instance=ExtResource("1_a320b")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.0000005, 0, -2.7499998)
+
+[node name="Door" parent="." unique_id=1500605170 instance=ExtResource("2_0sipp")]
+
+[node name="CutsceneCam1" type="Camera3D" parent="." unique_id=481785874]
+transform = Transform3D(0.9659254, -0.015773462, -0.25833783, 1.3969833e-09, 0.99814063, -0.060943983, 0.25881892, 0.05886736, 0.9641299, -4.3, 1.4, -2)
+
+[node name="CutsceneCam2" type="Camera3D" parent="." unique_id=748385924]
+transform = Transform3D(0.9436275, -0.020172983, -0.33039314, 4.355177e-09, 0.9981408, -0.060943995, 0.33100843, 0.057508443, 0.94187343, -4.4597464, 1.4, -2.0428038)
+fov = 41.0
+
+[node name="CutsceneCam3" type="Camera3D" parent="." unique_id=1695478331]
+transform = Transform3D(-0.9999997, 0, -8.7422755e-08, 0, 0.99999964, 0, 8.742275e-08, 0, -0.99999976, -4.0029726, 1.4, -2.5852232)
+fov = 45.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=359360494]
+libraries/ = SubResource("AnimationLibrary_fs8wb")
+
+[node name="EndCard" type="Control" parent="." unique_id=750148285]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="EndCard" unique_id=60996264]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="EndCard" unique_id=1534637870]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_2bm7f")
+theme_override_font_sizes/font_size = 30
+text = "To Be Continued"

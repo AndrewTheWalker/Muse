@@ -138,6 +138,7 @@ script = ExtResource("1_fvt50")
 
 [node name="Skinned Mesh 0" type="MeshInstance3D" parent="." unique_id=1928124167]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+layers = 3
 mesh = SubResource("ArrayMesh_ui4hd")
 skin = SubResource("Skin_fvt50")
 skeleton = NodePath("")

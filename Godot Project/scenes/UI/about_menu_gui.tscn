@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://baucnb611xqyf"]
+
+[ext_resource type="Script" uid="uid://brys2wqb1y0di" path="res://scenes/UI/about_menu_gui.gd" id="1_j3scb"]
+[ext_resource type="Texture2D" uid="uid://ddhor74nlj4ug" path="res://assets/FadeTexture.png" id="1_tyoyx"]
+[ext_resource type="FontFile" uid="uid://xyxx1sbesw40" path="res://assets/misc/Astron-Bold.otf" id="2_j3scb"]
+[ext_resource type="FontFile" uid="uid://bwlp31f1vyno5" path="res://assets/misc/Resolve-Light.otf" id="3_tqdbt"]
+
+[node name="AboutMenuGUI" type="Control" unique_id=1968288217]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j3scb")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1996714552]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=1506779101]
+layout_mode = 2
+texture = ExtResource("1_tyoyx")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2" unique_id=1032711302]
+layout_mode = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/MarginContainer" unique_id=1281731111]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="MarginContainer2/MarginContainer/VBoxContainer" unique_id=580195010]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j3scb")
+theme_override_font_sizes/font_size = 34
+text = "Welcome
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer2/MarginContainer/VBoxContainer" unique_id=1537213195]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tqdbt")
+theme_override_font_sizes/font_size = 26
+text = "What is Muse?"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer2/MarginContainer/VBoxContainer" unique_id=1501056921]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer2/MarginContainer/VBoxContainer" unique_id=1569881440]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tqdbt")
+theme_override_font_sizes/font_size = 20
+text = "Muse is a prototype / tech demo showcasing the results of 
+my efforts to learn how to develop a robust character controller in the Godot Engine."
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="MarginContainer2/MarginContainer/VBoxContainer" unique_id=23010692]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tqdbt")
+theme_override_font_sizes/font_size = 20
+text = "I am the sole developer of this demo. Everything you see was modeled, animated, textured, 
+and programmed by me. That being said, I had the pleasure of collaborating on the design 
+process for the visual development of the project. Additionally, this project would not 
+have seen the light of day if not for the incredible learning resources provided
+by youtube.com/@PointDown. 
+
+"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="MarginContainer2/MarginContainer/VBoxContainer" unique_id=1599260491]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tqdbt")
+theme_override_font_sizes/font_size = 20
+text = "Special Thanks
+
+Gab (Fair Fight)
+
+Mitchell
+
+The Seneca Animation Class of 2026"
+horizontal_alignment = 1
+
+[node name="HSeparator6" type="HSeparator" parent="MarginContainer2/MarginContainer/VBoxContainer" unique_id=12456213]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/MarginContainer/VBoxContainer" unique_id=207275236]
+layout_mode = 2
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_right = 256
+
+[node name="Button" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer" unique_id=834409237]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

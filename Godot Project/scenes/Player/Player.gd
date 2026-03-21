@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name PlayerKor
 
 @export var use_debug_cam := false
 @export var use_debug_meshes := false
