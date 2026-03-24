@@ -118,11 +118,11 @@ func update(_input : InputPackage, _delta : float):
 func process_input_vector(input : InputPackage, delta : float):
 	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
 	input_direction.y = 0
-	var face_direction = -(player.visuals.basis.z)
+	var face_direction = -player.basis.z
 	face_direction.y = 0
 	var angle = face_direction.signed_angle_to(input_direction, Vector3.UP)
 	
-	#player.rotate_y(clamp(angle, -tracking_angular_speed * delta, tracking_angular_speed * delta))
+	player.rotate_y(clamp(angle, -tracking_angular_speed * delta, tracking_angular_speed * delta))
 
 func update_resources(delta : float):
 	resources.update(delta)

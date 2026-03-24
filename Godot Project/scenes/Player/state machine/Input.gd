@@ -34,5 +34,7 @@ func gather_input() -> InputPackage:
 		#if Input.is_action_pressed("DodgeSprint"):
 			#new_input.actions.append("sprint")
 
+	if new_input.actions.is_empty():
+		new_input.actions.append("idle")
 
 	return new_input

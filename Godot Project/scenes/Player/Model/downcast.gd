@@ -9,5 +9,3 @@ extends RayCast3D
 func _process(delta: float) -> void:
 	global_position = bone_target.global_position
 	var collision_point = get_collision_point()
-	target_sphere.global_position = collision_point
-	

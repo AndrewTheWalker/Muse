@@ -4,6 +4,7 @@ extends Move
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var downcast: RayCast3D = $"../../AreaAwareness/Downcast"
+
 @onready var hip_attachment: BoneAttachment3D = $"../../GeneralSkeleton/Root"
 
 
@@ -14,7 +15,7 @@ var landing_height : float = 1.15
 
 
 func default_lifecycle(_input : InputPackage):
-	var floor_point = downcast.get_collision_point()
+	var floor_point = area_awareness.downcast.get_collision_point()
 	if hip_attachment.global_position.distance_to(floor_point) < landing_height:
 		var xz_velocity = player.velocity
 		xz_velocity.y = 0

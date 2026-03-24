@@ -26,6 +26,8 @@ albedo_color = Color(0.31764707, 1, 0, 0.03137255)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1iqjq"]
 
+[sub_resource type="PrismMesh" id="PrismMesh_7qown"]
+
 [node name="PlayerKor" type="CharacterBody3D" unique_id=1159028594 groups=["player"]]
 collision_mask = 6
 script = ExtResource("1_3tgjv")
@@ -126,3 +128,7 @@ pitch_scale = 2.1
 stream = ExtResource("16_vkka1")
 volume_db = -15.458
 pitch_scale = 0.95
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1557503723]
+transform = Transform3D(0.5, 0, 0, 0, -4.371139e-08, 0.39999998, 0, -1, -1.7484554e-08, 0, 0.25, -0.5)
+mesh = SubResource("PrismMesh_7qown")
