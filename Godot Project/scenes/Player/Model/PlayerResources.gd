@@ -37,6 +37,7 @@ func lose_health(amount : float):
 	if not god_mode:
 		health -= amount
 		SignalBus.LIFE_CHANGE.emit(health)
+		print("player life changed to ", health)
 		if health < 1:
 			model.current_move.try_force_move("death")
 

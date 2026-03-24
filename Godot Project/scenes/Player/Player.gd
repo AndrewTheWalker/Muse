@@ -49,6 +49,7 @@ func get_all_children_recursive(node):
 
 func receive_hit():
 	# tell model to call resources.
+	print("player received hit, sending to model")
 	model.take_damage()
 
 

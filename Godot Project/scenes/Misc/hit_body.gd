@@ -15,4 +15,5 @@ func _ready() -> void:
 	add_to_group(type)
 	
 func hit_request():
+	print("received hit!")
 	hitbody_owner.receive_hit()
