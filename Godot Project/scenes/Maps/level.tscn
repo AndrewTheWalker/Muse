@@ -34,6 +34,7 @@ fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.87058824, 0.7019608, 0.88235295, 1)
 fog_light_energy = 0.02
+fog_density = 1.0
 fog_height_density = -0.0125
 fog_depth_curve = 21.856655
 volumetric_fog_enabled = true
@@ -180,8 +181,6 @@ omni_attenuation = 0.3
 
 [node name="Floor" type="Node3D" parent="LevelGeo" unique_id=746483861]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1.75)
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="SM_Floor_01_A2" parent="LevelGeo/Floor" unique_id=1312107405 instance=ExtResource("21_xl4ty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -29.75)
@@ -1313,6 +1312,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0, -5.75)
 
 [node name="Ceiling" type="Node3D" parent="LevelGeo" unique_id=1061020044]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.25, 14, -35.75)
+visible = false
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -2783,8 +2783,6 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Walls" type="Node3D" parent="LevelGeo" unique_id=13610681]
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="SM_Pillar_Base2" parent="LevelGeo/Walls" unique_id=2130804302 instance=ExtResource("9_wqwmq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 39.5)
@@ -4246,7 +4244,6 @@ transform = Transform3D(-0.9579165, 0.039087806, -0.28437316, 0.012160757, 0.995
 [node name="PlayerKor" parent="." unique_id=1159028594 instance=ExtResource("8_1pwm2")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=24515244]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1997935342]
 material = SubResource("CanvasItemMaterial_sd6uo")
@@ -4267,7 +4264,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("CylinderShape3D_o8gcq")
 
 [node name="Drone" parent="." unique_id=292636954 instance=ExtResource("25_611as")]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -0.5, 3.25, -53.5)
+transform = Transform3D(0.8, 0, -1.3987645e-07, 0, 0.8, 0, 1.3987645e-07, 0, 0.8, -0.41998428, 2.2812, -142.14)
 
 [connection signal="body_entered" from="EndingArea3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="DIED_SIGNAL" from="Drone" to="." method="_on_drone_died_signal"]

@@ -350,32 +350,6 @@ backend_animation = "death_param"
 [node name="AreaAwareness" type="Node" parent="." unique_id=113609799]
 script = ExtResource("27_sjtmp")
 
-[node name="RaycastRig" type="Node3D" parent="AreaAwareness" unique_id=1850704191]
-
-[node name="DowncastL" type="RayCast3D" parent="AreaAwareness/RaycastRig" unique_id=1008572680]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
-target_position = Vector3(0, -100, 0)
-collision_mask = 6
-debug_shape_custom_color = Color(0.27337447, 0.490281, 1, 1)
-
-[node name="DowncastR" type="RayCast3D" parent="AreaAwareness/RaycastRig" unique_id=1389570266]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
-target_position = Vector3(0, -100, 0)
-collision_mask = 6
-debug_shape_custom_color = Color(0.27337447, 0.490281, 1, 1)
-
-[node name="DowncastB" type="RayCast3D" parent="AreaAwareness/RaycastRig" unique_id=1365995054]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
-target_position = Vector3(0, -100, 0)
-collision_mask = 6
-debug_shape_custom_color = Color(0.27337447, 0.490281, 1, 1)
-
-[node name="DowncastF" type="RayCast3D" parent="AreaAwareness/RaycastRig" unique_id=985215653]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4)
-target_position = Vector3(0, -100, 0)
-collision_mask = 6
-debug_shape_custom_color = Color(0.27337447, 0.490281, 1, 1)
-
 [node name="Downcast" type="RayCast3D" parent="AreaAwareness" unique_id=1824927467]
 target_position = Vector3(0, -100, 0)
 collision_mask = 6

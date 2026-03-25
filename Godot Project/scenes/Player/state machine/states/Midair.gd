@@ -16,7 +16,7 @@ var landing_height : float = 1.15
 
 func default_lifecycle(_input : InputPackage):
 	var floor_point = area_awareness.downcast.get_collision_point()
-	if hip_attachment.global_position.distance_to(floor_point) < landing_height:
+	if hip_attachment.global_position.distance_to(floor_point) < landing_height or player.is_on_floor():
 		var xz_velocity = player.velocity
 		xz_velocity.y = 0
 		if xz_velocity.length_squared() >= 7:

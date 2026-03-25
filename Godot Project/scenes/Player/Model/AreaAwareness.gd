@@ -3,7 +3,6 @@ class_name AreaAwareness
 
 var last_pushback_vector : Vector3
 var last_input_package : InputPackage
-@onready var raycast_rig: Node3D = $RaycastRig
 
 @onready var downcast = $Downcast as RayCast3D
 
@@ -23,6 +22,5 @@ func get_look_at_point() -> Vector3:
 	return point
 	
 func _process(delta: float) -> void:
-	raycast_rig.global_position = bone_target.global_position
 	downcast.global_position = bone_target.global_position
 	var collision_point = downcast.get_collision_point()

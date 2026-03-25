@@ -31,7 +31,7 @@ func set_look_at(look_at_vector:Vector3):
 		is_strafing = true
 		look_at_position = look_at_vector
 		look_at_position.y = 0
-		player.visuals.look_at(look_at_position)
+		player.look_at(look_at_position)
 
 
 func drop_look_at():
@@ -59,7 +59,8 @@ func update(input : InputPackage, delta : float):
 		player.look_at(look_at_position)
 		choose_anim(input,look_at_position)
 	else:
-		player.look_at(player.global_position + player.velocity)
+		return
+		#player.look_at(player.global_position + player.velocity)
 
 
 func choose_anim(input:InputPackage,target:Vector3):

@@ -18,7 +18,6 @@
 [ext_resource type="AudioStream" uid="uid://djum88r6ge5m7" path="res://assets/Sound Effects/kor_step.wav" id="16_vkka1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pt5pi"]
-radius = 0.184
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mra3b"]
 transparency = 1
