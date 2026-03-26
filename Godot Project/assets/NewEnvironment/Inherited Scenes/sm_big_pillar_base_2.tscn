@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ueipmukn8l8k"]
+
+[ext_resource type="PackedScene" uid="uid://dgymoa0sl4ktr" path="res://assets/NewEnvironment/SM_Big_Pillar_Base.gltf" id="1_ldknb"]
+
+[node name="SM_Big_Pillar_Base2" unique_id=562138383 instance=ExtResource("1_ldknb")]

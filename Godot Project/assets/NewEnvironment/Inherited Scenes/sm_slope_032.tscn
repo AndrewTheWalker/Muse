@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dh84kntg3sdis"]
+
+[ext_resource type="PackedScene" uid="uid://dbyg38pjhbfm3" path="res://assets/NewEnvironment/SM_Slope_03.gltf" id="1_j2xkn"]
+
+[node name="SM_Slope_032" unique_id=1867126456 instance=ExtResource("1_j2xkn")]

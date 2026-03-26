@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://crjrten3hmfw7"]
+
+[ext_resource type="PackedScene" uid="uid://cqlkr77iddqnj" path="res://assets/NewEnvironment/SM_Ceiling_02_A.gltf" id="1_76x7k"]
+
+[node name="SM_Ceiling_02_A2" unique_id=1913194062 instance=ExtResource("1_76x7k")]

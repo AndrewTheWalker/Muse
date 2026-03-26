@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dsba00681gh40"]
+
+[ext_resource type="PackedScene" uid="uid://rmcfpy3ucuci" path="res://assets/NewEnvironment/SM_Wall_01_D.gltf" id="1_kqx6s"]
+
+[node name="SM_Wall_01_D2" unique_id=694020482 instance=ExtResource("1_kqx6s")]

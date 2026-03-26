@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c07h3gqcg086m"]
+
+[ext_resource type="PackedScene" uid="uid://cau6pbjax5wn7" path="res://assets/NewEnvironment/SM_Ledge.gltf" id="1_cjlo4"]
+
+[node name="SM_Ledge2" unique_id=254333049 instance=ExtResource("1_cjlo4")]
