@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cxqixag1d6mq3"
+uid="uid://bco1w4imfjj8"
 path="res://.godot/imported/SM_Floor_02_A.gltf-2e23fc4f3a921a3e59baa73fdb213335.scn"
 
 [deps]
@@ -37,20 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"materials": {
-"Floor": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://assets/Environment/Materials/M_Floor.tres",
-"use_external/path": "uid://bdl7o7gfusdnm"
-}
-},
-"nodes": {
-"PATH:SM_Floor_02_A": {
-"generate/physics": true,
-"physics/layer": 2
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
