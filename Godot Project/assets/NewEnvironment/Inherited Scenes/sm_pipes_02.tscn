@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bgpe0j2jlcoe1"]
+
+[ext_resource type="PackedScene" uid="uid://cb4bhlenn0wfu" path="res://assets/NewEnvironment/SM_Pipes_02.gltf" id="1_rsnr8"]
+
+[node name="SM_Pipes_022" unique_id=62572624 instance=ExtResource("1_rsnr8")]
