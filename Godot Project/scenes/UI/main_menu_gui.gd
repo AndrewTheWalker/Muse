@@ -22,7 +22,7 @@ func _on_button_about_pressed() -> void:
 
 func _on_button_begin_pressed() -> void:
 	menu_1.play()
-	Gamestate.game_controller.change_3d_scene("res://scenes/Maps/level.tscn")
+	Gamestate.game_controller.change_3d_scene("res://scenes/Maps/dungeon.tscn")
 	Gamestate.game_controller.change_gui_scene("res://scenes/UI/gameplay_ui.tscn")
 	await get_tree().create_timer(1.1).timeout
 	queue_free()

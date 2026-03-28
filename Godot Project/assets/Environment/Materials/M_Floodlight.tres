@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://chplgbjrjh0u8"]
+
+[ext_resource type="Texture2D" uid="uid://b3yetud8wu4gd" path="res://assets/Environment/Materials/Textures/T_Floodlight_BC.png" id="1_dt2e7"]
+[ext_resource type="Texture2D" uid="uid://cgcr30h2tx6fx" path="res://assets/Environment/Materials/Textures/T_Floodlight_E.png" id="2_hvo4f"]
+
+[resource]
+albedo_texture = ExtResource("1_dt2e7")
+emission_enabled = true
+emission_texture = ExtResource("2_hvo4f")
+texture_filter = 2

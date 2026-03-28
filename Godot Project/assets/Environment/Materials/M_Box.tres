@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cvgqu2cmb50yp"]
+
+[ext_resource type="Texture2D" uid="uid://bj1kblvpa7w8r" path="res://assets/Environment/Materials/Textures/T_Box_BC.png" id="1_yxule"]
+[ext_resource type="Texture2D" uid="uid://evdlhr8or437" path="res://assets/Environment/Materials/Textures/T_Box_E.png" id="2_sjhgg"]
+
+[resource]
+albedo_texture = ExtResource("1_yxule")
+emission_enabled = true
+emission_texture = ExtResource("2_sjhgg")
+texture_filter = 2

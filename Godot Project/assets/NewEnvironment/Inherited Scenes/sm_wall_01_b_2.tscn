@@ -1,5 +1,42 @@
-[gd_scene format=3 uid="uid://c6xlw3j4tq8rx"]
+[gd_scene format=4 uid="uid://c6xlw3j4tq8rx"]
 
-[ext_resource type="PackedScene" uid="uid://fq1w5jvukdh3" path="res://assets/NewEnvironment/SM_Wall_01_B.gltf" id="1_xtnvo"]
+[ext_resource type="Material" uid="uid://bp3crnwb1o55d" path="res://assets/Environment/Materials/M_Walls.tres" id="1_xtnvo"]
 
-[node name="SM_Wall_01_B2" unique_id=1526185848 instance=ExtResource("1_xtnvo")]
+[sub_resource type="ArrayMesh" id="ArrayMesh_tkj7l"]
+_surfaces = [{
+"aabb": AABB(-4, 0, -6.039832e-07, 4, 4, 1.0000006),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("zAwy8/7/AAD/////AAAAADLzMvP//wAA//8AAAAAAAAAAP//AAAAADLzzAz//wAAzAzMDP7/AAAAAAAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fnd4h"]
+resource_name = "SM_Wall_01_B_Cube_005"
+_surfaces = [{
+"aabb": AABB(-4, 0, -6.039832e-07, 4, 4, 1.0000006),
+"attribute_data": PackedByteArray("yMGPzBTOvf3Iwb39FM6PzP//////f/9/////f/9////IwY/MFM69/cjBvf0Uzo/M9vJx8cjBvf3IwXHx9vK9/fbycfHIwb39yMFx8fbyvf328r39Qf9x8UH/vf328nHx"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": ExtResource("1_xtnvo"),
+"name": "Wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("zAwy8/7/kNT/////AACxzTLzMvP//9nLAAD//wAAItYAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAADD8MvMy8///rvv/////AADl+TLzzAz//+X5MvPMDP//9LcAAAAAAAD0t8wMzAz+//S3//8AAAAA9LfMDMwM/v/Z0AAA//8AANnQzAwy8/7/2dAAAAAAAADZ0DLzzAz///+/zAwy8/7//78y8zLz////v8wMzAz+//+/l9YWJMXZJSu72kgt7dWeIv9/////f////3////9///9lAyE47rcpfD63oXpdBT43AAD/fwAA/38AAP9/AAD/fz5YwKc+WMCnPljApz5YwKf/////////////////////")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tkj7l")
+
+[node name="SM_Wall_01_B2" type="Node3D" unique_id=1526185848]
+
+[node name="SM_Wall_01_B" type="MeshInstance3D" parent="." unique_id=1954180241]
+layers = 2
+mesh = SubResource("ArrayMesh_fnd4h")
+skeleton = NodePath("")

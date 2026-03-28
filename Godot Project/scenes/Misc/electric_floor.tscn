@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bnbc58lerhyhw"]
+
+[ext_resource type="Script" uid="uid://cbwr2bwit2uon" path="res://electric_floor.gd" id="1_7qepo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ps3pp"]
+size = Vector3(88.30295, 0.5, 101.535645)
+
+[node name="ElectricFloor" type="Area3D" unique_id=1433734089]
+script = ExtResource("1_7qepo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=532032752]
+shape = SubResource("BoxShape3D_ps3pp")
+debug_color = Color(0.9681924, 0, 0.47250795, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

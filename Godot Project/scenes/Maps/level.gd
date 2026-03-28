@@ -5,8 +5,8 @@ class_name LevelManager
 @export var cutscene : Cutscene
 @onready var ending_area_3d: Area3D = $EndingArea3D
 
-@onready var door: Node3D = $LevelGeo/Door
-@onready var doorcam: Camera3D = $LevelGeo/Door/Doorcam
+@onready var door: Node3D = $LEVEL_GEO/Door
+@onready var doorcam: Camera3D = $LEVEL_GEO/Door/Doorcam
 
 var num_drones_killed : int = 0
 @export var drones_required : int

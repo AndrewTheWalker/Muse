@@ -1,7 +1,7 @@
 extends Node
 class_name PlayerModel
 
-
+@export var print_transition_statements : bool = true
 
 @onready var player = $".."
 @onready var skeleton: Skeleton3D = %GeneralSkeleton
@@ -24,8 +24,10 @@ const bullet_scene = preload("uid://bg7rl84y6o0p7")
 @onready var bullet_spawner: Node3D = $"../Visuals/BulletSpawn"
 @onready var reticle_half: Node3D = $"../ReticleHalf"
 @onready var gun_point: BoneAttachment3D = $GeneralSkeleton/GunPoint
+@onready var modifier_bone_target_3d: ModifierBoneTarget3D = $GeneralSkeleton/ModifierBoneTarget3D
 
 @onready var fx_overheat: OverheatFX = $FX_Overheat
+@onready var sparks: GPUParticles3D = $Sparks
 
 
 var target_direction : Vector3
@@ -61,9 +63,11 @@ func update(input : InputPackage, reticle: Vector3, delta : float):
 		update_bullet_target(new_reticle_point)
 
 	fx_overheat.global_position = gun_point.global_position
+	sparks.global_position = modifier_bone_target_3d.global_position
 
 func switch_to(state : String):
-	print(current_move.name, "-->", state)
+	if print_transition_statements:
+		print(current_move.name, "-->", state)
 	current_move.base_on_exit_state()
 	current_move = moves_container.moves[state]
 	current_move.base_on_enter_state()
@@ -116,7 +120,7 @@ func force_overheat():
 
 
 func take_damage():
-	if ! current_move.is_vulnerable():
+	if current_move.is_vulnerable():
 		print("vulnerable, taking damage")
 		resources.lose_health(5.0)
 		player.send_sound("hit")

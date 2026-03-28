@@ -5,7 +5,7 @@ class_name Run
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 const WALK_SPEED = 2.5
-const RUN_SPEED = 4.0
+const RUN_SPEED = 7.0
 const TURN_SPEED = 3.0
 
 var is_strafing : bool = false

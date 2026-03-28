@@ -1,6 +1,10 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c3jpojxcffiqd"]
 
-[ext_resource type="Texture2D" uid="uid://bwm6f0ksmi61j" path="res://assets/Grid Textures/Red/texture_11.png" id="1_ju45b"]
+[ext_resource type="Texture2D" uid="uid://b3ckyi7skvju6" path="res://assets/Environment/Materials/Textures/T_Pillar_BC.png" id="1_4ixto"]
+[ext_resource type="Texture2D" uid="uid://ui2y3gq2bcg2" path="res://assets/Environment/Materials/Textures/T_Pillar_E.png" id="2_5qf3o"]
 
 [resource]
-albedo_texture = ExtResource("1_ju45b")
+albedo_texture = ExtResource("1_4ixto")
+emission_enabled = true
+emission_texture = ExtResource("2_5qf3o")
+texture_filter = 2

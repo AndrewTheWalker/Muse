@@ -26,10 +26,9 @@ albedo_color = Color(0.31764707, 1, 0, 0.03137255)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1iqjq"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_7qown"]
-
 [node name="PlayerKor" type="CharacterBody3D" unique_id=1159028594 groups=["player"]]
 collision_mask = 6
+floor_max_angle = 0.80285144
 script = ExtResource("1_3tgjv")
 
 [node name="Visuals" parent="." unique_id=2638631 instance=ExtResource("2_n17f7")]
@@ -44,6 +43,7 @@ radius = 0.128
 height = 0.477
 
 [node name="Model" parent="." unique_id=1739466808 instance=ExtResource("3_minpg")]
+print_transition_statements = false
 
 [node name="Input" type="Node" parent="." unique_id=1928426828]
 script = ExtResource("4_dla7g")
@@ -73,9 +73,6 @@ outer_radius = 0.5
 sides = 32
 ring_sides = 3
 material = SubResource("StandardMaterial3D_mra3b")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=2086916771]
-visible = false
 
 [node name="HitBody" type="StaticBody3D" parent="." unique_id=1396854037 groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
@@ -129,7 +126,13 @@ stream = ExtResource("16_vkka1")
 volume_db = -15.458
 pitch_scale = 0.95
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1557503723]
-transform = Transform3D(0.5, 0, 0, 0, -4.371139e-08, 0.39999998, 0, -1, -1.7484554e-08, 0, 0.25, -0.5)
-visible = false
-mesh = SubResource("PrismMesh_7qown")
+[node name="InvincTimer" type="Timer" parent="." unique_id=1221716769]
+wait_time = 0.75
+one_shot = true
+
+[node name="ElectricTimer" type="Timer" parent="." unique_id=426818623]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="InvincTimer" to="." method="_on_invinc_timer_timeout"]
+[connection signal="timeout" from="ElectricTimer" to="." method="_on_electric_timer_timeout"]

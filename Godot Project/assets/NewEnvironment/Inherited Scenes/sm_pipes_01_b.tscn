@@ -1,5 +1,50 @@
-[gd_scene format=3 uid="uid://dpos32r7a4xlj"]
+[gd_scene format=4 uid="uid://dpos32r7a4xlj"]
 
-[ext_resource type="PackedScene" uid="uid://d4ley6l6qndar" path="res://assets/NewEnvironment/SM_Pipes_01_B.gltf" id="1_bcqpo"]
+[ext_resource type="Material" uid="uid://djdyx3r7enxfv" path="res://assets/Environment/Materials/M_Pipes.tres" id="1_bcqpo"]
 
-[node name="SM_Pipes_01_B" unique_id=839990318 instance=ExtResource("1_bcqpo")]
+[sub_resource type="ArrayMesh" id="ArrayMesh_mc3uj"]
+_surfaces = [{
+"aabb": AABB(-4.000001, 0.17047465, -0.695832, 4.000001, 3.6629705, 1.0360985),
+"format": 34896613377,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAgADAAUABgAEAAAABQADAAcABgAIAAQABQAHAAkACgAIAAYACQAHAAsACgAMAAgACQALAA0ADgAMAAoADQALAA8ADgAPAAwADQAPAA4AEAARABIAEgARABMAEAAUABEAEgATABUAFgAUABAAFQATABcAFgAYABQAFQAXABkAGgAYABYAGQAXABsAGgAcABgAGQAbAB0AHgAcABoAHQAbAB8AHgAfABwAHQAfAB4A"),
+"name": "PipeMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("AAA4xPrZAAD//8K5/38AAAAAwrn/fwAA//84xAQmAAD//zjE+tkAAAAAOMQEJgAAAADg3D//AAD//+DcvwAAAP//4Nw//wAAAADg3L8AAAAAALX1+tkAAP//tfUEJgAA//+19frZAAAAALX1BCYAAAAA////fwAA//////9/AAAAAAAA/38AAP7/SQp9JQAAAABJCn0lAAD+/x4jAAAAAP7/AAD/fwAAAAAeIwAAAAAAAEkKgdoAAP//8zt9JQAA//9JCoHaAAAAAPM7fSUAAAAAHiP//wAA//89Rv9/AAD//x4j//8AAAAAPUb/fwAAAADzO4HaAAD///M7gdoAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fgjt3"]
+resource_name = "SM_Pipes_01_B_SM_Wall_01_001"
+_surfaces = [{
+"aabb": AABB(-4.000001, 0.17047465, -0.695832, 4.000001, 3.6629705, 1.0360985),
+"attribute_data": PackedByteArray("////f////1////9f////P////3////8/////n////x////+f////H///AAD//wAA////v////7/////f////3///////////////3////7////+/////n////9///////////////5////9/////f////1////9f////P////z////8f////H///AAD//wAA"),
+"format": 34896613399,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAgADAAUABgAEAAAABQADAAcABgAIAAQABQAHAAkACQAHAAoACQAKAAsADAAIAAYADAANAAgADgANAAwADgAPAA0AEAAPAA4AEAARAA8AEgATABQAFAATABUAEgAWABMAFwAWABIAFwAYABYAFAAVABkAGQAVABoAGQAaABsAGwAaABwAGwAcAB0AHQAcAB4AHQAeAB8AHwAeACAAHwAgACEAIQAgACIAIQAiACMA"),
+"material": ExtResource("1_bcqpo"),
+"name": "PipeMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AAA4xPrZtV///8K5/3//vwAAwrn/f/+///84xAQmtd///zjE+tm1XwAAOMQEJrXfAADg3D//8n///+DcvwDx////4Nw///J/AADg3L8A8f///7X1BCak3wAAtfUEJqTfAAC19frZpF///7X1+tmkXwAA////f/+///////9//78AALX1BCak3///tfUEJqTfAAAAAP9//7/+/0kKfSWP3wAASQp9JY/f/v8eIwAA///+/wAA/3//vwAASQqB2o9f//9JCoHaj18AAB4jAAD/////8zt9JY/fAADzO30lj9///z1G/3//vwAAPUb/f/+////zO4Haj18AAPM7gdqPX///HiP///5/AAAeI////n///0kKgdqPXwAASQqB2o9fAAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/////fwAA/38AAP9/AAD/f////3////9/////f////3////9/////f////3//f////3///wAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_mc3uj")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_unm5d"]
+points = PackedVector3Array(0, 3.833445, -0.17778277, 0, 3.68608, 0.18631214, 0, 3.68608, -0.5419791, -4.000001, 3.833445, -0.17778277, 0, 3.3307548, 0.3372239, -4.000001, 3.68608, 0.18631214, 0, 3.3307548, -0.6928909, -4.000001, 3.68608, -0.5419791, 0, 0.67280644, 0.34026647, -4.000001, 3.3307548, 0.3372239, 0, 1.0281317, -0.54410887, -0.0003914833, 0.67280644, -0.695832, -4.000001, 3.3307548, -0.6928909, 0, 0.3174811, 0.18844193, -4.000001, 0.67280644, 0.34026647, -0.0003914833, 0.3174811, -0.54410887, -4.000001, 0.67280644, -0.695832, -4.000001, 0.3174811, 0.18844193, -0.0003914833, 0.17047465, -0.17778277, -4.000001, 0.3174811, -0.54410887, -4.000001, 0.17047465, -0.17778277)
+
+[node name="SM_Pipes_01_B" type="Node3D" unique_id=839990318]
+
+[node name="SM_Pipes_01_Normal" type="MeshInstance3D" parent="." unique_id=1359468130]
+mesh = SubResource("ArrayMesh_fgjt3")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SM_Pipes_01_Normal" unique_id=844870838]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Pipes_01_Normal/StaticBody3D" unique_id=420146488]
+shape = SubResource("ConvexPolygonShape3D_unm5d")
