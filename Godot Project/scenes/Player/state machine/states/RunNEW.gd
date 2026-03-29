@@ -10,12 +10,17 @@ const TURN_SPEED = 2.0
 
 var is_strafing : bool = false
 
-var look_at_position : Vector3
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Lock"):
+		is_strafing = true
+	if event.is_action_released("Lock"):
+		is_strafing = false
+		if animation != "Jog":
+			animation = "Jog"
 
 func on_enter_state():
 	player.send_sound("step")
-	look_at_position = player.global_position + player.velocity
 
 
 func on_exit_state():
@@ -113,8 +118,12 @@ func process_input_vector(input : InputPackage, delta : float):
 			
 	else:
 		var input_direction = (forward * -input.l_input_direction.y + right * input.l_input_direction.x).normalized()
-		player.velocity.x = input_direction.x * RUN_SPEED*0.75
-		player.velocity.z = input_direction.z * RUN_SPEED*0.75
+		player.velocity.x = input_direction.x * RUN_SPEED*0.5
+		player.velocity.z = input_direction.z * RUN_SPEED*0.5
+		var face_direction = player.local_camera.get_projected_position()
+		face_direction.y = player.global_position.y
+		player.look_at(face_direction)
+		choose_anim(input,face_direction)
 		
 		
 	#animator.set_speed_scale(player.velocity.length() / RUN_SPEED)

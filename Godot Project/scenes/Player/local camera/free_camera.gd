@@ -17,6 +17,7 @@ var is_shooting := false
 var h_inv := -1
 var v_inv := -1
 
+var sensitivity_multiplier : float = 1.0
 var hor_sense := 2.0
 var ver_sense := 1.0
 var offset := Vector3(0.0,0.75,4.5)

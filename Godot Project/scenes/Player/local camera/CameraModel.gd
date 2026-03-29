@@ -213,4 +213,8 @@ func get_unprojected_position()->Vector2:
 	#print("final unprojected position ", unprojected_position)
 	return unprojected_position
 	
+func get_projected_position()->Vector3:
+	var position: Vector3
+	position = reticle_locator.global_position
+	return position
 	

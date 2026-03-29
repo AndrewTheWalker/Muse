@@ -33,6 +33,7 @@
 [ext_resource type="Script" uid="uid://p2b2htkmmwui" path="res://scenes/Player/state machine/states/Death.gd" id="28_vcesj"]
 [ext_resource type="AnimationLibrary" uid="uid://cdcr04y82btgt" path="res://assets/Animations/kor_anim/Kor_Animation_Library.res" id="29_0stpf"]
 [ext_resource type="Script" uid="uid://cfehsol6an6ke" path="res://scenes/Player/Model/SkeletonAnimator.gd" id="29_upehi"]
+[ext_resource type="Script" uid="uid://p87fxgog0pha" path="res://scenes/Player/Model/strafe.gd" id="30_51l4k"]
 [ext_resource type="PackedScene" uid="uid://ygcw1xvl3hpc" path="res://assets/misc/fx_overheat.tscn" id="32_hqa57"]
 [ext_resource type="Texture2D" uid="uid://dq3xylodvsv3r" path="res://assets/misc/FX_Sparks.png" id="35_ukgj8"]
 
@@ -375,6 +376,14 @@ animation = "Dying"
 move_name = "death"
 priority = 10
 backend_animation = "death_param"
+
+[node name="Strafe" type="Node" parent="States" unique_id=1931338183]
+script = ExtResource("30_51l4k")
+animation = "Jog"
+move_name = "Strafe"
+priority = 2
+backend_animation = "run_param"
+tracking_angular_speed = 30.0
 
 [node name="AreaAwareness" type="Node" parent="." unique_id=113609799]
 script = ExtResource("27_sjtmp")
