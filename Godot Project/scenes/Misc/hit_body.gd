@@ -17,3 +17,6 @@ func _ready() -> void:
 func hit_request():
 	print("received hit!")
 	hitbody_owner.receive_hit()
+
+func disable():
+	process_mode = Node.PROCESS_MODE_DISABLED

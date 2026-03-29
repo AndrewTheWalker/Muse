@@ -19,9 +19,13 @@ signal DIED_SIGNAL
 @onready var converging_particles: GPUParticles3D = $BulletSpawner/ConvergingParticles
 @onready var growing_glow: GPUParticles3D = $BulletSpawner/GrowingGlow
 
+@onready var hit_body: HitBody = $HitBody
 
 @export var upper_bound : float
 @export var lower_bound : float
+@export var y_bounds : Vector2
+@export var x_bounds : Vector2
+@export var z_bounds : Vector2
 
 const SPEED = 7.0
 
@@ -85,8 +89,10 @@ func choose_random_location()->Vector3:
 
 
 func validate_target(loc:Vector3)->bool:
-	if loc.y < lower_bound or loc.y > upper_bound:
-		return false
+	if loc.x < x_bounds.x or loc.x > x_bounds.y:
+		if loc.y < y_bounds.x or loc.y > y_bounds.y:
+			if loc.z < z_bounds.x or loc.z > z_bounds.y:
+				return false
 	return true
 
 
@@ -113,25 +119,24 @@ func _on_secondary_wait_timer_timeout() -> void:
 	_on_move_wait_timer_timeout()
 	
 	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("DebugHurt"):
-		die()
-		
 
 func die():
 	move_wait_timer.stop()
 	secondary_wait_timer.stop()
 	send_sound("death_hit")
+	hit_body.disable()
 	SignalBus.TARGET_SCREEN_EXITED.emit(self)
 	velocity = Vector3.ZERO
 	animation_player.play("Enemy_Dying")
 	await animation_player.animation_finished
-	DIED_SIGNAL.emit()
 	var explosion = explosion_scene.instantiate()
 	get_tree().get_root().add_child(explosion)
 	explosion.global_position = bone_attachment_3d.global_position
+	emit_death_signal()
 	queue_free()
 
+func emit_death_signal():
+	DIED_SIGNAL.emit()
 
 func receive_hit():
 	#if !player_detected:

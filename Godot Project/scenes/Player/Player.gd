@@ -39,7 +39,6 @@ func _physics_process(delta):
 	# because the inputs are a data package, they would keep piling up if we don't free them.
 	input.queue_free()
 
-
 # this function is just used to ease debugging.
 func get_all_children_recursive(node):
 	var nodes = []
@@ -63,17 +62,25 @@ func send_sound(sound_name : String):
 func stop_sound(sound_name : String):
 	audio_manager.stop_playing(sound_name)
 
+
+func rotate_to(target_dir:Vector3):
+	var current_dir = global_rotation
+	var angle = current_dir.signed_angle_to(target_dir,Vector3.UP)
+	global_rotation = global_rotation.rotated(Vector3.UP,angle)
+
+
+
+
+
 func electric_on():
 	is_electrified = true
 	sparks.emitting = true
 	receive_hit()
 	electric_timer.start()
 
-
 func electric_off():
 	is_electrified = false
 	sparks.emitting = false
-
 
 func _on_electric_timer_timeout() -> void:
 	if is_electrified:

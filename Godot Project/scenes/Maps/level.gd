@@ -41,8 +41,9 @@ func show_door_opening():
 
 
 func _on_drone_died_signal() -> void:
-	num_drones_killed += 1
-	if num_drones_killed >= drones_required:
+	drones_required -= 1
+	print("drone killed, num left is ",drones_required)
+	if drones_required < 1:
 		show_door_opening()
 	else:
 		return

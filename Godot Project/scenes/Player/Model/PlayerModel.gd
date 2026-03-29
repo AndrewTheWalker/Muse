@@ -42,7 +42,7 @@ func _ready():
 	moves_container.player = player
 	moves_container.accept_moves()
 	current_move = moves_container.moves["idle"]
-	#switch_to("idle")
+	switch_to("idle")
 
 
 func update(input : InputPackage, reticle: Vector3, delta : float):
@@ -121,7 +121,6 @@ func force_overheat():
 
 func take_damage():
 	if current_move.is_vulnerable():
-		print("vulnerable, taking damage")
 		resources.lose_health(5.0)
 		player.send_sound("hit")
 	else:

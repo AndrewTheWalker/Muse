@@ -134,5 +134,11 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1272051176]
+transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, 1.9106855e-15, 1, -1, 4.371139e-08, -4.371139e-08, 0.5, 0.25, 0)
+visible = false
+polygon = PackedVector2Array(0, 0, 0, 1, 1, 0.5, 1, 0.5)
+depth = 0.1
+
 [connection signal="timeout" from="InvincTimer" to="." method="_on_invinc_timer_timeout"]
 [connection signal="timeout" from="ElectricTimer" to="." method="_on_electric_timer_timeout"]

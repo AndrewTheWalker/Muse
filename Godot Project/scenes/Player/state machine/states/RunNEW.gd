@@ -5,8 +5,8 @@ class_name Run
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 const WALK_SPEED = 2.5
-const RUN_SPEED = 7.0
-const TURN_SPEED = 3.0
+const RUN_SPEED = 5.0
+const TURN_SPEED = 2.0
 
 var is_strafing : bool = false
 
@@ -14,30 +14,12 @@ var look_at_position : Vector3
 
 
 func on_enter_state():
-	# for some reason this function was giving an error that the signal is already connected. I had to add some if statements
-	# to make it stop, but I really don't know why it happened all of a sudden. Oh well?
-	if ! SignalBus.is_connected("TARGET_DROPPED",drop_look_at):
-		SignalBus.connect("TARGET_LOCKED",set_look_at)
-	if ! SignalBus.is_connected("TARGET_DROPPED",drop_look_at):
-		SignalBus.connect("TARGET_DROPPED",drop_look_at)
 	player.send_sound("step")
-	#look_at_position = player.global_position + player.velocity
+	look_at_position = player.global_position + player.velocity
+
 
 func on_exit_state():
 	player.stop_sound("step")
-
-func set_look_at(look_at_vector:Vector3):
-	if look_at_vector:
-		is_strafing = true
-		look_at_position = look_at_vector
-		look_at_position.y = 0
-		player.look_at(look_at_position)
-
-
-func drop_look_at():
-	is_strafing = false
-	if animation != "Jog":
-		animation = "Jog"
 
 
 func default_lifecycle(input : InputPackage):
@@ -46,21 +28,18 @@ func default_lifecycle(input : InputPackage):
 	
 	return best_input_that_can_be_paid(input)
 
+
 func queue_condition(input : InputPackage):
 	if input.l_input_direction != Vector2.ZERO and !input.actions.has("sprint"):
 		return true
 	else:
 		return false
 
+
 func update(input : InputPackage, delta : float):
-	rotate_velocity(input,delta)
+	
 	player.move_and_slide()
-	if is_strafing:
-		player.look_at(look_at_position)
-		choose_anim(input,look_at_position)
-	else:
-		return
-		#player.look_at(player.global_position + player.velocity)
+	
 
 
 func choose_anim(input:InputPackage,target:Vector3):
@@ -111,36 +90,31 @@ func find_direction(input:InputPackage,target:Vector3) -> String:
 	return direction_name
 
 
-func rotate_velocity(input : InputPackage, delta : float):
-	var face_direction := -(player.basis.z)
-	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
-	input_direction.y = 0
-	face_direction.y = 0
-	var angle = face_direction.signed_angle_to(input_direction, Vector3.UP)
-	if abs(angle) >= tracking_angular_speed * delta:
-		player.velocity = face_direction.rotated(Vector3.UP, sign(angle) * tracking_angular_speed * delta) * TURN_SPEED
-	else:
-		player.velocity = face_direction.rotated(Vector3.UP, angle) * RUN_SPEED
-
-
 func process_input_vector(input : InputPackage, delta : float):
-	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
-	var face_direction = -player.basis.z
-	var angle = face_direction.signed_angle_to(input_direction, Vector3.UP)
-	if abs(angle) >= tracking_angular_speed * delta:
-		player.velocity = face_direction.rotated(Vector3.UP, sign(angle) * tracking_angular_speed * delta) * TURN_SPEED
-		player.rotate_y(sign(angle) * tracking_angular_speed * delta)
-	else:
-		player.velocity = face_direction.rotated(Vector3.UP, angle) * RUN_SPEED
-		player.rotate_y(angle)
-	#animator.set_speed_scale(player.velocity.length() / RUN_SPEED)
-
-
-
-func velocity_by_input(input:InputPackage,delta:float)-> Vector3:
-	var new_velocity = player.velocity
-	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
-	new_velocity.x = input_direction.x * RUN_SPEED
-	new_velocity.z = input_direction.z * RUN_SPEED
 	
-	return new_velocity
+	var cam_basis = player.camera.basis
+	var forward : Vector3 = cam_basis.z
+	forward.y = 0
+	forward = forward.normalized()
+	var right : Vector3 = cam_basis.x
+	right.y = 0
+	right = right.normalized()
+	
+	if ! is_strafing:
+		var input_direction = (forward * -input.l_input_direction.y + right * input.l_input_direction.x).normalized()
+		var face_direction = -player.basis.z
+		var angle = face_direction.signed_angle_to(input_direction, Vector3.UP)
+		if abs(angle) >= tracking_angular_speed * delta:
+			player.velocity = face_direction.rotated(Vector3.UP, sign(angle) * tracking_angular_speed * delta) * TURN_SPEED
+			player.rotate_y(sign(angle) * tracking_angular_speed * delta)
+		else:
+			player.velocity = face_direction.rotated(Vector3.UP, angle) * RUN_SPEED
+			player.rotate_y(angle)
+			
+	else:
+		var input_direction = (forward * -input.l_input_direction.y + right * input.l_input_direction.x).normalized()
+		player.velocity.x = input_direction.x * RUN_SPEED*0.75
+		player.velocity.z = input_direction.z * RUN_SPEED*0.75
+		
+		
+	#animator.set_speed_scale(player.velocity.length() / RUN_SPEED)

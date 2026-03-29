@@ -142,6 +142,7 @@ text = "Jump"
 horizontal_alignment = 2
 
 [node name="LabelSprint" type="Label" parent="." unique_id=1031585299]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
