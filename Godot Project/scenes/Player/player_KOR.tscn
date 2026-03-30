@@ -90,6 +90,8 @@ script = ExtResource("7_i8i5d")
 
 [node name="KorDeathHit" type="AudioStreamPlayer" parent="AudioManager" unique_id=78875629]
 stream = ExtResource("8_2jogs")
+volume_db = -17.382
+pitch_scale = 0.63
 
 [node name="KorHit" type="AudioStreamPlayer" parent="AudioManager" unique_id=1776890335]
 stream = ExtResource("9_qwcyf")
@@ -123,8 +125,7 @@ pitch_scale = 2.1
 
 [node name="KorStep" type="AudioStreamPlayer" parent="AudioManager" unique_id=307887667]
 stream = ExtResource("16_vkka1")
-volume_db = -15.458
-pitch_scale = 0.95
+volume_db = -24.191
 
 [node name="InvincTimer" type="Timer" parent="." unique_id=1221716769]
 wait_time = 0.75

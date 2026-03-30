@@ -3,7 +3,7 @@ class_name PlayerStates
 
 
 @onready var player : CharacterBody3D = $"../.."
-@export var animator : AnimationPlayer
+@export var animator : Animator
 @export var skeleton : Skeleton3D
 @export var resources : PlayerResources
 @export var combat : Combat

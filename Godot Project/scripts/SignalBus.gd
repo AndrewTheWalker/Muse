@@ -26,3 +26,6 @@ signal OVERHEATING
 
 signal ELECTRIC_ENTERED
 signal ELECTRIC_EXITED
+
+
+signal PLAYER_DIED

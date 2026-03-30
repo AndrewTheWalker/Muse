@@ -125,3 +125,7 @@ func take_damage():
 		player.send_sound("hit")
 	else:
 		print("not vulnerable, no damage taken")
+
+
+func footstep_sfx():
+	player.send_sound("step")

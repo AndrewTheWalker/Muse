@@ -4,7 +4,7 @@ class_name Move
 
 var player : CharacterBody3D
 var skeleton : Skeleton3D
-var animator : Node
+var animator : Animator
 var resources : PlayerResources
 var combat : Combat
 var moves_data_repo : MovesDataRepository

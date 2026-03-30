@@ -14,6 +14,7 @@ func update(input : InputPackage, delta : float):
 func on_enter_state():
 	player.model.is_alive = false
 	player.send_sound("death_hit")
+	SignalBus.PLAYER_DIED.emit()
 
 func on_exit_state():
 	pass

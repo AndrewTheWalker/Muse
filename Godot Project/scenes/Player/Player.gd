@@ -69,9 +69,6 @@ func rotate_to(target_dir:Vector3):
 	global_rotation = global_rotation.rotated(Vector3.UP,angle)
 
 
-
-
-
 func electric_on():
 	is_electrified = true
 	sparks.emitting = true

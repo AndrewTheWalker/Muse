@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b2bpy68lt35o"
-path="res://.godot/imported/KOR_UpdatedMar29.glb-bc0e993bf7ce05f713166f40abe657c2.scn"
+uid="uid://cywtdlwuwdpes"
+path="res://.godot/imported/KOR_UpdatedMar29_2.glb-cc2f73897d77a9993f44e2b6882447e6.scn"
 
 [deps]
 
-source_file="res://scenes/Player/New Import/KOR_UpdatedMar29.glb"
-dest_files=["res://.godot/imported/KOR_UpdatedMar29.glb-bc0e993bf7ce05f713166f40abe657c2.scn"]
+source_file="res://scenes/Player/New Import/KOR_UpdatedMar29_2.glb"
+dest_files=["res://.godot/imported/KOR_UpdatedMar29_2.glb-cc2f73897d77a9993f44e2b6882447e6.scn"]
 
 [params]
 
@@ -41,9 +41,9 @@ _subresources={
 "animations": {
 "Dying": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Dying.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Dying.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://b724k004evtrk",
+"save_to_file/path": "uid://dnhtlijq25dwe",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -2097,9 +2097,9 @@ _subresources={
 },
 "Idle": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Idle.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Idle.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://cvql4houu3kmw",
+"save_to_file/path": "uid://byumrr5dycy5b",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -4153,9 +4153,9 @@ _subresources={
 },
 "Jog": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Jog.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Jog.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://c3kviawor50fv",
+"save_to_file/path": "uid://cxh6w6lvwra33",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -6209,9 +6209,9 @@ _subresources={
 },
 "Jog_BL": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Jog_BL.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Jog_BL.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://jef8vn6acq5w",
+"save_to_file/path": "uid://dvtokxqqgyxq6",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -8265,9 +8265,9 @@ _subresources={
 },
 "Jog_BR": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Jog_BR.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Jog_BR.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://hexj0rfbf7hx",
+"save_to_file/path": "uid://bak8utjlb55pg",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -10321,9 +10321,9 @@ _subresources={
 },
 "Jog_BWD": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Jog_BWD.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Jog_BWD.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://dops3b8f4n2cu",
+"save_to_file/path": "uid://bmy53q7oaagw7",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -12377,9 +12377,9 @@ _subresources={
 },
 "Jog_FL": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Jog_FL.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Jog_FL.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://bfhtv7uh0ae0x",
+"save_to_file/path": "uid://cqus32krtcqur",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -14433,9 +14433,9 @@ _subresources={
 },
 "Jog_FR": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Jog_FR.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Jog_FR.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://dt6xgnga8ja04",
+"save_to_file/path": "uid://ljds5iqqc85e",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -16489,9 +16489,9 @@ _subresources={
 },
 "Jump_Idle_Land": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Jump_Idle_Land.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Jump_Idle_Land.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://bycaju048ncgq",
+"save_to_file/path": "uid://gu8dtuj8pwvo",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -18545,9 +18545,9 @@ _subresources={
 },
 "Jump_Idle_Start": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Jump_Idle_Start.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Jump_Idle_Start.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://dk143pj82pv8y",
+"save_to_file/path": "uid://cudwro4haggdm",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -20601,9 +20601,9 @@ _subresources={
 },
 "Jump_Midair": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Jump_Midair.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Jump_Midair.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://ddv72ujfrvigb",
+"save_to_file/path": "uid://d3lx3ex13g7bt",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -22657,9 +22657,9 @@ _subresources={
 },
 "Jump_Sprint_Land": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Jump_Sprint_Land.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Jump_Sprint_Land.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://dty71x5duvp51",
+"save_to_file/path": "uid://dqb7w16vjyc6a",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -24713,9 +24713,9 @@ _subresources={
 },
 "Jump_Sprint_Start": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Jump_Sprint_Start.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Jump_Sprint_Start.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://brpo8yb5tllqt",
+"save_to_file/path": "uid://drxqbaji27auh",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -26769,9 +26769,9 @@ _subresources={
 },
 "Overheat": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Overheat.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Overheat.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://bedqqvqcik01a",
+"save_to_file/path": "uid://duqix3xbuqqjb",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -28825,9 +28825,9 @@ _subresources={
 },
 "Roll": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Roll.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Roll.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://e2kj1jmd05mb",
+"save_to_file/path": "uid://clwjdaof6wlhx",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -30881,9 +30881,9 @@ _subresources={
 },
 "Run": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Run.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Run.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://cn10owhuv1n2m",
+"save_to_file/path": "uid://ctq45gcn6hlw6",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -32937,9 +32937,9 @@ _subresources={
 },
 "Sprint": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Sprint.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Sprint.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://0gp56qcjuice",
+"save_to_file/path": "uid://dvh6isj2f5cbv",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -34993,10 +34993,10 @@ _subresources={
 },
 "Walk": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Walk.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Walk.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://bdymkqp3cbd6l",
-"settings/loop_mode": 1,
+"save_to_file/path": "uid://chte35vdqctso",
+"settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
 "slice_1/name": "",
@@ -37049,9 +37049,9 @@ _subresources={
 },
 "Walk_BL": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Walk_BL.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Walk_BL.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://b7ljldn4qr2tq",
+"save_to_file/path": "uid://bb8rwm7pgc51n",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -39105,9 +39105,9 @@ _subresources={
 },
 "Walk_BR": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Walk_BR.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Walk_BR.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://co7ygr8hg46n8",
+"save_to_file/path": "uid://bjpqwlergksri",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -41161,9 +41161,9 @@ _subresources={
 },
 "Walk_BWD": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Walk_BWD.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Walk_BWD.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://bueb32u6xo32t",
+"save_to_file/path": "uid://bmhaojxx6sytq",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -43217,9 +43217,9 @@ _subresources={
 },
 "Walk_FL": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Walk_FL.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Walk_FL.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://dhv7a0gnwm6ur",
+"save_to_file/path": "uid://mvcphir6tcwy",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -45273,9 +45273,9 @@ _subresources={
 },
 "Walk_FR": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/Walk_FR.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/Walk_FR.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://ci8si4qsxhybc",
+"save_to_file/path": "uid://bs3v17ef5ykvc",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -47329,9 +47329,9 @@ _subresources={
 },
 "tpose": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://scenes/Player/New Import/tpose.res",
+"save_to_file/fallback_path": "res://scenes/Player/New Import/UpdatedAnims2/tpose.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://ibamwyrgwje0",
+"save_to_file/path": "uid://2mq7kx6116ad",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,

@@ -4,9 +4,10 @@ class_name Run
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-const WALK_SPEED = 2.5
-const RUN_SPEED = 5.0
-const TURN_SPEED = 2.0
+@export var WALK_SPEED = 2.5
+@export var RUN_SPEED = 5.0
+@export var STRAFE_SPEED = 3.0
+@export var TURN_SPEED = 2.0
 
 var is_strafing : bool = false
 
@@ -16,15 +17,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		is_strafing = true
 	if event.is_action_released("Lock"):
 		is_strafing = false
-		if animation != "Jog":
-			animation = "Jog"
+		if animation != "Run":
+			animation = "Run"
 
-func on_enter_state():
-	player.send_sound("step")
-
-
-func on_exit_state():
-	player.stop_sound("step")
+#func on_enter_state():
+	#player.send_sound("step")
+#
+#
+#func on_exit_state():
+	#player.stop_sound("step")
 
 
 func default_lifecycle(input : InputPackage):
@@ -118,12 +119,9 @@ func process_input_vector(input : InputPackage, delta : float):
 			
 	else:
 		var input_direction = (forward * -input.l_input_direction.y + right * input.l_input_direction.x).normalized()
-		player.velocity.x = input_direction.x * RUN_SPEED*0.75
-		player.velocity.z = input_direction.z * RUN_SPEED*0.75
+		player.velocity.x = input_direction.x * STRAFE_SPEED
+		player.velocity.z = input_direction.z * STRAFE_SPEED
 		var face_direction = player.local_camera.get_projected_position()
 		face_direction.y = player.global_position.y
 		player.look_at(face_direction)
 		choose_anim(input,face_direction)
-		
-		
-	#animator.set_speed_scale(player.velocity.length() / RUN_SPEED)

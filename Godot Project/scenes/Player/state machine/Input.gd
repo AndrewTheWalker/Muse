@@ -14,27 +14,27 @@ func gather_input() -> InputPackage:
 	if new_input.actions.is_empty():
 		new_input.actions.append("idle")
 
-
+	new_input.l_input_direction = Input.get_vector("Lstick_left","Lstick_right","Lstick_down","Lstick_up")
+	
+	
+	if new_input.l_input_direction != Vector2.ZERO:
+		new_input.actions.append("run")
+		#if Input.is_action_pressed("sprint"):
+			#new_input.actions.append("sprint")
+			
 	if Input.is_action_just_pressed("Jump"):
 		if new_input.actions.has("sprint"):
 			new_input.actions.append("sprintjump")
 		else:
 			new_input.actions.append("jump")
+		print(new_input.actions)
 
 
 	if Input.is_action_just_pressed("Roll"):
 		new_input.actions.append("roll")
-		if new_input.actions.has("roll"):
-			new_input.actions.append("sprint")
-
-
-	new_input.l_input_direction = Input.get_vector("Lstick_left","Lstick_right","Lstick_down","Lstick_up")
-	if new_input.l_input_direction != Vector2.ZERO:
-		new_input.actions.append("run")
-		#if Input.is_action_pressed("DodgeSprint"):
+		#if new_input.actions.has("roll"):
 			#new_input.actions.append("sprint")
 
-	if new_input.actions.is_empty():
-		new_input.actions.append("idle")
+
 
 	return new_input

@@ -45,9 +45,9 @@ func process_ik(command:String):
 		await model_timer.timeout
 		model.is_shooting = false
 		tween_influence(0.0,0.75)
-		model_timer.start()
-		await model_timer.timeout
-		SignalBus.TARGET_DROPPED.emit()
+		#model_timer.start()
+		#await model_timer.timeout
+		#SignalBus.TARGET_DROPPED.emit()
 
 func tween_influence(value:float,time:float):
 	tween = get_tree().create_tween()

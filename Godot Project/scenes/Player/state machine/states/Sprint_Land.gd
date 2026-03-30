@@ -2,11 +2,11 @@ extends Move
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-const TRANSITION_TIMING = 0.2
+const TRANSITION_TIMING = 0.13
 
-# landings aren't default-defaults, this TRANSITION_TIMING != DURATION
-# DURATION is much longer, but we are releasing the priority early
-# and the rest of the animation is just for smoother blending
+func on_enter_state():
+	player.send_sound("land")
+
 func default_lifecycle(input : InputPackage):
 	if works_longer_than(TRANSITION_TIMING):
 		return best_input_that_can_be_paid(input)
@@ -15,7 +15,6 @@ func default_lifecycle(input : InputPackage):
 
 func update(_input : InputPackage, delta ):
 	player.velocity.y -= gravity * delta
+	player.velocity.x *= 0.8
+	player.velocity.z *= 0.8
 	player.move_and_slide()
-	
-func on_enter_state():
-	player.send_sound("land")

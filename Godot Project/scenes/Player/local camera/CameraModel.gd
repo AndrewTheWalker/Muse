@@ -96,11 +96,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				#SignalBus.TARGET_LOCKED.emit(look_at)
 			#else:
 				#print("no targets")
-
-	
-	if event.is_action_pressed("Rstick_down"):
-		if current_state == states["locked"]:
-			current_state.drop_target()
+	#if event.is_action_pressed("Rstick_down"):
+		#if current_state == states["locked"]:
+			#current_state.drop_target()
 		#else:
 			#print("no target right now")
 

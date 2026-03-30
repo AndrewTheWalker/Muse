@@ -13,12 +13,11 @@ var current_target: Vector3
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	animation = "Run"
+	animation = "Sprint"
 
 
 func on_enter_state():
-	print("entered sprint")
-	orbit_target = local_camera.camera_nest
+	pass
 
 
 func on_exit_state():
@@ -34,22 +33,26 @@ func default_lifecycle(input : InputPackage):
 
 func update(input : InputPackage, delta : float):
 
-	player.velocity = rotate_velocity(input, delta)
-	player.visuals.look_at(player.global_position + player.velocity)
 	player.move_and_slide()
 
 
+func process_input_vector(input : InputPackage, delta : float):
+	
+	var cam_basis = player.camera.basis
+	var forward : Vector3 = cam_basis.z
+	forward.y = 0
+	forward = forward.normalized()
+	var right : Vector3 = cam_basis.x
+	right.y = 0
+	right = right.normalized()
+	
 
-func rotate_velocity(input : InputPackage, delta : float) -> Vector3:
-	var rotated_velocity : Vector3
-	var input_direction = (player.camera.basis * Vector3(input.l_input_direction.x, 0, -input.l_input_direction.y)).normalized()
-	input_direction.y = 0
-	var face_direction = -(player.visuals.basis.z)
-	face_direction.y = 0
+	var input_direction = (forward * -input.l_input_direction.y + right * input.l_input_direction.x).normalized()
+	var face_direction = -player.basis.z
 	var angle = face_direction.signed_angle_to(input_direction, Vector3.UP)
 	if abs(angle) >= tracking_angular_speed * delta:
-		rotated_velocity = face_direction.rotated(Vector3.UP, sign(angle) * tracking_angular_speed * delta) * TURN_SPEED
+		player.velocity = face_direction.rotated(Vector3.UP, sign(angle) * tracking_angular_speed * delta) * TURN_SPEED
+		player.rotate_y(sign(angle) * tracking_angular_speed * delta)
 	else:
-		rotated_velocity = face_direction.rotated(Vector3.UP, angle) * SPEED
-		
-	return rotated_velocity
+		player.velocity = face_direction.rotated(Vector3.UP, angle) * SPEED
+		player.rotate_y(angle)
