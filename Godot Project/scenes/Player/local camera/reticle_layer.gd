@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 @onready var local_camera: CameraModel = $".."
 @onready var camera: Camera3D = $"../PlayerCamera"
@@ -23,3 +23,9 @@ func _notification(what: int) -> void:
 			hide()
 		NOTIFICATION_UNPAUSED:
 			show()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Lock"):
+		sprite_2d.play("lock")
+	if event.is_action_released("Lock"):
+		sprite_2d.play("unlock")

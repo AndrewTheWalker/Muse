@@ -122,6 +122,7 @@ func force_overheat():
 func take_damage():
 	if current_move.is_vulnerable():
 		resources.lose_health(10.0)
+		player.play_hit_flash()
 		player.send_sound("hit")
 	else:
 		print("not vulnerable, no damage taken")

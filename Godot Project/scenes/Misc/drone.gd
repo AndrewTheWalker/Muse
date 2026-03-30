@@ -7,6 +7,9 @@ const bullet_scene = preload("uid://bg7rl84y6o0p7")
 
 signal DIED_SIGNAL
 
+@onready var mesh: MeshInstance3D = $Armature/Skeleton3D/Sphere
+
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player_search_area: Area3D = $PlayerSearchArea
 @onready var move_wait_timer: Timer = $MoveWaitTimer
@@ -171,10 +174,16 @@ func die():
 func receive_hit():
 	look_at(look_at_node.global_position,Vector3.UP,true)
 	health -= 1
+	play_hit_flash()
 	send_sound("hit")
 	if health < 1:
 		die()
 
+func play_hit_flash():
+	var material = mesh.get_active_material(0)
+	material.set_shader_parameter("flash_modifier",1.0)
+	await get_tree().create_timer(0.1).timeout
+	material.set_shader_parameter("flash_modifier",0.0)
 
 func spawn_bullet():
 	var spawn_loc = bullet_spawner.global_position

@@ -5,7 +5,8 @@
 [ext_resource type="Script" uid="uid://cpyv82o088fjg" path="res://scenes/Player/local camera/free_camera.gd" id="3_enfd4"]
 [ext_resource type="Material" uid="uid://b7odl4bclgby4" path="res://assets/misc/blumat.tres" id="4_4nvxi"]
 [ext_resource type="Script" uid="uid://djcc6mfar10g8" path="res://scenes/Player/local camera/reticle_layer.gd" id="5_ojg55"]
-[ext_resource type="Texture2D" uid="uid://bis85aa52p05b" path="res://assets/Reticle.png" id="6_io4mx"]
+[ext_resource type="Texture2D" uid="uid://d1uiwlnxj8evw" path="res://assets/Reticle-sheet.png" id="6_ojg55"]
+[ext_resource type="Texture2D" uid="uid://cgui11h00jyci" path="res://assets/Reticle-sheet2.png" id="7_io4mx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47crt"]
 transparency = 1
@@ -27,6 +28,111 @@ transparency = 1
 no_depth_test = true
 shading_mode = 0
 albedo_color = Color(0.06666667, 0.90588236, 0.05490196, 0.0627451)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk6wk"]
+atlas = ExtResource("6_ojg55")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynfi6"]
+atlas = ExtResource("6_ojg55")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcs04"]
+atlas = ExtResource("6_ojg55")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayjqu"]
+atlas = ExtResource("6_ojg55")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfa6l"]
+atlas = ExtResource("6_ojg55")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2llc"]
+atlas = ExtResource("6_ojg55")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb44w"]
+atlas = ExtResource("6_ojg55")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c04ci"]
+atlas = ExtResource("7_io4mx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aallv"]
+atlas = ExtResource("7_io4mx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym8o5"]
+atlas = ExtResource("7_io4mx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51uqh"]
+atlas = ExtResource("7_io4mx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbjsr"]
+atlas = ExtResource("7_io4mx")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c04ci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk6wk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynfi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcs04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayjqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfa6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2llc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb44w")
+}],
+"loop": false,
+"name": &"lock",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c04ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aallv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym8o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51uqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbjsr")
+}],
+"loop": false,
+"name": &"unlock",
+"speed": 30.0
+}]
 
 [node name="LocalCamera" type="Node" unique_id=843751663]
 script = ExtResource("1_4nvxi")
@@ -107,6 +213,8 @@ material = SubResource("StandardMaterial3D_frbxm")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=245067922]
 script = ExtResource("5_ojg55")
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1447447725]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=782351214]
 scale = Vector2(0.9, 0.9)
-texture = ExtResource("6_io4mx")
+sprite_frames = SubResource("SpriteFrames_c04ci")
+animation = &"unlock"
+autoplay = "default"

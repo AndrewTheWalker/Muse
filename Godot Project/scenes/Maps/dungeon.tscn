@@ -43,8 +43,8 @@ volumetric_fog_albedo = Color(0, 0, 0, 1)
 volumetric_fog_emission = Color(0.264, 0.7362668, 0.88, 1)
 volumetric_fog_emission_energy = 0.02
 adjustment_enabled = true
-adjustment_brightness = 1.54
-adjustment_contrast = 1.13
+adjustment_brightness = 1.66
+adjustment_contrast = 1.1
 
 [sub_resource type="FogMaterial" id="FogMaterial_duyvs"]
 density = 2.0191

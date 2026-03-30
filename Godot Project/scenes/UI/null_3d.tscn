@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://brfggclgk2vdy"]
+
+[ext_resource type="PackedScene" uid="uid://brxexiramki4c" path="res://assets/NewEnvironment/SM_Big_Pillar.gltf" id="1_lxxvj"]
+
+[node name="Node3D" type="Node3D" unique_id=2061153716]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1034743012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5805106)
+
+[node name="SM_Big_Pillar2" parent="." unique_id=339358321 instance=ExtResource("1_lxxvj")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 2.4, 0, 0.70710677, 0, 0.70710677, -1.5, -4.656791, -2.4987411)
+
+[node name="SM_Big_Pillar3" parent="." unique_id=1512398897 instance=ExtResource("1_lxxvj")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 2.4, 0, 0.70710677, 0, 0.70710677, -4.5, -4.656791, -2.4987411)
+
+[node name="SM_Big_Pillar4" parent="." unique_id=58321462 instance=ExtResource("1_lxxvj")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 2.4, 0, 0.70710677, 0, 0.70710677, 1.5, -4.656791, -2.4987411)
+
+[node name="SM_Big_Pillar5" parent="." unique_id=1513131962 instance=ExtResource("1_lxxvj")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 2.4, 0, 0.70710677, 0, 0.70710677, 4.5, -4.656791, -2.4987411)

@@ -56,6 +56,20 @@ func receive_hit():
 	# tell model to call resources.
 	model.take_damage()
 
+func play_hit_flash():
+	var material = visuals.mesh.get_active_material(0)
+	material.set_shader_parameter("flash_modifier",1.0)
+	await get_tree().create_timer(0.1).timeout
+	material.set_shader_parameter("flash_modifier",0.0)
+
+func turn_off_emissive():
+	var material = visuals.mesh.get_active_material(0)
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(material,"shader_parameter/emission_energy", 0.0,2.0)
+	await tween.finished
+	material.set_shader_parameter("emission_energy",-1.0)
+
 func send_sound(sound_name : String):
 	audio_manager.play_sound(sound_name)
 	

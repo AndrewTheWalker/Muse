@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://wbb53mw7jqu1"]
+
+[ext_resource type="Script" uid="uid://biaw6djkqmf6r" path="res://scenes/UI/deathscreen_gui.gd" id="1_vlh4h"]
+[ext_resource type="Texture2D" uid="uid://ddhor74nlj4ug" path="res://assets/FadeTexture.png" id="2_mb4ib"]
+[ext_resource type="FontFile" uid="uid://xyxx1sbesw40" path="res://assets/misc/Astron-Bold.otf" id="3_gaare"]
+
+[node name="DeathScreenGUI" type="Control" unique_id=1968288217]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vlh4h")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1996714552]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=1506779101]
+layout_mode = 2
+texture = ExtResource("2_mb4ib")
+expand_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer2" unique_id=1748733932]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/CenterContainer" unique_id=580195010]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_gaare")
+theme_override_font_sizes/font_size = 64
+text = "Game over
+"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=18088138]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

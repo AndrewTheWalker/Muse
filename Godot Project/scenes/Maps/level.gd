@@ -8,13 +8,15 @@ class_name LevelManager
 @onready var door: Node3D = $LEVEL_GEO/Door
 @onready var doorcam: Camera3D = $LEVEL_GEO/Door/Doorcam
 
+@onready var world_environment: WorldEnvironment = $WorldEnvironment
+
 var num_drones_killed : int = 0
 @export var drones_required : int
 
 func _ready() -> void:
 	ending_area_3d.monitoring = false
 	cutscene.hide()
-
+	SignalBus.connect("PLAYER_DIED",on_player_death)
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -47,3 +49,9 @@ func _on_drone_died_signal() -> void:
 		show_door_opening()
 	else:
 		return
+
+func on_player_death():
+	var tween = create_tween()
+	
+	tween.tween_property(world_environment,"environment:adjustment_saturation",0.0,2.0)
+	tween.parallel().tween_property(world_environment,"environment:adjustment_brightness",0.0,3.0)
