@@ -27,7 +27,6 @@ func gather_input() -> InputPackage:
 			new_input.actions.append("sprintjump")
 		else:
 			new_input.actions.append("jump")
-		print(new_input.actions)
 
 
 	if Input.is_action_just_pressed("Roll"):

@@ -60,7 +60,7 @@ radius = 4.638
 script = ExtResource("1_ityol")
 player = NodePath("PlayerKor")
 cutscene = NodePath("Cutscene")
-drones_required = 5
+drones_required = 8
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1855175427]
 environment = SubResource("Environment_duyvs")
@@ -1232,43 +1232,27 @@ transform = Transform3D(-2.9037093e-08, 0, 5.71869, 0, 1, 0, -0.66429126, 0, -2.
 
 [node name="Drone" parent="." unique_id=292636954 instance=ExtResource("20_g18u5")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -71.49506, -10.265, -0.07441521)
-upper_bound = -5.0
-lower_bound = -13.0
-y_bounds = Vector2(-13, -5)
-x_bounds = Vector2(-75, -65)
-z_bounds = Vector2(-5, 5)
+
+[node name="Drone6" parent="." unique_id=34385374 instance=ExtResource("20_g18u5")]
+transform = Transform3D(-0.99936926, 0, 0.035509907, 0, 1, 0, -0.035509907, 0, -0.99936926, -42.330532, -10.265, 9.581935)
+
+[node name="Drone7" parent="." unique_id=1256427947 instance=ExtResource("20_g18u5")]
+transform = Transform3D(-0.034376316, 0, 0.9994089, 0, 1, 0, -0.9994089, 0, -0.034376316, -53.75328, -10.265, -17.319614)
+
+[node name="Drone8" parent="." unique_id=141397939 instance=ExtResource("20_g18u5")]
+transform = Transform3D(-0.034376316, 0, 0.9994089, 0, 1, 0, -0.9994089, 0, -0.034376316, -99.73063, -6.778052, -44.52766)
 
 [node name="Drone4" parent="." unique_id=931948691 instance=ExtResource("20_g18u5")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -69.100235, -9.186697, -26.87901)
-upper_bound = -5.0
-lower_bound = -13.0
-y_bounds = Vector2(-13, -6)
-x_bounds = Vector2(-80, -65)
-z_bounds = Vector2(-30, -20)
 
 [node name="Drone5" parent="." unique_id=1465887541 instance=ExtResource("20_g18u5")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -89.461494, -0.34319878, 14.272406)
-upper_bound = -5.0
-lower_bound = -13.0
-y_bounds = Vector2(-6, 0)
-x_bounds = Vector2(-95, -80)
-z_bounds = Vector2(12, 17)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -89.461494, -0.34319878, 11.373222)
 
 [node name="Drone2" parent="." unique_id=1361270025 instance=ExtResource("20_g18u5")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -61.26338, -9.444713, -39.089214)
-upper_bound = -5.0
-lower_bound = -13.0
-y_bounds = Vector2(-13, -5)
-x_bounds = Vector2(-66, -56)
-z_bounds = Vector2(-48, -38)
 
 [node name="Drone3" parent="." unique_id=741039279 instance=ExtResource("20_g18u5")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -100.91, -4, -16.261913)
-upper_bound = -5.0
-lower_bound = -13.0
-y_bounds = Vector2(-4, 1)
-x_bounds = Vector2(-105, -95)
-z_bounds = Vector2(-23, -12)
 
 [node name="ElectricFloor" parent="." unique_id=1433734089 instance=ExtResource("21_g18u5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.31874, -15.825235, -18.47433)
@@ -1308,6 +1292,9 @@ transform = Transform3D(0.1259912, 0.9920315, -4.3363073e-08, 7.0270616e-16, -4.
 
 [connection signal="body_entered" from="EndingArea3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="DIED_SIGNAL" from="Drone" to="." method="_on_drone_died_signal"]
+[connection signal="DIED_SIGNAL" from="Drone6" to="." method="_on_drone_died_signal"]
+[connection signal="DIED_SIGNAL" from="Drone7" to="." method="_on_drone_died_signal"]
+[connection signal="DIED_SIGNAL" from="Drone8" to="." method="_on_drone_died_signal"]
 [connection signal="DIED_SIGNAL" from="Drone4" to="." method="_on_drone_died_signal"]
 [connection signal="DIED_SIGNAL" from="Drone5" to="." method="_on_drone_died_signal"]
 [connection signal="DIED_SIGNAL" from="Drone2" to="." method="_on_drone_died_signal"]

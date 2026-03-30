@@ -258,13 +258,23 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_g2yq6"]
 material = SubResource("StandardMaterial3D_byh0i")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rp28p"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 0.7372549)
+
 [node name="Drone" type="CharacterBody3D" unique_id=292636954 groups=["enemy"]]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_j5eno")
-upper_bound = 5.0
-lower_bound = 2.0
+
+[node name="LaserRayCast3D" type="RayCast3D" parent="." unique_id=1236576690]
+transform = Transform3D(1, -8.742278e-08, -8.742278e-08, 8.742278e-08, -4.371139e-08, 1, -8.742278e-08, -1, -4.371138e-08, 0, 0, 0)
+target_position = Vector3(0, -25, 0)
+collision_mask = 3
+debug_shape_custom_color = Color(0.40599993, 0.87, 0, 0.65882355)
+debug_shape_thickness = 3
 
 [node name="Armature" type="Node3D" parent="." unique_id=1298692901]
 transform = Transform3D(1, -8.359358e-09, -4.0056847e-10, 8.359358e-09, 0.995418, 0.0956199, -4.0057557e-10, -0.0956199, 0.995418, 0, 0, 0)
@@ -367,6 +377,7 @@ process_material = SubResource("ParticleProcessMaterial_rp28p")
 draw_pass_1 = SubResource("QuadMesh_g2yq6")
 
 [node name="MoveWaitTimer" type="Timer" parent="." unique_id=169674330]
+wait_time = 0.1
 one_shot = true
 
 [node name="SecondaryWaitTimer" type="Timer" parent="." unique_id=928158016]
@@ -374,17 +385,16 @@ wait_time = 0.25
 one_shot = true
 
 [node name="ShotTimer" type="Timer" parent="." unique_id=2051814101]
-wait_time = 2.5
+wait_time = 1.5
 one_shot = true
-
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=964204928]
 
 [node name="AudioManager" type="Node" parent="." unique_id=1012543482]
 script = ExtResource("7_rp28p")
 
 [node name="EnemyChargeUp" type="AudioStreamPlayer3D" parent="AudioManager" unique_id=826244824]
 stream = ExtResource("8_g2yq6")
-volume_db = -5.89
+attenuation_model = 3
+volume_db = -8.471
 
 [node name="EnemyDeathHit" type="AudioStreamPlayer3D" parent="AudioManager" unique_id=753461937]
 stream = ExtResource("9_mqfn1")
@@ -413,10 +423,16 @@ light_color = Color(1, 0, 0, 1)
 omni_range = 3.584
 omni_attenuation = 1.16
 
+[node name="LaserSight" type="Node3D" parent="." unique_id=881462159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.1, -3.745388e-09, -0.216, 0.45715776)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LaserSight" unique_id=1439155634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1054274e-15, 0, 0.46038866)
+size = Vector3(0.03, 0.03, 0.92077637)
+material = SubResource("StandardMaterial3D_rp28p")
+
 [connection signal="body_entered" from="PlayerSearchArea" to="." method="_on_player_search_area_body_entered"]
 [connection signal="body_exited" from="PlayerSearchArea" to="." method="_on_player_search_area_body_exited"]
 [connection signal="timeout" from="MoveWaitTimer" to="." method="_on_move_wait_timer_timeout"]
 [connection signal="timeout" from="SecondaryWaitTimer" to="." method="_on_secondary_wait_timer_timeout"]
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
-[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
