@@ -39,6 +39,12 @@ window/size/viewport_height=720
 
 script/templates_search_path="res://scripts/Templates"
 
+[file_customization]
+
+folder_colors={
+"res://scenes/Player/New Import/": "teal"
+}
+
 [filesystem]
 
 import/blender/enabled=false

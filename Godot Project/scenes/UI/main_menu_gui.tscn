@@ -19,19 +19,15 @@ script = ExtResource("1_ih22t")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1338454096]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -612.0
-offset_right = 612.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 224
 theme_override_constants/margin_top = 65
 theme_override_constants/margin_right = 721
 theme_override_constants/margin_bottom = 33
-metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1639686535]
 layout_mode = 2
