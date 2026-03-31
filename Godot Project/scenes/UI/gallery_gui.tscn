@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://d25w86slrjuyn"]
 
 [ext_resource type="Script" uid="uid://cthblayjwicmg" path="res://scenes/UI/gallery_gui.gd" id="1_t0b48"]
-[ext_resource type="Texture2D" uid="uid://5isvn7e7v3j1" path="res://assets/GalleryArt/image.png" id="2_m1p5k"]
 
 [node name="GalleryGUI" type="Control" unique_id=1215944911]
 layout_mode = 3
@@ -44,7 +43,6 @@ size_flags_stretch_ratio = 4.15
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer" unique_id=800106036]
 custom_minimum_size = Vector2(720, 600)
 layout_mode = 2
-texture = ExtResource("2_m1p5k")
 expand_mode = 1
 stretch_mode = 5
 
@@ -53,14 +51,18 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1463445080]
+[node name="ButtonNavigateLeft" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1463445080]
 layout_mode = 2
 text = "<-"
 
-[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=839215477]
+[node name="ButtonBack" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=839215477]
 layout_mode = 2
 text = "Back"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=443242658]
+[node name="ButtonNavigateRight" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=443242658]
 layout_mode = 2
 text = "->"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonNavigateLeft" to="." method="_on_button_navigate_left_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonNavigateRight" to="." method="_on_button_navigate_right_pressed"]

@@ -69,7 +69,7 @@ text = "About
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6r1td")
 theme_override_font_sizes/font_size = 28
-text = "Gallery (WIP)
+text = "Gallery
 
 "
 
@@ -93,4 +93,4 @@ stream = ExtResource("3_cr4hq")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonBegin" to="." method="_on_button_begin_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonAbout" to="." method="_on_button_about_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonGallery" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonGallery" to="." method="_on_button_gallery_pressed"]

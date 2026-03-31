@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://i8jyrlvbi5xq"]
+
+[ext_resource type="Texture2D" uid="uid://cje6ooyfgv7l5" path="res://assets/GalleryArt/20260219_225154.jpg" id="1_eoeyq"]
+[ext_resource type="Texture2D" uid="uid://5isvn7e7v3j1" path="res://assets/GalleryArt/image.png" id="2_nnwmk"]
+[ext_resource type="Texture2D" uid="uid://dk4acln7jmg2p" path="res://assets/GalleryArt/Legends.png" id="3_fpcwv"]
+[ext_resource type="Texture2D" uid="uid://6g3p32r3at8t" path="res://assets/GalleryArt/MUSE-concepts2.png" id="4_pppxs"]
+[ext_resource type="Texture2D" uid="uid://d3fkoohjikr1q" path="res://assets/GalleryArt/MUSE-concepts003.png" id="5_yiok7"]
+[ext_resource type="Texture2D" uid="uid://yed0nx5m6mfj" path="res://assets/GalleryArt/MUSE-concepts004.png" id="6_axklj"]
+[ext_resource type="Texture2D" uid="uid://c684u6lrp4lq5" path="res://assets/GalleryArt/MUSE-concepts006.png" id="7_1608e"]
+[ext_resource type="Texture2D" uid="uid://dl2y6ciq1c4v4" path="res://assets/GalleryArt/MUSE-concepts_001.png" id="8_cltcs"]
+[ext_resource type="Texture2D" uid="uid://dlbpja71jowwp" path="res://assets/GalleryArt/MUSE-concepts_002.png" id="9_474ej"]
+[ext_resource type="Texture2D" uid="uid://crcme8u446dau" path="res://assets/GalleryArt/Screenshot_2025-12-09_at_11.29.04_PM.png" id="10_4gwuv"]
+[ext_resource type="Texture2D" uid="uid://mdhd3c0yhc57" path="res://assets/GalleryArt/Screenshot_20260113-185852_Sketchbook.jpg" id="11_5c6y6"]
+[ext_resource type="Texture2D" uid="uid://87aq03kijvq3" path="res://assets/GalleryArt/Screenshot_20260119-122951_Sketchbook.jpg" id="12_1eu1a"]
+[ext_resource type="Texture2D" uid="uid://dn7j077qvcw2q" path="res://assets/GalleryArt/sketch1728787282597.png" id="13_cgjl3"]
+
+[node name="Node" type="Node" unique_id=357509799]
+
+[node name="20260219225154" type="Sprite2D" parent="." unique_id=492457106]
+position = Vector2(218, 215)
+texture = ExtResource("1_eoeyq")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=726853286]
+position = Vector2(218, 215)
+texture = ExtResource("2_nnwmk")
+
+[node name="Legends" type="Sprite2D" parent="." unique_id=2091316422]
+position = Vector2(218, 215)
+texture = ExtResource("3_fpcwv")
+
+[node name="MuseConcepts2" type="Sprite2D" parent="." unique_id=1477509138]
+position = Vector2(218, 215)
+texture = ExtResource("4_pppxs")
+
+[node name="MuseConcepts003" type="Sprite2D" parent="." unique_id=1514923673]
+position = Vector2(218, 215)
+texture = ExtResource("5_yiok7")
+
+[node name="MuseConcepts004" type="Sprite2D" parent="." unique_id=2086111514]
+position = Vector2(218, 215)
+texture = ExtResource("6_axklj")
+
+[node name="MuseConcepts006" type="Sprite2D" parent="." unique_id=679644772]
+position = Vector2(218, 215)
+texture = ExtResource("7_1608e")
+
+[node name="MuseConcepts001" type="Sprite2D" parent="." unique_id=1456958201]
+position = Vector2(218, 215)
+texture = ExtResource("8_cltcs")
+
+[node name="MuseConcepts002" type="Sprite2D" parent="." unique_id=1624701557]
+position = Vector2(218, 215)
+texture = ExtResource("9_474ej")
+
+[node name="Screenshot20251209At11_29_04Pm" type="Sprite2D" parent="." unique_id=1064799482]
+position = Vector2(218, 215)
+texture = ExtResource("10_4gwuv")
+
+[node name="Screenshot20260113185852Sketchbook" type="Sprite2D" parent="." unique_id=600401402]
+position = Vector2(218, 215)
+texture = ExtResource("11_5c6y6")
+
+[node name="Screenshot20260119122951Sketchbook" type="Sprite2D" parent="." unique_id=1047364603]
+position = Vector2(218, 215)
+texture = ExtResource("12_1eu1a")
+
+[node name="Sketch1728787282597" type="Sprite2D" parent="." unique_id=1614295270]
+position = Vector2(218, 215)
+texture = ExtResource("13_cgjl3")

@@ -13,8 +13,6 @@ func _ready() -> void:
 	button_begin.grab_focus()
 
 
-func _on_button_settings_pressed() -> void:
-	pass # Replace with function body.
 
 
 func _on_button_about_pressed() -> void:
@@ -26,3 +24,7 @@ func _on_button_begin_pressed() -> void:
 	Gamestate.game_controller.change_gui_scene("res://scenes/UI/gameplay_ui.tscn")
 	await get_tree().create_timer(1.1).timeout
 	queue_free()
+
+func _on_button_gallery_pressed() -> void:
+	Gamestate.game_controller.change_gui_scene("res://scenes/UI/gallery_gui.tscn")
+	Gamestate.game_controller.change_3d_scene("res://scenes/UI/null_3d.tscn")

@@ -2,56 +2,66 @@ extends Control
 
 @onready var texture_rect: TextureRect = $MarginContainer/VBoxContainer/CenterContainer/TextureRect
 
-@onready var image0 = preload("uid://cje6ooyfgv7l5")
-@onready var image1 = preload("uid://5isvn7e7v3j1")
-@onready var image2 = preload("uid://dk4acln7jmg2p")
-@onready var image3 = preload("uid://6g3p32r3at8t")
-@onready var image4 = preload("uid://d3fkoohjikr1q")
-@onready var image5 = preload("uid://yed0nx5m6mfj")
-@onready var image6 = preload("uid://c684u6lrp4lq5")
-@onready var image7 = preload("uid://dl2y6ciq1c4v4")
-@onready var image8 = preload("uid://dlbpja71jowwp")
-@onready var image9 = preload("uid://crcme8u446dau")
-@onready var image10 = preload("uid://mdhd3c0yhc57")
-@onready var image11 = preload("uid://87aq03kijvq3")
-@onready var image12 = preload("uid://dn7j077qvcw2q")
-
-var index : Array = [0,1,2,3,4,5,6,7,8,9,10,11,12]
+var image_index : Array = []
+var current_index : int = 0
+var current_image
 
 func _ready() -> void:
-	texture_rect.texture = image0
+	load_images("res://assets/GalleryArt/")
+	set_image(current_index)
+	
+	
+func load_images(folder_path: String):
 
+	var dir = DirAccess.open(folder_path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()    
+		while file_name != "":
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+# Ensure it's a file and not a directory
+
+			if not dir.current_is_dir():
+
+# Filter for image extensions (e.g., .png, .jpg)
+# Note: On export, Godot converts .png to .png.import or .ctex
+
+				if file_name.ends_with(".png") or file_name.ends_with(".jpg"):
+					var full_path = folder_path + "/" + file_name     
+
+# Use ResourceLoader to load the image as a Texture resource
+
+					var texture = ResourceLoader.load(full_path)
+					if texture:
+						image_index.append(texture)         
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	else:
+		print("Failed to open directory: ", folder_path)
+
+func sort_index(step:int):
+	## this line allows us to cycle through the contents of the image array and loop back to the beginning
+		# if we reach the end. The idea is that we use modulo, because if the result of current_index+1 is 
+		# less than image_index.size, the modulo is just the same number. But if it is equal to 
+		# available targets.size, the result is 0, which is conveniently the first index entry.
+		# neat!
+	var new_index = (current_index+step) % image_index.size()
+	current_index = new_index
+	set_image(new_index)
+
 
 
 func set_image(idx:int):
-	match idx:
-		0:
-			texture_rect.texture = image0
-		1:
-			texture_rect.texture = image1
-		2:
-			texture_rect.texture = image2
-		3:
-			texture_rect.texture = image3
-		4:
-			texture_rect.texture = image4
-		5:
-			texture_rect.texture = image5
-		6:
-			texture_rect.texture = image6
-		7:
-			texture_rect.texture = image7
-		8:
-			texture_rect.texture = image8
-		9:
-			texture_rect.texture = image9
-		10:
-			texture_rect.texture = image10
-		11:
-			texture_rect.texture = image11
-		12:
-			texture_rect.texture = image12
+	texture_rect.texture = image_index[idx]
+
+
+func _on_button_navigate_left_pressed() -> void:
+	sort_index(-1)
+
+
+func _on_button_navigate_right_pressed() -> void:
+	sort_index(1)
+
+
+func _on_button_back_pressed() -> void:
+	Gamestate.game_controller.change_gui_scene("res://scenes/UI/main_menu_gui.tscn")
