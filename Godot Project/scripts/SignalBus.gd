@@ -29,3 +29,7 @@ signal ELECTRIC_EXITED
 
 
 signal PLAYER_DIED
+
+
+signal HINT_REVEAL
+signal HINT_HIDE

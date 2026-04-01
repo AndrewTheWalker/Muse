@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://gm4qrkx6k6ol"]
+
+[ext_resource type="Script" uid="uid://laweyw17n2pa" path="res://scenes/UI/hint_area.gd" id="1_rawkk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k5wlj"]
+resource_local_to_scene = true
+
+[node name="HintArea" type="Area3D" unique_id=883616746]
+script = ExtResource("1_rawkk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1065794206]
+shape = SubResource("BoxShape3D_k5wlj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
