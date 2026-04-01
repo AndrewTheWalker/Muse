@@ -73,9 +73,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../ButtonAbout")
 theme_override_fonts/font = ExtResource("3_6r1td")
 theme_override_font_sizes/font_size = 28
-text = "Gallery
-
-"
+text = "Gallery"
 
 [node name="HSeparator4" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1762468196]
 layout_mode = 2
@@ -83,7 +81,7 @@ layout_mode = 2
 [node name="LabelDisclaimer" type="Label" parent="MarginContainer/VBoxContainer" unique_id=713658452]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6r1td")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
 text = "This game is intended
 to be played with
 a gamepad"
@@ -94,6 +92,36 @@ stream = ExtResource("2_t8iga")
 
 [node name="Menu3" type="AudioStreamPlayer" parent="." unique_id=1993160140]
 stream = ExtResource("3_cr4hq")
+
+[node name="Label" type="Label" parent="." unique_id=1671370164]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -37.0
+offset_right = 685.0
+offset_bottom = -14.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_6r1td")
+text = "Navigate Up/Down : Left Analog Stick / D-pad           Confirm Choice : Right Face Button"
+
+[node name="Label2" type="Label" parent="." unique_id=1212092623]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -693.0
+offset_top = -36.0
+offset_right = -32.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_6r1td")
+text = "v 0.0.1"
+horizontal_alignment = 2
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonBegin" to="." method="_on_button_begin_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonAbout" to="." method="_on_button_about_pressed"]

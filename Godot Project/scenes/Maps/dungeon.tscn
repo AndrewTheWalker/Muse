@@ -63,7 +63,7 @@ radius = 4.638
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o0hlc"]
 resource_local_to_scene = true
-size = Vector3(7.716797, 4.7459717, 7.3759766)
+size = Vector3(7.716797, 4.7459717, 5.8325195)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0w2cy"]
 resource_local_to_scene = true
@@ -71,23 +71,19 @@ size = Vector3(7.716797, 4.5473633, 5.7439575)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xh3dy"]
 resource_local_to_scene = true
-size = Vector3(10.449219, 4.4746094, 5.7439575)
+size = Vector3(10.449219, 4.4746094, 4.348053)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ocygp"]
 resource_local_to_scene = true
-size = Vector3(5.4763184, 5.788086, 5.90625)
+size = Vector3(5.8875732, 5.788086, 7.14624)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgi7w"]
 resource_local_to_scene = true
-size = Vector3(5.4763184, 5.788086, 5.90625)
+size = Vector3(5.4763184, 5.788086, 10.33844)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1qbh4"]
 resource_local_to_scene = true
-size = Vector3(5.4763184, 4.0634766, 5.90625)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_h34ss"]
-resource_local_to_scene = true
-size = Vector3(5.4763184, 4.0634766, 5.90625)
+size = Vector3(5.4763184, 4.0634766, 7.6519775)
 
 [node name="Dungeon" type="Node3D" unique_id=2029965712 node_paths=PackedStringArray("player", "cutscene")]
 script = ExtResource("1_ityol")
@@ -1292,8 +1288,48 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -118
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("CylinderShape3D_ljphe")
 
+[node name="Hint_GUI" type="Control" parent="." unique_id=765067187]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("24_f8m7r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hint_GUI" unique_id=630906594]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Hint_GUI/VBoxContainer" unique_id=1159314802]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Bg" type="TextureRect" parent="Hint_GUI/VBoxContainer/CenterContainer" unique_id=1352022158]
+custom_minimum_size = Vector2(750, 100)
+layout_mode = 2
+theme = ExtResource("25_xaip4")
+texture = ExtResource("26_0w2cy")
+expand_mode = 1
+
+[node name="Text Label" type="Label" parent="Hint_GUI/VBoxContainer/CenterContainer" unique_id=2056512523]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("27_0w2cy")
+theme_override_font_sizes/font_size = 24
+text = "default text default text default text"
+
+[node name="CenterContainer2" type="CenterContainer" parent="Hint_GUI/VBoxContainer" unique_id=745354898]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="Pause Menu" parent="." unique_id=2060593522 instance=ExtResource("17_x4y4e")]
 visible = false
+z_index = 2
 
 [node name="Drone" parent="." unique_id=292636954 instance=ExtResource("20_g18u5")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -71.49506, -10.265, -0.07441521)
@@ -1328,58 +1364,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.31874, -15.825235, -18.47
 [node name="CollisionShape3D" parent="ElectricFloor" index="0" unique_id=532032752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.093002, 0, 10.246826)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2095542771]
-
-[node name="Hint_GUI" type="Control" parent="CanvasLayer" unique_id=765067187]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("24_f8m7r")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Hint_GUI" unique_id=630906594]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Hint_GUI/VBoxContainer" unique_id=1159314802]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Bg" type="TextureRect" parent="CanvasLayer/Hint_GUI/VBoxContainer/CenterContainer" unique_id=1352022158]
-custom_minimum_size = Vector2(750, 100)
-layout_mode = 2
-theme = ExtResource("25_xaip4")
-texture = ExtResource("26_0w2cy")
-expand_mode = 1
-
-[node name="Text Label" type="Label" parent="CanvasLayer/Hint_GUI/VBoxContainer/CenterContainer" unique_id=2056512523]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("27_0w2cy")
-theme_override_font_sizes/font_size = 24
-text = "default text default text default text"
-
-[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Hint_GUI/VBoxContainer" unique_id=745354898]
-layout_mode = 2
-size_flags_vertical = 3
-
 [node name="HintArea" parent="." unique_id=883616746 instance=ExtResource("26_xaip4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10964584, -5.150461, -11.758696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10964584, -5.150461, -9.818871)
 text = "Move Camera : Right Analog Stick"
 
 [node name="CollisionShape3D" parent="HintArea" index="0" unique_id=1065794206]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8729858, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8729858, 0.7717285)
 shape = SubResource("BoxShape3D_o0hlc")
 
 [node name="HintArea2" parent="." unique_id=1077857325 instance=ExtResource("26_xaip4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10964584, -5.150461, -22.17148)
-text = "Jump : A Button"
+text = "Dodge Roll : Left Face Button"
 
 [node name="CollisionShape3D" parent="HintArea2" index="0" unique_id=1065794206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7736816, -0.2859192)
@@ -1387,18 +1382,18 @@ shape = SubResource("BoxShape3D_0w2cy")
 
 [node name="HintArea3" parent="." unique_id=526703463 instance=ExtResource("26_xaip4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.721928, -3.0421195, -29.34755)
-text = "Dodge Roll : X Button"
+text = "Jump : Bottom Face Button"
 
 [node name="CollisionShape3D" parent="HintArea3" index="0" unique_id=1065794206]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.349083, -0.7867913, -1.6425934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.349083, -0.7867913, -2.3405457)
 shape = SubResource("BoxShape3D_xh3dy")
 
 [node name="HintArea4" parent="." unique_id=548904103 instance=ExtResource("26_xaip4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20.975168, -3.0421195, -24.078772)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20.975168, -3.0421195, -23.205545)
 text = "Aim : Hold L1 Button"
 
 [node name="CollisionShape3D" parent="HintArea4" index="0" unique_id=1065794206]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13005304, -3.433134)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20562744, -0.13005304, -5.590727)
 shape = SubResource("BoxShape3D_ocygp")
 
 [node name="HintArea7" parent="." unique_id=852807351 instance=ExtResource("26_xaip4")]
@@ -1406,24 +1401,16 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -21.
 text = "Pause Menu : + button"
 
 [node name="CollisionShape3D" parent="HintArea7" index="0" unique_id=1065794206]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13005304, -3.433134)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6293945e-06, -0.13005304, -1.0690212)
 shape = SubResource("BoxShape3D_kgi7w")
 
 [node name="HintArea5" parent="." unique_id=297497987 instance=ExtResource("26_xaip4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -26.79336, -3.0421195, -16.65571)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -31.156494, -3.0421195, -16.65571)
 text = "Fire Weapon : R1 Button"
 
 [node name="CollisionShape3D" parent="HintArea5" index="0" unique_id=1065794206]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99235773, -3.433134)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99235773, -3.5807743)
 shape = SubResource("BoxShape3D_1qbh4")
-
-[node name="HintArea6" parent="." unique_id=899765210 instance=ExtResource("26_xaip4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -37.889393, -3.0421195, -16.65571)
-text = "Don't Die"
-
-[node name="CollisionShape3D" parent="HintArea6" index="0" unique_id=1065794206]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99235773, -3.433134)
-shape = SubResource("BoxShape3D_h34ss")
 
 [connection signal="body_entered" from="EndingArea3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="DIED_SIGNAL" from="Drone" to="." method="_on_drone_died_signal"]
@@ -1443,4 +1430,3 @@ shape = SubResource("BoxShape3D_h34ss")
 [editable path="HintArea4"]
 [editable path="HintArea7"]
 [editable path="HintArea5"]
-[editable path="HintArea6"]
