@@ -1,7 +1,7 @@
 extends Control
 
-@onready var progress_bar_health: ProgressBar = $MarginContainer_Bars/VBoxContainer/ProgressBar_Health
-@onready var progress_bar_stamina: ProgressBar = $MarginContainer_Bars/VBoxContainer/ProgressBar_Stamina
+@onready var progress_bar_health: TextureProgressBar = $MarginContainer_Bars/VBoxContainer/ProgressBar_Health
+@onready var progress_bar_stamina: TextureProgressBar = $MarginContainer_Bars/VBoxContainer/ProgressBar_Stamina
 
 var default_stamina_colour : Color
 
@@ -15,6 +15,6 @@ func update_life(health_amt:float):
 func update_stamina(stamina_amt:float):
 	progress_bar_stamina.value = stamina_amt
 	if stamina_amt < 30:
-		progress_bar_stamina.modulate = Color.ORANGE_RED
+		progress_bar_stamina.tint_under = Color.CRIMSON
 	else:
-		progress_bar_stamina.modulate = Color.GOLDENROD
+		progress_bar_stamina.tint_under = Color.CORAL

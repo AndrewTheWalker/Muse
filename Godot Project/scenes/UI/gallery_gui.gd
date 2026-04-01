@@ -2,7 +2,6 @@ extends Control
 
 @onready var texture_rect: TextureRect = $MarginContainer/VBoxContainer/CenterContainer/TextureRect
 @onready var credit_label: Label = $MarginContainer/VBoxContainer/CreditLabel
-@onready var button_navigate_left: Button = $MarginContainer/VBoxContainer/HBoxContainer/ButtonNavigateLeft
 @onready var button_back: Button = $MarginContainer/VBoxContainer/HBoxContainer/ButtonBack
 @onready var button_navigate_right: Button = $MarginContainer/VBoxContainer/HBoxContainer/ButtonNavigateRight
 
