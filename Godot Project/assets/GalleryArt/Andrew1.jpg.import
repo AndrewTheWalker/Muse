@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk4acln7jmg2p"
-path="res://.godot/imported/Legends.png-7987b31727785283ab035d40791420b2.ctex"
+uid="uid://87aq03kijvq3"
+path="res://.godot/imported/Andrew1.jpg-2a08f3458ede0154a5f888d3377d1449.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GalleryArt/Legends.png"
-dest_files=["res://.godot/imported/Legends.png-7987b31727785283ab035d40791420b2.ctex"]
+source_file="res://assets/GalleryArt/Andrew1.jpg"
+dest_files=["res://.godot/imported/Andrew1.jpg-2a08f3458ede0154a5f888d3377d1449.ctex"]
 
 [params]
 

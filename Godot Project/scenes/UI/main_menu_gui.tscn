@@ -53,6 +53,7 @@ layout_mode = 2
 
 [node name="ButtonBegin" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1109689333]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../ButtonAbout")
 theme_override_fonts/font = ExtResource("3_6r1td")
 theme_override_font_sizes/font_size = 28
 text = "Start
@@ -60,6 +61,8 @@ text = "Start
 
 [node name="ButtonAbout" type="Button" parent="MarginContainer/VBoxContainer" unique_id=727923772]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonBegin")
+focus_neighbor_bottom = NodePath("../ButtonGallery")
 theme_override_fonts/font = ExtResource("3_6r1td")
 theme_override_font_sizes/font_size = 28
 text = "About
@@ -67,6 +70,7 @@ text = "About
 
 [node name="ButtonGallery" type="Button" parent="MarginContainer/VBoxContainer" unique_id=493965204]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonAbout")
 theme_override_fonts/font = ExtResource("3_6r1td")
 theme_override_font_sizes/font_size = 28
 text = "Gallery

@@ -2,6 +2,8 @@ extends Control
 
 
 @onready var button_resume: Button = $MarginContainer/VBoxContainer/ButtonResume
+@onready var button_controls: Button = $MarginContainer/VBoxContainer/ButtonControls
+@onready var button_quit: Button = $MarginContainer/VBoxContainer/ButtonQuit
 @onready var check_box_h: CheckBox = $MarginContainer/VBoxContainer/CheckBoxH
 @onready var check_box_v: CheckBox = $MarginContainer/VBoxContainer/CheckBoxV
 @onready var h_slider_h_sens: HSlider = $MarginContainer/VBoxContainer/HSliderHSens
@@ -94,8 +96,26 @@ func _on_button_controls_pressed() -> void:
 	sfx_menu_3.play()
 	var control_scene = controls_ui_scene.instantiate()
 	add_child(control_scene)
+	disable_buttons()
 	print("controls button pressed")
 
+func disable_buttons():
+	button_resume.set_focus_mode(Control.FOCUS_NONE)
+	button_controls.set_focus_mode(Control.FOCUS_NONE)
+	button_quit.set_focus_mode(Control.FOCUS_NONE)
+	check_box_h.set_focus_mode(Control.FOCUS_NONE)
+	check_box_v.set_focus_mode(Control.FOCUS_NONE)
+	h_slider_h_sens.set_focus_mode(Control.FOCUS_NONE)
+	h_slider_v_sens.set_focus_mode(Control.FOCUS_NONE)
+			
+func enable_buttons():
+	button_resume.set_focus_mode(Control.FOCUS_ALL)
+	button_controls.set_focus_mode(Control.FOCUS_ALL)
+	button_quit.set_focus_mode(Control.FOCUS_ALL)
+	check_box_h.set_focus_mode(Control.FOCUS_ALL)
+	check_box_v.set_focus_mode(Control.FOCUS_ALL)
+	h_slider_h_sens.set_focus_mode(Control.FOCUS_ALL)
+	h_slider_v_sens.set_focus_mode(Control.FOCUS_ALL)
 
 func _on_button_quit_pressed() -> void:
 	set_process_input(false)

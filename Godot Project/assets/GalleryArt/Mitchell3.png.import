@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c684u6lrp4lq5"
-path="res://.godot/imported/MUSE-concepts006.png-5786332690c85830e1ed8eb7265c2805.ctex"
+uid="uid://yed0nx5m6mfj"
+path="res://.godot/imported/Mitchell3.png-b6b46d01d29e602a49460547cea60611.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GalleryArt/MUSE-concepts006.png"
-dest_files=["res://.godot/imported/MUSE-concepts006.png-5786332690c85830e1ed8eb7265c2805.ctex"]
+source_file="res://assets/GalleryArt/Mitchell3.png"
+dest_files=["res://.godot/imported/Mitchell3.png-b6b46d01d29e602a49460547cea60611.ctex"]
 
 [params]
 

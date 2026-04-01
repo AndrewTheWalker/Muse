@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://87aq03kijvq3"
-path="res://.godot/imported/Screenshot_20260119-122951_Sketchbook.jpg-e36fb7b095c0db0e6c3865c759dad2b5.ctex"
+uid="uid://dl2y6ciq1c4v4"
+path="res://.godot/imported/Mitchell5.png-f4e40152f78edd897d9d4cb4f119a94f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GalleryArt/Screenshot_20260119-122951_Sketchbook.jpg"
-dest_files=["res://.godot/imported/Screenshot_20260119-122951_Sketchbook.jpg-e36fb7b095c0db0e6c3865c759dad2b5.ctex"]
+source_file="res://assets/GalleryArt/Mitchell5.png"
+dest_files=["res://.godot/imported/Mitchell5.png-f4e40152f78edd897d9d4cb4f119a94f.ctex"]
 
 [params]
 

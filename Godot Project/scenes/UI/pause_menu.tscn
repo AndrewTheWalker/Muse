@@ -60,12 +60,16 @@ layout_mode = 2
 
 [node name="ButtonResume" type="Button" parent="MarginContainer/VBoxContainer" unique_id=723057199]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonQuit")
+focus_neighbor_bottom = NodePath("../ButtonControls")
 theme_override_fonts/font = ExtResource("4_xovtl")
 theme_override_font_sizes/font_size = 28
 text = "Resume"
 
 [node name="ButtonControls" type="Button" parent="MarginContainer/VBoxContainer" unique_id=485944978]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonResume")
+focus_neighbor_bottom = NodePath("../CheckBoxH")
 theme_override_fonts/font = ExtResource("4_xovtl")
 theme_override_font_sizes/font_size = 28
 text = "View Controls"
@@ -75,6 +79,8 @@ layout_mode = 2
 
 [node name="CheckBoxH" type="CheckBox" parent="MarginContainer/VBoxContainer" unique_id=1025608519]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonControls")
+focus_neighbor_bottom = NodePath("../CheckBoxV")
 theme_override_fonts/font = ExtResource("4_xovtl")
 theme_override_font_sizes/font_size = 20
 theme_override_icons/checked = ExtResource("2_1eciq")
@@ -83,6 +89,8 @@ text = "  Invert Camera Horizontal"
 
 [node name="CheckBoxV" type="CheckBox" parent="MarginContainer/VBoxContainer" unique_id=989138468]
 layout_mode = 2
+focus_neighbor_top = NodePath("../CheckBoxH")
+focus_neighbor_bottom = NodePath("../HSliderHSens")
 theme_override_fonts/font = ExtResource("4_xovtl")
 theme_override_font_sizes/font_size = 20
 theme_override_icons/checked = ExtResource("2_1eciq")
@@ -101,6 +109,8 @@ horizontal_alignment = 1
 
 [node name="HSliderHSens" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1223984705]
 layout_mode = 2
+focus_neighbor_top = NodePath("../CheckBoxV")
+focus_neighbor_bottom = NodePath("../HSliderVSens")
 min_value = 1.0
 max_value = 9.0
 value = 5.0
@@ -116,6 +126,8 @@ horizontal_alignment = 1
 
 [node name="HSliderVSens" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=491325965]
 layout_mode = 2
+focus_neighbor_top = NodePath("../HSliderHSens")
+focus_neighbor_bottom = NodePath("../ButtonQuit")
 min_value = 1.0
 max_value = 9.0
 value = 5.0
@@ -127,6 +139,7 @@ layout_mode = 2
 
 [node name="ButtonQuit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=560552699]
 layout_mode = 2
+focus_neighbor_top = NodePath("../HSliderVSens")
 theme_override_fonts/font = ExtResource("4_xovtl")
 theme_override_font_sizes/font_size = 28
 text = "Quit to Main Menu"

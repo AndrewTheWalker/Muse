@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yed0nx5m6mfj"
-path="res://.godot/imported/MUSE-concepts004.png-dc0b88c79cf9a8d71074832a277cb779.ctex"
+uid="uid://dk4acln7jmg2p"
+path="res://.godot/imported/Andrew4.png-c10ae84c7cef360d95cc4ff44327c802.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GalleryArt/MUSE-concepts004.png"
-dest_files=["res://.godot/imported/MUSE-concepts004.png-dc0b88c79cf9a8d71074832a277cb779.ctex"]
+source_file="res://assets/GalleryArt/Andrew4.png"
+dest_files=["res://.godot/imported/Andrew4.png-c10ae84c7cef360d95cc4ff44327c802.ctex"]
 
 [params]
 

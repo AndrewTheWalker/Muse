@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl2y6ciq1c4v4"
-path="res://.godot/imported/MUSE-concepts_001.png-0d6f175bd340cd7abb5968103140dba5.ctex"
+uid="uid://crcme8u446dau"
+path="res://.godot/imported/Jonah.png-5ca302b0c6cbb319f1a43af99437bc07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GalleryArt/MUSE-concepts_001.png"
-dest_files=["res://.godot/imported/MUSE-concepts_001.png-0d6f175bd340cd7abb5968103140dba5.ctex"]
+source_file="res://assets/GalleryArt/Jonah.png"
+dest_files=["res://.godot/imported/Jonah.png-5ca302b0c6cbb319f1a43af99437bc07.ctex"]
 
 [params]
 

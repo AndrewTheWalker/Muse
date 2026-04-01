@@ -13,6 +13,7 @@ func _ready() -> void:
 # this only works because I know that the parent node is always going to be pause menu
 func _on_button_back_pressed() -> void:
 	hide()
+	parent.enable_buttons()
 	parent.button_resume.grab_focus()
 	await get_tree().create_timer(0.2).timeout
 	queue_free()
