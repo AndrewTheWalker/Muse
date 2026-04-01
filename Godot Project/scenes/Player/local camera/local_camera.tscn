@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ca16026hm7cpp"]
 
 [ext_resource type="Script" uid="uid://csvnet554vpfv" path="res://scenes/Player/local camera/CameraModel.gd" id="1_4nvxi"]
-[ext_resource type="Script" uid="uid://ch6e0b3igyuug" path="res://scenes/Player/local camera/locked_camera.gd" id="2_01e5t"]
+[ext_resource type="Script" uid="uid://7l2u6hj0vvc0" path="res://scenes/Player/local camera/locked_cameraNEW.gd" id="2_io4mx"]
 [ext_resource type="Script" uid="uid://cpyv82o088fjg" path="res://scenes/Player/local camera/free_camera.gd" id="3_enfd4"]
 [ext_resource type="Material" uid="uid://b7odl4bclgby4" path="res://assets/misc/blumat.tres" id="4_4nvxi"]
 [ext_resource type="Script" uid="uid://djcc6mfar10g8" path="res://scenes/Player/local camera/reticle_layer.gd" id="5_ojg55"]
@@ -138,7 +138,7 @@ animations = [{
 script = ExtResource("1_4nvxi")
 
 [node name="LockedCamera" type="Node" parent="." unique_id=1908321925]
-script = ExtResource("2_01e5t")
+script = ExtResource("2_io4mx")
 
 [node name="FreeCamera" type="Node" parent="." unique_id=851391645]
 script = ExtResource("3_enfd4")

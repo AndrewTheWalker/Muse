@@ -4,6 +4,7 @@ class_name PlayerKor
 @export var use_debug_cam := false
 @export var use_debug_meshes := false
 
+
 @onready var input_gatherer = $Input as InputGatherer
 @onready var model = $Model as PlayerModel
 @onready var visuals = $Visuals as PlayerVisuals

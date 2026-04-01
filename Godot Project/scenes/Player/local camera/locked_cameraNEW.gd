@@ -1,8 +1,8 @@
 extends CameraState
-class_name FreeCameraState
+class_name StableCameraState
 
 @onready var local_camera: CameraModel = $".."
-@onready var locked_camera: StableCameraState = $"../LockedCamera"
+@onready var free_camera: FreeCameraState = $"../FreeCamera"
 
 @onready var camera: Camera3D = $"../PlayerCamera"
 @onready var focus_point: Node3D = $"../FocusPoint"
@@ -56,13 +56,13 @@ func set_inverse(button: String):
 
 func set_sensitivity_h(new_value: float):
 	var current_h_sense = hor_sense
-	var new_h_sense = new_value * 0.4
+	var new_h_sense = new_value * 0.2
 	hor_sense = new_h_sense
 
 
 func set_sensitivity_v(new_value: float):
 	var current_v_sense = ver_sense
-	var new_v_sense = new_value * 0.2
+	var new_v_sense = new_value * 0.1
 	ver_sense = new_v_sense
 
 
@@ -112,8 +112,9 @@ func input_axis_motion()->Vector3:
 func move_focus_point(look_at: Node3D):
 	if not focus_point.global_position.is_equal_approx(look_at.global_position):
 		var new_focus = lerp(focus_point.global_position, look_at.global_position, 0.1)
-		if !is_shooting:
-			rotate_offset(new_focus)
+## so in this version of the SM, we enter this state when shooting, so we never have to worry about rotating offset.
+		#if !is_shooting:
+			#rotate_offset(new_focus)
 		focus_point.global_position = new_focus
 
 
@@ -140,47 +141,6 @@ func move_shapecast():
 	shape_cast.set_target_position(offset)
 
 
-# this is the big one. This function is what allows the camera to gently "follow" the player. This is also the reason
-# why I can't use a regular shapecast. A shapecast causes the camera's pivot point to be attached to the player, but in order
-# to achieve the intended form of movement, the *player's* pivot point needs to be attached to the camera. But I still need
-# the camera to avoid clipping through walls and other geometry. It's a bit hard to explain, but using a spring arm just "feels" bad.
-# how it works is not as important as "why" it works.
-
-func rotate_offset(new_focus : Vector3):
-	
-	var new_focus_projected = new_focus
-	new_focus_projected.y = 0.0
-	var old_offset_projected = -offset
-	old_offset_projected.y = 0.0
-	var center = focus_point.global_position+offset
-	var center_projected = center
-	center_projected.y = 0
-	var new_direction = new_focus_projected - center_projected
-	var alpha = new_direction.angle_to(old_offset_projected)
-	
-	var decider = new_direction.cross(old_offset_projected)
-	if decider.y <0:
-		offset = offset.rotated(Vector3.UP,alpha)
-	else:
-		offset = offset.rotated(Vector3.UP,-alpha)
-
-
-# a simple function that switches a boolean, but it does an extremely important job.
-# if the player is shooting, the camera needs to stop rotating. This is critical to allowing the player to properly aim.
-# without it, the camera's adjustment makes it "appear" that the bullets are drifting off to the side, when in reality they are
-# travelling straight as intended, but the perspective has changed while the bullet is in flight.
-# implementing the camera_timer is a behaviour I copied from Splatoon. It waits for a second in case the player would like to shoot again,
-# if they haven't tried to shoot again in that time, we go back to default behaviour.
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Shoot"):
-		is_shooting = true
-	if event.is_action_released("Shoot"):
-		camera_timer.start()
-		await camera_timer.timeout
-		is_shooting = false
-
-
 
 # this little function gently nudges the shapecast away from surfaces. 
 # Without it, it is still possible for the camera to clip through geometry.
@@ -195,4 +155,4 @@ func calculate_shapecast_offset()->Vector3:
 
 
 func Exit():
-	locked_camera.offset = (camera_nest.global_position - camera_mount.global_position)
+	free_camera.offset = (camera_nest.global_position - camera_mount.global_position)

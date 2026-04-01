@@ -52,6 +52,10 @@ func _on_drone_died_signal() -> void:
 
 func on_player_death():
 	var tween = create_tween()
-	
+	Gamestate.game_controller.current_gui_scene.hide()
+	tween.set_trans(Tween.TRANS_CIRC)
 	tween.tween_property(world_environment,"environment:adjustment_saturation",0.0,2.0)
 	tween.parallel().tween_property(world_environment,"environment:adjustment_brightness",0.0,3.0)
+	await tween.finished
+	Gamestate.game_controller.change_gui_scene("res://scenes/UI/deathscreen_gui.tscn")
+	Gamestate.game_controller.change_3d_scene("res://scenes/UI/null_3d.tscn")

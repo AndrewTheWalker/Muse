@@ -40,6 +40,7 @@ func change_gui_scene(new_scene: String, delete : bool = true, keep_running : bo
 			var new = load(new_scene).instantiate()
 			gui.add_child(new)
 			current_gui_scene = new
+			current_gui_scene.show()
 		fade_out()
 		set_process_input(true)
 

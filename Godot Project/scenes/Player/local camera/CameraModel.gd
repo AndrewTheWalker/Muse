@@ -76,9 +76,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	## I have made it so that holding R simply stops camera rotation. 
 	
 	if event.is_action_pressed("Lock"):
-		free_state.is_shooting = true
+		switch_to("locked")
 	if event.is_action_released("Lock"):
-		free_state.is_shooting = false
+		switch_to("free")
 	
 	
 	## leaving all this here in case I wanna switch back

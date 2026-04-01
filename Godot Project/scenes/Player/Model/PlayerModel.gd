@@ -3,6 +3,7 @@ class_name PlayerModel
 
 @export var print_transition_statements : bool = true
 
+@onready var local_camera: CameraModel = %LocalCamera
 @onready var player = $".."
 @onready var skeleton: Skeleton3D = %GeneralSkeleton
 @onready var animator = $Animator
@@ -82,7 +83,6 @@ func rotate_rig():
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
 		if current_move.can_shoot():
-			SignalBus.TARGET_LOCKED.emit(target_direction)
 			ik_controller.process_ik("shoot")
 			player.send_sound("shoot")
 			call_deferred("spawn_bullet")
@@ -103,7 +103,10 @@ func spawn_bullet():
 	
 	bullet.type = "enemy"
 	bullet.spawn_pos = spawn_loc
-	bullet.spawn_basis = bullet_spawner.global_transform.basis
+	if local_camera.current_state == local_camera.states["locked"]:
+		bullet.spawn_basis = bullet_spawner.global_transform.basis
+	elif local_camera.current_state == local_camera.states["free"]:
+		bullet.spawn_basis = player.global_transform.basis
 	get_tree().get_root().add_child(bullet)
 	resources.lose_stamina(15.0)
 
