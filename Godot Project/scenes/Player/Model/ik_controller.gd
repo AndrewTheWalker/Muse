@@ -9,6 +9,9 @@ class_name IKController
 @onready var l_arm_ik: TwoBoneIK3D = $"../GeneralSkeleton/L_Arm_IK"
 @onready var r_arm_ik: TwoBoneIK3D = $"../GeneralSkeleton/R_Arm_IK"
 @onready var head_copy_rotation: CopyTransformModifier3D = $"../GeneralSkeleton/HeadCopyRotation"
+@onready var l_hand_copy_rotation: CopyTransformModifier3D = $"../GeneralSkeleton/L_Hand_CopyRotation"
+@onready var r_hand_copy_rotation: CopyTransformModifier3D = $"../GeneralSkeleton/R_Hand_CopyRotation"
+
 
 var influence : float = 0.0
 
@@ -24,7 +27,8 @@ func _process(delta: float) -> void:
 		l_arm_ik.influence = influence
 		r_arm_ik.influence = influence
 		head_copy_rotation.influence = influence
-
+		r_hand_copy_rotation.influence = influence
+		l_hand_copy_rotation.influence = influence
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Roll"):
@@ -38,7 +42,7 @@ func process_ik(command:String):
 		if tween:
 			tween.kill()
 		model.is_shooting = true
-		influence = 1.0
+		influence = 0.95
 		
 	if command == "release":
 		model_timer.start()

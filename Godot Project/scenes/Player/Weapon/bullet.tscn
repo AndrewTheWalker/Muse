@@ -28,6 +28,7 @@ shape = SubResource("SphereShape3D_kshah")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=330583222]
 material_override = SubResource("StandardMaterial3D_2g5h2")
+cast_shadow = 0
 radius = 0.1
 
 [node name="LifetimeTimer" type="Timer" parent="." unique_id=974947825]

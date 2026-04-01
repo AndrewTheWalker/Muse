@@ -641,17 +641,17 @@ bone_name = "DEF-spine"
 bone = 0
 
 [node name="Root" type="BoneAttachment3D" parent="GeneralSkeleton" unique_id=373883100]
-transform = Transform3D(0.9625367, 0.2335584, -0.13774474, -0.26537532, 0.7071309, -0.65539443, -0.05566931, 0.6673952, 0.74262017, 0.039229956, 0.937495, -0.1448395)
+transform = Transform3D(0.9625384, 0.23355839, -0.13773255, -0.26536703, 0.70713097, -0.6553977, -0.055678695, 0.6673951, 0.74261945, 0.039229956, 0.937495, -0.1448395)
 bone_name = "DEF-spine"
 bone_idx = 0
 
 [node name="GunPoint" type="BoneAttachment3D" parent="GeneralSkeleton" unique_id=1035939310]
-transform = Transform3D(-0.9177267, -0.3441593, -0.2014661, -0.23109102, 0.04996337, 0.9789021, -0.32297853, 0.9298217, -0.12813918, 0.15506646, 1.556159, 0.42284393)
+transform = Transform3D(-0.076461256, -0.12970792, -0.98757505, -1.0001208, -0.07697558, 0.08950627, -0.07785319, 0.98242974, -0.13202643, 0.16874702, 1.5564686, 0.4266541)
 bone_name = "DEF-hand.L"
 bone_idx = 26
 
 [node name="Spine_BoneAttachment" type="BoneAttachment3D" parent="GeneralSkeleton" unique_id=594756433]
-transform = Transform3D(0.99081683, -0.06827105, -0.11670959, 0.07751794, 0.99404263, 0.07661488, 0.110783786, -0.08495836, 0.99020636, 0.07609183, 1.3449745, 0.0036283555)
+transform = Transform3D(0.9908242, -0.06820376, -0.11668545, 0.077452786, 0.99404466, 0.076654464, 0.11076244, -0.08498873, 0.99020606, 0.076180615, 1.3449819, 0.0036800704)
 bone_name = "DEF-spine.003"
 bone_idx = 3
 
@@ -806,6 +806,30 @@ target_node = NodePath("../../CtrlRig/L_Arm_Hand_Target")
 bone_name = "DEF-spine.006"
 bone = 6
 
+[node name="L_Hand_CopyRotation" type="CopyTransformModifier3D" parent="GeneralSkeleton" unique_id=1305408838]
+setting_count = 1
+settings/0/amount = 1.0
+settings/0/apply_bone_name = "DEF-hand.L"
+settings/0/apply_bone = 26
+settings/0/reference_type = 1
+settings/0/reference_node = NodePath("../../CtrlRig/L_Arm_Hand_Target")
+settings/0/copy = 2
+settings/0/axes = 7
+settings/0/invert = 0
+settings/0/additive = false
+
+[node name="R_Hand_CopyRotation" type="CopyTransformModifier3D" parent="GeneralSkeleton" unique_id=2143406124]
+setting_count = 1
+settings/0/amount = 1.0
+settings/0/apply_bone_name = "DEF-hand.R"
+settings/0/apply_bone = 32
+settings/0/reference_type = 1
+settings/0/reference_node = NodePath("../../CtrlRig/R_Arm_Hand_Target")
+settings/0/copy = 2
+settings/0/axes = 7
+settings/0/invert = 0
+settings/0/additive = false
+
 [node name="SkeletonAnimator" type="AnimationPlayer" parent="." unique_id=749738407]
 libraries/ = ExtResource("29_0stpf")
 playback_default_blend_time = 0.5
@@ -822,13 +846,13 @@ gizmo_extents = 0.17
 transform = Transform3D(0.9999996, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999996, 0.59113467, 0.3379737, 0.30068994)
 
 [node name="L_Arm_Hand_Target" type="Marker3D" parent="CtrlRig" unique_id=882782747]
-transform = Transform3D(0.9999992, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999992, -0.0015377253, 0.3843503, 0.9524722)
+transform = Transform3D(-0.07600119, -0.12971422, -0.98863363, -0.9940997, -0.0670923, 0.08522425, -0.07738455, 0.9892786, -0.123849854, 0.030330166, 0.38435018, 0.9524722)
 
 [node name="R_Arm_Pole_Target" type="Marker3D" parent="CtrlRig" unique_id=1073125451]
 transform = Transform3D(0.9999995, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999995, -0.4620598, 0.20497012, 0.39621863)
 
 [node name="R_Arm_Hand_Target" type="Marker3D" parent="CtrlRig" unique_id=1444971572]
-transform = Transform3D(-0.8616941, 0.018487526, 0.5070901, 0.19900559, -0.9069627, 0.3712346, 0.4667749, 0.42080498, 0.77784556, -0.0029156655, 0.37143457, 0.2689441)
+transform = Transform3D(-0.6640702, 0.7470787, 0.029738208, 0.69679224, 0.6039701, 0.38691202, 0.2710925, 0.27765793, -0.9216373, -0.022869445, 0.33766878, 0.3180643)
 
 [node name="ModelTimer" type="Timer" parent="." unique_id=1396997330]
 one_shot = true
