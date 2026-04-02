@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c3lvhqoxrlryl" path="res://scenes/Player/player_KOR.tscn" id="2_nkuti"]
 [ext_resource type="PackedScene" uid="uid://od0gfnx5yyh5" path="res://assets/NewEnvironment/Inherited Scenes/sm_pipes_01_a.tscn" id="3_duyvs"]
 [ext_resource type="PackedScene" uid="uid://dpos32r7a4xlj" path="res://assets/NewEnvironment/Inherited Scenes/sm_pipes_01_b.tscn" id="4_s7st4"]
+[ext_resource type="MeshLibrary" uid="uid://b6ki6gm6asxh0" path="res://assets/NewEnvironment/ML_Dungeon2.tres" id="4_xh3dy"]
 [ext_resource type="PackedScene" uid="uid://bgpe0j2jlcoe1" path="res://assets/NewEnvironment/Inherited Scenes/sm_pipes_02.tscn" id="5_mc4ly"]
 [ext_resource type="PackedScene" uid="uid://d2bxmad33wi4b" path="res://assets/NewEnvironment/Inherited Scenes/sm_pipes_03.tscn" id="6_kg42j"]
 [ext_resource type="PackedScene" uid="uid://dvptssqxxfndy" path="res://assets/NewEnvironment/Inherited Scenes/sm_pipes_04.tscn" id="7_wsyuc"]
@@ -61,27 +62,27 @@ edge_fade = 1.2553337
 height = 6.138
 radius = 4.638
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0w2cy"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xh3dy"]
 resource_local_to_scene = true
 size = Vector3(7.716797, 4.7459717, 5.8325195)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xh3dy"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocygp"]
 resource_local_to_scene = true
 size = Vector3(7.716797, 4.5473633, 5.7439575)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ocygp"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1qbh4"]
 resource_local_to_scene = true
 size = Vector3(10.449219, 4.4746094, 4.348053)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1qbh4"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_h34ss"]
 resource_local_to_scene = true
 size = Vector3(5.8875732, 5.788086, 6.1922607)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h34ss"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kgi7w"]
 resource_local_to_scene = true
 size = Vector3(5.4763184, 5.788086, 10.33844)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kgi7w"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_c8mp7"]
 resource_local_to_scene = true
 size = Vector3(4.410034, 4.0634766, 7.6519775)
 
@@ -137,7 +138,7 @@ metadata/_editor_floor_ = Vector3(0, 5, 0)
 
 [node name="GridMapFloor" type="GridMap" parent="LEVEL_GEO" unique_id=1968682838]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -24)
-mesh_library = ExtResource("2_duyvs")
+mesh_library = ExtResource("4_xh3dy")
 cell_size = Vector3(2, 1, 2)
 cell_center_x = false
 cell_center_y = false
@@ -1360,6 +1361,7 @@ transform = Transform3D(-0.8541595, 0, 0.52001107, 0, 1, 0, -0.52001107, 0, -0.8
 
 [node name="ElectricFloor" parent="." unique_id=1433734089 instance=ExtResource("21_g18u5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.31874, -15.825235, -18.47433)
+monitoring = false
 
 [node name="CollisionShape3D" parent="ElectricFloor" index="0" unique_id=532032752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.093002, 0, 10.246826)
@@ -1370,7 +1372,7 @@ text = "Move Camera : Right Analog Stick"
 
 [node name="CollisionShape3D" parent="HintArea" index="0" unique_id=1065794206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8729858, 0.7717285)
-shape = SubResource("BoxShape3D_0w2cy")
+shape = SubResource("BoxShape3D_xh3dy")
 
 [node name="HintArea2" parent="." unique_id=1077857325 instance=ExtResource("26_xaip4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10964584, -5.150461, -22.17148)
@@ -1378,7 +1380,7 @@ text = "Dodge Roll : Left Face Button"
 
 [node name="CollisionShape3D" parent="HintArea2" index="0" unique_id=1065794206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7736816, -0.2859192)
-shape = SubResource("BoxShape3D_xh3dy")
+shape = SubResource("BoxShape3D_ocygp")
 
 [node name="HintArea3" parent="." unique_id=526703463 instance=ExtResource("26_xaip4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.721928, -3.0421195, -29.34755)
@@ -1386,7 +1388,7 @@ text = "Jump : Bottom Face Button"
 
 [node name="CollisionShape3D" parent="HintArea3" index="0" unique_id=1065794206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.349083, -0.7867913, -2.3405457)
-shape = SubResource("BoxShape3D_ocygp")
+shape = SubResource("BoxShape3D_1qbh4")
 
 [node name="HintArea4" parent="." unique_id=548904103 instance=ExtResource("26_xaip4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20.975168, -3.0421195, -23.205545)
@@ -1394,7 +1396,7 @@ text = "Aim : Hold Left Trigger"
 
 [node name="CollisionShape3D" parent="HintArea4" index="0" unique_id=1065794206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20562744, -0.13005304, -5.113737)
-shape = SubResource("BoxShape3D_1qbh4")
+shape = SubResource("BoxShape3D_h34ss")
 
 [node name="HintArea7" parent="." unique_id=852807351 instance=ExtResource("26_xaip4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -21.098873, -3.0421195, -32.940186)
@@ -1402,7 +1404,7 @@ text = "Pause Menu : + or Start Button"
 
 [node name="CollisionShape3D" parent="HintArea7" index="0" unique_id=1065794206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6293945e-06, -0.13005304, -1.0690212)
-shape = SubResource("BoxShape3D_h34ss")
+shape = SubResource("BoxShape3D_kgi7w")
 
 [node name="HintArea5" parent="." unique_id=297497987 instance=ExtResource("26_xaip4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -29.550152, -3.0421195, -16.65571)
@@ -1410,7 +1412,7 @@ text = "Fire Weapon : Right Trigger"
 
 [node name="CollisionShape3D" parent="HintArea5" index="0" unique_id=1065794206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5331421, -0.99235773, -3.5807724)
-shape = SubResource("BoxShape3D_kgi7w")
+shape = SubResource("BoxShape3D_c8mp7")
 
 [connection signal="body_entered" from="EndingArea3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="DIED_SIGNAL" from="Drone" to="." method="_on_drone_died_signal"]

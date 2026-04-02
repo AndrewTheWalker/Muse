@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://xaf6jf31qkwa" path="res://assets/Sound Effects/kor_shoot.wav" id="15_hqojd"]
 [ext_resource type="AudioStream" uid="uid://djum88r6ge5m7" path="res://assets/Sound Effects/kor_step.wav" id="16_vkka1"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pt5pi"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7qown"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mra3b"]
 transparency = 1
@@ -28,7 +28,8 @@ albedo_color = Color(0.31764707, 1, 0, 0.03137255)
 
 [node name="PlayerKor" type="CharacterBody3D" unique_id=1159028594 groups=["player"]]
 collision_mask = 6
-floor_max_angle = 0.80285144
+floor_stop_on_slope = false
+floor_max_angle = 1.0471976
 script = ExtResource("1_3tgjv")
 
 [node name="Visuals" parent="." unique_id=2638631 instance=ExtResource("2_n17f7")]
@@ -54,7 +55,7 @@ look_at = NodePath("../CameraFocus")
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1563655585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_pt5pi")
+shape = SubResource("CapsuleShape3D_7qown")
 
 [node name="CameraFocus" type="Node3D" parent="." unique_id=1055157974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

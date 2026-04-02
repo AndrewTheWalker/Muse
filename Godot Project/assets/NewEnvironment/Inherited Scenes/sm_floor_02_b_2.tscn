@@ -36,8 +36,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n53yn")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ti2kv"]
-points = PackedVector3Array(-4, -0.00012230873, -4, -3.800306, -1, -3.8003132, -4, -0.00012230873, 0, -3.0003533, 0.6911838, -2.8574786, -0.00023674965, -0.00012230873, -4, -3.800306, -1, -0.20007825, -0.20032287, -1, -3.8003132, -0.00023674965, -0.00012230873, 0, -1.2109547, 0.5544456, -1.3888018, -1.2898121, 0.5544456, -1.389585, -1.2105622, 0.5544456, -1.4682851, 0.008002281, -0.00012230873, -1.7180893, -0.20032287, -1, -0.20007825, 0.007609844, -0.00012230873, -1.1393893)
+[sub_resource type="BoxShape3D" id="BoxShape3D_22263"]
+size = Vector3(4, 1, 4)
 
 [node name="SM_Floor_02_B2" type="Node3D" unique_id=2025401812]
 
@@ -49,4 +49,5 @@ skeleton = NodePath("")
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Floor_02_B/StaticBody3D" unique_id=1802331333]
-shape = SubResource("ConvexPolygonShape3D_ti2kv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, -2)
+shape = SubResource("BoxShape3D_22263")

@@ -14,6 +14,7 @@ class_name FreeCameraState
 @onready var camera_focus: Node3D = $"../../CameraFocus"
 
 var is_shooting := false
+var has_input := false
 
 var h_inv := -1
 var v_inv := -1
@@ -91,7 +92,12 @@ func Update(look_at:Node3D, delta: float) -> void:
 
 func input_axis_motion()->Vector3:
 	var input_direction = Input.get_vector("Rstick_left","Rstick_right","Rstick_down","Rstick_up").normalized()
-	
+	## APR 2 Adding this so that if there is input, rotate offset doesn't try to fight it.
+	if input_direction:
+		has_input = true
+	else:
+		has_input = false
+		
 	var d_hor = input_direction.x
 	var d_ver = input_direction.y
 
@@ -112,7 +118,7 @@ func input_axis_motion()->Vector3:
 func move_focus_point(look_at: Node3D):
 	if not focus_point.global_position.is_equal_approx(look_at.global_position):
 		var new_focus = lerp(focus_point.global_position, look_at.global_position, 0.1)
-		if !is_shooting:
+		if !is_shooting and !has_input:
 			rotate_offset(new_focus)
 		focus_point.global_position = new_focus
 
