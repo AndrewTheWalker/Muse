@@ -323,6 +323,7 @@ backend_animation = "land_param"
 
 [node name="Midair" type="Node" parent="States" unique_id=522675216]
 script = ExtResource("21_2etlo")
+DELTA_VECTOR_LENGTH = 0.03
 animation = "Jump_Midair"
 move_name = "midair"
 priority = 10

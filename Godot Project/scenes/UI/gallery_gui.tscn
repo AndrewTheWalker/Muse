@@ -70,10 +70,10 @@ focus_neighbor_right = NodePath("../ButtonNavigateRight")
 text = "Back"
 
 [node name="ButtonNavigateRight" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=443242658]
-custom_minimum_size = Vector2(100, 40)
+custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonBack")
-text = "->"
+text = "Next Image"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonNavigateRight" to="." method="_on_button_navigate_right_pressed"]

@@ -195,4 +195,6 @@ func calculate_shapecast_offset()->Vector3:
 
 
 func Exit():
-	locked_camera.offset = (camera_nest.global_position - camera_mount.global_position)
+	var offset_direction : Vector3 = camera_mount.global_position.direction_to(camera_nest.global_position)
+	var rotation_to_align = Quaternion(offset_direction.normalized(),locked_camera.offset.normalized())
+	locked_camera.offset = locked_camera.offset * rotation_to_align

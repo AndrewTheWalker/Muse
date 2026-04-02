@@ -10,37 +10,20 @@ var current_index : int = 6
 var current_image
 
 func _ready() -> void:
-	load_images("res://assets/GalleryArt/")
+	get_all_files_from_directory("res://assets/GalleryArt/")
 	set_image(current_index)
 	button_navigate_right.grab_focus()
 	
-func load_images(folder_path: String):
+	
+func get_all_files_from_directory(path : String):
+	var resources = ResourceLoader.list_directory(path)
+	for res in resources:
+		if res.ends_with(".png") or res.ends_with(".jpg"): 
+			var full_path = path + "/" + res
+			var texture = ResourceLoader.load(full_path)
+			if texture:
+				image_index.append(texture)         
 
-	var dir = DirAccess.open(folder_path)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()    
-		while file_name != "":
-
-# Ensure it's a file and not a directory
-
-			if not dir.current_is_dir():
-
-# Filter for image extensions (e.g., .png, .jpg)
-# Note: On export, Godot converts .png to .png.import or .ctex
-
-				if file_name.ends_with(".png") or file_name.ends_with(".jpg"):
-					var full_path = folder_path + "/" + file_name     
-
-# Use ResourceLoader to load the image as a Texture resource
-
-					var texture = ResourceLoader.load(full_path)
-					if texture:
-						image_index.append(texture)         
-			file_name = dir.get_next()
-		dir.list_dir_end()
-	else:
-		print("Failed to open directory: ", folder_path)
 
 func sort_index(step:int):
 	## this line allows us to cycle through the contents of the image array and loop back to the beginning

@@ -28,7 +28,7 @@ func default_lifecycle(_input : InputPackage):
 
 func update(input : InputPackage, delta):
 	process_input_vector(input,delta)
-	player.velocity.y -= (gravity * 1.2) * delta
+	player.velocity.y -= (gravity * 1.75) * delta
 	player.move_and_slide()
 
 

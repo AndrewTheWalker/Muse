@@ -2,7 +2,7 @@ extends Move
 
 @export var SPEED = 5.0
 @export var TURN_SPEED = 2.0
-@export var VERTICAL_SPEED_ADDED : float = 4.0
+@export var VERTICAL_SPEED_ADDED : float = 5.0
 @export var ANGULAR_SPEED = 7.0
 @export var DELTA_VECTOR_LENGTH = 0.05
 
