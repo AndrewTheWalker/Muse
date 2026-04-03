@@ -1,8 +1,9 @@
 extends Control
 
-@onready var button_begin: Button = $MarginContainer/VBoxContainer/ButtonBegin
-@onready var button_about: Button = $MarginContainer/VBoxContainer/ButtonAbout
-@onready var button_settings: Button = $MarginContainer/VBoxContainer/ButtonGallery
+
+@onready var button_begin: Button = $HBoxContainer/VBoxContainer/ButtonBegin
+@onready var button_about: Button = $HBoxContainer/VBoxContainer/ButtonAbout
+@onready var button_gallery: Button = $HBoxContainer/VBoxContainer/ButtonGallery
 
 @onready var menu_1: AudioStreamPlayer = $Menu1
 @onready var menu_3: AudioStreamPlayer = $Menu3

@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bdr0jgj3ogor7" path="res://assets/Sound Effects/menu1.wav" id="2_t8iga"]
 [ext_resource type="FontFile" uid="uid://bwlp31f1vyno5" path="res://assets/misc/Resolve-Light.otf" id="3_6r1td"]
 [ext_resource type="AudioStream" uid="uid://hms2n0on4t0g" path="res://assets/Sound Effects/menu3.wav" id="3_cr4hq"]
+[ext_resource type="Texture2D" uid="uid://53vnbx078b37" path="res://assets/misc/Icon_Facebutton_Bottom.png" id="6_keprc"]
 
 [node name="MainMenuGUI" type="Control" unique_id=120974345]
 layout_mode = 3
@@ -17,41 +18,44 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_ih22t")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1338454096]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1442973858]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 224
-theme_override_constants/margin_top = 65
-theme_override_constants/margin_right = 721
-theme_override_constants/margin_bottom = 33
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1639686535]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=655206613]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1639686535]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 17
 alignment = 1
 
-[node name="LabelTitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=140038048]
+[node name="LabelTitle" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=140038048]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6r1td")
 theme_override_font_sizes/font_size = 80
 text = "MUSE"
 horizontal_alignment = 1
 
-[node name="LabelCredit" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1971555704]
+[node name="LabelCredit" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1971555704]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6r1td")
 theme_override_font_sizes/font_size = 20
 text = "Developed by Andrew Walker"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1852830602]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=1852830602]
 layout_mode = 2
 
-[node name="ButtonBegin" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1109689333]
+[node name="ButtonBegin" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1109689333]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../ButtonAbout")
 theme_override_fonts/font = ExtResource("3_6r1td")
@@ -59,7 +63,7 @@ theme_override_font_sizes/font_size = 28
 text = "Start
 "
 
-[node name="ButtonAbout" type="Button" parent="MarginContainer/VBoxContainer" unique_id=727923772]
+[node name="ButtonAbout" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=727923772]
 layout_mode = 2
 focus_neighbor_top = NodePath("../ButtonBegin")
 focus_neighbor_bottom = NodePath("../ButtonGallery")
@@ -68,17 +72,17 @@ theme_override_font_sizes/font_size = 28
 text = "About
 "
 
-[node name="ButtonGallery" type="Button" parent="MarginContainer/VBoxContainer" unique_id=493965204]
+[node name="ButtonGallery" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=493965204]
 layout_mode = 2
 focus_neighbor_top = NodePath("../ButtonAbout")
 theme_override_fonts/font = ExtResource("3_6r1td")
 theme_override_font_sizes/font_size = 28
 text = "Gallery"
 
-[node name="HSeparator4" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1762468196]
+[node name="HSeparator4" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=1762468196]
 layout_mode = 2
 
-[node name="LabelDisclaimer" type="Label" parent="MarginContainer/VBoxContainer" unique_id=713658452]
+[node name="LabelDisclaimer" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=713658452]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6r1td")
 theme_override_font_sizes/font_size = 25
@@ -87,42 +91,54 @@ to be played with
 a gamepad"
 horizontal_alignment = 1
 
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1338454096]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.75
+
 [node name="Menu1" type="AudioStreamPlayer" parent="." unique_id=181002474]
 stream = ExtResource("2_t8iga")
 
 [node name="Menu3" type="AudioStreamPlayer" parent="." unique_id=1993160140]
 stream = ExtResource("3_cr4hq")
 
-[node name="Label" type="Label" parent="." unique_id=1671370164]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1726960841]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -37.0
-offset_right = 685.0
-offset_bottom = -14.0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_6r1td")
-text = "Navigate Up/Down : Left Analog Stick / D-pad           Confirm Choice : Right Face Button"
-
-[node name="Label2" type="Label" parent="." unique_id=1212092623]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -693.0
-offset_top = -36.0
-offset_right = -32.0
-offset_bottom = -13.0
-grow_horizontal = 0
+offset_top = -35.0
+grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 14
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer" unique_id=2074571593]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer2" unique_id=1671370164]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6r1td")
-text = "v 0.0.1"
+theme_override_font_sizes/font_size = 18
+text = "Navigate Up/Down : Left Analog Stick / D-pad           Confirm Choice :"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer2" unique_id=1003129397]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("6_keprc")
+expand_mode = 1
+
+[node name="VersionNumber" type="Label" parent="MarginContainer/HBoxContainer2" unique_id=1212092623]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_6r1td")
+theme_override_font_sizes/font_size = 18
+text = "v 0.0.3"
 horizontal_alignment = 2
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonBegin" to="." method="_on_button_begin_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonAbout" to="." method="_on_button_about_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonGallery" to="." method="_on_button_gallery_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonBegin" to="." method="_on_button_begin_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonAbout" to="." method="_on_button_about_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonGallery" to="." method="_on_button_gallery_pressed"]
