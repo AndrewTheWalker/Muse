@@ -20,10 +20,6 @@ func _ready() -> void:
 	dummy_kor.play_idle()
 	door.stay_open()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("DebugHurt"):
-		play_cutscene()
-
 func play_cutscene():
 	cutscene_cam_1.make_current()
 	animation_player.play("EndingCutscene")

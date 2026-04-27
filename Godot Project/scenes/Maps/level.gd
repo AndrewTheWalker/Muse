@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
+		SignalBus.CUTSCENE_ACTIVATED.emit()
 		set_process_input(false)
 		Gamestate.game_controller.change_gui_scene("res://scenes/UI/null_gui.tscn")
 		await get_tree().create_timer(1.0).timeout

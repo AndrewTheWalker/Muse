@@ -128,7 +128,7 @@ tracks/8/path = NodePath("DummyKor:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(8.566668, 8.6),
+"times": PackedFloat32Array(8.59231, 8.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-4.0000005, 0, -2.7499998), Vector3(-4, 0, 1)]
@@ -248,10 +248,10 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.0
 [node name="Door" parent="." unique_id=1500605170 instance=ExtResource("2_0sipp")]
 
 [node name="CutsceneCam1" type="Camera3D" parent="." unique_id=481785874]
-transform = Transform3D(0.9659254, -0.015773462, -0.25833783, 1.3969833e-09, 0.99814063, -0.060943983, 0.25881892, 0.05886736, 0.9641299, -4.3, 1.4, -2)
+transform = Transform3D(0.96592534, -0.015773462, -0.25833783, 1.3969832e-09, 0.9981406, -0.060943983, 0.25881892, 0.058867358, 0.9641299, -4.3, 1.4, -2)
 
 [node name="CutsceneCam2" type="Camera3D" parent="." unique_id=748385924]
-transform = Transform3D(0.9436275, -0.020172983, -0.33039314, 4.355177e-09, 0.9981408, -0.060943995, 0.33100843, 0.057508443, 0.94187343, -4.4597464, 1.4, -2.0428038)
+transform = Transform3D(0.9436275, -0.020172982, -0.3303931, 4.355177e-09, 0.99814075, -0.06094399, 0.33100843, 0.057508443, 0.9418734, -4.4597464, 1.4, -2.0428038)
 fov = 41.0
 
 [node name="CutsceneCam3" type="Camera3D" parent="." unique_id=1695478331]

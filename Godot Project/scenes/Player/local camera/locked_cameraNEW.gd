@@ -42,7 +42,6 @@ func Enter():
 	if ! SignalBus.is_connected("ADJUST_VSENS",set_sensitivity_v):
 		SignalBus.connect("ADJUST_VSENS",set_sensitivity_v)
 
-
 func set_inverse(button: String):
 	if button == "h_down":
 		h_inv = 1

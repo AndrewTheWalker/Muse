@@ -61,7 +61,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tqdbt")
 theme_override_font_sizes/font_size = 20
-text = "Muse is a prototype / tech demo showcasing the results of 
+text = "Muse is a prototype / proof of concept showcasing the results of 
 my efforts to learn how to develop a robust character controller in the Godot Engine."
 horizontal_alignment = 1
 

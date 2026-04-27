@@ -10,6 +10,8 @@ class_name CameraModel
 @onready var camera_nest := $CameraNest
 @onready var camera_mount := $CameraMount
 
+@onready var cone_finder : ConeFinder = $ConeFinder
+
 @onready var reticle_debug = $"ReticleDebug"
 @onready var reticle_raycast: RayCast3D = $PlayerCamera/ReticleRaycast
 @onready var reticle_locator: Node3D = $PlayerCamera/reticle_locator

@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://csvnet554vpfv" path="res://scenes/Player/local camera/CameraModel.gd" id="1_4nvxi"]
 [ext_resource type="Script" uid="uid://7l2u6hj0vvc0" path="res://scenes/Player/local camera/locked_cameraNEW.gd" id="2_io4mx"]
+[ext_resource type="Script" uid="uid://d2wul2d4daaht" path="res://scenes/Player/local camera/cone_finder.gd" id="2_ynfi6"]
 [ext_resource type="Script" uid="uid://cpyv82o088fjg" path="res://scenes/Player/local camera/free_camera.gd" id="3_enfd4"]
 [ext_resource type="Material" uid="uid://b7odl4bclgby4" path="res://assets/misc/blumat.tres" id="4_4nvxi"]
 [ext_resource type="Script" uid="uid://djcc6mfar10g8" path="res://scenes/Player/local camera/reticle_layer.gd" id="5_ojg55"]
 [ext_resource type="Texture2D" uid="uid://d1uiwlnxj8evw" path="res://assets/Reticle-sheet.png" id="6_ojg55"]
 [ext_resource type="Texture2D" uid="uid://cgui11h00jyci" path="res://assets/Reticle-sheet2.png" id="7_io4mx"]
+[ext_resource type="Texture2D" uid="uid://1d67ckl45p" path="res://assets/ReticleHeatBar.png" id="8_nk6wk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47crt"]
 transparency = 1
@@ -137,6 +139,9 @@ animations = [{
 [node name="LocalCamera" type="Node" unique_id=843751663]
 script = ExtResource("1_4nvxi")
 
+[node name="ConeFinder" type="Node" parent="." unique_id=622347175]
+script = ExtResource("2_ynfi6")
+
 [node name="LockedCamera" type="Node" parent="." unique_id=1908321925]
 script = ExtResource("2_io4mx")
 
@@ -219,3 +224,36 @@ scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_c04ci")
 animation = &"unlock"
 autoplay = "default"
+
+[node name="Control" type="Control" parent="CanvasLayer/Sprite2D" unique_id=1514539221]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Sprite2D/Control" unique_id=1032889293]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+fill_mode = 8
+texture_progress = ExtResource("8_nk6wk")

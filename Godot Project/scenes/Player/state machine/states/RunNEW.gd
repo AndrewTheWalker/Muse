@@ -133,6 +133,7 @@ func process_input_vector(input : InputPackage, delta : float):
 	var is_walking : bool = false
 	speed = RUN_SPEED
 	turn_speed = RUN_TURN_SPEED
+	
 	## I am removing the walking functionality because it doesn't feel good and I don't have time to do new animations
 	#if direction_str > WALK_DEADZONE:
 		#

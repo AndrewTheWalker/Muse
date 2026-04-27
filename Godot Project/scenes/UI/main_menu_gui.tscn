@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bdr0jgj3ogor7" path="res://assets/Sound Effects/menu1.wav" id="2_t8iga"]
 [ext_resource type="FontFile" uid="uid://bwlp31f1vyno5" path="res://assets/misc/Resolve-Light.otf" id="3_6r1td"]
 [ext_resource type="AudioStream" uid="uid://hms2n0on4t0g" path="res://assets/Sound Effects/menu3.wav" id="3_cr4hq"]
-[ext_resource type="Texture2D" uid="uid://53vnbx078b37" path="res://assets/misc/Icon_Facebutton_Bottom.png" id="6_keprc"]
+[ext_resource type="Texture2D" uid="uid://igcv72hjsdsg" path="res://assets/misc/Icon_Facebutton_Right.png" id="6_keprc"]
 
 [node name="MainMenuGUI" type="Control" unique_id=120974345]
 layout_mode = 3
@@ -136,7 +136,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_6r1td")
 theme_override_font_sizes/font_size = 18
-text = "v 0.0.3"
+text = "v 0.0.4"
 horizontal_alignment = 2
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonBegin" to="." method="_on_button_begin_pressed"]

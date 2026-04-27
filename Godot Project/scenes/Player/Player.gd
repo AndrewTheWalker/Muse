@@ -31,6 +31,8 @@ func _ready() -> void:
 	visuals.accept_skeleton(model.skeleton)
 	SignalBus.connect("ELECTRIC_ENTERED",electric_on)
 	SignalBus.connect("ELECTRIC_EXITED",electric_off)
+	## This is a bit of a hacky solution. In the future, the game needs to have a discreet cutscene state.
+	SignalBus.connect("CUTSCENE_ACTIVATED",cutscene)
 
 func _physics_process(delta):
 	var input = input_gatherer.gather_input()
@@ -52,7 +54,10 @@ func get_all_children_recursive(node):
 				i.hide()
 	return nodes
 
-
+func cutscene():
+	print("cutscene activated")
+	process_mode = Node.PROCESS_MODE_DISABLED
+	
 func receive_hit():
 	# tell model to call resources.
 	model.take_damage()

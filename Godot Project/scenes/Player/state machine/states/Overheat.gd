@@ -13,6 +13,8 @@ func check_relevance(input : InputPackage):
 	if works_longer_than(TRANSITION_TIMING):
 		is_overheating = false
 		return "idle"
+	if resources.health <= 1:
+		return "death"
 	else:
 		return "okay"
 

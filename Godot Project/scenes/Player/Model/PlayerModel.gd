@@ -4,7 +4,7 @@ class_name PlayerModel
 @export var print_transition_statements : bool = true
 
 @onready var local_camera: CameraModel = %LocalCamera
-@onready var player = $".."
+@onready var player = $".." as PlayerKor
 @onready var skeleton: Skeleton3D = %GeneralSkeleton
 @onready var animator = $Animator
 @onready var combat = $Combat as Combat
@@ -74,29 +74,24 @@ func switch_to(state : String):
 	current_move.base_on_enter_state()
 
 
-
-func rotate_rig():
-	pass
-
-# bullet/reticle_stuff
+## bullet/reticle_stuff
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
 		if current_move.can_shoot():
 			ik_controller.process_ik("shoot")
 			player.send_sound("shoot")
+			face_camera()
 			call_deferred("spawn_bullet")
 		else:
 			print("shooting not allowed by this move")
 	if event.is_action_released("Shoot"):
 		
 		ik_controller.process_ik("release")
-	if event.is_action_pressed("DebugHurt"):
-		resources.lose_health(20.0)
 
 func spawn_bullet():
 	var spawn_loc = bullet_spawner.global_position
-	var bullet = bullet_scene.instantiate()
+	var bullet = bullet_scene.instantiate() as Bullet
 	
 	# Note to self. We do not declare that "bullet" is the bullet class at any point here. Therefore we don't get autofill.
 	# This works, but might be prone to breaking if I screw something up.
@@ -116,6 +111,13 @@ func update_bullet_target(reticle_point:Vector3):
 	target_direction = reticle_point
 	bullet_spawner.look_at(reticle_point)
 
+func face_camera():
+	if local_camera.current_state == local_camera.states["locked"]:
+		var face_direction = player.local_camera.get_projected_position()
+		face_direction.y = player.global_position.y
+		player.look_at(face_direction)
+	else:
+		return
 
 func force_overheat():
 	current_move.try_force_move("overheat")
