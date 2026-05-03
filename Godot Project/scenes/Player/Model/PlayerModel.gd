@@ -46,7 +46,7 @@ func _ready():
 	switch_to("idle")
 
 
-func update(input : InputPackage, reticle: Vector3, delta : float):
+func update(input : InputPackage, delta : float):
 	if is_alive:
 	
 		area_awareness.last_input_package = input
@@ -60,8 +60,6 @@ func update(input : InputPackage, reticle: Vector3, delta : float):
 		current_move.update_resources(delta)
 		current_move._update(input, delta)
 		
-		var new_reticle_point = reticle
-		update_bullet_target(new_reticle_point)
 
 	fx_overheat.global_position = gun_point.global_position
 	sparks.global_position = modifier_bone_target_3d.global_position
@@ -90,6 +88,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		ik_controller.process_ik("release")
 
 func spawn_bullet():
+	update_bullet_target()
 	var spawn_loc = bullet_spawner.global_position
 	var bullet = bullet_scene.instantiate() as Bullet
 	
@@ -106,8 +105,9 @@ func spawn_bullet():
 	resources.lose_stamina(15.0)
 
 
-func update_bullet_target(reticle_point:Vector3):
+func update_bullet_target():
 	var spawn_loc = bullet_spawner.global_position
+	var reticle_point = local_camera.find_reticle_point()
 	target_direction = reticle_point
 	bullet_spawner.look_at(reticle_point)
 

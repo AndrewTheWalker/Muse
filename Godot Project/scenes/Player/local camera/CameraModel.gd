@@ -5,28 +5,24 @@ class_name CameraModel
 @export var initial_state : CameraState
 @export var look_at : Node3D
 
-@onready var camera := $PlayerCamera
+@onready var camera :Camera3D = $PlayerCamera
 @onready var focus_point := $FocusPoint
 @onready var camera_nest := $CameraNest
 @onready var camera_mount := $CameraMount
 
 @onready var cone_finder : ConeFinder = $ConeFinder
 
-@onready var reticle_debug = $"ReticleDebug"
 @onready var reticle_raycast: RayCast3D = $PlayerCamera/ReticleRaycast
 @onready var reticle_locator: Node3D = $PlayerCamera/reticle_locator
 @onready var camera_focus: Node3D = $"../CameraFocus"
 
 @onready var input_gatherer : InputGatherer = $"../Input"
 
-
 @onready var is_target_locked : bool = false
 
-var current_state : CameraState
-@onready var free_state :FreeCameraState = $FreeCamera
 
-var available_targets = []
-var target_index : int = 0
+@onready var free_state :FreeCameraState = $FreeCamera
+var current_state : CameraState
 
 @onready var states = {
 	"locked" : $LockedCamera,
@@ -38,12 +34,11 @@ var target_index : int = 0
 # by default, look_at is "camera_focus" which is the player's reference point for the camera
 # we load in the free state by default, then enter it.
 func _ready():
-	SignalBus.connect("TARGET_SCREEN_ENTERED",append_target)
-	SignalBus.connect("TARGET_SCREEN_EXITED",erase_target)
+# target sorting functionality moved to cone_finder
 	look_at = camera_focus
 	current_state = states["free"]
 	current_state.Enter()
-
+	
 # check if look_at is valid before calling the state's update
 func _process(delta: float) -> void:
 	look_at = check_look_at()
@@ -105,56 +100,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			#print("no target right now")
 
 
-
 # simple function to switch states.
 func switch_to(new_state : String):
 	current_state.Exit()
 	current_state = states[new_state]
 	current_state.Enter()
 
-# called when targetable enters the view
-func append_target(targetable):
-	available_targets.append(targetable)
-	if available_targets.size() > 1:
-		available_targets.sort_custom(sort_targets)
-
-# called when targetable exits the view
-func erase_target(targetable):
-	available_targets.erase(targetable)
-	if available_targets.size() > 1:
-		available_targets.sort_custom(sort_targets)
-
-
-'''at some point in the future, I must write a new algorithm that sorts by left/right instead of distance'''
-func sort_targets(a,b):
-	# a and b represent the two targetables being evaluated in available_targets
-	# we calcuclate the distance from the targetable to the focus point (i.e. the centre of the screen)
-	# whichever one is closer, goes first in the order.
-	var focus_pos = focus_point.global_position
-	var dista = a.global_position.distance_squared_to(focus_pos)
-	var distb = b.global_position.distance_squared_to(focus_pos)
-	return dista < distb
-
-
-func cycle_target():
-	## this line allows us to cycle through the contents of available targets and loop back to the beginning
-		# if we reach the end. The idea is that we use modulo, because if the result of target_index+1 is 
-		# less than available_targets.size, the modulo is just the same number. But if it is equal to 
-		# available targets.size, the result is 0, which is conveniently the first index entry.
-		# neat!
-	var new_index = (target_index+1) % available_targets.size()
-	
-	target_index = new_index
-	look_at = available_targets[new_index]
-
 
 func find_reticle_point()-> Vector3:
-	## reticle_debug is a CSG mesh, so we have one line to make it face the camera. 
-		# I am not using Vector3.UP as the second argument because it returns a colinear error.
-		# this error does not actually affect functionality, but it is annoying. Therefore I am using
-		# a custom vector.
-		# this will also eventually be replaced with a GUI element positioned using camera.unproject_position
-	reticle_debug.look_at(camera_nest.global_position, Vector3(0.0,0.1,0.0))
 	
 	## reticle_point is the vector3 representing where the reticle exists in 3D space.
 		# default_point is the location of a node called "reticle locator" 
@@ -173,48 +126,26 @@ func find_reticle_point()-> Vector3:
 		# to the default position.
 		# if we ARE in locked mode, then the reticle point remains fixed on the value of "look_at" 
 		# if for some reason look_at is undefined, it prints an error. But logically, this should never happen.
-	if !is_target_locked:
-		if reticle_raycast.is_colliding():
-			var collision_point = reticle_raycast.get_collision_point()
-			reticle_point = collision_point
-		else:
-			reticle_point = default_point
+	if reticle_raycast.is_colliding():
+		var collision_point = reticle_raycast.get_collision_point()
+		reticle_point = collision_point
 	else:
-		if look_at:
-			reticle_point = look_at.global_position
-		else:
-			print("error, can't find reticle point")
-			
-	# after all that, we actually tell the visuals of the reticle to go to the point we found.
-	reticle_debug.global_position = reticle_point
-	update_reticle(reticle_point)
+		reticle_point = default_point
 	
-	# return the reticle_point. this has no use now, but it will once I implement the GUI
 	return reticle_point
-
-# simple func which lerps (or more accurately extrapolates) the reticle visuals to the new point
-# if these positions are unequal
-# this will be deprecated once the GUI is functional.
-func update_reticle(reticle_point: Vector3):
-	if not reticle_debug.global_position.is_equal_approx(reticle_point):
-		reticle_debug.global_position = lerp(reticle_debug.global_position,reticle_point,1.0)
 
 
 func get_unprojected_position()->Vector2:
-	var position: Vector3
-	var unprojected_position
+	var position: Vector3 = reticle_locator.global_position
 	if reticle_raycast.is_colliding():
 		position = reticle_raycast.get_collision_point()
-		#print("reticle raycast is colliding, position is ", position)
 	else:
 		position = reticle_locator.global_position
-		#print("reticle raycast is NOT colliding, position is ", position)
-	unprojected_position = camera.unproject_position(position)
-	#print("final unprojected position ", unprojected_position)
+	var unprojected_position = camera.unproject_position(position)
+	print(unprojected_position)
 	return unprojected_position
-	
+
+
 func get_projected_position()->Vector3:
-	var position: Vector3
-	position = reticle_locator.global_position
+	var position: Vector3 = reticle_locator.global_position
 	return position
-	

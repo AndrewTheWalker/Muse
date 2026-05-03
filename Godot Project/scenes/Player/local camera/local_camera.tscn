@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://csvnet554vpfv" path="res://scenes/Player/local camera/CameraModel.gd" id="1_4nvxi"]
 [ext_resource type="Script" uid="uid://7l2u6hj0vvc0" path="res://scenes/Player/local camera/locked_cameraNEW.gd" id="2_io4mx"]
 [ext_resource type="Script" uid="uid://d2wul2d4daaht" path="res://scenes/Player/local camera/cone_finder.gd" id="2_ynfi6"]
+[ext_resource type="Curve" uid="uid://clx2i7kgcdeko" path="res://scenes/Player/local camera/aim_assist_curve.tres" id="3_ayjqu"]
 [ext_resource type="Script" uid="uid://cpyv82o088fjg" path="res://scenes/Player/local camera/free_camera.gd" id="3_enfd4"]
 [ext_resource type="Material" uid="uid://b7odl4bclgby4" path="res://assets/misc/blumat.tres" id="4_4nvxi"]
 [ext_resource type="Script" uid="uid://djcc6mfar10g8" path="res://scenes/Player/local camera/reticle_layer.gd" id="5_ojg55"]
@@ -24,12 +25,6 @@ albedo_color = Color(1, 0, 1, 0.5137255)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6h7m6"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.50980395)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frbxm"]
-transparency = 1
-no_depth_test = true
-shading_mode = 0
-albedo_color = Color(0.06666667, 0.90588236, 0.05490196, 0.0627451)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nk6wk"]
 atlas = ExtResource("6_ojg55")
@@ -141,12 +136,15 @@ script = ExtResource("1_4nvxi")
 
 [node name="ConeFinder" type="Node" parent="." unique_id=622347175]
 script = ExtResource("2_ynfi6")
+aim_curve = ExtResource("3_ayjqu")
 
 [node name="LockedCamera" type="Node" parent="." unique_id=1908321925]
 script = ExtResource("2_io4mx")
+sensitivity_multiplier = 2.0
 
 [node name="FreeCamera" type="Node" parent="." unique_id=851391645]
 script = ExtResource("3_enfd4")
+sensitivity_multiplier = 2.0
 
 [node name="CameraMount" type="Node3D" parent="." unique_id=226650702]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -190,7 +188,6 @@ radius = 0.25
 material = SubResource("StandardMaterial3D_6h7m6")
 
 [node name="ReticleRaycast" type="RayCast3D" parent="PlayerCamera" unique_id=1629189215]
-visible = false
 target_position = Vector3(0, 5, -30)
 collision_mask = 14
 collide_with_areas = true
@@ -202,17 +199,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -30)
 layers = 2
 radius = 0.05
 material = SubResource("StandardMaterial3D_6h7m6")
-
-[node name="ReticleDebug" type="Node3D" parent="." unique_id=247759565]
-
-[node name="CSGTorus" type="CSGTorus3D" parent="ReticleDebug" unique_id=1624163361]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-visible = false
-inner_radius = 0.35
-outer_radius = 0.5
-sides = 32
-ring_sides = 3
-material = SubResource("StandardMaterial3D_frbxm")
 
 [node name="CameraTimer" type="Timer" parent="." unique_id=1003259596]
 

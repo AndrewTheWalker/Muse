@@ -12,7 +12,7 @@ func _ready() -> void:
 	progress_bar_stamina.visible=false
 
 func _process(delta: float) -> void:
-	sprite_2d.position = local_camera.get_unprojected_position()
+	sprite_2d.position = Vector2(640,215)
 	if ! camera.current:
 		sprite_2d.visible=false
 	else:

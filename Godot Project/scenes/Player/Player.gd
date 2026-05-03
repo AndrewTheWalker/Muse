@@ -37,7 +37,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	var input = input_gatherer.gather_input()
 	var reticle = local_camera.find_reticle_point()
-	model.update(input, reticle, delta)
+	model.update(input, delta)
 	
 	# because the inputs are a data package, they would keep piling up if we don't free them.
 	input.queue_free()

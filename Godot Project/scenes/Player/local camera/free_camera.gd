@@ -13,16 +13,18 @@ class_name FreeCameraState
 
 @onready var camera_focus: Node3D = $"../../CameraFocus"
 
+
+
 var is_shooting := false
 var has_input := false
 
 var h_inv := -1
 var v_inv := -1
 
-var sensitivity_multiplier : float = 1.0
+@export var sensitivity_multiplier : float = 1.0
 var hor_sense := 2.0
 var ver_sense := 1.0
-var offset := Vector3(0.0,0.75,4.5)
+var offset := Vector3(0.0,0.75,5.5)
 var buffer_radius = 0.2
 
 
@@ -91,8 +93,9 @@ func Update(look_at:Node3D, delta: float) -> void:
 # -1 is there because I like inverted controls, but this will be replaced with a var that can also be +1 later.
 
 func input_axis_motion()->Vector3:
-	var input_direction = Input.get_vector("Rstick_left","Rstick_right","Rstick_down","Rstick_up").normalized()
-	## APR 2 Adding this so that if there is input, rotate offset doesn't try to fight it.
+	
+	var input_direction = Input.get_vector("Rstick_left","Rstick_right","Rstick_down","Rstick_up").limit_length()
+	
 	if input_direction:
 		has_input = true
 	else:
@@ -101,11 +104,16 @@ func input_axis_motion()->Vector3:
 	var d_hor = input_direction.x
 	var d_ver = input_direction.y
 
-	offset = offset.rotated(Vector3.UP, d_hor * hor_sense/100 * h_inv)
+	offset = offset.rotated(Vector3.UP, (d_hor * hor_sense/100 * h_inv)*sensitivity_multiplier)
+	
 	var axis : Vector3 = offset.cross(Vector3.UP).normalized()
-	var angle = d_ver * ver_sense/100 * v_inv
+	
+	var angle = (d_ver * ver_sense/100 * v_inv)*sensitivity_multiplier
+	
 	var new_offset = offset.rotated(axis,angle)
+	
 	var new_offset_angle = new_offset.angle_to(Vector3.UP)
+	
 	# limit the amount that the angle can go to prevent going over the player's head or under the floor.
 	if new_offset_angle > 0.3 and new_offset_angle < 2.5:
 		offset = offset.rotated(axis,angle)
@@ -117,7 +125,7 @@ func input_axis_motion()->Vector3:
 # take note that we check if the player is currently shooting, that will come up later.
 func move_focus_point(look_at: Node3D):
 	if not focus_point.global_position.is_equal_approx(look_at.global_position):
-		var new_focus = lerp(focus_point.global_position, look_at.global_position, 0.1)
+		var new_focus = lerp(focus_point.global_position, look_at.global_position, 0.5)
 		if !is_shooting and !has_input:
 			rotate_offset(new_focus)
 		focus_point.global_position = new_focus
@@ -127,12 +135,12 @@ func move_focus_point(look_at: Node3D):
 # this is where we check for the shapecast collision.
 # the purpose of the camera_nest is to allow smooth position adjustment. If we moved the camera directly, it feels jerky.
 func move_camera_nest(look_at: Node3D):
-	camera_mount.global_position = lerp(camera_mount.global_position, look_at.global_position, 0.1)
+	camera_mount.global_position = lerp(camera_mount.global_position, look_at.global_position, 0.5)
 	if not shape_cast.is_colliding():
-		camera_nest.global_position = lerp(camera_nest.global_position,camera_mount.global_position+offset,0.25)
+		camera_nest.global_position = lerp(camera_nest.global_position,camera_mount.global_position+offset,0.5)
 	else:
 		var new_point : Vector3 = calculate_shapecast_offset()
-		camera_nest.global_position = lerp(camera_nest.global_position,new_point,0.1)
+		camera_nest.global_position = lerp(camera_nest.global_position,new_point,0.5)
 
 # once the camera_nest finds its place, we move the camera itself.
 func move_camera():
